@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="183.75mm" height="210mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 1166 1333"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:red;stroke-width:19.0384}
+    .fil0 {fill:none}
+    .fil1 {fill:red}
+   ]]>
+  </style>
+   <clipPath id="id0">
+    <rect x="239" y="322" width="689" height="689"/>
+   </clipPath>
+ </defs>
+ <g id="Capa_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <rect class="fil0 str0" x="114" y="198" width="938" height="938" rx="78" ry="78"/>
+  <rect class="fil0" width="1166" height="1333"/>
+  <g style="clip-path:url(#id0)">
+   <image x="239" y="322" width="689" height="689" xlink:href="desactivar_Images\desactivar_ImgID1.png"/>
+  </g>
+  <path class="fil1" d="M239 410l256 257c-3,5 -58,59 -63,64 -22,22 -43,43 -64,64l-10 10c-2,1 -1,1 -2,2l-24 24c-1,0 -1,0 -1,0 0,0 0,0 0,1l-76 75c-4,4 -13,12 -16,16 5,7 68,67 81,81 2,2 4,3 5,6 4,0 6,-5 9,-7 2,-3 5,-5 7,-8l115 -114c1,-1 1,-1 2,-2 1,-1 1,-1 2,-2l58 -58c6,-6 61,-60 64,-65l257 257 0 0 88 -88 0 0 -256 -256c2,-3 13,-14 16,-17l22 -21c1,-1 1,-2 2,-2l209 -209c11,-11 11,-6 -13,-30 -7,-7 -61,-62 -66,-65 -1,2 -4,4 -7,7 0,0 0,0 0,0l-9 9c0,0 -1,1 -1,1 -1,1 -1,1 -2,2l-5 4c-14,13 -26,27 -40,41l-177 176c0,1 -1,1 -1,2 -1,1 -1,1 -2,2l-11 10c0,1 -2,2 -2,2l-257 -257 -88 88 0 0z"/>
+ </g>
+</svg>

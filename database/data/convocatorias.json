@@ -1,0 +1,90 @@
+[
+	{
+		"id" : 1,
+		"nombre" : "202301",
+		"descripcion" : "202301",
+		"fecha_inicio" : "2023-04-01",
+		"fecha_fin" : "2023-04-30",
+		"activo" : "2023-04-30 00:00:00",
+		"created_at" : "2023-04-01 00:00:00",
+		"updated_at" : "2023-04-01 00:00:00",
+		"folder" : "convocatoria_202301"
+	},
+	{
+		"id" : 2,
+		"nombre" : "202302",
+		"descripcion" : "202302",
+		"fecha_inicio" : "2023-09-11",
+		"fecha_fin" : "2023-09-30",
+		"activo" : "2023-09-30 00:00:00",
+		"created_at" : "2023-09-11 00:00:00",
+		"updated_at" : "2023-09-11 00:00:00",
+		"folder" : "convocatoria_202302"
+	},
+	{
+		"id" : 3,
+		"nombre" : "202401",
+		"descripcion" : "202401",
+		"fecha_inicio" : "2024-04-03",
+		"fecha_fin" : "2024-04-30",
+		"activo" : "2024-06-28 00:00:00",
+		"created_at" : "2024-04-03 10:45:55",
+		"updated_at" : "2024-04-03 10:46:23",
+		"folder" : "convocatoria_202401"
+	},
+	{
+		"id" : 4,
+		"nombre" : "202402",
+		"descripcion" : "202402",
+		"fecha_inicio" : "2024-07-01",
+		"fecha_fin" : "2024-07-31",
+		"activo" : "2024-07-31 00:00:00",
+		"created_at" : "2024-06-28 17:25:59",
+		"updated_at" : "2024-06-28 17:25:59",
+		"folder" : "convocatoria_202402"
+	},
+	{
+		"id" : 5,
+		"nombre" : "202403",
+		"descripcion" : "202403",
+		"fecha_inicio" : "2024-09-16",
+		"fecha_fin" : "2024-11-01",
+		"activo" : "2024-10-04 00:00:00",
+		"created_at" : "2024-09-13 12:51:00",
+		"updated_at" : "2024-09-13 12:51:00",
+		"folder" : "convocatoria_202403"
+	},
+	{
+		"id" : 6,
+		"nombre" : "202404",
+		"descripcion" : "202404",
+		"fecha_inicio" : "2024-10-01",
+		"fecha_fin" : "2024-10-31",
+		"activo" : "2025-03-08 00:00:00",
+		"created_at" : "2024-09-24 10:09:53",
+		"updated_at" : "2025-03-09 15:55:49",
+		"folder" : "convocatoria_202404"
+	},
+	{
+		"id" : 7,
+		"nombre" : "2025-00",
+		"descripcion" : null,
+		"fecha_inicio" : "2025-03-09",
+		"fecha_fin" : "2025-03-31",
+		"activo" : "2025-04-13 18:17:39",
+		"created_at" : "2025-03-09 15:55:41",
+		"updated_at" : "2025-03-09 15:55:41",
+		"folder" : "convocatoria_2025-00"
+	},
+	{
+		"id" : 10000,
+		"nombre" : "202501",
+		"descripcion" : null,
+		"fecha_inicio" : "2025-04-13",
+		"fecha_fin" : "2025-04-30",
+		"activo" : null,
+		"created_at" : "2025-04-13 18:30:26",
+		"updated_at" : "2025-04-13 18:30:26",
+		"folder" : "convocatoria_202501"
+	}
+]
