@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\CargaMatricula;
 use App\Convocatoria;
 use App\Helpers\Import\MatriculaImport;
+use App\Http\Controllers\ExportExcel\GenericExport;
 use App\Http\Requests\MatriculaImportFormRequest;
 use App\Inscrito;
 use App\Jobs\MatriculaImportJob;
 use App\Matricula;
+use App\PeriodoAcademico;
 use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\StreamedResponse;
@@ -267,5 +269,40 @@ class MatriculaController extends Controller
                 'code' => $code
             ], 500);
     	}
+    }
+
+    public function descargarMatriculadosNoInscritos(Request $request)
+    {
+        if(!$request->ajax()) return redirect('/');
+
+        \Log::info($request->all());
+
+        // $buscar = $request->buscar;
+        // $criterio = $request->criterio;
+        // $per_page = -1;
+        // $order_by = $request->order_by;
+        // $mode_order = $request->mode_order;
+
+        $convocatoria_actual = Convocatoria::whereNull('activo')->first();
+        $periodo_academico = PeriodoAcademico::where('estado','Activo')->first();
+
+        $datos = Inscrito::listarMatriculadosNoInscritos($convocatoria_actual->id, $periodo_academico->id);
+
+        $columnas = [
+            'escuela_profesional' => 'Escuela Profesional',
+            'codigo_estudiante' => 'Codigo Estudiante',
+            'dni' => 'DNI',
+            'apellido_paterno' => 'Apellido Paterno',
+            'apellido_materno' => 'Apellido Materno',
+            'nombres' => 'Nombres',
+            'telefono1' => 'Telefono 1',
+            'telefono2' => 'Telefono 2'
+        ];
+
+        $formateadores = [];
+
+        $reporte = GenericExport::exportExcelTable($columnas, $datos, 'NO INSCRITOS', 'php://output',$formateadores);
+
+        return $reporte;
     }
 }

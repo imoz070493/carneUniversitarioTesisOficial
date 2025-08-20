@@ -154,6 +154,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 var FormularioMatricula = function FormularioMatricula() {
   return __webpack_require__.e(/*! import() */ 38).then(__webpack_require__.bind(null, /*! @/components/erp/matricula/FormularioMatricula */ "./resources/js/components/erp/matricula/FormularioMatricula.vue"));
 };
@@ -410,6 +411,35 @@ var PeriodoAcademicoSelect = function PeriodoAcademicoSelect() {
         }
       });
     },
+    descargarNoInscritos: function descargarNoInscritos() {
+      axios({
+        url: '/matricula/reporte/no_inscritos',
+        method: 'POST',
+        data: {// venta_id: this.value.venta_id,
+        },
+        responseType: 'blob'
+      }).then(function (response) {
+        // console.log(response.data)
+        // console.log(response.data.size)
+        if (response.data && response.data.size) {
+          // window.location.href = response;
+          // this.leer()
+          // let filename = "FACTURA"+this.formatComprobante(obj_venta)+".pdf";
+          var filename = "Matriculados No Inscritos.xlsx";
+          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+          var fileLink = document.createElement('a');
+          fileLink.href = fileURL;
+
+          if (!filename) {
+            filename = url.substr(url.lastIndexOf('/') + 1);
+          }
+
+          fileLink.setAttribute('download', filename);
+          document.body.appendChild(fileLink);
+          fileLink.click();
+        }
+      });
+    },
     orderByNombre: function orderByNombre() {
       this.order_by = 'nombre';
       console.log('mode_order', this.mode_order);
@@ -523,6 +553,20 @@ var render = function() {
                 { staticClass: "col-lg-8 col-md-8 col-sm-8 col-xs-12" },
                 [
                   _c("div", { staticClass: "pull-right" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.descargarNoInscritos()
+                          }
+                        }
+                      },
+                      [_vm._v(" No Inscritos")]
+                    ),
+                    _vm._v(" "),
                     _c(
                       "button",
                       {

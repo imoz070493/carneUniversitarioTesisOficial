@@ -360,6 +360,33 @@ class Inscrito extends Model
         return $inscritos;
     }
 
+    public static function listarMatriculadosNoInscritos($convocatoria_id='', $periodo_academico_id=''){
+        
+        $no_inscritos = Matricula::leftJoin(\DB::raw("(select * 
+                                                        from inscritos 
+                                                        where convocatoria_id = $convocatoria_id) as inscrito"),
+                                'matriculas.estudiante_id','=','inscrito.estudiante_id')
+                            ->join('estudiantes as e','matriculas.estudiante_id','=','e.id')
+                            ->select(
+                                'matriculas.id',
+                                'e.escuela_profesional',
+                                'e.dni',
+                                'e.codigo_estudiante',
+                                'e.apellido_paterno',
+                                'e.apellido_materno',
+                                'e.nombres',
+                                'e.telefono1',
+                                'e.telefono2'
+                            );
+            
+            $no_inscritos = $no_inscritos->whereNull('inscrito.estudiante_id')
+                                        ->where('matriculas.periodo_academico_id',$periodo_academico_id)
+                                        ->where('tipo_tramite','nuevo')
+                                        ->get();
+
+        return $no_inscritos;
+    }
+
     public static function validarCredencial($tipo, $numero_documento, $id){
         $documento = Documento::obtenerDocumento($tipo, $numero_documento);
         if (isset($documento->dni)){

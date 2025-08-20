@@ -120,6 +120,7 @@ Route::get('/conductor/busqueda','DocumentoController@obtenerConductorPorNombre'
 
 Route::post('/matricula','MatriculaController@index');
 Route::post('/matricula/importar','MatriculaController@importar');
+Route::post('/matricula/reporte/no_inscritos','MatriculaController@descargarMatriculadosNoInscritos');
 Route::post('/matricula/plantilla','MatriculaController@descargarPlantilla');
 
 Route::post('/ingresante/importar','IngresanteController@importar');

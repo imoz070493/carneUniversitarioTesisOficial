@@ -22,6 +22,7 @@
                             </div>
                             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                 <div class="pull-right">
+                                    <button type="button" @click="descargarNoInscritos()" class="btn btn-success"> No Inscritos</button>
                                     <button type="button" @click="descargarMatriculas()" class="btn btn-success"> Xlsx</button>
                                 </div>
                             </div>
@@ -387,6 +388,36 @@ if(error.request.status){
                     // this.leer()
                     // let filename = "FACTURA"+this.formatComprobante(obj_venta)+".pdf";
                     let filename = "ARTICULOS.xlsx";
+    
+                    var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+                    var fileLink = document.createElement('a');
+                    fileLink.href = fileURL;
+                    if (!filename) {
+                        filename = url.substr(url.lastIndexOf('/') + 1)
+                    }
+                    fileLink.setAttribute('download', filename);
+                    document.body.appendChild(fileLink);
+                    fileLink.click();
+                }
+            });
+        },
+        descargarNoInscritos(){
+            axios({
+                url:'/matricula/reporte/no_inscritos',
+                method: 'POST',
+                data: {
+                    // venta_id: this.value.venta_id,
+                },
+                responseType: 'blob',
+            }).then(response => {
+                // console.log(response.data)
+                // console.log(response.data.size)
+
+                if(response.data && response.data.size){
+                    // window.location.href = response;
+                    // this.leer()
+                    // let filename = "FACTURA"+this.formatComprobante(obj_venta)+".pdf";
+                    let filename = "Matriculados No Inscritos.xlsx";
     
                     var fileURL = window.URL.createObjectURL(new Blob([response.data]));
                     var fileLink = document.createElement('a');
