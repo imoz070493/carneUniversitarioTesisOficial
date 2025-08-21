@@ -1,79 +1,22 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[45],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -191,8 +134,120 @@ var DocumentoBusqueda = function DocumentoBusqueda() {
         }
       });
     },
+    importar: function importar() {
+      var me = this;
+      this.btn['actualizar'] = true; // axios.put('/persona_dni/importar',this.editable).then(function (response){
+      //     me.$emit('guardado');
+      //     me.cerrarModal();
+      // })
+
+      axios({
+        url: '/persona_dni/importar',
+        method: 'POST',
+        data: this.editable,
+        responseType: 'blob'
+      }).then(function (response) {
+        // console.log(response.data)
+        // console.log(response.data.size)
+        if (response.data && response.data.size) {
+          // window.location.href = response;
+          // this.leer()
+          // let filename = "FACTURA"+this.formatComprobante(obj_venta)+".pdf";
+          var filename = "CONSULTA PERSONAS.xlsx";
+          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+          var fileLink = document.createElement('a');
+          fileLink.href = fileURL;
+
+          if (!filename) {
+            filename = url.substr(url.lastIndexOf('/') + 1);
+          }
+
+          fileLink.setAttribute('download', filename);
+          document.body.appendChild(fileLink);
+          fileLink.click();
+          me.$emit('guardado');
+          me.cerrarModal();
+        }
+      })["catch"](function (error) {
+        me.btn['actualizar'] = false;
+
+        var asyncExample = /*#__PURE__*/function () {
+          var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+            var data, response;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.prev = 0;
+                    _context.next = 3;
+                    return error.response.data.text();
+
+                  case 3:
+                    data = _context.sent;
+                    response = JSON.parse(data); //200
+
+                    if (response.errors) {
+                      me.errors = response.errors;
+                      me.$forceUpdate();
+                    }
+
+                    _context.next = 11;
+                    break;
+
+                  case 8:
+                    _context.prev = 8;
+                    _context.t0 = _context["catch"](0);
+                    console.log(_context.t0);
+
+                  case 11:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, null, [[0, 8]]);
+          }));
+
+          return function asyncExample() {
+            return _ref.apply(this, arguments);
+          };
+        }();
+
+        var globalData = asyncExample();
+      });
+    },
+    descargarPlantilla: function descargarPlantilla() {
+      var me = this;
+      this.btn['actualizar'] = true;
+      axios({
+        url: '/persona_dni/plantilla',
+        method: 'POST',
+        responseType: 'blob'
+      }).then(function (response) {
+        if (response.data && response.data.size) {
+          var filename = "Personas.xlsx";
+          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+          var fileLink = document.createElement('a');
+          fileLink.href = fileURL;
+
+          if (!filename) {
+            filename = url.substr(url.lastIndexOf('/') + 1);
+          }
+
+          fileLink.setAttribute('download', filename);
+          document.body.appendChild(fileLink);
+          fileLink.click();
+        }
+      })["catch"](function (error) {
+        me.btn['actualizar'] = false;
+
+        if (error.request.response) {
+          var response = JSON.parse(error.request.response);
+          console.log(response);
+          me.errors = response.errors;
+        }
+      });
+    },
     cerrarModal: function cerrarModal() {
-      this.$emit('cerrado');
       this.$emit('input', {});
     },
     imageChanged: function imageChanged(e) {
@@ -201,39 +256,12 @@ var DocumentoBusqueda = function DocumentoBusqueda() {
       console.log(e.target.files[0]);
       var propiedades = e.target.files[0];
       var fileReader = new FileReader();
-      var imgtag = document.getElementById("image");
       fileReader.readAsDataURL(e.target.files[0]);
 
       fileReader.onload = function (e) {
-        _this.editable.name_document = propiedades.name;
-        _this.editable.new_document = e.target.result;
-        imgtag.src = e.target.result;
+        _this.editable.name_excel = propiedades.name;
+        _this.editable.excel_document = e.target.result;
       };
-
-      reader.onload = function (event) {
-        imgtag.src = event.target.result;
-      };
-    },
-    setBusqueda: function setBusqueda(e) {
-      if (_typeof(e) === 'object') {
-        if (this.editable.tipo_documento == 'ruc') {
-          this.editable.nombre = e.razonSocial;
-          this.editable.direccion = e.direccion;
-        } else if (this.editable.tipo_documento == 'dni') {
-          this.editable.nombres = e.nombres;
-          this.editable.apellidoPaterno = e.apellidoPaterno;
-          this.editable.apellidoMaterno = e.apellidoMaterno;
-          this.editable.codVerifica = e.codVerifica;
-        }
-      } else {
-        this.editable.nombres = '';
-        this.editable.apellidoPaterno = '';
-        this.editable.apellidoMaterno = '';
-        this.editable.codVerifica = '';
-        alert("Persona no encontrada, puede volver a realizar la busqueda");
-      }
-
-      this.$forceUpdate();
     }
   },
   watch: {
@@ -249,10 +277,10 @@ var DocumentoBusqueda = function DocumentoBusqueda() {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=style&index=0&lang=css&":
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=style&index=0&lang=css& ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -268,15 +296,15 @@ exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    pos
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=style&index=0&lang=css&":
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=style&index=0&lang=css& ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioPersonaDni.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=style&index=0&lang=css&");
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -298,10 +326,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=template&id=00869cc2&":
-/*!***************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=template&id=00869cc2& ***!
-  \***************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=template&id=94fd1456&":
+/*!***********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=template&id=94fd1456& ***!
+  \***********************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -384,295 +412,15 @@ var render = function() {
                         _c("div", { staticClass: "form-group" }, [
                           _vm._m(0),
                           _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.editable.tipo_documento,
-                                  expression: "editable.tipo_documento"
-                                }
-                              ],
-                              staticClass: "form-control col-md-12",
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    _vm.editable,
-                                    "tipo_documento",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
-                                }
-                              }
-                            },
-                            [
-                              _c("option", { attrs: { value: "dni" } }, [
-                                _vm._v("DNI")
-                              ])
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _vm.errors.tipo_documento
-                            ? _c("span", { staticClass: "text-error" }, [
-                                _vm._v(_vm._s(_vm.errors.tipo_documento))
-                              ])
-                            : _vm._e()
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "form-group" },
-                          [
-                            _vm._m(1),
-                            _vm._v(" "),
-                            _c("documento-busqueda", {
-                              attrs: {
-                                tipo_documento: _vm.editable.tipo_documento
-                              },
-                              on: {
-                                setBusqueda: function($event) {
-                                  return _vm.setBusqueda($event)
-                                }
-                              },
-                              model: {
-                                value: _vm.editable.dni,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.editable, "dni", $$v)
-                                },
-                                expression: "editable.dni"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm.errors.dni
-                              ? _c("span", { staticClass: "text-error" }, [
-                                  _vm._v(_vm._s(_vm.errors.dni))
-                                ])
-                              : _vm._e()
-                          ],
-                          1
-                        )
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c(
-                      "div",
-                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
-                      [
-                        _c("div", { staticClass: "form-group" }, [
-                          _vm._m(2),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.editable.nombres,
-                                expression: "editable.nombres"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { type: "text", placeholder: "Nombres..." },
-                            domProps: { value: _vm.editable.nombres },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.editable,
-                                  "nombres",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.errors.nombres
-                            ? _c("span", { staticClass: "text-error" }, [
-                                _vm._v(_vm._s(_vm.errors.nombres))
-                              ])
-                            : _vm._e()
-                        ])
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c(
-                      "div",
-                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
-                      [
-                        _c("div", { staticClass: "form-group" }, [
-                          _vm._m(3),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.editable.apellidoPaterno,
-                                expression: "editable.apellidoPaterno"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              placeholder: "Apellido Paterno..."
-                            },
-                            domProps: { value: _vm.editable.apellidoPaterno },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.editable,
-                                  "apellidoPaterno",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.errors.apellidoPaterno
-                            ? _c("span", { staticClass: "text-error" }, [
-                                _vm._v(_vm._s(_vm.errors.apellidoPaterno))
-                              ])
-                            : _vm._e()
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
-                      [
-                        _c("div", { staticClass: "form-group" }, [
-                          _vm._m(4),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.editable.apellidoMaterno,
-                                expression: "editable.apellidoMaterno"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              placeholder: "Apellido Materno..."
-                            },
-                            domProps: { value: _vm.editable.apellidoMaterno },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.editable,
-                                  "apellidoMaterno",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.errors.apellidoMaterno
-                            ? _c("span", { staticClass: "text-error" }, [
-                                _vm._v(_vm._s(_vm.errors.apellidoMaterno))
-                              ])
-                            : _vm._e()
-                        ])
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c(
-                      "div",
-                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
-                      [
-                        _c("div", { staticClass: "form-group" }, [
-                          _vm._m(5),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.editable.codVerifica,
-                                expression: "editable.codVerifica"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              placeholder: "Cod Verifica..."
-                            },
-                            domProps: { value: _vm.editable.codVerifica },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.editable,
-                                  "codVerifica",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.errors.codVerifica
-                            ? _c("span", { staticClass: "text-error" }, [
-                                _vm._v(_vm._s(_vm.errors.codVerifica))
-                              ])
-                            : _vm._e()
-                        ])
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c(
-                      "div",
-                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
-                      [
-                        _c("div", { staticClass: "form-group" }, [
-                          _vm._m(6),
-                          _vm._v(" "),
                           _c("input", {
                             staticClass: "form-control",
-                            attrs: { type: "file", accept: "jpeg, jpe, png" },
+                            attrs: { type: "file", accept: ".xlsx" },
                             on: { change: _vm.imageChanged }
                           }),
                           _vm._v(" "),
-                          _vm.errors.otro_imagen
+                          _vm.errors.excel_document
                             ? _c("span", { staticClass: "text-error" }, [
-                                _vm._v(_vm._s(_vm.errors.otro_imagen))
+                                _vm._v(_vm._s(_vm.errors.excel_document))
                               ])
                             : _vm._e()
                         ])
@@ -680,7 +428,31 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _vm._m(7)
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                      },
+                      [
+                        _vm._v(
+                          "\n                            Utilizar la siguiente plantilla para realizar las consultas: \n                            "
+                        ),
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                return _vm.descargarPlantilla()
+                              }
+                            }
+                          },
+                          [_vm._v("Excel")]
+                        )
+                      ]
+                    )
+                  ])
                 ]
               )
             ]
@@ -700,6 +472,22 @@ var render = function() {
               },
               [_vm._v("Cerrar")]
             ),
+            _vm._v(" "),
+            _vm.var_config.tipo_accion == "importar"
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.importar()
+                      }
+                    }
+                  },
+                  [_vm._v("Importar")]
+                )
+              : _vm._e(),
             _vm._v(" "),
             _vm.var_config.tipo_accion == "registrar"
               ? _c(
@@ -743,57 +531,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Documento: *")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("N° Documento: *")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Nombres: *")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Apellido Paterno: *")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Apellido Materno: *")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("CodVerifica: ")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Imagen:")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("label", [_c("dt", [_vm._v("Imagen:")])]),
-          _vm._v(" "),
-          _c("img", { staticClass: "form-control", attrs: { id: "image" } })
-        ])
-      ])
-    ])
+    return _c("label", [_c("dt", [_vm._v("Excel: *")])])
   }
 ]
 render._withStripped = true
@@ -802,18 +540,18 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue":
-/*!**************************************************************************!*\
-  !*** ./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue ***!
-  \**************************************************************************/
+/***/ "./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue ***!
+  \**********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _FormularioPersonaDni_vue_vue_type_template_id_00869cc2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormularioPersonaDni.vue?vue&type=template&id=00869cc2& */ "./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=template&id=00869cc2&");
-/* harmony import */ var _FormularioPersonaDni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormularioPersonaDni.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _FormularioPersonaDni_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormularioPersonaDni.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _FormularioImportarPersonaDni_vue_vue_type_template_id_94fd1456___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormularioImportarPersonaDni.vue?vue&type=template&id=94fd1456& */ "./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=template&id=94fd1456&");
+/* harmony import */ var _FormularioImportarPersonaDni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormularioImportarPersonaDni.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _FormularioImportarPersonaDni_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -824,9 +562,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _FormularioPersonaDni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _FormularioPersonaDni_vue_vue_type_template_id_00869cc2___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _FormularioPersonaDni_vue_vue_type_template_id_00869cc2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _FormularioImportarPersonaDni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FormularioImportarPersonaDni_vue_vue_type_template_id_94fd1456___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FormularioImportarPersonaDni_vue_vue_type_template_id_94fd1456___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -836,54 +574,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/erp/persona_dni/FormularioPersonaDni.vue"
+component.options.__file = "resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************!*\
-  !*** ./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************/
+/***/ "./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioPersonaDni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioPersonaDni.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioPersonaDni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarPersonaDni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioImportarPersonaDni.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarPersonaDni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=style&index=0&lang=css&":
-/*!***********************************************************************************************************!*\
-  !*** ./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=style&index=0&lang=css& ***!
-  \***********************************************************************************************************/
+/***/ "./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************************!*\
+  !*** ./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioPersonaDni_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioPersonaDni.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioPersonaDni_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioPersonaDni_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioPersonaDni_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioPersonaDni_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarPersonaDni_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarPersonaDni_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarPersonaDni_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarPersonaDni_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarPersonaDni_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=template&id=00869cc2&":
-/*!*********************************************************************************************************!*\
-  !*** ./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=template&id=00869cc2& ***!
-  \*********************************************************************************************************/
+/***/ "./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=template&id=94fd1456&":
+/*!*****************************************************************************************************************!*\
+  !*** ./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=template&id=94fd1456& ***!
+  \*****************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioPersonaDni_vue_vue_type_template_id_00869cc2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioPersonaDni.vue?vue&type=template&id=00869cc2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue?vue&type=template&id=00869cc2&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioPersonaDni_vue_vue_type_template_id_00869cc2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarPersonaDni_vue_vue_type_template_id_94fd1456___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioImportarPersonaDni.vue?vue&type=template&id=94fd1456& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=template&id=94fd1456&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarPersonaDni_vue_vue_type_template_id_94fd1456___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioPersonaDni_vue_vue_type_template_id_00869cc2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarPersonaDni_vue_vue_type_template_id_94fd1456___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

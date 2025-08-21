@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[66],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/role/ListarRole.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/role/ListarRole.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -120,21 +120,59 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-var FormularioRole = function FormularioRole() {
-  return __webpack_require__.e(/*! import() */ 47).then(__webpack_require__.bind(null, /*! @/components/erp/role/FormularioRole */ "./resources/js/components/erp/role/FormularioRole.vue"));
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var FormularioPersonaDni = function FormularioPersonaDni() {
+  return __webpack_require__.e(/*! import() */ 46).then(__webpack_require__.bind(null, /*! @/components/erp/persona_dni/FormularioPersonaDni */ "./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue"));
+};
+
+var VerPersonaDni = function VerPersonaDni() {
+  return __webpack_require__.e(/*! import() */ 47).then(__webpack_require__.bind(null, /*! @/components/erp/persona_dni/VerPersonaDni */ "./resources/js/components/erp/persona_dni/VerPersonaDni.vue"));
+};
+
+var FormularioImportarPersonaDni = function FormularioImportarPersonaDni() {
+  return __webpack_require__.e(/*! import() */ 45).then(__webpack_require__.bind(null, /*! @/components/erp/persona_dni/FormularioImportarPersonaDni */ "./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    "v-formulario-role": FormularioRole
+    "v-formulario-persona-dni": FormularioPersonaDni,
+    "v-ver-persona-dni": VerPersonaDni,
+    "v-formulario-importar-persona-dni": FormularioImportarPersonaDni
   },
   data: function data() {
     return {
       nuevo: {},
       editable: {},
+      ver_editable: {},
+      editable_anulacion: {},
+      importar_editable: {},
       show: {},
       var_config: {},
-      arrayRole: [],
+      arrayPersonaDni: [],
       pagination: {
         'total': 0,
         'current_page': 0,
@@ -144,7 +182,7 @@ var FormularioRole = function FormularioRole() {
         'to': 0
       },
       offset: 3,
-      criterio: 'nombre',
+      criterio: 'todos',
       buscar: '',
       per_page: 10
     };
@@ -182,17 +220,17 @@ var FormularioRole = function FormularioRole() {
   },
   mounted: function mounted() {
     console.log('Component mounted.');
-    this.listarRole(1, this.buscar, this.criterio);
+    this.listarPersonaDni(1, this.buscar, this.criterio);
   },
   methods: {
-    listarRole: function listarRole(page, buscar, criterio) {
+    listarPersonaDni: function listarPersonaDni(page, buscar, criterio) {
       var me = this;
-      var url = '/role?page=' + page + '&buscar=' + buscar + '&criterio=' + criterio + '&per_page=' + this.per_page;
+      var url = '/persona_dni?page=' + page + '&buscar=' + buscar + '&criterio=' + criterio + '&per_page=' + this.per_page;
       axios.get(url).then(function (response) {
         var respuesta = response.data;
-        me.arrayRole = respuesta.roles.data;
+        me.arrayPersonaDni = respuesta.personas_dnis.data;
         me.pagination = respuesta.pagination;
-        if (me.arrayRole.length == 0) me.show['arrayRole'] = true;else me.show['arrayRole'] = false;
+        if (me.arrayPersonaDni.length == 0) me.show['arrayPersonaDni'] = true;else me.show['arrayPersonaDni'] = false;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -202,13 +240,13 @@ var FormularioRole = function FormularioRole() {
 
       me.pagination.current_page = page; // Envia la peticion para visualizar la data de esta pagina
 
-      me.listarRole(page, buscar, criterio);
+      me.listarPersonaDni(page, buscar, criterio);
     },
-    desactivarRole: function desactivarRole(id) {
+    desactivarPersonaDni: function desactivarPersonaDni(id) {
       var _this = this;
 
       swal({
-        title: 'Esta seguro de desactivar esta role?',
+        title: 'Esta seguro de desactivar este ingreso de vehiculo?',
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -222,10 +260,10 @@ var FormularioRole = function FormularioRole() {
       }).then(function (result) {
         if (result.value) {
           var me = _this;
-          axios.put('/role/desactivar', {
+          axios.put('/persona_dni/desactivar', {
             id: id
           }).then(function (response) {
-            me.listarRole(1, '', 'nombre');
+            me.listarPersonaDni(1, '', 'nombre');
             swal('Desactivado', 'El registro ha sido desactivado con exito', 'success');
           })["catch"](function (error) {
             console.log(error);
@@ -235,11 +273,11 @@ var FormularioRole = function FormularioRole() {
         result.dismiss === swal.DismissReason.cancel) {}
       });
     },
-    activarRole: function activarRole(id) {
+    activarPersonaDni: function activarPersonaDni(id) {
       var _this2 = this;
 
       swal({
-        title: 'Esta seguro de activar esta role?',
+        title: 'Esta seguro de activar este ingreso de vehiculo?',
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -253,10 +291,10 @@ var FormularioRole = function FormularioRole() {
       }).then(function (result) {
         if (result.value) {
           var me = _this2;
-          axios.put('/role/activar', {
+          axios.put('/persona_dni/activar', {
             id: id
           }).then(function (response) {
-            me.listarRole(1, '', 'nombre');
+            me.listarPersonaDni(1, '', 'nombre');
             swal('Activado', 'El registro ha sido activado con exito', 'success');
           })["catch"](function (error) {
             console.log(error);
@@ -271,17 +309,39 @@ var FormularioRole = function FormularioRole() {
         _estado: 'creando'
       };
       this.var_config = {
-        title: 'Registrar Role',
+        title: 'Registrar Persona',
         tipo_accion: 'registrar'
       };
     },
-    editar: function editar(role) {
+    editar: function editar(vehiculo) {
+      if (vehiculo.anulado) {
+        swal('Error', 'El ingreso ha sido anulado por lo tanto no puede ser editado', 'warning');
+        return;
+      }
+
       this.editable = Object.assign({
         _estado: 'editando'
-      }, role);
+      }, vehiculo);
       this.var_config = {
-        title: 'Actualizar Role',
+        title: 'Actualizar Persona',
         tipo_accion: 'actualizar'
+      };
+    },
+    ver: function ver(vehiculo) {
+      this.ver_editable = Object.assign({
+        _estado: 'viendo'
+      }, vehiculo);
+      this.var_config = {
+        title: 'Ver Persona'
+      };
+    },
+    importar: function importar() {
+      this.importar_editable = {
+        _estado: 'creando'
+      };
+      this.var_config = {
+        title: 'Importar Persona',
+        tipo_accion: 'importar'
       };
     }
   }
@@ -289,10 +349,10 @@ var FormularioRole = function FormularioRole() {
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/role/ListarRole.vue?vue&type=template&id=fb7a13d2&":
-/*!**********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/role/ListarRole.vue?vue&type=template&id=fb7a13d2& ***!
-  \**********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=template&id=6249533c&":
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=template&id=6249533c& ***!
+  \***********************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -314,7 +374,7 @@ var render = function() {
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
             _c("i", { staticClass: "fa fa-align-justify" }),
-            _vm._v(" Roles\n                "),
+            _vm._v(" Personas\n                "),
             _c(
               "button",
               {
@@ -329,6 +389,23 @@ var render = function() {
               [
                 _c("i", { staticClass: "icon-plus" }),
                 _vm._v(" Nuevo\n                ")
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.importar()
+                  }
+                }
+              },
+              [
+                _c("i", { staticClass: "icon-plus" }),
+                _vm._v(" Importar\n                ")
               ]
             )
           ]),
@@ -366,12 +443,20 @@ var render = function() {
                       }
                     },
                     [
-                      _c("option", { attrs: { value: "nombre" } }, [
-                        _vm._v("Nombre")
+                      _c("option", { attrs: { value: "todos" } }, [
+                        _vm._v("Todos")
                       ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "descripcion" } }, [
-                        _vm._v("Descripción")
+                      _c("option", { attrs: { value: "apellidoPaterno" } }, [
+                        _vm._v("Apellido Paterno")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "apellidoMaterno" } }, [
+                        _vm._v("Apellido Materno")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "nombres" } }, [
+                        _vm._v("Nombres")
                       ])
                     ]
                   ),
@@ -402,7 +487,7 @@ var render = function() {
                         ) {
                           return null
                         }
-                        return _vm.listarRole(1, _vm.buscar, _vm.criterio)
+                        return _vm.listarPersonaDni(1, _vm.buscar, _vm.criterio)
                       },
                       input: function($event) {
                         if ($event.target.composing) {
@@ -420,7 +505,11 @@ var render = function() {
                       attrs: { type: "submit" },
                       on: {
                         click: function($event) {
-                          return _vm.listarRole(1, _vm.buscar, _vm.criterio)
+                          return _vm.listarPersonaDni(
+                            1,
+                            _vm.buscar,
+                            _vm.criterio
+                          )
                         }
                       }
                     },
@@ -439,113 +528,142 @@ var render = function() {
                 staticStyle: { "overflow-x": "auto", "white-space": "nowrap" }
               },
               [
-                _c(
-                  "table",
-                  {
-                    staticClass: "table table-bordered table-striped table-sm"
-                  },
-                  [
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _c(
-                      "tbody",
-                      [
-                        _vm.show.arrayRole
-                          ? _c("tr", [
-                              _c("th", {
-                                staticClass: "text-center text-dark",
-                                attrs: { colspan: "2" },
-                                domProps: { textContent: _vm._s("Vacio") }
-                              })
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm._l(_vm.arrayRole, function(role) {
-                          return _c("tr", { key: role.id }, [
-                            _c(
-                              "td",
-                              [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-warning btn-sm",
-                                    attrs: { type: "button" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.editar(role)
-                                      }
-                                    }
-                                  },
-                                  [_c("i", { staticClass: "icon-pencil" })]
-                                ),
-                                _vm._v("  \n                                "),
-                                role.estado == "activo"
-                                  ? [
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-danger btn-sm",
-                                          attrs: { type: "button" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.desactivarRole(role.id)
-                                            }
-                                          }
-                                        },
-                                        [_c("i", { staticClass: "icon-trash" })]
-                                      )
-                                    ]
-                                  : role.estado == "inactivo"
-                                  ? [
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-info btn-sm",
-                                          attrs: { type: "button" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.activarRole(role.id)
-                                            }
-                                          }
-                                        },
-                                        [_c("i", { staticClass: "icon-check" })]
-                                      )
-                                    ]
-                                  : _vm._e()
-                              ],
-                              2
-                            ),
-                            _vm._v(" "),
-                            _c("td", {
-                              domProps: { textContent: _vm._s(role.name) }
-                            }),
-                            _vm._v(" "),
-                            _c("td", [
-                              role.estado == "activo"
-                                ? _c("div", [
-                                    _c(
-                                      "span",
-                                      { staticClass: "badge badge-success" },
-                                      [_vm._v("Activo")]
-                                    )
-                                  ])
-                                : role.estado == "inactivo"
-                                ? _c("div", [
-                                    _c(
-                                      "span",
-                                      { staticClass: "badge badge-danger" },
-                                      [_vm._v("Desactivado")]
-                                    )
-                                  ])
-                                : _vm._e()
-                            ])
+                _c("table", { staticClass: "table table-hover text-nowrap" }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    [
+                      _vm.show.arrayPersonaDni
+                        ? _c("tr", [
+                            _c("th", {
+                              staticClass: "text-center text-dark",
+                              attrs: { colspan: "8" },
+                              domProps: { textContent: _vm._s("Vacio") }
+                            })
                           ])
-                        })
-                      ],
-                      2
-                    )
-                  ]
-                )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm._l(_vm.arrayPersonaDni, function(persona_dni) {
+                        return _c("tr", { key: persona_dni.id }, [
+                          _c("td", [
+                            _c("div", { staticClass: "btn-group" }, [
+                              _vm._m(2, true),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "dropdown-menu",
+                                  staticStyle: {
+                                    "overflow-y": "auto",
+                                    height: "150px"
+                                  },
+                                  attrs: { role: "menu" }
+                                },
+                                [
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "dropdown-item disabled",
+                                      attrs: { href: "#", disabled: "" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.editar(persona_dni)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c("img", {
+                                        staticStyle: {
+                                          width: "20px",
+                                          height: "20px"
+                                        },
+                                        attrs: { src: "images/editar.svg" }
+                                      }),
+                                      _vm._v("   Editar")
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "dropdown-item",
+                                      attrs: { href: "#" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.ver(persona_dni)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c("img", {
+                                        staticStyle: {
+                                          width: "20px",
+                                          height: "20px"
+                                        },
+                                        attrs: { src: "images/ver.svg" }
+                                      }),
+                                      _vm._v("   Ver")
+                                    ]
+                                  )
+                                ]
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("td", {
+                            domProps: {
+                              textContent: _vm._s(persona_dni.nombres)
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("td", {
+                            domProps: {
+                              textContent: _vm._s(persona_dni.apellidoPaterno)
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("td", {
+                            domProps: {
+                              textContent: _vm._s(persona_dni.apellidoMaterno)
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("td", {
+                            domProps: { textContent: _vm._s(persona_dni.dni) }
+                          }),
+                          _vm._v(" "),
+                          _c("td", {
+                            domProps: {
+                              textContent: _vm._s(persona_dni.codVerifica)
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("td", {
+                            domProps: {
+                              textContent: _vm._s(persona_dni.origen)
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("td", {
+                            domProps: {
+                              textContent: _vm._s(
+                                persona_dni.created_at
+                                  .substr(0, 10)
+                                  .split("-")
+                                  .reverse()
+                                  .join("-")
+                              )
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm._m(3, true)
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ])
               ]
             ),
             _vm._v(" "),
@@ -636,12 +754,15 @@ var render = function() {
       ]),
       _vm._v(" "),
       _vm.nuevo._estado == "creando"
-        ? _c("v-formulario-role", {
-            ref: "cmp_crear_role",
+        ? _c("v-formulario-persona-dni", {
+            ref: "cmp_crear_persona_dni",
             attrs: { var_config: _vm.var_config },
             on: {
+              cerrado: function($event) {
+                return _vm.listarPersonaDni(1, "", "nombre")
+              },
               guardado: function($event) {
-                return _vm.listarRole(1, "", "nombre")
+                return _vm.listarPersonaDni(1, "", "nombre")
               }
             },
             model: {
@@ -655,12 +776,12 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _vm.editable._estado == "editando"
-        ? _c("v-formulario-role", {
-            ref: "cmp_crear_role",
+        ? _c("v-formulario-persona-dni", {
+            ref: "cmp_crear_persona_dni",
             attrs: { var_config: _vm.var_config },
             on: {
               guardado: function($event) {
-                return _vm.listarRole(1, "", "nombre")
+                return _vm.listarPersonaDni(1, "", "nombre")
               }
             },
             model: {
@@ -669,6 +790,39 @@ var render = function() {
                 _vm.editable = $$v
               },
               expression: "editable"
+            }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.ver_editable._estado == "viendo"
+        ? _c("v-ver-persona-dni", {
+            ref: "cmp_ver_persona_dni",
+            attrs: { var_config: _vm.var_config },
+            model: {
+              value: _vm.ver_editable,
+              callback: function($$v) {
+                _vm.ver_editable = $$v
+              },
+              expression: "ver_editable"
+            }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.importar_editable._estado == "creando"
+        ? _c("v-formulario-importar-persona-dni", {
+            ref: "cmp_importar_persona_dni",
+            attrs: { var_config: _vm.var_config },
+            on: {
+              guardado: function($event) {
+                return _vm.listarPersonaDni(1, "", "nombre")
+              }
+            },
+            model: {
+              value: _vm.importar_editable,
+              callback: function($$v) {
+                _vm.importar_editable = $$v
+              },
+              expression: "importar_editable"
             }
           })
         : _vm._e()
@@ -682,10 +836,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("ol", { staticClass: "breadcrumb" }, [
-      _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Acceso")]),
-      _vm._v(" "),
       _c("li", { staticClass: "breadcrumb-item" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("Role")])
+        _c("a", { attrs: { href: "#" } }, [_vm._v("Personas")])
       ]),
       _vm._v(" "),
       _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Listado")])
@@ -697,12 +849,43 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", [_vm._v("Opciones")]),
+        _c("th"),
         _vm._v(" "),
-        _c("th", [_vm._v("Nombre")]),
+        _c("th", [_vm._v("Nombres")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Apellido Paterno")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Apellido Materno")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Dni")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Cod. Verifica")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Origen")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Fecha de Creacion")]),
         _vm._v(" "),
         _c("th", [_vm._v("Estado")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#", "data-toggle": "dropdown" } }, [
+      _c("img", {
+        staticStyle: { width: "30px", height: "30px" },
+        attrs: { src: "images/options.svg" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("span", { staticClass: "badge badge-success" }, [_vm._v("Activo")])
     ])
   }
 ]
@@ -712,17 +895,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/role/ListarRole.vue":
-/*!*********************************************************!*\
-  !*** ./resources/js/components/erp/role/ListarRole.vue ***!
-  \*********************************************************/
+/***/ "./resources/js/components/erp/persona_dni/ListarPersonaDni.vue":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/erp/persona_dni/ListarPersonaDni.vue ***!
+  \**********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ListarRole_vue_vue_type_template_id_fb7a13d2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListarRole.vue?vue&type=template&id=fb7a13d2& */ "./resources/js/components/erp/role/ListarRole.vue?vue&type=template&id=fb7a13d2&");
-/* harmony import */ var _ListarRole_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListarRole.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/role/ListarRole.vue?vue&type=script&lang=js&");
+/* harmony import */ var _ListarPersonaDni_vue_vue_type_template_id_6249533c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListarPersonaDni.vue?vue&type=template&id=6249533c& */ "./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=template&id=6249533c&");
+/* harmony import */ var _ListarPersonaDni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListarPersonaDni.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -732,9 +915,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ListarRole_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ListarRole_vue_vue_type_template_id_fb7a13d2___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ListarRole_vue_vue_type_template_id_fb7a13d2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _ListarPersonaDni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ListarPersonaDni_vue_vue_type_template_id_6249533c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ListarPersonaDni_vue_vue_type_template_id_6249533c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -744,38 +927,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/erp/role/ListarRole.vue"
+component.options.__file = "resources/js/components/erp/persona_dni/ListarPersonaDni.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/role/ListarRole.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************!*\
-  !*** ./resources/js/components/erp/role/ListarRole.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************/
+/***/ "./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarRole_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarRole.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/role/ListarRole.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarRole_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarPersonaDni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarPersonaDni.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarPersonaDni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/role/ListarRole.vue?vue&type=template&id=fb7a13d2&":
-/*!****************************************************************************************!*\
-  !*** ./resources/js/components/erp/role/ListarRole.vue?vue&type=template&id=fb7a13d2& ***!
-  \****************************************************************************************/
+/***/ "./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=template&id=6249533c&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=template&id=6249533c& ***!
+  \*****************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarRole_vue_vue_type_template_id_fb7a13d2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarRole.vue?vue&type=template&id=fb7a13d2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/role/ListarRole.vue?vue&type=template&id=fb7a13d2&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarRole_vue_vue_type_template_id_fb7a13d2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarPersonaDni_vue_vue_type_template_id_6249533c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarPersonaDni.vue?vue&type=template&id=6249533c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=template&id=6249533c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarPersonaDni_vue_vue_type_template_id_6249533c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarRole_vue_vue_type_template_id_fb7a13d2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarPersonaDni_vue_vue_type_template_id_6249533c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

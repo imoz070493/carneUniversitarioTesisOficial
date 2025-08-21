@@ -39,6 +39,7 @@ class InscritoEstudianteController extends Controller
                 'credencial_validado' => "no_validado",
                 'numero_recibo' => $data['numero_recibo'],
                 'usar_foto_anterior' => $data['usar_foto_anterior'],
+                'fecha_inicio_tramite' => $data['fecha_inicio_tramite'],
             ];
 
             if($data['usar_foto_anterior']){

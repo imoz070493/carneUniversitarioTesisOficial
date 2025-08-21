@@ -97,7 +97,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 var TipoDocumentoSelect = function TipoDocumentoSelect() {
-  return __webpack_require__.e(/*! import() */ 75).then(__webpack_require__.bind(null, /*! @/components/referencias/TipoDocumentoSelect */ "./resources/js/components/referencias/TipoDocumentoSelect.vue"));
+  return __webpack_require__.e(/*! import() */ 77).then(__webpack_require__.bind(null, /*! @/components/referencias/TipoDocumentoSelect */ "./resources/js/components/referencias/TipoDocumentoSelect.vue"));
 };
 
 var DocumentoBusqueda = function DocumentoBusqueda() {

@@ -165,7 +165,7 @@ var FormularioDocumentoProcesado = function FormularioDocumentoProcesado() {
 };
 
 var VerDocumentoEnviadoPersonal = function VerDocumentoEnviadoPersonal() {
-  return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! @/components/erp/documento/VerDocumentoEnviadoPersonal */ "./resources/js/components/erp/documento/VerDocumentoEnviadoPersonal.vue"));
+  return __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! @/components/erp/documento/VerDocumentoEnviadoPersonal */ "./resources/js/components/erp/documento/VerDocumentoEnviadoPersonal.vue"));
 };
 
 var FormularioDocumentoEnviarFacultad = function FormularioDocumentoEnviarFacultad() {

@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[73],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/RoleSelect.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/RoleSelect.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -27,36 +27,50 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      array_roles: [],
-      role_id: this.value
+      array_fotos_validadas: [{
+        id: 'todos',
+        nombre: 'Todos'
+      }, {
+        id: 'si',
+        nombre: 'Si'
+      }, {
+        id: 'no',
+        nombre: 'No'
+      }],
+      foto_validada_id: this.value
     };
   },
-  mounted: function mounted() {
-    // if (this.value) {
+  mounted: function mounted() {// if (this.value) {
     //   console.log("buscar");
     //   this.buscar(this.value);
     // }
-    this.buscar();
+    // this.buscar();
   },
   methods: {
     buscar: function buscar() {
-      var me = this;
-      axios.get('/role/select').then(function (response) {
-        me.array_roles = response.data;
+      var me = this,
+          fotos_validadas = [];
+      axios.get('/foto_validada/select').then(function (response) {
+        fotos_validadas = response.data;
+        fotos_validadas.forEach(function (element) {
+          /* console.log(element) */
+          me.array_fotos_validadas.push(element);
+        });
+        me.foto_validada_id = 'todos';
       })["catch"](function (error) {
         console.log(error);
       });
     }
   },
   watch: {
-    role_id: function role_id(newvalue, oldvalue) {
+    foto_validada_id: function foto_validada_id(newvalue, oldvalue) {
       if (newvalue) {
         this.$emit('input', newvalue);
       }
     },
     value: function value(newvalue, oldvalue) {
       if (newvalue) {
-        this.role_id = newvalue;
+        this.foto_validada_id = newvalue;
       }
     }
   }
@@ -64,10 +78,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/RoleSelect.vue?vue&type=template&id=3541b76a&":
-/*!*************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/RoleSelect.vue?vue&type=template&id=3541b76a& ***!
-  \*************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=template&id=3acdf9a9&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=template&id=3acdf9a9& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -86,8 +100,8 @@ var render = function() {
         {
           name: "model",
           rawName: "v-model",
-          value: _vm.role_id,
-          expression: "role_id"
+          value: _vm.foto_validada_id,
+          expression: "foto_validada_id"
         }
       ],
       staticClass: "form-control",
@@ -101,16 +115,19 @@ var render = function() {
               var val = "_value" in o ? o._value : o.value
               return val
             })
-          _vm.role_id = $event.target.multiple
+          _vm.foto_validada_id = $event.target.multiple
             ? $$selectedVal
             : $$selectedVal[0]
         }
       }
     },
-    _vm._l(_vm.array_roles, function(role) {
+    _vm._l(_vm.array_fotos_validadas, function(foto_validada) {
       return _c("option", {
-        key: role.id,
-        domProps: { value: role.id, textContent: _vm._s(role.name) }
+        key: foto_validada.id,
+        domProps: {
+          value: foto_validada.id,
+          textContent: _vm._s(foto_validada.nombre)
+        }
       })
     }),
     0
@@ -123,17 +140,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/referencias/RoleSelect.vue":
-/*!************************************************************!*\
-  !*** ./resources/js/components/referencias/RoleSelect.vue ***!
-  \************************************************************/
+/***/ "./resources/js/components/referencias/FotoValidadoSelect.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/referencias/FotoValidadoSelect.vue ***!
+  \********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _RoleSelect_vue_vue_type_template_id_3541b76a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RoleSelect.vue?vue&type=template&id=3541b76a& */ "./resources/js/components/referencias/RoleSelect.vue?vue&type=template&id=3541b76a&");
-/* harmony import */ var _RoleSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RoleSelect.vue?vue&type=script&lang=js& */ "./resources/js/components/referencias/RoleSelect.vue?vue&type=script&lang=js&");
+/* harmony import */ var _FotoValidadoSelect_vue_vue_type_template_id_3acdf9a9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FotoValidadoSelect.vue?vue&type=template&id=3acdf9a9& */ "./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=template&id=3acdf9a9&");
+/* harmony import */ var _FotoValidadoSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FotoValidadoSelect.vue?vue&type=script&lang=js& */ "./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -143,9 +160,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _RoleSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _RoleSelect_vue_vue_type_template_id_3541b76a___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _RoleSelect_vue_vue_type_template_id_3541b76a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _FotoValidadoSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FotoValidadoSelect_vue_vue_type_template_id_3acdf9a9___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FotoValidadoSelect_vue_vue_type_template_id_3acdf9a9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -155,38 +172,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/referencias/RoleSelect.vue"
+component.options.__file = "resources/js/components/referencias/FotoValidadoSelect.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/referencias/RoleSelect.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/components/referencias/RoleSelect.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************/
+/***/ "./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RoleSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./RoleSelect.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/RoleSelect.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RoleSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FotoValidadoSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./FotoValidadoSelect.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FotoValidadoSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/referencias/RoleSelect.vue?vue&type=template&id=3541b76a&":
-/*!*******************************************************************************************!*\
-  !*** ./resources/js/components/referencias/RoleSelect.vue?vue&type=template&id=3541b76a& ***!
-  \*******************************************************************************************/
+/***/ "./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=template&id=3acdf9a9&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=template&id=3acdf9a9& ***!
+  \***************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RoleSelect_vue_vue_type_template_id_3541b76a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./RoleSelect.vue?vue&type=template&id=3541b76a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/RoleSelect.vue?vue&type=template&id=3541b76a&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RoleSelect_vue_vue_type_template_id_3541b76a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FotoValidadoSelect_vue_vue_type_template_id_3acdf9a9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./FotoValidadoSelect.vue?vue&type=template&id=3acdf9a9& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=template&id=3acdf9a9&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FotoValidadoSelect_vue_vue_type_template_id_3acdf9a9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RoleSelect_vue_vue_type_template_id_3541b76a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FotoValidadoSelect_vue_vue_type_template_id_3acdf9a9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

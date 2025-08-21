@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[53],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -17,6 +17,12 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -195,10 +201,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       errors: {},
       show: {},
       text: {},
-      btn: {
-        registrar: false
-      },
-      showPopup: false
+      btn: {}
     };
   },
   mounted: function mounted() {
@@ -479,9 +482,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee4);
       }))();
-    },
-    togglePopup: function togglePopup() {
-      this.showPopup = !this.showPopup;
     }
   },
   watch: {
@@ -509,10 +509,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=style&index=0&id=252a8a04&scoped=true&lang=css&":
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=style&index=0&id=252a8a04&scoped=true&lang=css& ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=style&index=0&id=3b9c6aa3&scoped=true&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=style&index=0&id=3b9c6aa3&scoped=true&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -521,22 +521,22 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.hide-options[data-v-252a8a04] {\r\n  display: none;\r\n  overflow: hidden;\r\n  transition: max-height 0.2s ease-out;\n}\n.show-options[data-v-252a8a04] {\r\n  display: flex;\r\n  /* padding: 0 18px; */\r\n  background-color: white;\r\n  /* max-height: 0; */\r\n  overflow: hidden;\r\n  margin: -10px 0 0 -10px;\r\n  transition: max-height 0.2s ease-out;\n}\n.text-error[data-v-252a8a04]{\r\n    color: red !important;\r\n    font-weight: bold;\n}\n.cropper-container[data-v-252a8a04] {\r\n  width: 350px;   /* Ajusta el tamaño del contenedor */\r\n  height: 500px;  /* Ajusta la altura del recorte */\r\n  overflow: hidden;\r\n  border: 1px solid #ddd;\n}\n.cropper-image[data-v-252a8a04] {\r\n  max-width: 100%;\r\n  max-height: 100%;\r\n  display: block;\n}\r\n\r\n/* CSS para el popup de la imagen */\n.popup[data-v-252a8a04] {\r\n  position: absolute;\r\n  background-color: white;\r\n  border: 1px solid #ccc;\r\n  padding: 10px;\r\n  z-index: 100;\r\n  width: 300px;\r\n  top: 30px;\r\n  left: 0;\r\n  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\n}\n.close-btn[data-v-252a8a04] {\r\n  float: right;\r\n  background: none;\r\n  border: none;\r\n  font-size: 16px;\r\n  cursor: pointer;\n}\n.info-image[data-v-252a8a04] {\r\n  width: 100%;\r\n  height: auto;\r\n  margin-top: 5px;\n}\n.hide-container[data-v-252a8a04]{\r\n    display: none;\n}\n.show-container[data-v-252a8a04]{\r\n    display: flex;\r\n    width: calc(100% + 10px);\r\n    height: calc(100% - 66px);\r\n    /* border: 1px solid black; */\r\n    position: absolute;\r\n    z-index: 100;\r\n    margin: 66.8px 0 0 -1px;\r\n    background: rgba(162, 153, 153, .5);\n}\n.loader[data-v-252a8a04] {\r\n    border: 10px solid #f3f3f3;\r\n    border-radius: 50%;\r\n    border-top: 10px solid #3498db;\r\n    width: 50px;\r\n    height: 50px;\r\n    -webkit-animation: spin-data-v-252a8a04 2s linear infinite; /* Safari */\r\n    animation: spin-data-v-252a8a04 2s linear infinite;\r\n    top: calc(50%);\r\n    left: 50%;\r\n    position: absolute;\r\n    margin: -25px 0 0 -25px;\r\n    z-index: 100;\n}\r\n\r\n/* Safari */\n@-webkit-keyframes spin-data-v-252a8a04 {\n0% { -webkit-transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg);\n}\n}\n@keyframes spin-data-v-252a8a04 {\n0% { transform: rotate(0deg);\n}\n100% { transform: rotate(360deg);\n}\n}\r\n\r\n/*.cr-boundary::before,\r\n.cr-boundary::after {\r\n    content: \"\";\r\n    position: absolute;\r\n    width: 100%;\r\n    height: 1px;\r\n    background: rgba(255, 255, 255, 0.6);\r\n    border-top: 1px dashed white;\r\n}\r\n\r\n.cr-boundary::before {\r\n    top: 33.33%;\r\n}\r\n\r\n.cr-boundary::after {\r\n    top: 66.66%;\r\n}\r\n\r\n.cr-viewport::before,\r\n.cr-viewport::after {\r\n    content: \"\";\r\n    position: absolute;\r\n    height: 100%;\r\n    width: 1px;\r\n    background: rgba(255, 255, 255, 0.6);\r\n    border-left: 1px dashed white;\r\n}\r\n\r\n.cr-viewport::before {\r\n    left: 33.33%;\r\n}\r\n\r\n.cr-viewport::after {\r\n    left: 66.66%;\r\n}*/\r\n", ""]);
+exports.push([module.i, "\n.hide-options[data-v-3b9c6aa3] {\r\n  display: none;\r\n  overflow: hidden;\r\n  transition: max-height 0.2s ease-out;\n}\n.show-options[data-v-3b9c6aa3] {\r\n  display: flex;\r\n  /* padding: 0 18px; */\r\n  background-color: white;\r\n  /* max-height: 0; */\r\n  overflow: hidden;\r\n  margin: -10px 0 0 -10px;\r\n  transition: max-height 0.2s ease-out;\n}\n.text-error[data-v-3b9c6aa3]{\r\n    color: red !important;\r\n    font-weight: bold;\n}\n.cropper-container[data-v-3b9c6aa3] {\r\n  width: 350px;   /* Ajusta el tamaño del contenedor */\r\n  height: 500px;  /* Ajusta la altura del recorte */\r\n  overflow: hidden;\r\n  border: 1px solid #ddd;\n}\n.cropper-image[data-v-3b9c6aa3] {\r\n  max-width: 100%;\r\n  max-height: 100%;\r\n  display: block;\n}\r\n\r\n\r\n/*.cr-boundary::before,\r\n.cr-boundary::after {\r\n    content: \"\";\r\n    position: absolute;\r\n    width: 100%;\r\n    height: 1px;\r\n    background: rgba(255, 255, 255, 0.6);\r\n    border-top: 1px dashed white;\r\n}\r\n\r\n.cr-boundary::before {\r\n    top: 33.33%;\r\n}\r\n\r\n.cr-boundary::after {\r\n    top: 66.66%;\r\n}\r\n\r\n.cr-viewport::before,\r\n.cr-viewport::after {\r\n    content: \"\";\r\n    position: absolute;\r\n    height: 100%;\r\n    width: 1px;\r\n    background: rgba(255, 255, 255, 0.6);\r\n    border-left: 1px dashed white;\r\n}\r\n\r\n.cr-viewport::before {\r\n    left: 33.33%;\r\n}\r\n\r\n.cr-viewport::after {\r\n    left: 66.66%;\r\n}*/\r\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=style&index=0&id=252a8a04&scoped=true&lang=css&":
-/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=style&index=0&id=252a8a04&scoped=true&lang=css& ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=style&index=0&id=3b9c6aa3&scoped=true&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=style&index=0&id=3b9c6aa3&scoped=true&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--5-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--5-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=style&index=0&id=252a8a04&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=style&index=0&id=252a8a04&scoped=true&lang=css&");
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--5-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--5-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./DashboardEstudianteMatriculadoInscrito.vue?vue&type=style&index=0&id=3b9c6aa3&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=style&index=0&id=3b9c6aa3&scoped=true&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -558,10 +558,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=template&id=252a8a04&scoped=true&":
-/*!*******************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=template&id=252a8a04&scoped=true& ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=template&id=3b9c6aa3&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=template&id=3b9c6aa3&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -575,17 +575,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
     _c(
-      "div",
-      {
-        class: {
-          "show-container": _vm.btn.registrar,
-          "hide-container": !_vm.btn.registrar
-        }
-      },
-      [_c("div", { staticClass: "loader" })]
-    ),
-    _vm._v(" "),
-    _c(
       "form",
       {
         staticClass: "form-horizontal",
@@ -597,62 +586,27 @@ var render = function() {
             _c("div", { staticClass: "form-group" }, [
               _vm._m(0),
               _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c(
-                  "div",
+              _c("input", {
+                directives: [
                   {
-                    staticClass:
-                      "col-lg-12 col-md-12 col-sm-12 col-xs-12 input-group mb-3"
-                  },
-                  [
-                    _c("span", { staticClass: "input-group-append" }, [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-info btn-flat",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              return _vm.togglePopup()
-                            }
-                          }
-                        },
-                        [_c("i", { staticClass: "fa fa-info" })]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.editable.numero_recibo,
-                          expression: "editable.numero_recibo"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Ejm: V001-4154",
-                        disabled: _vm.lock.numero_recibo
-                      },
-                      domProps: { value: _vm.editable.numero_recibo },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.editable,
-                            "numero_recibo",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    })
-                  ]
-                )
-              ]),
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.editable.numero_recibo,
+                    expression: "editable.numero_recibo"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text", placeholder: "V###-####", disabled: "" },
+                domProps: { value: _vm.editable.numero_recibo },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.editable, "numero_recibo", $event.target.value)
+                  }
+                }
+              }),
               _vm._v(" "),
               _vm.errors.numero_recibo
                 ? _c("span", { staticClass: "text-error" }, [
@@ -661,24 +615,6 @@ var render = function() {
                 : _vm._e()
             ])
           ]),
-          _vm._v(" "),
-          _vm.showPopup
-            ? _c("div", { staticClass: "popup" }, [
-                _c(
-                  "button",
-                  { staticClass: "close-btn", on: { click: _vm.togglePopup } },
-                  [_vm._v("✖")]
-                ),
-                _vm._v(" "),
-                _c("img", {
-                  staticClass: "info-image",
-                  attrs: {
-                    src: "/images/ubicacion_numero_recibo.jpg",
-                    alt: "Guía de ubicación"
-                  }
-                })
-              ])
-            : _vm._e(),
           _vm._v(" "),
           _c("div", { staticClass: "col-lg-3 col-md-3 col-sm-3 col-xs-12" }, [
             _c("div", { staticClass: "form-group" }, [
@@ -697,7 +633,7 @@ var render = function() {
                 attrs: {
                   type: "text",
                   placeholder: "correo@gmail.com...",
-                  disabled: _vm.lock.correo_personal
+                  disabled: ""
                 },
                 domProps: { value: _vm.editable.correo_personal },
                 on: {
@@ -739,7 +675,7 @@ var render = function() {
                 attrs: {
                   type: "text",
                   placeholder: "Telefono...",
-                  disabled: _vm.lock.telefono1
+                  disabled: ""
                 },
                 domProps: { value: _vm.editable.telefono1 },
                 on: {
@@ -777,7 +713,7 @@ var render = function() {
                 attrs: {
                   type: "text",
                   placeholder: "Telefono...",
-                  disabled: _vm.lock.telefono2
+                  disabled: ""
                 },
                 domProps: { value: _vm.editable.telefono2 },
                 on: {
@@ -804,10 +740,10 @@ var render = function() {
             _c("div", { staticClass: "form-group" }, [
               _vm._m(4),
               _vm._v(" "),
-              _vm.editable.estado_tramite == "no_inscrito"
+              _vm.editable.estado_tramite == "inscrito"
                 ? _c("label", { staticClass: "col-form-label" }, [
-                    _c("span", { staticClass: "badge badge-secondary" }, [
-                      _vm._v("Pendiente")
+                    _c("span", { staticClass: "badge badge-success" }, [
+                      _vm._v("Inscrito")
                     ])
                   ])
                 : _vm._e()
@@ -818,7 +754,7 @@ var render = function() {
             _c("div", { staticClass: "form-group" }, [
               _vm._m(5),
               _vm._v(" "),
-              _vm.editable.tipo_tramite == "nuevo"
+              _vm.editable.tipo_tramite == "Nuevo"
                 ? _c("label", { staticClass: "col-form-label" }, [
                     _c("span", { staticClass: "badge badge-secondary" }, [
                       _vm._v("Nuevo")
@@ -826,7 +762,7 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _vm.editable.tipo_tramite == "duplicado"
+              _vm.editable.tipo_tramite == "Duplicado"
                 ? _c("label", { staticClass: "col-form-label" }, [
                     _c("span", { staticClass: "badge badge-success" }, [
                       _vm._v("Duplicado")
@@ -943,16 +879,20 @@ var render = function() {
                   _c("div", { staticClass: "form-group" }, [
                     _vm._m(7),
                     _vm._v(" "),
-                    _vm.show._new_document
-                      ? _c("input", {
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "file",
-                            accept: ".jpeg, .jpg, .png",
-                            disabled: _vm.lock._new_document
-                          },
-                          on: { change: _vm.imageStudentChanged }
-                        })
+                    _vm.editable.foto_validado == "1"
+                      ? _c("label", { staticClass: "col-form-label" }, [
+                          _c("span", { staticClass: "badge badge-success" }, [
+                            _vm._v("Validado")
+                          ])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.editable.foto_validado == "0"
+                      ? _c("label", { staticClass: "col-form-label" }, [
+                          _c("span", { staticClass: "badge badge-secondary" }, [
+                            _vm._v("Por Validar")
+                          ])
+                        ])
                       : _vm._e(),
                     _vm._v(" "),
                     _vm.errors.new_document
@@ -969,26 +909,31 @@ var render = function() {
                 { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
                 [
                   _c("div", { staticClass: "form-group" }, [
-                    _vm.text._usar_foto_anterior == "NO"
-                      ? _c("img", {
-                          attrs: {
-                            id: "student_image",
-                            width: "240",
-                            height: "288"
-                          }
-                        })
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.text._usar_foto_anterior == "SI"
+                    _vm.editable.foto_validado
                       ? _c("img", {
                           attrs: {
                             id: "image",
                             width: "240",
                             height: "288",
-                            src: "/storage/" + _vm.editable.foto_anterior
+                            src:
+                              "/storage/" +
+                              _vm.editable.folder +
+                              "/1_validado/" +
+                              _vm.editable.foto
                           }
                         })
-                      : _vm._e()
+                      : _c("img", {
+                          attrs: {
+                            id: "image",
+                            width: "240",
+                            height: "288",
+                            src:
+                              "/storage/" +
+                              _vm.editable.folder +
+                              "/2_sin_validar/" +
+                              _vm.editable.foto
+                          }
+                        })
                   ])
                 ]
               )
@@ -1004,12 +949,20 @@ var render = function() {
                   _c("div", { staticClass: "form-group" }, [
                     _vm._m(8),
                     _vm._v(" "),
-                    _vm.show._new_document_voucher
-                      ? _c("input", {
-                          staticClass: "form-control",
-                          attrs: { type: "file", accept: ".jpeg, .jpg, .png" },
-                          on: { change: _vm.imageVoucherChanged }
-                        })
+                    _vm.editable.voucher_validado == "1"
+                      ? _c("label", { staticClass: "col-form-label" }, [
+                          _c("span", { staticClass: "badge badge-success" }, [
+                            _vm._v("Validado")
+                          ])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.editable.voucher_validado == "0"
+                      ? _c("label", { staticClass: "col-form-label" }, [
+                          _c("span", { staticClass: "badge badge-secondary" }, [
+                            _vm._v("Por Validar")
+                          ])
+                        ])
                       : _vm._e(),
                     _vm._v(" "),
                     _vm.errors.new_document_voucher
@@ -1021,32 +974,31 @@ var render = function() {
                 ]
               ),
               _vm._v(" "),
-              _vm._m(9)
+              _c(
+                "div",
+                { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("img", {
+                      attrs: {
+                        id: "image",
+                        width: "240",
+                        height: "288",
+                        src:
+                          "/storage/" +
+                          _vm.editable.folder +
+                          "/4_vouchers/" +
+                          _vm.editable.foto
+                      }
+                    })
+                  ])
+                ]
+              )
             ])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" }, [
-            _c("div", { staticClass: "form-group pull-right" }, [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-primary",
-                  attrs: { type: "button", disabled: _vm.btn.registrar },
-                  on: {
-                    click: function($event) {
-                      return _vm.registrarSolicitud()
-                    }
-                  }
-                },
-                [_vm._v("Guardar")]
-              )
-            ])
-          ])
-        ])
+        _vm._m(9)
       ]
     )
   ])
@@ -1114,17 +1066,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
-      [
-        _c("div", { staticClass: "form-group" }, [
-          _c("img", {
-            attrs: { id: "voucher_image", width: "240", height: "288" }
-          })
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" }, [
+        _c("div", { staticClass: "form-group pull-right" })
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -1133,18 +1081,18 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue":
-/*!******************************************************************************************!*\
-  !*** ./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue ***!
-  \******************************************************************************************/
+/***/ "./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue ***!
+  \****************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _DashboardEstudianteMatriculadoNoInscrito_vue_vue_type_template_id_252a8a04_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=template&id=252a8a04&scoped=true& */ "./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=template&id=252a8a04&scoped=true&");
-/* harmony import */ var _DashboardEstudianteMatriculadoNoInscrito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=script&lang=js& */ "./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _DashboardEstudianteMatriculadoNoInscrito_vue_vue_type_style_index_0_id_252a8a04_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=style&index=0&id=252a8a04&scoped=true&lang=css& */ "./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=style&index=0&id=252a8a04&scoped=true&lang=css&");
+/* harmony import */ var _DashboardEstudianteMatriculadoInscrito_vue_vue_type_template_id_3b9c6aa3_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DashboardEstudianteMatriculadoInscrito.vue?vue&type=template&id=3b9c6aa3&scoped=true& */ "./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=template&id=3b9c6aa3&scoped=true&");
+/* harmony import */ var _DashboardEstudianteMatriculadoInscrito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DashboardEstudianteMatriculadoInscrito.vue?vue&type=script&lang=js& */ "./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _DashboardEstudianteMatriculadoInscrito_vue_vue_type_style_index_0_id_3b9c6aa3_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DashboardEstudianteMatriculadoInscrito.vue?vue&type=style&index=0&id=3b9c6aa3&scoped=true&lang=css& */ "./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=style&index=0&id=3b9c6aa3&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -1155,66 +1103,66 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _DashboardEstudianteMatriculadoNoInscrito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _DashboardEstudianteMatriculadoNoInscrito_vue_vue_type_template_id_252a8a04_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _DashboardEstudianteMatriculadoNoInscrito_vue_vue_type_template_id_252a8a04_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _DashboardEstudianteMatriculadoInscrito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DashboardEstudianteMatriculadoInscrito_vue_vue_type_template_id_3b9c6aa3_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DashboardEstudianteMatriculadoInscrito_vue_vue_type_template_id_3b9c6aa3_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "252a8a04",
+  "3b9c6aa3",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue"
+component.options.__file = "resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************!*\
-  !*** ./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************/
+/***/ "./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************!*\
+  !*** ./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteMatriculadoNoInscrito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteMatriculadoNoInscrito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteMatriculadoInscrito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./DashboardEstudianteMatriculadoInscrito.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteMatriculadoInscrito_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=style&index=0&id=252a8a04&scoped=true&lang=css&":
-/*!***************************************************************************************************************************************************!*\
-  !*** ./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=style&index=0&id=252a8a04&scoped=true&lang=css& ***!
-  \***************************************************************************************************************************************************/
+/***/ "./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=style&index=0&id=3b9c6aa3&scoped=true&lang=css&":
+/*!*************************************************************************************************************************************************!*\
+  !*** ./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=style&index=0&id=3b9c6aa3&scoped=true&lang=css& ***!
+  \*************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteMatriculadoNoInscrito_vue_vue_type_style_index_0_id_252a8a04_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--5-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--5-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=style&index=0&id=252a8a04&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=style&index=0&id=252a8a04&scoped=true&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteMatriculadoNoInscrito_vue_vue_type_style_index_0_id_252a8a04_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteMatriculadoNoInscrito_vue_vue_type_style_index_0_id_252a8a04_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteMatriculadoNoInscrito_vue_vue_type_style_index_0_id_252a8a04_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteMatriculadoNoInscrito_vue_vue_type_style_index_0_id_252a8a04_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteMatriculadoInscrito_vue_vue_type_style_index_0_id_3b9c6aa3_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--5-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--5-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./DashboardEstudianteMatriculadoInscrito.vue?vue&type=style&index=0&id=3b9c6aa3&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=style&index=0&id=3b9c6aa3&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteMatriculadoInscrito_vue_vue_type_style_index_0_id_3b9c6aa3_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteMatriculadoInscrito_vue_vue_type_style_index_0_id_3b9c6aa3_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteMatriculadoInscrito_vue_vue_type_style_index_0_id_3b9c6aa3_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteMatriculadoInscrito_vue_vue_type_style_index_0_id_3b9c6aa3_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ }),
 
-/***/ "./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=template&id=252a8a04&scoped=true&":
-/*!*************************************************************************************************************************************!*\
-  !*** ./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=template&id=252a8a04&scoped=true& ***!
-  \*************************************************************************************************************************************/
+/***/ "./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=template&id=3b9c6aa3&scoped=true&":
+/*!***********************************************************************************************************************************!*\
+  !*** ./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=template&id=3b9c6aa3&scoped=true& ***!
+  \***********************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteMatriculadoNoInscrito_vue_vue_type_template_id_252a8a04_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=template&id=252a8a04&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue?vue&type=template&id=252a8a04&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteMatriculadoNoInscrito_vue_vue_type_template_id_252a8a04_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteMatriculadoInscrito_vue_vue_type_template_id_3b9c6aa3_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./DashboardEstudianteMatriculadoInscrito.vue?vue&type=template&id=3b9c6aa3&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue?vue&type=template&id=3b9c6aa3&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteMatriculadoInscrito_vue_vue_type_template_id_3b9c6aa3_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteMatriculadoNoInscrito_vue_vue_type_template_id_252a8a04_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteMatriculadoInscrito_vue_vue_type_template_id_3b9c6aa3_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

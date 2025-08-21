@@ -197,6 +197,7 @@ export default {
     me.show['_new_document_voucher'] = true;
 
     me.text._usar_foto_anterior = "NO";
+    me.editable.fecha_inicio_tramite = now();
 
     me.$forceUpdate();
   },

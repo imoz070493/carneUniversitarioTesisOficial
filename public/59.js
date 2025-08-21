@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[59],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/consulta_documento/ListarConsultaDocumento.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/consulta_documento/ListarConsultaDocumento.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/consulta_cpe/ListarConsultaCpe.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/consulta_cpe/ListarConsultaCpe.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -145,18 +145,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-var FormularioConsultaDocumento = function FormularioConsultaDocumento() {
-  return __webpack_require__.e(/*! import() */ 24).then(__webpack_require__.bind(null, /*! @/components/erp/consulta_documento/FormularioConsultaDocumento */ "./resources/js/components/erp/consulta_documento/FormularioConsultaDocumento.vue"));
+//
+//
+//
+//
+//
+//
+//
+//
+var FormularioConsultaCpe = function FormularioConsultaCpe() {
+  return __webpack_require__.e(/*! import() */ 22).then(__webpack_require__.bind(null, /*! @/components/erp/consulta_cpe/FormularioConsultaCpe */ "./resources/js/components/erp/consulta_cpe/FormularioConsultaCpe.vue"));
 };
 
-var VerConsultaDocumento = function VerConsultaDocumento() {
-  return __webpack_require__.e(/*! import() */ 25).then(__webpack_require__.bind(null, /*! @/components/erp/consulta_documento/VerConsultaDocumento */ "./resources/js/components/erp/consulta_documento/VerConsultaDocumento.vue"));
+var VerConsultaCpe = function VerConsultaCpe() {
+  return __webpack_require__.e(/*! import() */ 23).then(__webpack_require__.bind(null, /*! @/components/erp/consulta_cpe/VerConsultaCpe */ "./resources/js/components/erp/consulta_cpe/VerConsultaCpe.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    "v-formulario-persona-dni": FormularioConsultaDocumento,
-    "v-ver-persona-dni": VerConsultaDocumento
+    "v-formulario-persona-dni": FormularioConsultaCpe,
+    "v-ver-persona-dni": VerConsultaCpe
   },
   data: function data() {
     return {
@@ -166,7 +174,7 @@ var VerConsultaDocumento = function VerConsultaDocumento() {
       editable_anulacion: {},
       show: {},
       var_config: {},
-      arrayConsultaDocumento: [],
+      arrayConsultaCpe: [],
       pagination: {
         'total': 0,
         'current_page': 0,
@@ -216,13 +224,13 @@ var VerConsultaDocumento = function VerConsultaDocumento() {
   },
   mounted: function mounted() {
     console.log('Component mounted.');
-    this.listarConsultaDocumento(1, this.buscar, this.criterio);
+    this.listarConsultaCpe(1, this.buscar, this.criterio);
   },
   methods: {
-    listarConsultaDocumento: function listarConsultaDocumento(page, buscar, criterio) {
-      var me = this; // var url = '/consulta_documento?page='+page+'&buscar='+buscar+'&criterio='+criterio+'&per_page='+this.per_page+'&fecha_inicio='+this.fecha_inicio+'&fecha_fin='+this.fecha_fin;
+    listarConsultaCpe: function listarConsultaCpe(page, buscar, criterio) {
+      var me = this; // var url = '/consulta_cpe?page='+page+'&buscar='+buscar+'&criterio='+criterio+'&per_page='+this.per_page+'&fecha_inicio='+this.fecha_inicio+'&fecha_fin='+this.fecha_fin;
 
-      axios.post('consulta_documento', {
+      axios.post('consulta_cpe', {
         'page': page,
         'buscar': buscar,
         'criterio': criterio,
@@ -231,9 +239,9 @@ var VerConsultaDocumento = function VerConsultaDocumento() {
         'fecha_fin': this.fecha_fin
       }).then(function (response) {
         var respuesta = response.data;
-        me.arrayConsultaDocumento = respuesta.consultas_documentos.data;
+        me.arrayConsultaCpe = respuesta.consultas_cpes.data;
         me.pagination = respuesta.pagination;
-        if (me.arrayConsultaDocumento.length == 0) me.show['arrayConsultaDocumento'] = true;else me.show['arrayConsultaDocumento'] = false;
+        if (me.arrayConsultaCpe.length == 0) me.show['arrayConsultaCpe'] = true;else me.show['arrayConsultaCpe'] = false;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -243,9 +251,9 @@ var VerConsultaDocumento = function VerConsultaDocumento() {
 
       me.pagination.current_page = page; // Envia la peticion para visualizar la data de esta pagina
 
-      me.listarConsultaDocumento(page, buscar, criterio);
+      me.listarConsultaCpe(page, buscar, criterio);
     },
-    desactivarConsultaDocumento: function desactivarConsultaDocumento(id) {
+    desactivarConsultaCpe: function desactivarConsultaCpe(id) {
       var _this = this;
 
       swal({
@@ -263,10 +271,10 @@ var VerConsultaDocumento = function VerConsultaDocumento() {
       }).then(function (result) {
         if (result.value) {
           var me = _this;
-          axios.put('/consulta_documento/desactivar', {
+          axios.put('/consulta_cpe/desactivar', {
             id: id
           }).then(function (response) {
-            me.listarConsultaDocumento(1, '', 'nombre');
+            me.listarConsultaCpe(1, '', 'nombre');
             swal('Desactivado', 'El registro ha sido desactivado con exito', 'success');
           })["catch"](function (error) {
             console.log(error);
@@ -276,7 +284,7 @@ var VerConsultaDocumento = function VerConsultaDocumento() {
         result.dismiss === swal.DismissReason.cancel) {}
       });
     },
-    activarConsultaDocumento: function activarConsultaDocumento(id) {
+    activarConsultaCpe: function activarConsultaCpe(id) {
       var _this2 = this;
 
       swal({
@@ -294,10 +302,10 @@ var VerConsultaDocumento = function VerConsultaDocumento() {
       }).then(function (result) {
         if (result.value) {
           var me = _this2;
-          axios.put('/consulta_documento/activar', {
+          axios.put('/consulta_cpe/activar', {
             id: id
           }).then(function (response) {
-            me.listarConsultaDocumento(1, '', 'nombre');
+            me.listarConsultaCpe(1, '', 'nombre');
             swal('Activado', 'El registro ha sido activado con exito', 'success');
           })["catch"](function (error) {
             console.log(error);
@@ -312,7 +320,7 @@ var VerConsultaDocumento = function VerConsultaDocumento() {
         _estado: 'creando'
       };
       this.var_config = {
-        title: 'Registrar Consulta Documento',
+        title: 'Registrar Consulta Cpe',
         tipo_accion: 'registrar'
       };
     },
@@ -326,7 +334,7 @@ var VerConsultaDocumento = function VerConsultaDocumento() {
         _estado: 'editando'
       }, vehiculo);
       this.var_config = {
-        title: 'Actualizar Consulta Documento',
+        title: 'Actualizar Consulta Cpe',
         tipo_accion: 'actualizar'
       };
     },
@@ -335,18 +343,61 @@ var VerConsultaDocumento = function VerConsultaDocumento() {
         _estado: 'viendo'
       }, vehiculo);
       this.var_config = {
-        title: 'Ver Consulta Documento'
+        title: 'Ver Consulta Cpe'
       };
+    },
+    getNombreTipoComprobante: function getNombreTipoComprobante(code) {
+      var nombre = '';
+
+      switch (code) {
+        case '01':
+          nombre = 'FACTURA';
+          break;
+
+        case '03':
+          nombre = 'BOLETA DE VENTA';
+          break;
+
+        case '04':
+          nombre = 'LIQUIDACION DE COMPRA';
+          break;
+
+        case '07':
+          nombre = 'NOTA DE CREDITO';
+          break;
+
+        case '08':
+          nombre = 'NOTA DE DEBITO';
+          break;
+
+        case 'R1':
+          nombre = 'RECIBO POR HONORARIOS';
+          break;
+
+        case 'R7':
+          nombre = 'NOTA DE CREDITO DE RECIBOS';
+          break;
+
+        default:
+          break;
+      }
+
+      return nombre;
+    },
+    getValueEstadoCp: function getValueEstadoCp(e) {
+      console.log('estadoCP', e);
+      if (e) return JSON.parse(e).estadoCp;
+      return;
     }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/consulta_documento/ListarConsultaDocumento.vue?vue&type=template&id=692a1fbc&":
-/*!*************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/consulta_documento/ListarConsultaDocumento.vue?vue&type=template&id=692a1fbc& ***!
-  \*************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/consulta_cpe/ListarConsultaCpe.vue?vue&type=template&id=939ab5ac&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/consulta_cpe/ListarConsultaCpe.vue?vue&type=template&id=939ab5ac& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -472,7 +523,7 @@ var render = function() {
                             ) {
                               return null
                             }
-                            return _vm.listarConsultaDocumento(
+                            return _vm.listarConsultaCpe(
                               1,
                               _vm.buscar,
                               _vm.criterio
@@ -494,7 +545,7 @@ var render = function() {
                           attrs: { type: "submit" },
                           on: {
                             click: function($event) {
-                              return _vm.listarConsultaDocumento(
+                              return _vm.listarConsultaCpe(
                                 1,
                                 _vm.buscar,
                                 _vm.criterio
@@ -525,7 +576,7 @@ var render = function() {
                   _c(
                     "tbody",
                     [
-                      _vm.show.arrayConsultaDocumento
+                      _vm.show.arrayConsultaCpe
                         ? _c("tr", [
                             _c("th", {
                               staticClass: "text-center text-dark",
@@ -535,10 +586,8 @@ var render = function() {
                           ])
                         : _vm._e(),
                       _vm._v(" "),
-                      _vm._l(_vm.arrayConsultaDocumento, function(
-                        consulta_documento
-                      ) {
-                        return _c("tr", { key: consulta_documento.id }, [
+                      _vm._l(_vm.arrayConsultaCpe, function(consulta_cpe) {
+                        return _c("tr", { key: consulta_cpe.id }, [
                           _c("td", [
                             _c(
                               "a",
@@ -546,7 +595,7 @@ var render = function() {
                                 attrs: { href: "#", title: "Ver" },
                                 on: {
                                   click: function($event) {
-                                    return _vm.ver(consulta_documento)
+                                    return _vm.ver(consulta_cpe)
                                   }
                                 }
                               },
@@ -559,58 +608,98 @@ var render = function() {
                             )
                           ]),
                           _vm._v(" "),
-                          consulta_documento.type == "1"
+                          consulta_cpe.numRuc
                             ? _c("td", {
-                                domProps: { textContent: _vm._s("DNI") }
-                              })
-                            : consulta_documento.type == "3"
-                            ? _c("td", {
-                                domProps: { textContent: _vm._s("RUC") }
+                                domProps: {
+                                  textContent: _vm._s(consulta_cpe.numRuc)
+                                }
                               })
                             : _vm._e(),
                           _vm._v(" "),
-                          _c("td", {
-                            domProps: {
-                              textContent: _vm._s(
-                                consulta_documento.num_document
-                              )
-                            }
-                          }),
+                          consulta_cpe.codComp
+                            ? _c("td", {
+                                domProps: {
+                                  textContent: _vm._s(
+                                    _vm.getNombreTipoComprobante(
+                                      consulta_cpe.codComp
+                                    )
+                                  )
+                                }
+                              })
+                            : _vm._e(),
                           _vm._v(" "),
-                          _c("td", {
-                            domProps: {
-                              textContent: _vm._s(consulta_documento.origen)
-                            }
-                          }),
+                          consulta_cpe.numeroSerie
+                            ? _c("td", {
+                                domProps: {
+                                  textContent: _vm._s(consulta_cpe.numeroSerie)
+                                }
+                              })
+                            : _vm._e(),
                           _vm._v(" "),
-                          _c("td", {
-                            domProps: {
-                              textContent: _vm._s(
-                                consulta_documento.created_at
-                                  .substr(0, 10)
-                                  .split("-")
-                                  .reverse()
-                                  .join("-") +
-                                  " " +
-                                  consulta_documento.created_at.substr(11, 8)
-                              )
-                            }
-                          }),
+                          consulta_cpe.numero
+                            ? _c("td", {
+                                domProps: {
+                                  textContent: _vm._s(consulta_cpe.numero)
+                                }
+                              })
+                            : _vm._e(),
+                          _vm._v(" "),
+                          consulta_cpe.fechaEmision
+                            ? _c("td", {
+                                domProps: {
+                                  textContent: _vm._s(consulta_cpe.fechaEmision)
+                                }
+                              })
+                            : _vm._e(),
+                          _vm._v(" "),
+                          consulta_cpe.monto
+                            ? _c("td", {
+                                domProps: {
+                                  textContent: _vm._s(
+                                    parseFloat(consulta_cpe.monto).toFixed(2)
+                                  )
+                                }
+                              })
+                            : _vm._e(),
+                          _vm._v(" "),
+                          consulta_cpe.origen
+                            ? _c("td", {
+                                domProps: {
+                                  textContent: _vm._s(consulta_cpe.origen)
+                                }
+                              })
+                            : _vm._e(),
+                          _vm._v(" "),
+                          consulta_cpe.created_at
+                            ? _c("td", {
+                                domProps: {
+                                  textContent: _vm._s(consulta_cpe.created_at)
+                                }
+                              })
+                            : _vm._e(),
                           _vm._v(" "),
                           _c("td", [
-                            consulta_documento.estado == "exito"
+                            _vm.getValueEstadoCp(consulta_cpe.data) == "1"
                               ? _c(
                                   "span",
                                   { staticClass: "badge badge-success" },
-                                  [_vm._v("Exitoso")]
+                                  [_vm._v("ACEPTADO")]
                                 )
                               : _vm._e(),
                             _vm._v(" "),
-                            consulta_documento.estado == "fallido"
+                            _vm.getValueEstadoCp(consulta_cpe.data) == "0"
                               ? _c(
                                   "span",
                                   { staticClass: "badge badge-danger" },
-                                  [_vm._v("Fallido")]
+                                  [_vm._v("NO EXISTE")]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.getValueEstadoCp(consulta_cpe.data) == "2"
+                              ? _c(
+                                  "span",
+                                  { staticClass: "badge badge-success" },
+                                  [_vm._v("ANULADO")]
                                 )
                               : _vm._e()
                           ])
@@ -711,11 +800,11 @@ var render = function() {
       _vm._v(" "),
       _vm.nuevo._estado == "creando"
         ? _c("v-formulario-persona-dni", {
-            ref: "cmp_crear_consulta_documento",
+            ref: "cmp_crear_consulta_cpe",
             attrs: { var_config: _vm.var_config },
             on: {
               guardado: function($event) {
-                return _vm.listarConsultaDocumento(1, "", "nombre")
+                return _vm.listarConsultaCpe(1, "", "nombre")
               }
             },
             model: {
@@ -730,11 +819,11 @@ var render = function() {
       _vm._v(" "),
       _vm.editable._estado == "editando"
         ? _c("v-formulario-persona-dni", {
-            ref: "cmp_crear_consulta_documento",
+            ref: "cmp_crear_consulta_cpe",
             attrs: { var_config: _vm.var_config },
             on: {
               guardado: function($event) {
-                return _vm.listarConsultaDocumento(1, "", "nombre")
+                return _vm.listarConsultaCpe(1, "", "nombre")
               }
             },
             model: {
@@ -749,7 +838,7 @@ var render = function() {
       _vm._v(" "),
       _vm.ver_editable._estado == "viendo"
         ? _c("v-ver-persona-dni", {
-            ref: "cmp_ver_consulta_documento",
+            ref: "cmp_ver_consulta_cpe",
             attrs: { var_config: _vm.var_config },
             model: {
               value: _vm.ver_editable,
@@ -810,9 +899,17 @@ var staticRenderFns = [
       _c("tr", [
         _c("th"),
         _vm._v(" "),
-        _c("th", [_vm._v("Tipo")]),
+        _c("th", [_vm._v("Emisor")]),
         _vm._v(" "),
-        _c("th", [_vm._v("N° Documento")]),
+        _c("th", [_vm._v("Tipo Comprobante")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Serie")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("N° Correlativo")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Fecha Emision")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Monto")]),
         _vm._v(" "),
         _c("th", [_vm._v("Origen")]),
         _vm._v(" "),
@@ -829,17 +926,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/consulta_documento/ListarConsultaDocumento.vue":
-/*!************************************************************************************!*\
-  !*** ./resources/js/components/erp/consulta_documento/ListarConsultaDocumento.vue ***!
-  \************************************************************************************/
+/***/ "./resources/js/components/erp/consulta_cpe/ListarConsultaCpe.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/erp/consulta_cpe/ListarConsultaCpe.vue ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ListarConsultaDocumento_vue_vue_type_template_id_692a1fbc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListarConsultaDocumento.vue?vue&type=template&id=692a1fbc& */ "./resources/js/components/erp/consulta_documento/ListarConsultaDocumento.vue?vue&type=template&id=692a1fbc&");
-/* harmony import */ var _ListarConsultaDocumento_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListarConsultaDocumento.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/consulta_documento/ListarConsultaDocumento.vue?vue&type=script&lang=js&");
+/* harmony import */ var _ListarConsultaCpe_vue_vue_type_template_id_939ab5ac___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListarConsultaCpe.vue?vue&type=template&id=939ab5ac& */ "./resources/js/components/erp/consulta_cpe/ListarConsultaCpe.vue?vue&type=template&id=939ab5ac&");
+/* harmony import */ var _ListarConsultaCpe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListarConsultaCpe.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/consulta_cpe/ListarConsultaCpe.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -849,9 +946,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ListarConsultaDocumento_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ListarConsultaDocumento_vue_vue_type_template_id_692a1fbc___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ListarConsultaDocumento_vue_vue_type_template_id_692a1fbc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _ListarConsultaCpe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ListarConsultaCpe_vue_vue_type_template_id_939ab5ac___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ListarConsultaCpe_vue_vue_type_template_id_939ab5ac___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -861,38 +958,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/erp/consulta_documento/ListarConsultaDocumento.vue"
+component.options.__file = "resources/js/components/erp/consulta_cpe/ListarConsultaCpe.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/consulta_documento/ListarConsultaDocumento.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************************!*\
-  !*** ./resources/js/components/erp/consulta_documento/ListarConsultaDocumento.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************************/
+/***/ "./resources/js/components/erp/consulta_cpe/ListarConsultaCpe.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/erp/consulta_cpe/ListarConsultaCpe.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarConsultaDocumento_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarConsultaDocumento.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/consulta_documento/ListarConsultaDocumento.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarConsultaDocumento_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarConsultaCpe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarConsultaCpe.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/consulta_cpe/ListarConsultaCpe.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarConsultaCpe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/consulta_documento/ListarConsultaDocumento.vue?vue&type=template&id=692a1fbc&":
-/*!*******************************************************************************************************************!*\
-  !*** ./resources/js/components/erp/consulta_documento/ListarConsultaDocumento.vue?vue&type=template&id=692a1fbc& ***!
-  \*******************************************************************************************************************/
+/***/ "./resources/js/components/erp/consulta_cpe/ListarConsultaCpe.vue?vue&type=template&id=939ab5ac&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/erp/consulta_cpe/ListarConsultaCpe.vue?vue&type=template&id=939ab5ac& ***!
+  \*******************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarConsultaDocumento_vue_vue_type_template_id_692a1fbc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarConsultaDocumento.vue?vue&type=template&id=692a1fbc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/consulta_documento/ListarConsultaDocumento.vue?vue&type=template&id=692a1fbc&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarConsultaDocumento_vue_vue_type_template_id_692a1fbc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarConsultaCpe_vue_vue_type_template_id_939ab5ac___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarConsultaCpe.vue?vue&type=template&id=939ab5ac& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/consulta_cpe/ListarConsultaCpe.vue?vue&type=template&id=939ab5ac&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarConsultaCpe_vue_vue_type_template_id_939ab5ac___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarConsultaDocumento_vue_vue_type_template_id_692a1fbc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarConsultaCpe_vue_vue_type_template_id_939ab5ac___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

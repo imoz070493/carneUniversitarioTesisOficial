@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[39],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -109,373 +109,124 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var FormularioMatricula = function FormularioMatricula() {
-  return __webpack_require__.e(/*! import() */ 38).then(__webpack_require__.bind(null, /*! @/components/erp/matricula/FormularioMatricula */ "./resources/js/components/erp/matricula/FormularioMatricula.vue"));
+var CategoriaSelect = function CategoriaSelect() {
+  return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! @/components/referencias/CategoriaSelect */ "./resources/js/components/referencias/CategoriaSelect.vue"));
 };
 
-var FormularioImportarMatricula = function FormularioImportarMatricula() {
-  return __webpack_require__.e(/*! import() */ 37).then(__webpack_require__.bind(null, /*! @/components/erp/matricula/FormularioImportarMatricula */ "./resources/js/components/erp/matricula/FormularioImportarMatricula.vue"));
+var MarcaSelect = function MarcaSelect() {
+  return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! @/components/referencias/MarcaSelect */ "./resources/js/components/referencias/MarcaSelect.vue"));
 };
 
-var PeriodoAcademicoSelect = function PeriodoAcademicoSelect() {
-  return __webpack_require__.e(/*! import() */ 17).then(__webpack_require__.bind(null, /*! @/components/referencias/PeriodoAcademicoGeneralSelect */ "./resources/js/components/referencias/PeriodoAcademicoGeneralSelect.vue"));
+var UnidadMedidaSelect = function UnidadMedidaSelect() {
+  return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! @/components/referencias/UnidadMedidaSelect */ "./resources/js/components/referencias/UnidadMedidaSelect.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    "v-formulario-matricula": FormularioMatricula,
-    "v-formulario-importar-matricula": FormularioImportarMatricula,
-    "periodo-academico-select": PeriodoAcademicoSelect
+    "categoria-select": CategoriaSelect,
+    "marca-select": MarcaSelect,
+    "unidad-medida-select": UnidadMedidaSelect
+  },
+  props: {
+    value: {
+      type: Object,
+      "default": {}
+    },
+    var_config: {
+      type: Object,
+      "default": {}
+    }
   },
   data: function data() {
     return {
-      nuevo: {},
-      editable: {},
-      importar_editable: {},
-      precio_editable: {},
-      show: {},
-      var_config: {},
-      arrayMatricula: [],
-      pagination: {
-        'total': 0,
-        'current_page': 0,
-        'per_page': 0,
-        'last_page': 0,
-        'from': 0,
-        'to': 0
-      },
-      offset: 3,
-      criterio: 'matriculas.nombre',
-      buscar: '',
-      per_page: 10,
-      order_by: 'id',
-      mode_order: 'desc'
+      editable: Object.assign({
+        categoria_id: ''
+      }, this.value),
+      errors: [],
+      btn: {
+        registrar: false,
+        actualizar: false
+      }
     };
   },
-  computed: {
-    isActived: function isActived() {
-      return this.pagination.current_page;
-    },
-    pagesNumber: function pagesNumber() {
-      if (!this.pagination.to) {
-        return [];
-      }
-
-      var from = this.pagination.current_page - this.offset;
-
-      if (from < 1) {
-        from = 1;
-      }
-
-      var to = from + this.offset * 2;
-
-      if (to >= this.pagination.last_page) {
-        to = this.pagination.last_page;
-      }
-
-      var pagesArray = [];
-
-      while (from <= to) {
-        pagesArray.push(from);
-        from++;
-      }
-
-      return pagesArray;
-    }
-  },
   mounted: function mounted() {
-    console.log('Component mounted.');
-    this.listarMatricula(1, this.buscar, this.criterio);
+    var me = this;
+
+    if (!this.editable.id) {
+      //Nuevo
+      this.editable.estado = 'activo';
+      this.editable.unidad_medida_id = 19;
+      this.editable.marca_id = 1;
+      this.editable.stock = 0;
+    } else {//Editar
+    }
+
+    me.$forceUpdate();
   },
   methods: {
-    listarMatricula: function listarMatricula(page, buscar, criterio) {
-      var me = this; // var url = '/matricula?page='+page+'&buscar='+buscar+'&criterio='+criterio+'&per_page='+this.per_page;
-
-      axios.post('/matricula', {
-        page: page,
-        buscar: buscar,
-        criterio: criterio,
-        per_page: this.per_page,
-        order_by: this.order_by,
-        mode_order: this.mode_order,
-        periodo_academico_id: this.editable.periodo_academico_id
-      }).then(function (response) {
-        var respuesta = response.data;
-        me.arrayMatricula = respuesta.matriculas.data;
-        me.pagination = respuesta.pagination;
-        if (me.arrayMatricula.length == 0) me.show['arrayMatricula'] = true;else me.show['arrayMatricula'] = false;
+    registrarArticulo: function registrarArticulo() {
+      var me = this;
+      this.btn['registrar'] = true;
+      axios.post('/articulo/registrar', this.editable).then(function (response) {
+        me.$emit('guardado');
+        me.cerrarModal();
       })["catch"](function (error) {
-        console.log(error);
+        me.btn['registrar'] = false;
 
         if (error.request.status) {
           if (error.request.status == 419) {
             location.reload();
           }
         }
+
+        if (error.request.response) {
+          var response = JSON.parse(error.request.response);
+          console.log(response);
+          me.errors = response.errors;
+        }
       });
     },
-    cambiarPagina: function cambiarPagina(page, buscar, criterio) {
-      var me = this; // Actualiza la pagina actual
+    actualizarArticulo: function actualizarArticulo() {
+      var me = this;
+      this.btn['actualizar'] = true;
+      axios.put('/articulo/actualizar', this.editable).then(function (response) {
+        me.$emit('guardado');
+        me.cerrarModal();
+      })["catch"](function (error) {
+        me.btn['actualizar'] = false;
 
-      me.pagination.current_page = page; // Envia la peticion para visualizar la data de esta pagina
-
-      me.listarMatricula(page, buscar, criterio);
+        if (error.request.response) {
+          var response = JSON.parse(error.request.response);
+          console.log(response);
+          me.errors = response.errors;
+        }
+      });
     },
-    desactivarMatricula: function desactivarMatricula(id) {
+    cerrarModal: function cerrarModal() {
+      this.$emit('input', {});
+    },
+    imageChanged: function imageChanged(e) {
       var _this = this;
 
-      swal({
-        title: 'Esta seguro de desactivar esta matricula?',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Aceptar',
-        cancelButtonText: 'Cancelar',
-        confirmButtonClass: 'btn btn-success',
-        cancelButtonClass: 'btn btn-danger',
-        buttonsStyling: false,
-        reverseButtons: true
-      }).then(function (result) {
-        if (result.value) {
-          var me = _this;
-          axios.put('/matricula/desactivar', {
-            id: id
-          }).then(function (response) {
-            me.listarMatricula(1, '', 'nombre');
-            swal('Desactivado', 'El registro ha sido desactivado con exito', 'success');
-          })["catch"](function (error) {
-            console.log(error);
-          });
-        } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === swal.DismissReason.cancel) {}
-      });
-    },
-    activarMatricula: function activarMatricula(id) {
-      var _this2 = this;
+      console.log(e.target.files[0]);
+      var propiedades = e.target.files[0];
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
 
-      swal({
-        title: 'Esta seguro de activar esta matricula?',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Aceptar',
-        cancelButtonText: 'Cancelar',
-        confirmButtonClass: 'btn btn-success',
-        cancelButtonClass: 'btn btn-danger',
-        buttonsStyling: false,
-        reverseButtons: true
-      }).then(function (result) {
-        if (result.value) {
-          var me = _this2;
-          axios.put('/matricula/activar', {
-            id: id
-          }).then(function (response) {
-            me.listarMatricula(1, '', 'nombre');
-            swal('Activado', 'El registro ha sido activado con exito', 'success');
-          })["catch"](function (error) {
-            console.log(error);
-          });
-        } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === swal.DismissReason.cancel) {}
-      });
-    },
-    crear: function crear() {
-      this.nuevo = {
-        _estado: 'creando'
+      fileReader.onload = function (e) {
+        _this.editable.name_image = propiedades.name;
+        _this.editable.new_imagen = e.target.result;
       };
-      this.var_config = {
-        title: 'Registrar Matricula',
-        tipo_accion: 'registrar'
-      };
-    },
-    editar: function editar(matricula) {
-      this.editable = Object.assign({
-        _estado: 'editando'
-      }, matricula);
-      this.var_config = {
-        title: 'Actualizar Matricula',
-        tipo_accion: 'actualizar'
-      };
-    },
-    importar: function importar() {
-      this.importar_editable = {
-        _estado: 'creando'
-      };
-      this.var_config = {
-        title: 'Importar Matriculas',
-        tipo_accion: 'importar'
-      };
-    },
-    abrirPrecios: function abrirPrecios(matricula) {
-      this.precio_editable = {
-        _estado: 'abriendo',
-        matricula_id: matricula.id,
-        nombre_matricula: matricula.nombre,
-        precio_actual: matricula.precio_actual
-      };
-      this.var_config = {
-        title: 'Listar Precios',
-        tipo_accion: 'registrar'
-      };
-      this.$forceUpdate();
-    },
-    numberFormat2: function (_numberFormat) {
-      function numberFormat2(_x) {
-        return _numberFormat.apply(this, arguments);
-      }
-
-      numberFormat2.toString = function () {
-        return _numberFormat.toString();
-      };
-
-      return numberFormat2;
-    }(function (number) {
-      return numberFormat2(number);
-    }),
-    descargarMatriculas: function descargarMatriculas() {
-      axios({
-        url: '/matricula/reporte/matriculas',
-        method: 'POST',
-        data: {// venta_id: this.value.venta_id,
-        },
-        responseType: 'blob'
-      }).then(function (response) {
-        // console.log(response.data)
-        // console.log(response.data.size)
-        if (response.data && response.data.size) {
-          // window.location.href = response;
-          // this.leer()
-          // let filename = "FACTURA"+this.formatComprobante(obj_venta)+".pdf";
-          var filename = "ARTICULOS.xlsx";
-          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
-          var fileLink = document.createElement('a');
-          fileLink.href = fileURL;
-
-          if (!filename) {
-            filename = url.substr(url.lastIndexOf('/') + 1);
-          }
-
-          fileLink.setAttribute('download', filename);
-          document.body.appendChild(fileLink);
-          fileLink.click();
-        }
-      });
-    },
-    descargarNoInscritos: function descargarNoInscritos() {
-      axios({
-        url: '/matricula/reporte/no_inscritos',
-        method: 'POST',
-        data: {// venta_id: this.value.venta_id,
-        },
-        responseType: 'blob'
-      }).then(function (response) {
-        // console.log(response.data)
-        // console.log(response.data.size)
-        if (response.data && response.data.size) {
-          // window.location.href = response;
-          // this.leer()
-          // let filename = "FACTURA"+this.formatComprobante(obj_venta)+".pdf";
-          var filename = "Matriculados No Inscritos.xlsx";
-          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
-          var fileLink = document.createElement('a');
-          fileLink.href = fileURL;
-
-          if (!filename) {
-            filename = url.substr(url.lastIndexOf('/') + 1);
-          }
-
-          fileLink.setAttribute('download', filename);
-          document.body.appendChild(fileLink);
-          fileLink.click();
-        }
-      });
-    },
-    orderByNombre: function orderByNombre() {
-      this.order_by = 'nombre';
-      console.log('mode_order', this.mode_order);
-      if (this.mode_order == 'desc') this.mode_order = 'asc';else this.mode_order = 'desc';
-      this.listarMatricula(1, this.buscar, this.criterio);
-    },
-    orderByApellidoPaterno: function orderByApellidoPaterno() {
-      this.order_by = 'apellido_paterno';
-      console.log('mode_order', this.mode_order);
-      if (this.mode_order == 'desc') this.mode_order = 'asc';else this.mode_order = 'desc';
-      this.listarMatricula(1, this.buscar, this.criterio);
-    },
-    reiniciar: function reiniciar() {
-      this.buscar = '';
-      this.mode_order = 'desc';
-      this.order_by = 'id';
-      this.listarMatricula(1, this.buscar, this.criterio);
-      this.$forceUpdate();
-    }
-  },
-  watch: {
-    'editable.periodo_academico_id': function editablePeriodo_academico_id(newvalue, oldvalue) {
-      if (newvalue) {
-        this.listarMatricula(1, this.buscar, this.criterio);
-        this.$forceUpdate();
-      }
     }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=style&index=0&lang=css&":
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=style&index=0&lang=css& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=style&index=0&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=style&index=0&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -484,22 +235,22 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.orderLink:hover{\n    color: inherit;\n    text-decoration: inherit;\n}\n.orderLink{\n    color: inherit;\n    text-decoration: inherit;\n}\n", ""]);
+exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display: list-item !important;\n    opacity: 1 !important;\n    position: absolute !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: flex;\n    justify-content: center;\n}\n.text-error{\n    color: red !important;\n    font-weight: bold;\n}\n@media (max-height: 500px) {\n.modal-xl {\n        max-width: 1140px;}\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=style&index=0&lang=css&":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=style&index=0&lang=css& ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarMatricula.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=style&index=0&lang=css&");
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioMatricula.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -521,10 +272,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=template&id=004a9d57&":
-/*!********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=template&id=004a9d57& ***!
-  \********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=template&id=d28484d8&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=template&id=d28484d8& ***!
+  \************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -537,568 +288,366 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "main",
-    { staticClass: "main" },
+    "div",
+    {
+      staticClass: "modal fade mostrar",
+      staticStyle: { display: "none" },
+      attrs: {
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": "myModalLabel",
+        "aria-hidden": "true"
+      }
+    },
     [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _c("div", { staticClass: "row" }, [
-              _vm._m(1),
-              _vm._v(" "),
+      _c("div", { staticClass: "modal-dialog modal-primary modal-xl" }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _c("div", { staticClass: "modal-header" }, [
+            _c("h4", {
+              staticClass: "modal-title",
+              domProps: { textContent: _vm._s(_vm.var_config.title) }
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "close",
+                attrs: { type: "button", "aria-label": "Close" },
+                on: {
+                  click: function($event) {
+                    return _vm.cerrarModal()
+                  }
+                }
+              },
+              [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "modal-body",
+              staticStyle: {
+                "max-height": "450px",
+                "overflow-y": "auto",
+                "overflow-x": "hidden"
+              }
+            },
+            [
               _c(
-                "div",
-                { staticClass: "col-lg-8 col-md-8 col-sm-8 col-xs-12" },
+                "form",
+                {
+                  staticClass: "form-horizontal",
+                  attrs: {
+                    action: "",
+                    method: "post",
+                    enctype: "multipart/form-data"
+                  }
+                },
                 [
-                  _c("div", { staticClass: "pull-right" }, [
+                  _c("div", { staticClass: "row" }, [
                     _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-success",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.descargarNoInscritos()
-                          }
-                        }
-                      },
-                      [_vm._v(" No Inscritos")]
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(0),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.editable.nombre,
+                                expression: "editable.nombre"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "text", placeholder: "Nombre..." },
+                            domProps: { value: _vm.editable.nombre },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.editable,
+                                  "nombre",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.nombre
+                            ? _c("span", { staticClass: "text-error" }, [
+                                _vm._v(_vm._s(_vm.errors.nombre))
+                              ])
+                            : _vm._e()
+                        ])
+                      ]
                     ),
                     _vm._v(" "),
                     _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-success",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.descargarMatriculas()
-                          }
-                        }
-                      },
-                      [_vm._v(" Xlsx")]
-                    )
-                  ])
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                { staticClass: "col-lg-3 col-md-3 col-sm-3 col-xs-12" },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "form-group" },
-                    [
-                      _vm._m(2),
-                      _vm._v(" "),
-                      _c("periodo-academico-select", {
-                        model: {
-                          value: _vm.editable.periodo_academico_id,
-                          callback: function($$v) {
-                            _vm.$set(_vm.editable, "periodo_academico_id", $$v)
-                          },
-                          expression: "editable.periodo_academico_id"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
-                [
-                  _c("div", { staticClass: "form-group" }, [
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "input-group" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.buscar,
-                            expression: "buscar"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          placeholder: "Nombre, Codigo, Categoria"
-                        },
-                        domProps: { value: _vm.buscar },
-                        on: {
-                          keyup: function($event) {
-                            if (
-                              !$event.type.indexOf("key") &&
-                              _vm._k(
-                                $event.keyCode,
-                                "enter",
-                                13,
-                                $event.key,
-                                "Enter"
-                              )
-                            ) {
-                              return null
-                            }
-                            return _vm.listarMatricula(
-                              1,
-                              _vm.buscar,
-                              _vm.criterio
-                            )
-                          },
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.buscar = $event.target.value
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-primary",
-                          attrs: { type: "submit" },
-                          on: {
-                            click: function($event) {
-                              return _vm.listarMatricula(
-                                1,
-                                _vm.buscar,
-                                _vm.criterio
-                              )
-                            }
-                          }
-                        },
-                        [
-                          _c("i", { staticClass: "fa fa-search" }),
-                          _vm._v(" Buscar")
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-danger",
-                          attrs: { type: "submit" },
-                          on: {
-                            click: function($event) {
-                              return _vm.reiniciar()
-                            }
-                          }
-                        },
-                        [
-                          _c("i", { staticClass: "fa fa-repeat" }),
-                          _vm._v("     Reiniciar")
-                        ]
-                      )
-                    ])
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticStyle: { "overflow-x": "auto", "white-space": "nowrap" }
-              },
-              [
-                _c("table", { staticClass: "table table-hover text-nowrap" }, [
-                  _c("thead", [
-                    _c("tr", [
-                      _c("th", [_vm._v("Opciones")]),
-                      _vm._v(" "),
-                      _c("th", [
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
                         _c(
-                          "a",
-                          {
-                            staticClass: "orderLink",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.orderByApellidoPaterno()
-                              }
-                            }
-                          },
+                          "div",
+                          { staticClass: "form-group" },
                           [
-                            _c("i", {
-                              class: {
-                                "fa fa-sort-up":
-                                  _vm.mode_order == "asc" &&
-                                  _vm.order_by == "nombre"
-                                    ? true
-                                    : false,
-                                "fa fa-sort-down":
-                                  _vm.mode_order == "desc" &&
-                                  _vm.order_by == "nombre"
-                                    ? true
-                                    : false
+                            _vm._m(1),
+                            _vm._v(" "),
+                            _c("categoria-select", {
+                              model: {
+                                value: _vm.editable.categoria_id,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.editable, "categoria_id", $$v)
+                                },
+                                expression: "editable.categoria_id"
                               }
                             }),
-                            _vm._v("Apellidos y Nombres")
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Codigo")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Nro Documento")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Escuela Profesional")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Sexo")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Estado")])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "tbody",
-                    [
-                      _vm.show.arrayMatricula
-                        ? _c("tr", [
-                            _c("th", {
-                              staticClass: "text-center text-dark",
-                              attrs: { colspan: "8" },
-                              domProps: { textContent: _vm._s("Vacio") }
-                            })
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm._l(_vm.arrayMatricula, function(matricula) {
-                        return _c("tr", { key: matricula.id }, [
-                          _c("td", [
-                            _c("div", { staticClass: "btn-group" }, [
-                              _vm._m(4, true),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "dropdown-menu",
-                                  attrs: { role: "menu" }
-                                },
-                                [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "dropdown-item",
-                                      attrs: { href: "#" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.editar(matricula)
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticStyle: {
-                                          width: "20px",
-                                          height: "20px"
-                                        },
-                                        attrs: { src: "images/editar.svg" }
-                                      }),
-                                      _vm._v("   Editar")
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  matricula.estado == "inactivo"
-                                    ? _c(
-                                        "a",
-                                        {
-                                          staticClass: "dropdown-item",
-                                          attrs: { href: "#" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.activarMatricula(
-                                                matricula.id
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c("img", {
-                                            staticStyle: {
-                                              width: "20px",
-                                              height: "20px"
-                                            },
-                                            attrs: { src: "images/activar.svg" }
-                                          }),
-                                          _vm._v("   Activar")
-                                        ]
-                                      )
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  matricula.estado == "activo"
-                                    ? _c(
-                                        "a",
-                                        {
-                                          staticClass: "dropdown-item",
-                                          attrs: { href: "#" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.desactivarMatricula(
-                                                matricula.id
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c("img", {
-                                            staticStyle: {
-                                              width: "20px",
-                                              height: "20px"
-                                            },
-                                            attrs: {
-                                              src: "images/desactivar.svg"
-                                            }
-                                          }),
-                                          _vm._v("   Desactivar")
-                                        ]
-                                      )
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  matricula.estado == "activo"
-                                    ? _c(
-                                        "a",
-                                        {
-                                          staticClass: "dropdown-item",
-                                          attrs: { href: "#" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.abrirPrecios(matricula)
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c("img", {
-                                            staticStyle: {
-                                              width: "20px",
-                                              height: "20px"
-                                            },
-                                            attrs: { src: "images/money.svg" }
-                                          }),
-                                          _vm._v("   Precios")
-                                        ]
-                                      )
-                                    : _vm._e()
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              _vm._s(matricula.apellido_paterno) +
-                                " " +
-                                _vm._s(matricula.apellido_materno) +
-                                " " +
-                                _vm._s(matricula.nombres)
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: {
-                              textContent: _vm._s(matricula.codigo_estudiante)
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: { textContent: _vm._s(matricula.dni) }
-                          }),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: {
-                              textContent: _vm._s(matricula.escuela_profesional)
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: { textContent: _vm._s(matricula.sexo) }
-                          }),
-                          _vm._v(" "),
-                          _c("td", [
-                            matricula.estado == "activo"
-                              ? _c("div", [
-                                  _c(
-                                    "span",
-                                    { staticClass: "badge badge-success" },
-                                    [_vm._v("Activo")]
-                                  )
-                                ])
-                              : matricula.estado == "inactivo"
-                              ? _c("div", [
-                                  _c(
-                                    "span",
-                                    { staticClass: "badge badge-danger" },
-                                    [_vm._v("Desactivado")]
-                                  )
+                            _vm._v(" "),
+                            _vm.errors.categoria_id
+                              ? _c("span", { staticClass: "text-error" }, [
+                                  _vm._v(_vm._s(_vm.errors.categoria_id))
                                 ])
                               : _vm._e()
-                          ])
-                        ])
-                      })
-                    ],
-                    2
-                  )
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c("nav", [
-              _c(
-                "ul",
-                { staticClass: "pagination" },
-                [
-                  _vm.pagination.current_page > 1
-                    ? _c("li", { staticClass: "page-item" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "page-link",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.cambiarPagina(
-                                  _vm.pagination.current_page - 1,
-                                  _vm.buscar,
-                                  _vm.criterio
-                                )
-                              }
-                            }
-                          },
-                          [_vm._v("Ant")]
+                          ],
+                          1
                         )
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm._l(_vm.pagesNumber, function(page) {
-                    return _c(
-                      "li",
-                      {
-                        key: page,
-                        staticClass: "page-item",
-                        class: [page == _vm.isActived ? "active" : ""]
-                      },
-                      [
-                        _c("a", {
-                          staticClass: "page-link",
-                          attrs: { href: "#" },
-                          domProps: { textContent: _vm._s(page) },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.cambiarPagina(
-                                page,
-                                _vm.buscar,
-                                _vm.criterio
-                              )
-                            }
-                          }
-                        })
                       ]
                     )
-                  }),
+                  ]),
                   _vm._v(" "),
-                  _vm.pagination.current_page < _vm.pagination.last_page
-                    ? _c("li", { staticClass: "page-item" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "page-link",
-                            attrs: { href: "#" },
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(2),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.editable.codigo,
+                                expression: "editable.codigo"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "text", placeholder: "Codigo..." },
+                            domProps: { value: _vm.editable.codigo },
                             on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.cambiarPagina(
-                                  _vm.pagination.current_page + 1,
-                                  _vm.buscar,
-                                  _vm.criterio
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.editable,
+                                  "codigo",
+                                  $event.target.value
                                 )
                               }
                             }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.codigo
+                            ? _c("span", { staticClass: "text-error" }, [
+                                _vm._v(_vm._s(_vm.errors.codigo))
+                              ])
+                            : _vm._e()
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _vm._m(3),
+                            _vm._v(" "),
+                            _c("unidad-medida-select", {
+                              model: {
+                                value: _vm.editable.unidad_medida_id,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    _vm.editable,
+                                    "unidad_medida_id",
+                                    $$v
+                                  )
+                                },
+                                expression: "editable.unidad_medida_id"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _vm.errors.unidad_medida_id
+                              ? _c("span", { staticClass: "text-error" }, [
+                                  _vm._v(_vm._s(_vm.errors.unidad_medida_id))
+                                ])
+                              : _vm._e()
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(4),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.editable.descripcion,
+                                expression: "editable.descripcion"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Descripcion..."
+                            },
+                            domProps: { value: _vm.editable.descripcion },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.editable,
+                                  "descripcion",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.descripcion
+                            ? _c("span", { staticClass: "text-error" }, [
+                                _vm._v(_vm._s(_vm.errors.descripcion))
+                              ])
+                            : _vm._e()
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(5),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: { type: "file", accept: "jpeg, jpe, png" },
+                            on: { change: _vm.imageChanged }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.otro_imagen
+                            ? _c("span", { staticClass: "text-error" }, [
+                                _vm._v(_vm._s(_vm.errors.otro_imagen))
+                              ])
+                            : _vm._e()
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm.editable.id
+                    ? _c("div", { staticClass: "row" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "col-lg-12 col-md-12 col-sm-12 col-xs-12"
                           },
-                          [_vm._v("Sig")]
+                          [
+                            _c("div", { staticClass: "form-group" }, [
+                              _vm._m(6),
+                              _vm._v(" "),
+                              _vm.editable.imagen
+                                ? _c("img", {
+                                    staticClass: "form-control",
+                                    attrs: {
+                                      src: "/images/" + _vm.editable.imagen
+                                    }
+                                  })
+                                : _vm._e()
+                            ])
+                          ]
                         )
                       ])
                     : _vm._e()
-                ],
-                2
+                ]
               )
-            ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-footer" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.cerrarModal()
+                  }
+                }
+              },
+              [_vm._v("Cerrar")]
+            ),
+            _vm._v(" "),
+            _vm.var_config.tipo_accion == "registrar"
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button", disabled: _vm.btn.registrar },
+                    on: {
+                      click: function($event) {
+                        return _vm.registrarArticulo()
+                      }
+                    }
+                  },
+                  [_vm._v("Guardar")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.var_config.tipo_accion == "actualizar"
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button", disabled: _vm.btn.actualizar },
+                    on: {
+                      click: function($event) {
+                        return _vm.actualizarArticulo()
+                      }
+                    }
+                  },
+                  [_vm._v("Actualizar")]
+                )
+              : _vm._e()
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _vm.nuevo._estado == "creando"
-        ? _c("v-formulario-matricula", {
-            ref: "cmp_crear_matricula",
-            attrs: { var_config: _vm.var_config },
-            on: {
-              guardado: function($event) {
-                return _vm.listarMatricula(1, "", "nombre")
-              }
-            },
-            model: {
-              value: _vm.nuevo,
-              callback: function($$v) {
-                _vm.nuevo = $$v
-              },
-              expression: "nuevo"
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.editable._estado == "editando"
-        ? _c("v-formulario-matricula", {
-            ref: "cmp_crear_matricula",
-            attrs: { var_config: _vm.var_config },
-            on: {
-              guardado: function($event) {
-                return _vm.listarMatricula(1, "", "nombre")
-              }
-            },
-            model: {
-              value: _vm.editable,
-              callback: function($$v) {
-                _vm.editable = $$v
-              },
-              expression: "editable"
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.importar_editable._estado == "creando"
-        ? _c("v-formulario-importar-matricula", {
-            ref: "cmp_importar_persona_dni",
-            attrs: { var_config: _vm.var_config },
-            on: {
-              guardado: function($event) {
-                return _vm.listarMatricula(1, "", "nombre")
-              }
-            },
-            model: {
-              value: _vm.importar_editable,
-              callback: function($$v) {
-                _vm.importar_editable = $$v
-              },
-              expression: "importar_editable"
-            }
-          })
-        : _vm._e()
-    ],
-    1
+      ])
+    ]
   )
 }
 var staticRenderFns = [
@@ -1106,47 +655,43 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ol", { staticClass: "breadcrumb" }, [
-      _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Tramite Carne")]),
-      _vm._v(" "),
-      _c("li", { staticClass: "breadcrumb-item" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("Matricula")])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Listado")])
-    ])
+    return _c("label", [_c("dt", [_vm._v("Nombre: *")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" }, [
-      _c("i", { staticClass: "fa fa-align-justify" }),
-      _vm._v(" Matriculas\n                        ")
-    ])
+    return _c("label", [_c("dt", [_vm._v("Categoria: *")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Periodo Académico: ")])])
+    return _c("label", [_c("dt", [_vm._v("Codigo: ")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Busqueda General: ")])])
+    return _c("label", [_c("dt", [_vm._v("Unidad Medida: *")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#", "data-toggle": "dropdown" } }, [
-      _c("img", {
-        staticStyle: { width: "30px", height: "auto" },
-        attrs: { src: "images/options.svg" }
-      })
-    ])
+    return _c("label", [_c("dt", [_vm._v("Descripcion: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Imagen:")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Imagen:")])])
   }
 ]
 render._withStripped = true
@@ -1155,18 +700,18 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/matricula/ListarMatricula.vue":
-/*!*******************************************************************!*\
-  !*** ./resources/js/components/erp/matricula/ListarMatricula.vue ***!
-  \*******************************************************************/
+/***/ "./resources/js/components/erp/matricula/FormularioMatricula.vue":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/erp/matricula/FormularioMatricula.vue ***!
+  \***********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ListarMatricula_vue_vue_type_template_id_004a9d57___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListarMatricula.vue?vue&type=template&id=004a9d57& */ "./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=template&id=004a9d57&");
-/* harmony import */ var _ListarMatricula_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListarMatricula.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _ListarMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ListarMatricula.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _FormularioMatricula_vue_vue_type_template_id_d28484d8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormularioMatricula.vue?vue&type=template&id=d28484d8& */ "./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=template&id=d28484d8&");
+/* harmony import */ var _FormularioMatricula_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormularioMatricula.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _FormularioMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormularioMatricula.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -1177,9 +722,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _ListarMatricula_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ListarMatricula_vue_vue_type_template_id_004a9d57___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ListarMatricula_vue_vue_type_template_id_004a9d57___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _FormularioMatricula_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FormularioMatricula_vue_vue_type_template_id_d28484d8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FormularioMatricula_vue_vue_type_template_id_d28484d8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -1189,54 +734,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/erp/matricula/ListarMatricula.vue"
+component.options.__file = "resources/js/components/erp/matricula/FormularioMatricula.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************!*\
-  !*** ./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************/
+/***/ "./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarMatricula_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarMatricula.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarMatricula_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioMatricula_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioMatricula.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioMatricula_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=style&index=0&lang=css&":
-/*!****************************************************************************************************!*\
-  !*** ./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=style&index=0&lang=css& ***!
-  \****************************************************************************************************/
+/***/ "./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarMatricula.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioMatricula.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=template&id=004a9d57&":
-/*!**************************************************************************************************!*\
-  !*** ./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=template&id=004a9d57& ***!
-  \**************************************************************************************************/
+/***/ "./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=template&id=d28484d8&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=template&id=d28484d8& ***!
+  \******************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarMatricula_vue_vue_type_template_id_004a9d57___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarMatricula.vue?vue&type=template&id=004a9d57& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/ListarMatricula.vue?vue&type=template&id=004a9d57&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarMatricula_vue_vue_type_template_id_004a9d57___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioMatricula_vue_vue_type_template_id_d28484d8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioMatricula.vue?vue&type=template&id=d28484d8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=template&id=d28484d8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioMatricula_vue_vue_type_template_id_d28484d8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarMatricula_vue_vue_type_template_id_004a9d57___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioMatricula_vue_vue_type_template_id_d28484d8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

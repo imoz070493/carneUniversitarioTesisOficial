@@ -149,6 +149,9 @@ class Inscrito extends Model
             $inscrito = Inscrito::findOrFail($datos['id']);
             $inscrito->update($data);
         }else{
+            if (array_key_exists('fecha_inicio_tramite', $datos)) $data['fecha_inicio_tramite'] = $datos['fecha_inicio_tramite'];
+            $data['fecha_fin_tramite'] = \Carbon\Carbon::now();
+            $data['usuario_create_id'] = \Auth::user()->id;
             $inscrito = new Inscrito();
             $inscrito = $inscrito->create($data);
         }

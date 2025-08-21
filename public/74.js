@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[74],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/TipoDocumentoAcademicoSelect.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/TipoDocumentoAcademicoSelect.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -27,14 +27,17 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      array_tipos_documentos: [{
-        id: 'constancia_primera_matricula',
-        nombre: 'Constancia de Primera Matricula'
+      array_pagos_validadas: [{
+        id: 'todos',
+        nombre: 'Todos'
       }, {
-        id: 'constancia_matricula',
-        nombre: 'Constancia de Matricula'
+        id: 'si',
+        nombre: 'Si'
+      }, {
+        id: 'no',
+        nombre: 'No'
       }],
-      tipo_documento_id: this.value
+      pago_validado_id: this.value
     };
   },
   mounted: function mounted() {// if (this.value) {
@@ -43,25 +46,31 @@ __webpack_require__.r(__webpack_exports__);
     // }
     // this.buscar();
   },
-  methods: {// buscar() {
-    //     let me = this;
-    //     axios.get('/tipo_documento/select').then(function (response){
-    //         me.array_tipos_documentos = response.data;
-    //     })
-    //     .catch(function (error){
-    //         console.log(error);
-    //     });
-    // },
+  methods: {
+    buscar: function buscar() {
+      var me = this,
+          pagos_validadas = [];
+      axios.get('/pago_validado/select').then(function (response) {
+        pagos_validadas = response.data;
+        pagos_validadas.forEach(function (element) {
+          /* console.log(element) */
+          me.array_pagos_validadas.push(element);
+        });
+        me.pago_validado_id = 'todos';
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   },
   watch: {
-    tipo_documento_id: function tipo_documento_id(newvalue, oldvalue) {
+    pago_validado_id: function pago_validado_id(newvalue, oldvalue) {
       if (newvalue) {
         this.$emit('input', newvalue);
       }
     },
     value: function value(newvalue, oldvalue) {
       if (newvalue) {
-        this.tipo_documento_id = newvalue;
+        this.pago_validado_id = newvalue;
       }
     }
   }
@@ -69,10 +78,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/TipoDocumentoAcademicoSelect.vue?vue&type=template&id=175ee55d&":
-/*!*******************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/TipoDocumentoAcademicoSelect.vue?vue&type=template&id=175ee55d& ***!
-  \*******************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=template&id=0871f3fe&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=template&id=0871f3fe& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -91,8 +100,8 @@ var render = function() {
         {
           name: "model",
           rawName: "v-model",
-          value: _vm.tipo_documento_id,
-          expression: "tipo_documento_id"
+          value: _vm.pago_validado_id,
+          expression: "pago_validado_id"
         }
       ],
       staticClass: "form-control",
@@ -106,18 +115,18 @@ var render = function() {
               var val = "_value" in o ? o._value : o.value
               return val
             })
-          _vm.tipo_documento_id = $event.target.multiple
+          _vm.pago_validado_id = $event.target.multiple
             ? $$selectedVal
             : $$selectedVal[0]
         }
       }
     },
-    _vm._l(_vm.array_tipos_documentos, function(tipo_documento) {
+    _vm._l(_vm.array_pagos_validadas, function(pago_validado) {
       return _c("option", {
-        key: tipo_documento.id,
+        key: pago_validado.id,
         domProps: {
-          value: tipo_documento.id,
-          textContent: _vm._s(tipo_documento.nombre)
+          value: pago_validado.id,
+          textContent: _vm._s(pago_validado.nombre)
         }
       })
     }),
@@ -131,17 +140,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/referencias/TipoDocumentoAcademicoSelect.vue":
-/*!******************************************************************************!*\
-  !*** ./resources/js/components/referencias/TipoDocumentoAcademicoSelect.vue ***!
-  \******************************************************************************/
+/***/ "./resources/js/components/referencias/PagoValidadoSelect.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/referencias/PagoValidadoSelect.vue ***!
+  \********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _TipoDocumentoAcademicoSelect_vue_vue_type_template_id_175ee55d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TipoDocumentoAcademicoSelect.vue?vue&type=template&id=175ee55d& */ "./resources/js/components/referencias/TipoDocumentoAcademicoSelect.vue?vue&type=template&id=175ee55d&");
-/* harmony import */ var _TipoDocumentoAcademicoSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TipoDocumentoAcademicoSelect.vue?vue&type=script&lang=js& */ "./resources/js/components/referencias/TipoDocumentoAcademicoSelect.vue?vue&type=script&lang=js&");
+/* harmony import */ var _PagoValidadoSelect_vue_vue_type_template_id_0871f3fe___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PagoValidadoSelect.vue?vue&type=template&id=0871f3fe& */ "./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=template&id=0871f3fe&");
+/* harmony import */ var _PagoValidadoSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PagoValidadoSelect.vue?vue&type=script&lang=js& */ "./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -151,9 +160,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _TipoDocumentoAcademicoSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _TipoDocumentoAcademicoSelect_vue_vue_type_template_id_175ee55d___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _TipoDocumentoAcademicoSelect_vue_vue_type_template_id_175ee55d___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _PagoValidadoSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PagoValidadoSelect_vue_vue_type_template_id_0871f3fe___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PagoValidadoSelect_vue_vue_type_template_id_0871f3fe___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -163,38 +172,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/referencias/TipoDocumentoAcademicoSelect.vue"
+component.options.__file = "resources/js/components/referencias/PagoValidadoSelect.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/referencias/TipoDocumentoAcademicoSelect.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************!*\
-  !*** ./resources/js/components/referencias/TipoDocumentoAcademicoSelect.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************/
+/***/ "./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TipoDocumentoAcademicoSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./TipoDocumentoAcademicoSelect.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/TipoDocumentoAcademicoSelect.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TipoDocumentoAcademicoSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PagoValidadoSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./PagoValidadoSelect.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PagoValidadoSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/referencias/TipoDocumentoAcademicoSelect.vue?vue&type=template&id=175ee55d&":
-/*!*************************************************************************************************************!*\
-  !*** ./resources/js/components/referencias/TipoDocumentoAcademicoSelect.vue?vue&type=template&id=175ee55d& ***!
-  \*************************************************************************************************************/
+/***/ "./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=template&id=0871f3fe&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=template&id=0871f3fe& ***!
+  \***************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TipoDocumentoAcademicoSelect_vue_vue_type_template_id_175ee55d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./TipoDocumentoAcademicoSelect.vue?vue&type=template&id=175ee55d& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/TipoDocumentoAcademicoSelect.vue?vue&type=template&id=175ee55d&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TipoDocumentoAcademicoSelect_vue_vue_type_template_id_175ee55d___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PagoValidadoSelect_vue_vue_type_template_id_0871f3fe___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./PagoValidadoSelect.vue?vue&type=template&id=0871f3fe& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=template&id=0871f3fe&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PagoValidadoSelect_vue_vue_type_template_id_0871f3fe___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TipoDocumentoAcademicoSelect_vue_vue_type_template_id_175ee55d___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PagoValidadoSelect_vue_vue_type_template_id_0871f3fe___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
