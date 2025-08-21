@@ -248,6 +248,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var FormularioInscrito = function FormularioInscrito() {
   return __webpack_require__.e(/*! import() */ 13).then(__webpack_require__.bind(null, /*! @/components/erp/inscrito/FormularioInscrito */ "./resources/js/components/erp/inscrito/FormularioInscrito.vue"));
 };
@@ -276,8 +294,16 @@ var FotoValidadoSelect = function FotoValidadoSelect() {
   return __webpack_require__.e(/*! import() */ 72).then(__webpack_require__.bind(null, /*! @/components/referencias/FotoValidadoSelect */ "./resources/js/components/referencias/FotoValidadoSelect.vue"));
 };
 
+var PagoValidadoSelect = function PagoValidadoSelect() {
+  return __webpack_require__.e(/*! import() */ 77).then(__webpack_require__.bind(null, /*! @/components/referencias/PagoValidadoSelect */ "./resources/js/components/referencias/PagoValidadoSelect.vue"));
+};
+
 var CredencialValidadoSelect = function CredencialValidadoSelect() {
   return __webpack_require__.e(/*! import() */ 70).then(__webpack_require__.bind(null, /*! @/components/referencias/CredencialValidadoSelect */ "./resources/js/components/referencias/CredencialValidadoSelect.vue"));
+};
+
+var FormularioValidarPago = function FormularioValidarPago() {
+  return __webpack_require__.e(/*! import() */ 76).then(__webpack_require__.bind(null, /*! @/components/erp/inscrito/FormularioValidarPago */ "./resources/js/components/erp/inscrito/FormularioValidarPago.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -289,7 +315,9 @@ var CredencialValidadoSelect = function CredencialValidadoSelect() {
     "v-formulario-anular-inscrito": FormularioAnularInscrito,
     "v-ver-inscrito": VerInscrito,
     "foto-validado-select": FotoValidadoSelect,
-    "credencial-validado-select": CredencialValidadoSelect
+    "pago-validado-select": PagoValidadoSelect,
+    "credencial-validado-select": CredencialValidadoSelect,
+    "v-formulario-validar-pago": FormularioValidarPago
   },
   data: function data() {
     return {
@@ -298,6 +326,7 @@ var CredencialValidadoSelect = function CredencialValidadoSelect() {
       editable: {},
       precio_editable: {},
       ver_editable: {},
+      abrir_validador: {},
       show: {},
       var_config: {},
       arrayInscrito: [],
@@ -317,7 +346,8 @@ var CredencialValidadoSelect = function CredencialValidadoSelect() {
       mode_order: 'desc',
       filtros: {
         foto_validado: '',
-        credencial_validado: ''
+        credencial_validado: '',
+        voucher_validado: ''
       }
     };
   },
@@ -356,6 +386,7 @@ var CredencialValidadoSelect = function CredencialValidadoSelect() {
     console.log('Component mounted.');
     this.filtros.foto_validado = 'todos';
     this.filtros.credencial_validado = 'todos';
+    this.filtros.voucher_validado = 'todos';
     this.listarInscrito(1, this.buscar, this.criterio);
   },
   methods: {
@@ -454,6 +485,15 @@ var CredencialValidadoSelect = function CredencialValidadoSelect() {
         /* Read more about handling dismissals below */
         result.dismiss === swal.DismissReason.cancel) {}
       });
+    },
+    abrirValidador: function abrirValidador() {
+      this.abrir_validador = {
+        _estado: 'creando'
+      };
+      this.var_config = {
+        title: 'Validar Pagos',
+        tipo_accion: 'importar'
+      };
     },
     crear: function crear() {
       this.nuevo = {
@@ -1112,6 +1152,23 @@ var render = function() {
                     _c(
                       "button",
                       {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.abrirValidador()
+                          }
+                        }
+                      },
+                      [
+                        _c("i", { staticClass: "icon-plus" }),
+                        _vm._v(" Validar V.")
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
                         staticClass: "btn btn-success",
                         attrs: { type: "button" },
                         on: {
@@ -1210,7 +1267,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "col-lg-3 col-md-3 col-sm-3 col-xs-12" },
+                { staticClass: "col-lg-2 col-md-2 col-sm-2 col-xs-12" },
                 [
                   _c(
                     "div",
@@ -1236,7 +1293,7 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "col-lg-3 col-md-3 col-sm-3 col-xs-12" },
+                { staticClass: "col-lg-2 col-md-2 col-sm-2 col-xs-12" },
                 [
                   _c(
                     "div",
@@ -1252,6 +1309,32 @@ var render = function() {
                             _vm.$set(_vm.filtros, "credencial_validado", $$v)
                           },
                           expression: "filtros.credencial_validado"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-lg-2 col-md-2 col-sm-2 col-xs-12" },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "form-group" },
+                    [
+                      _vm._m(4),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("pago-validado-select", {
+                        model: {
+                          value: _vm.filtros.voucher_validado,
+                          callback: function($$v) {
+                            _vm.$set(_vm.filtros, "voucher_validado", $$v)
+                          },
+                          expression: "filtros.voucher_validado"
                         }
                       })
                     ],
@@ -1388,7 +1471,7 @@ var render = function() {
                         return _c("tr", { key: inscrito.id }, [
                           _c("td", [
                             _c("div", {}, [
-                              _vm._m(4, true),
+                              _vm._m(5, true),
                               _vm._v(" "),
                               _c(
                                 "div",
@@ -1929,6 +2012,25 @@ var render = function() {
               expression: "cortar_nuevo"
             }
           })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.abrir_validador._estado == "creando"
+        ? _c("v-formulario-validar-pago", {
+            ref: "cmp_importar_pagos",
+            attrs: { var_config: _vm.var_config },
+            on: {
+              guardado: function($event) {
+                return _vm.listarMatricula(1, "", "nombre")
+              }
+            },
+            model: {
+              value: _vm.abrir_validador,
+              callback: function($$v) {
+                _vm.abrir_validador = $$v
+              },
+              expression: "abrir_validador"
+            }
+          })
         : _vm._e()
     ],
     1
@@ -1960,6 +2062,12 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", [_c("dt", [_vm._v("Credencial Validado:")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Pago Validado:")])])
   },
   function() {
     var _vm = this

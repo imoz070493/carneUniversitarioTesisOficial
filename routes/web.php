@@ -144,6 +144,7 @@ Route::post('/inscrito/validar_imagen','InscritoController@validarImagen');
 Route::post('/inscrito/cambiar_dpi','InscritoController@cambiarDpiImagen');
 Route::post('/inscrito/obtener_foto_anterior_estudiante','InscritoController@obtenerFotoAnteriorEstudiante');
 Route::post('/inscrito/obtener_foto','InscritoController@obtenerFotoEstudiante');
+Route::post('/inscrito/validar_pagos','InscritoController@importarPagos');
 
 Route::post('/inscrito_estudiante/registrar','InscritoEstudianteController@store');
 

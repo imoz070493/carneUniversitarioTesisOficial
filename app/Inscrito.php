@@ -137,6 +137,7 @@ class Inscrito extends Model
         }
 
         if (array_key_exists('foto_validado', $datos)) $data['foto_validado'] = $datos['foto_validado'];
+        if (array_key_exists('voucher_validado', $datos)) $data['voucher_validado'] = $datos['voucher_validado'];
         if (array_key_exists('credencial_validado', $datos)) $data['credencial_validado'] = $datos['credencial_validado'];
         if (array_key_exists('duplicado', $datos)) $data['duplicado'] = $datos['duplicado'];
         if (array_key_exists('fecha_anulado', $datos)) $data['fecha_anulado'] = $datos['fecha_anulado'];
@@ -198,7 +199,7 @@ class Inscrito extends Model
                     $query->orWhere('e.apellido_materno','like','%'.$buscar.'%');
                 });
             }
-
+// \Log::info($filtros);
             if(array_key_exists('foto_validado',$filtros)){
                 if($filtros['foto_validado']=='si'){
                     $inscritos = $inscritos->where('foto_validado','1');
@@ -216,6 +217,14 @@ class Inscrito extends Model
                 }
                 if($filtros['credencial_validado']=='no_encontrado'){
                     $inscritos = $inscritos->where('credencial_validado','no_encontrado');
+                }
+            }
+            if(array_key_exists('voucher_validado',$filtros)){
+                if($filtros['voucher_validado']=='si'){
+                    $inscritos = $inscritos->where('voucher_validado','1');
+                }
+                if($filtros['voucher_validado']=='no'){
+                    $inscritos = $inscritos->where('voucher_validado','0');
                 }
             }
 

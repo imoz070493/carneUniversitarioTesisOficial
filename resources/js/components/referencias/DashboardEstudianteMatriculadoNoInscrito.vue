@@ -16,7 +16,7 @@
                                     type="text" 
                                     v-model="editable.numero_recibo" 
                                     class="form-control" 
-                                    placeholder="V###-####"
+                                    placeholder="Ejm: V001-4154"
                                     :disabled="lock.numero_recibo"
                                 >
                             </div>

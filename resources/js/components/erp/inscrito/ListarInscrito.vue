@@ -42,6 +42,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="pull-right">
+                                    <button type="button" @click="abrirValidador()" class="btn btn-secondary"><i class="icon-plus"></i>&nbsp;Validar V.</button>
                                     <button type="button" @click="descargarInscritosOficial()" class="btn btn-success"> Xlsx Oficial</button>
                                     <button type="button" @click="descargarInscritos()" class="btn btn-success"> Xlsx</button>
                                     <button type="button" @click="descargarInscritosAnulado()" class="btn btn-success"> Xlsx Anulado</button>
@@ -63,7 +64,7 @@
                                     >
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                 <div class="form-group">
                                     <label><dt>Foto Validado:</dt></label><br>
                                     <foto-validado-select 
@@ -71,12 +72,20 @@
                                     ></foto-validado-select>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                 <div class="form-group">
                                     <label><dt>Credencial Validado:</dt></label><br>
                                     <credencial-validado-select 
                                         v-model="filtros.credencial_validado"
                                     ></credencial-validado-select>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+                                <div class="form-group">
+                                    <label><dt>Pago Validado:</dt></label><br>
+                                    <pago-validado-select 
+                                        v-model="filtros.voucher_validado"
+                                    ></pago-validado-select>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -232,6 +241,15 @@
                 :var_config="var_config"
                 @guardado="listarInscrito(1, '', 'nombre')"
             ></v-formulario-cortar-inscrito>
+
+            <!-- Importar Data -->
+            <v-formulario-validar-pago 
+                v-if="abrir_validador._estado=='creando'" 
+                v-model="abrir_validador"
+                ref="cmp_importar_pagos"
+                :var_config="var_config"
+                @guardado="listarMatricula(1, '', 'nombre')"
+            ></v-formulario-validar-pago>
             
             <!--Fin del modal-->
         </main>
@@ -247,7 +265,9 @@ const FormularioAnularInscrito = () => import("@/components/erp/inscrito/Formula
 const VerInscrito = () => import("@/components/erp/inscrito/VerInscrito");
 
 const FotoValidadoSelect = () => import("@/components/referencias/FotoValidadoSelect");
+const PagoValidadoSelect = () => import("@/components/referencias/PagoValidadoSelect");
 const CredencialValidadoSelect = () => import("@/components/referencias/CredencialValidadoSelect");
+const FormularioValidarPago = () => import("@/components/erp/inscrito/FormularioValidarPago");
 
 export default {
     components: {
@@ -259,7 +279,9 @@ export default {
         "v-ver-inscrito": VerInscrito,
 
         "foto-validado-select": FotoValidadoSelect,
+        "pago-validado-select": PagoValidadoSelect,
         "credencial-validado-select": CredencialValidadoSelect,
+        "v-formulario-validar-pago": FormularioValidarPago,
     },
     data(){
         return {
@@ -268,6 +290,7 @@ export default {
             editable: {},
             precio_editable: {},
             ver_editable: {},
+            abrir_validador: {},
             show: {},
             var_config: {},
             arrayInscrito: [],
@@ -288,6 +311,7 @@ export default {
             filtros: {
                 foto_validado: '',
                 credencial_validado: '',
+                voucher_validado: '',
             }
         }
     },
@@ -322,6 +346,7 @@ export default {
         console.log('Component mounted.')
         this.filtros.foto_validado = 'todos';
         this.filtros.credencial_validado = 'todos';
+        this.filtros.voucher_validado = 'todos';
         this.listarInscrito(1, this.buscar, this.criterio);
     },
     methods: {
@@ -438,6 +463,16 @@ if(error.request.status){
 
             }
             })
+        },
+        abrirValidador(){
+            this.abrir_validador = {
+                _estado: 'creando',
+            };
+            this.var_config = {
+                title: 'Validar Pagos',
+                tipo_accion: 'importar'
+            };
+            
         },
         crear(){
             this.nuevo = {

@@ -32,10 +32,11 @@ class InscritoEstudianteController extends Controller
                 'convocatoria_id' => $convocatoria_actual->id,
                 'estudiante_id' => $estudiante_id,
                 'foto_validado' => false,
+                'voucher_validado' => false,
                 'folder' => $convocatoria_actual->folder,                
                 'new_document_voucher' => $data['new_document_voucher'],
                 'duplicado' => false,
-                'credencial_validado' => false,
+                'credencial_validado' => "no_validado",
                 'numero_recibo' => $data['numero_recibo'],
                 'usar_foto_anterior' => $data['usar_foto_anterior'],
             ];

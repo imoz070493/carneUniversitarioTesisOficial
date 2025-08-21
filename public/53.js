@@ -618,7 +618,7 @@ var render = function() {
                       staticClass: "form-control",
                       attrs: {
                         type: "text",
-                        placeholder: "V###-####",
+                        placeholder: "Ejm: V001-4154",
                         disabled: _vm.lock.numero_recibo
                       },
                       domProps: { value: _vm.editable.numero_recibo },

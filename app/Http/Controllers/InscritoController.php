@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Convocatoria;
 use App\Documento;
 use App\Estudiante;
+use App\Helpers\Import\PagoImport;
 use App\Http\Controllers\ExportExcel\GenericExport;
 use App\Http\Controllers\ExportExcel\PhotosExport;
 use App\Http\Requests\InscritoFormRequest;
+use App\Http\Requests\PagoImportFormRequest;
 use App\Http\Requests\VoucherValidadoFormRequest;
 use App\Inscrito;
 use App\PeriodoAcademico;
@@ -90,6 +92,7 @@ class InscritoController extends Controller
         $convocatoria_actual = Convocatoria::whereNull('activo')->first();
         $data['convocatoria_id'] = $convocatoria_actual->id;
         $data['folder'] = $convocatoria_actual->folder;
+        $data['voucher_validado'] = false;
 
         $data_estudiante = [
             'id' => $data['estudiante_id'],
@@ -413,6 +416,7 @@ class InscritoController extends Controller
             'created_at' => 'Fecha Tramite',
             'nombre_convocatoria' => 'Convocatoria',
             'numero_recibo' => 'N° Recibo',
+            'voucher_validado' => 'Voucher Validado',
         ];
 
         $formateadores = [
@@ -439,6 +443,10 @@ class InscritoController extends Controller
                 if($a->credencial_validado=='validado') return "SI";
                 if($a->credencial_validado=='no_validado') return "NO";
                 if($a->credencial_validado=='no_encontrado') return "NO ENCONTRADO";
+            },
+            'voucher_validado' => function($a){
+                if($a->duplicado=='1') return "SI";
+                else return "NO";
             },
         ];
 
@@ -719,5 +727,80 @@ class InscritoController extends Controller
         $reporte = PhotosExport::exportExcelTable($datos, 'INCRITOS', 'php://output',$formateadores = []);
 
         return $reporte;
+    }
+
+    public function importarPagos(PagoImportFormRequest $request)
+    {
+        $data = $request->all();
+
+        // LOG::info($data);
+
+        try{
+            $filename = PagoImport::guardarExcel($request->excel_document);
+
+            // $id = app(Dispatcher::class)->dispatch(new MatriculaImportJob($filename, $data['periodo_academico_id']));
+            $convocatoria_actual = Convocatoria::whereNull('activo')->first();
+            $response = PagoImport::guardarDatos($filename, $convocatoria_actual->id);
+            // \Log::info(gettype($response));
+
+            return 2;
+
+            return CargaMatricula::guardarDatos([
+                'document' => $filename,
+                // 'job_id' => $id,
+                'estado' => 'cargado',
+                'periodo_academico_id' => $data['periodo_academico_id'],
+            ]);
+
+            if(gettype($response)=='object'){
+                \Log::info("Imprimiendo");
+                throw ($response);
+            }
+
+            if ($response == 2) {
+                /* enviar el resultado */
+                return response()->json([
+                    'message' => 'importado correctamente',
+                    'data' => $data,
+                    'id' => $response,
+                ]);
+            } else {
+                $array_errores = [];
+                
+                for($i=0;$i<count($response);$i++){
+                    $objecto_error = new \stdClass();
+                    $objecto_error->id = $i + 1;
+                    $objecto_error->descripcion = $response[$i];
+                    array_push($array_errores,$objecto_error);
+                }
+
+                return response()->json([
+                    'message' => 'error al importar',
+                    'data' => $array_errores,
+                ], 500);
+            }
+        }catch(\Exception $e){
+            \Log::info($e);
+            \Log::info($e->getMessage());
+
+            $message = 'Ha ocurrido un error al importar el excel';
+
+            $message = "";$code="";
+            if($e->getMessage()=='sin_periodo_actual'){
+                $code = 'sin_periodo_actual';
+                $message = "No se ha registrado un periodo activo, por favor dirijase al menu configuracion.";
+            }
+
+            if($e->getMessage()=='excel_vacio'){
+                $code = 'excel_vacio';
+                $message = "El excel se encuentra vacio.";
+            }
+
+            return response()->json([
+                'message' => $message,
+                'error' => $e,
+                'code' => $code
+            ], 500);
+    	}
     }
 }
