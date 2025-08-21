@@ -2740,7 +2740,11 @@ var FormularioValidacion = function FormularioValidacion() {
         options: false
       },
       errors: {},
-      btn: {}
+      btn: {
+        registrar: false // actualizar: false,
+        // importar: false,
+
+      }
     }, _defineProperty(_ref, "lock", {}), _defineProperty(_ref, "text", {}), _defineProperty(_ref, "cropInstance", null), _defineProperty(_ref, "croppedImage", null), _defineProperty(_ref, "urlImage", "/storage/imagen_prueba.jpg"), _ref;
   },
   mounted: function mounted() {
@@ -2776,7 +2780,7 @@ var FormularioValidacion = function FormularioValidacion() {
   methods: {
     registrarArticulo: function registrarArticulo() {
       var me = this;
-      me.btn['registrar'] = true;
+      this.btn['registrar'] = true;
       if (me.editable._foto_validado) me.editable.foto_validado = 1;else me.editable.foto_validado = 0;
       if (me.editable._duplicado) me.editable.duplicado = 1;else me.editable.duplicado = 0;
       axios.post('/inscrito/registrar', this.editable).then(function (response) {
@@ -4083,7 +4087,8 @@ var DashboardEstudianteMatriculadoInscrito = function DashboardEstudianteMatricu
           folder: datos.datos_inscrito.folder,
           foto: datos.datos_inscrito.foto,
           tipo_tramite: datos.datos_inscrito.tipo_tramite,
-          foto_validado: datos.datos_inscrito.foto_validado
+          foto_validado: datos.datos_inscrito.foto_validado,
+          voucher_validado: datos.datos_inscrito.voucher_validado
         }, {});
       }
     },
@@ -85397,7 +85402,7 @@ var render = function() {
               "button",
               {
                 staticClass: "btn btn-primary pull-right",
-                attrs: { type: "button", disabled: _vm.btn.actualizar },
+                attrs: { type: "button", disabled: _vm.btn.registrar },
                 on: {
                   click: function($event) {
                     return _vm.registrarArticulo()
@@ -86378,7 +86383,7 @@ var render = function() {
                             staticClass: "btn btn-primary",
                             attrs: {
                               type: "button",
-                              disabled: _vm.btn.actualizar
+                              disabled: _vm.btn.registrar
                             },
                             on: {
                               click: function($event) {

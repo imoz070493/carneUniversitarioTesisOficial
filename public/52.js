@@ -175,6 +175,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     value: {
@@ -875,6 +879,22 @@ var render = function() {
                   _c("div", { staticClass: "form-group" }, [
                     _vm._m(7),
                     _vm._v(" "),
+                    _vm.editable.foto_validado == "1"
+                      ? _c("label", { staticClass: "col-form-label" }, [
+                          _c("span", { staticClass: "badge badge-success" }, [
+                            _vm._v("Validado")
+                          ])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.editable.foto_validado == "0"
+                      ? _c("label", { staticClass: "col-form-label" }, [
+                          _c("span", { staticClass: "badge badge-secondary" }, [
+                            _vm._v("Por Validar")
+                          ])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
                     _vm.errors.new_document
                       ? _c("span", { staticClass: "text-error" }, [
                           _vm._v(_vm._s(_vm.errors.new_document))
@@ -928,6 +948,22 @@ var render = function() {
                 [
                   _c("div", { staticClass: "form-group" }, [
                     _vm._m(8),
+                    _vm._v(" "),
+                    _vm.editable.voucher_validado == "1"
+                      ? _c("label", { staticClass: "col-form-label" }, [
+                          _c("span", { staticClass: "badge badge-success" }, [
+                            _vm._v("Validado")
+                          ])
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.editable.voucher_validado == "0"
+                      ? _c("label", { staticClass: "col-form-label" }, [
+                          _c("span", { staticClass: "badge badge-secondary" }, [
+                            _vm._v("Por Validar")
+                          ])
+                        ])
+                      : _vm._e(),
                     _vm._v(" "),
                     _vm.errors.new_document_voucher
                       ? _c("span", { staticClass: "text-error" }, [

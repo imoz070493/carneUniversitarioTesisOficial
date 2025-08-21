@@ -170,6 +170,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     value: {
@@ -192,7 +195,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       errors: {},
       show: {},
       text: {},
-      btn: {},
+      btn: {
+        registrar: false
+      },
       showPopup: false
     };
   },
@@ -516,7 +521,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.hide-options[data-v-252a8a04] {\r\n  display: none;\r\n  overflow: hidden;\r\n  transition: max-height 0.2s ease-out;\n}\n.show-options[data-v-252a8a04] {\r\n  display: flex;\r\n  /* padding: 0 18px; */\r\n  background-color: white;\r\n  /* max-height: 0; */\r\n  overflow: hidden;\r\n  margin: -10px 0 0 -10px;\r\n  transition: max-height 0.2s ease-out;\n}\n.text-error[data-v-252a8a04]{\r\n    color: red !important;\r\n    font-weight: bold;\n}\n.cropper-container[data-v-252a8a04] {\r\n  width: 350px;   /* Ajusta el tamaño del contenedor */\r\n  height: 500px;  /* Ajusta la altura del recorte */\r\n  overflow: hidden;\r\n  border: 1px solid #ddd;\n}\n.cropper-image[data-v-252a8a04] {\r\n  max-width: 100%;\r\n  max-height: 100%;\r\n  display: block;\n}\r\n\r\n/* CSS para el popup de la imagen */\n.popup[data-v-252a8a04] {\r\n  position: absolute;\r\n  background-color: white;\r\n  border: 1px solid #ccc;\r\n  padding: 10px;\r\n  z-index: 100;\r\n  width: 300px;\r\n  top: 30px;\r\n  left: 0;\r\n  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\n}\n.close-btn[data-v-252a8a04] {\r\n  float: right;\r\n  background: none;\r\n  border: none;\r\n  font-size: 16px;\r\n  cursor: pointer;\n}\n.info-image[data-v-252a8a04] {\r\n  width: 100%;\r\n  height: auto;\r\n  margin-top: 5px;\n}\r\n\r\n/*.cr-boundary::before,\r\n.cr-boundary::after {\r\n    content: \"\";\r\n    position: absolute;\r\n    width: 100%;\r\n    height: 1px;\r\n    background: rgba(255, 255, 255, 0.6);\r\n    border-top: 1px dashed white;\r\n}\r\n\r\n.cr-boundary::before {\r\n    top: 33.33%;\r\n}\r\n\r\n.cr-boundary::after {\r\n    top: 66.66%;\r\n}\r\n\r\n.cr-viewport::before,\r\n.cr-viewport::after {\r\n    content: \"\";\r\n    position: absolute;\r\n    height: 100%;\r\n    width: 1px;\r\n    background: rgba(255, 255, 255, 0.6);\r\n    border-left: 1px dashed white;\r\n}\r\n\r\n.cr-viewport::before {\r\n    left: 33.33%;\r\n}\r\n\r\n.cr-viewport::after {\r\n    left: 66.66%;\r\n}*/\r\n", ""]);
+exports.push([module.i, "\n.hide-options[data-v-252a8a04] {\r\n  display: none;\r\n  overflow: hidden;\r\n  transition: max-height 0.2s ease-out;\n}\n.show-options[data-v-252a8a04] {\r\n  display: flex;\r\n  /* padding: 0 18px; */\r\n  background-color: white;\r\n  /* max-height: 0; */\r\n  overflow: hidden;\r\n  margin: -10px 0 0 -10px;\r\n  transition: max-height 0.2s ease-out;\n}\n.text-error[data-v-252a8a04]{\r\n    color: red !important;\r\n    font-weight: bold;\n}\n.cropper-container[data-v-252a8a04] {\r\n  width: 350px;   /* Ajusta el tamaño del contenedor */\r\n  height: 500px;  /* Ajusta la altura del recorte */\r\n  overflow: hidden;\r\n  border: 1px solid #ddd;\n}\n.cropper-image[data-v-252a8a04] {\r\n  max-width: 100%;\r\n  max-height: 100%;\r\n  display: block;\n}\r\n\r\n/* CSS para el popup de la imagen */\n.popup[data-v-252a8a04] {\r\n  position: absolute;\r\n  background-color: white;\r\n  border: 1px solid #ccc;\r\n  padding: 10px;\r\n  z-index: 100;\r\n  width: 300px;\r\n  top: 30px;\r\n  left: 0;\r\n  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);\n}\n.close-btn[data-v-252a8a04] {\r\n  float: right;\r\n  background: none;\r\n  border: none;\r\n  font-size: 16px;\r\n  cursor: pointer;\n}\n.info-image[data-v-252a8a04] {\r\n  width: 100%;\r\n  height: auto;\r\n  margin-top: 5px;\n}\n.hide-container[data-v-252a8a04]{\r\n    display: none;\n}\n.show-container[data-v-252a8a04]{\r\n    display: flex;\r\n    width: calc(100% + 10px);\r\n    height: calc(100% - 66px);\r\n    /* border: 1px solid black; */\r\n    position: absolute;\r\n    z-index: 100;\r\n    margin: 66.8px 0 0 -1px;\r\n    background: rgba(162, 153, 153, .5);\n}\n.loader[data-v-252a8a04] {\r\n    border: 10px solid #f3f3f3;\r\n    border-radius: 50%;\r\n    border-top: 10px solid #3498db;\r\n    width: 50px;\r\n    height: 50px;\r\n    -webkit-animation: spin-data-v-252a8a04 2s linear infinite; /* Safari */\r\n    animation: spin-data-v-252a8a04 2s linear infinite;\r\n    top: calc(50%);\r\n    left: 50%;\r\n    position: absolute;\r\n    margin: -25px 0 0 -25px;\r\n    z-index: 100;\n}\r\n\r\n/* Safari */\n@-webkit-keyframes spin-data-v-252a8a04 {\n0% { -webkit-transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg);\n}\n}\n@keyframes spin-data-v-252a8a04 {\n0% { transform: rotate(0deg);\n}\n100% { transform: rotate(360deg);\n}\n}\r\n\r\n/*.cr-boundary::before,\r\n.cr-boundary::after {\r\n    content: \"\";\r\n    position: absolute;\r\n    width: 100%;\r\n    height: 1px;\r\n    background: rgba(255, 255, 255, 0.6);\r\n    border-top: 1px dashed white;\r\n}\r\n\r\n.cr-boundary::before {\r\n    top: 33.33%;\r\n}\r\n\r\n.cr-boundary::after {\r\n    top: 66.66%;\r\n}\r\n\r\n.cr-viewport::before,\r\n.cr-viewport::after {\r\n    content: \"\";\r\n    position: absolute;\r\n    height: 100%;\r\n    width: 1px;\r\n    background: rgba(255, 255, 255, 0.6);\r\n    border-left: 1px dashed white;\r\n}\r\n\r\n.cr-viewport::before {\r\n    left: 33.33%;\r\n}\r\n\r\n.cr-viewport::after {\r\n    left: 66.66%;\r\n}*/\r\n", ""]);
 
 // exports
 
@@ -569,6 +574,17 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
+    _c(
+      "div",
+      {
+        class: {
+          "show-container": _vm.btn.registrar,
+          "hide-container": !_vm.btn.registrar
+        }
+      },
+      [_c("div", { staticClass: "loader" })]
+    ),
+    _vm._v(" "),
     _c(
       "form",
       {
@@ -1020,7 +1036,7 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-primary",
-                  attrs: { type: "button", disabled: _vm.btn.actualizar },
+                  attrs: { type: "button", disabled: _vm.btn.registrar },
                   on: {
                     click: function($event) {
                       return _vm.registrarSolicitud()

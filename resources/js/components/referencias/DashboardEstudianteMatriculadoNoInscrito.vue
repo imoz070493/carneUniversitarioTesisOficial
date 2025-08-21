@@ -1,5 +1,8 @@
 <template>
-    <div class="row"> 
+    <div class="row">
+        <div v-bind:class="{'show-container': btn.registrar, 'hide-container': !btn.registrar}">
+            <div class="loader"></div>
+        </div>
         <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
             {{editable}}
             <div class="row">
@@ -144,7 +147,7 @@
 
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="form-group pull-right">
-                        <button type="button" class="btn btn-primary" :disabled="btn.actualizar"  @click="registrarSolicitud()">Guardar</button>
+                        <button type="button" class="btn btn-primary" :disabled="btn.registrar"  @click="registrarSolicitud()">Guardar</button>
                     </div>
                 </div>
             </div>
@@ -175,7 +178,9 @@ export default {
         errors: {},
         show: {},
         text: {},
-        btn: {},
+        btn: {
+            registrar: false
+        },
         showPopup: false
     };
   },
@@ -464,6 +469,47 @@ export default {
   width: 100%;
   height: auto;
   margin-top: 5px;
+}
+
+.hide-container{
+    display: none;
+}
+
+.show-container{
+    display: flex;
+    width: calc(100% + 10px);
+    height: calc(100% - 66px);
+    /* border: 1px solid black; */
+    position: absolute;
+    z-index: 100;
+    margin: 66.8px 0 0 -1px;
+    background: rgba(162, 153, 153, .5);
+}
+
+.loader {
+    border: 10px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 10px solid #3498db;
+    width: 50px;
+    height: 50px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 2s linear infinite;
+    top: calc(50%);
+    left: 50%;
+    position: absolute;
+    margin: -25px 0 0 -25px;
+    z-index: 100;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /*.cr-boundary::before,

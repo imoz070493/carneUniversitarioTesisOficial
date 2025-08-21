@@ -636,6 +636,7 @@ export default {
                 foto: datos.datos_inscrito.foto,
                 tipo_tramite: datos.datos_inscrito.tipo_tramite,
                 foto_validado: datos.datos_inscrito.foto_validado,
+                voucher_validado: datos.datos_inscrito.voucher_validado,
             },{});
         }
     },

@@ -440,6 +440,7 @@ class Inscrito extends Model
                                 'e.telefono2',
                                 'inscritos.foto',
                                 'inscritos.foto_validado',
+                                'inscritos.voucher_validado',
                                 'c.folder'
                             )
                             ->where('inscritos.estudiante_id',$estudiante_id)

@@ -102,6 +102,8 @@
                                     :disabled="lock._new_document"
                                     v-if="show._new_document"
                                 > -->
+                                <label v-if="editable.foto_validado=='1'" class="col-form-label"><span class="badge badge-success">Validado</span></label>
+                                <label v-if="editable.foto_validado=='0'" class="col-form-label"><span class="badge badge-secondary">Por Validar</span></label>
                                 <span class="text-error" v-if="errors.new_document">{{errors.new_document}}</span>
                             </div>
                         </div>
@@ -129,6 +131,8 @@
                                     accept=".jpeg, .jpg, .png"
                                     v-if="show._new_document_voucher"
                                 > -->
+                                <label v-if="editable.voucher_validado=='1'" class="col-form-label"><span class="badge badge-success">Validado</span></label>
+                                <label v-if="editable.voucher_validado=='0'" class="col-form-label"><span class="badge badge-secondary">Por Validar</span></label>
                                 <span class="text-error" v-if="errors.new_document_voucher">{{errors.new_document_voucher}}</span>
                             </div>
                         </div>

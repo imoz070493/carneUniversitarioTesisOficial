@@ -130,7 +130,7 @@
                 <!-- <button type="button" @click="crear()" class="btn btn-secondary">
                     <i class="icon-plus"></i>&nbsp;Nuevo
                 </button> -->
-                <button type="button" class="btn btn-primary pull-right" :disabled="btn.actualizar"  @click="registrarArticulo()">Guardar</button>
+                <button type="button" class="btn btn-primary pull-right" :disabled="btn.registrar" @click="registrarArticulo()">Guardar</button>
                 <!-- <div class="form-group pull-right">
                     <button type="button" class="btn btn-primary pull-right" :disabled="btn.actualizar"  @click="actualizarPerfil()">Guardar</button>
                 </div> -->
@@ -366,7 +366,7 @@
 
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-group pull-right">
-                                <button type="button" class="btn btn-primary" :disabled="btn.actualizar"  @click="registrarArticulo()">Guardar</button>
+                                <button type="button" class="btn btn-primary" :disabled="btn.registrar" @click="registrarArticulo()">Guardar</button>
                             </div>
                         </div>
                     </div>
@@ -449,7 +449,11 @@ export default {
       errors:{
 
       },
-      btn: {},
+      btn: {
+        registrar: false,
+        // actualizar: false,
+        // importar: false,
+      },
       lock: {},
     text: {},
       cropInstance: null,
@@ -498,7 +502,7 @@ export default {
   methods: {
     registrarArticulo(){
       let me = this;
-      me.btn['registrar'] = true;
+      this.btn['registrar'] = true;
 
       if(me.editable._foto_validado) me.editable.foto_validado = 1;
       else me.editable.foto_validado = 0;
