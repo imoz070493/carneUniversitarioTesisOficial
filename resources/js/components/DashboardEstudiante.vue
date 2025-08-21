@@ -141,7 +141,7 @@
                     <button @click="obtenerCursos">Obtener Cursos</button>
                     <h1>numero {{ numero }}</h1> -->
 
-                  {{editable}}
+                  <!-- {{editable}} -->
                 <div class="row">
                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                         <h5>Datos</h5><hr>

@@ -4,7 +4,7 @@
             <div class="loader"></div>
         </div>
         <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-            {{editable}}
+            <!-- {{editable}} -->
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <div class="form-group">

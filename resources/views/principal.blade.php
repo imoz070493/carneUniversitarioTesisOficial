@@ -37,9 +37,9 @@
                 <li class="nav-item px-3">
                     <a class="nav-link" href="#">Escritorio</a>
                 </li>
-                <li class="nav-item px-3">
+                {{-- <li class="nav-item px-3">
                     <a class="nav-link" href="#">Configuraciones</a>
-                </li>
+                </li> --}}
                 <li class="nav-item px-3">
                     {{-- <button type="button" v-if="$store.state.app_mode=='Produccion'" class="btn btn-block btn-success btn-xs" v-html="$store.state.app_mode"></button>
                     <button type="button" v-if="$store.state.app_mode=='Prueba'" class="btn btn-block btn-danger btn-xs" v-html="$store.state.app_mode"></button> --}}

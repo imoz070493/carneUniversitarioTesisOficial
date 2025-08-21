@@ -86593,9 +86593,6 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
-          _vm._v(
-            "\n\n              " + _vm._s(_vm.editable) + "\n            "
-          ),
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-lg-2 col-md-2 col-sm-2 col-xs-12" }, [
               _c("h5", [_vm._v("Datos")]),

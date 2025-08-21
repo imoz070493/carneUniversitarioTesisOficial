@@ -592,7 +592,6 @@ var render = function() {
         attrs: { action: "", method: "post", enctype: "multipart/form-data" }
       },
       [
-        _vm._v("\n        " + _vm._s(_vm.editable) + "\n        "),
         _c("div", { staticClass: "row" }, [
           _c("div", { staticClass: "col-lg-3 col-md-3 col-sm-3 col-xs-12" }, [
             _c("div", { staticClass: "form-group" }, [
