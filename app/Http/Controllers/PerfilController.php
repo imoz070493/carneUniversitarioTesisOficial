@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Perfil;
 use App\Http\Requests\PerfilFormRequest;
+use App\Http\Requests\PerfilModalFormRequest;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class PerfilController extends Controller
 {
@@ -107,5 +109,19 @@ class PerfilController extends Controller
         $data['estado'] = 'activo';
         
         return Articulo::guardarDatos($data);
+    }
+
+    public function actualizarPassword(PerfilModalFormRequest $request){
+        if(!$request->ajax()) return redirect('/');
+        // Actualizar contraseña
+        $user = \Auth::user();
+
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Contraseña actualizada correctamente'
+        ]);
     }
 }

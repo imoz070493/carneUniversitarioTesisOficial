@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -62,7 +63,7 @@
                         <div class="dropdown-header text-center">
                             <strong>Cuenta</strong>
                         </div>
-                        <a class="dropdown-item" href="#"><i class="fa fa-user"></i> Perfil</a>
+                        <a @click="setPerfilModal('actualizar_perfil')" class="dropdown-item" href="#"><i class="fa fa-user"></i> Perfil</a>
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();"
@@ -81,6 +82,12 @@
             <!-- Contenido Principal -->
             @yield('contenido')
             <!-- /Fin del contenido principal -->
+            <?php $nombre_estudiante = auth()->user()->name;?>
+            <template v-if="$store.state.vuex_perfil_modal=='actualizar_perfil'">
+                <formulario-perfil-modal
+                    :var_config="{ title: 'Perfil', tipo_accion: 'actualizar', 'nombre_estudiante': '<?php echo $nombre_estudiante;?>' }"
+                ></formulario-perfil-modal>
+            </template>            
         </div>
     </div>
 

@@ -70,6 +70,7 @@ Vue.component('cliente-web-service', require('./components/ClienteWebService.vue
 // Vue.component('reporte-compra', require('./components/ReporteCompra.vue').default);
 Vue.component('perfil', require('./components/Perfil.vue').default);
 Vue.component('notification', require('./components/Notification.vue').default);
+Vue.component('formulario-perfil-modal', require('./components/FormularioPerfilModal.vue').default);
 
 Vue.component('date-picker-2', require('./components/referencias/DatePicker2.vue').default);
 
@@ -84,6 +85,7 @@ const store = new Vuex.Store({
         numero: 10,
         app_mode: '',
         vuex_menu: 100,
+        vuex_perfil_modal: '',
         permisos: [],
         restriccion_stock: 0
     },
@@ -99,6 +101,9 @@ const store = new Vuex.Store({
         },
         setVuexMenu(state, menu){
             state.vuex_menu = menu;
+        },
+        setVuexPerfilModal(state, param){
+            state.vuex_perfil_modal = param;
         },
         setPermisos(state, permisos){
             state.permisos = permisos;
@@ -155,7 +160,7 @@ const app = new Vue({
         // this.getConfig();
     },
     methods:{
-        ...mapMutations(['aumentar','disminuir','setAppMode','setVuexMenu','setPermisos','setRestriccionStock',]),
+        ...mapMutations(['aumentar','disminuir','setAppMode','setVuexMenu','setVuexPerfilModal','setPermisos','setRestriccionStock',]),
         getConfig(){
             let me = this;
             var userId = $('meta[name="userId"]').attr('content');
@@ -179,6 +184,9 @@ const app = new Vue({
         },
         setMenu(menu){
             this.setVuexMenu(menu);
+        },
+        setPerfilModal(text){
+            this.setVuexPerfilModal(text);
         }
     }
 });

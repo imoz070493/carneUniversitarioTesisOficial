@@ -198,3 +198,4 @@ Route::put('/perfil/actualizar','PerfilController@update');
 // Route::put('/perfil/desactivar','PerfilController@desactivar');
 // Route::put('/perfil/activar','PerfilController@activar');
 Route::get('/perfil/obtener','PerfilController@obtenerPerfil');
+Route::post('/perfil/actualizar_password','PerfilController@actualizarPassword');
