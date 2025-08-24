@@ -48,7 +48,7 @@ class InscritosTableSeeder extends Seeder
 
     public static function data(){
         // Ruta al archivo JSON
-        $json = File::get(database_path('data/inscritos.json'));
+        $json = File::get(database_path('data/incritos TO 2025-I.json'));
 
         // Convertir en array
         return json_decode($json, true);
