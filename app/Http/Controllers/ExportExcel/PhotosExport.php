@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\ExportExcel;
 
+use App\Convocatoria;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx as XlsxWriter;
@@ -73,6 +74,9 @@ class PhotosExport
 
 		//Imprime las columnas
 
+		$convocatoria_actual = Convocatoria::whereNull('activo')->first();
+        $folder = $convocatoria_actual->folder;
+
 		$row = 2;
 		foreach($data as $key => $value) {
 			
@@ -85,7 +89,7 @@ class PhotosExport
 			$hoja->setCellValue("F" . $row, $value->escuela_profesional);
 			$hoja->setCellValue("G" . $row, $value->dni);
 			$hoja->setCellValue("H" . $row, $value->sexo);
-			static::setPhoto($documento,"I".$row,$value->foto);
+			static::setPhoto($documento,"I".$row,$value->foto, $folder);
 
 			$hoja->getStyle("A$row:I$row")
 					->getAlignment()
@@ -351,13 +355,13 @@ class PhotosExport
 		// }
 	}
 
-	public static function setPhoto($documento, $cell, $photo){
+	public static function setPhoto($documento, $cell, $photo, $folder){
 		// if ($empresa->ruta_logo) {
 			$drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
 			// $drawing->setName('Logo');
 			// $drawing->setDescription('Logo');
 			//LOG::info(boolval(file_exists(public_path() . '/images/' . $empresa->ruta_logo)));
-			$path = public_path("storage/convocatoria_202501/1_validado/".$photo);
+			$path = public_path("storage/$folder/1_validado/".$photo);
 			if(file_exists($path)){
 				$drawing->setPath($path);
 				$drawing->setHeight(158);
