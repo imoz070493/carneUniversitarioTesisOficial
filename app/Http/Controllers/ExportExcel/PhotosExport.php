@@ -357,7 +357,7 @@ class PhotosExport
 			// $drawing->setName('Logo');
 			// $drawing->setDescription('Logo');
 			//LOG::info(boolval(file_exists(public_path() . '/images/' . $empresa->ruta_logo)));
-			$path = public_path("\storage/convocatoria_202501/1_validado/".$photo);
+			$path = public_path("storage/convocatoria_202501/1_validado/".$photo);
 			if(file_exists($path)){
 				$drawing->setPath($path);
 				$drawing->setHeight(158);
