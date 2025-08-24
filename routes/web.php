@@ -128,6 +128,7 @@ Route::post('/ingresante/importar','IngresanteController@importar');
 Route::post('/inscrito','InscritoController@index');
 Route::post('/inscrito/historico','InscritoController@indexHistorico');
 Route::post('/inscrito/registrar','InscritoController@store');
+Route::post('/inscrito/registrar_test','InscritoController@storeTest');
 Route::put('/inscrito/actualizar','InscritoController@update');
 Route::put('/inscrito/validar_voucher','InscritoController@validarVoucher');
 Route::put('/inscrito/actualizar/anulacion','InscritoController@updateAnulacion');

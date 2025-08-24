@@ -14,7 +14,7 @@
                 </div>
                 <div class="modal-body" style='max-height:550px;overflow-y:auto;overflow-x:hidden;'>
                     <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                        <!-- {{editable}} -->
+                        {{editable}}
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="form-group">
@@ -221,7 +221,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" @click="cerrarModal()">Cerrar</button>
-                    <button type="button" v-if="var_config.tipo_accion=='registrar'" class="btn btn-primary" :disabled="btn.registrar" @click="registrarArticulo()">Guardar</button>
+                    <button type="button" v-if="var_config.tipo_accion=='registrar'" class="btn btn-primary" :disabled="btn.registrar" @click="registrarArticuloVariasVeces()">Guardar</button>
                     <button type="button" v-if="var_config.tipo_accion=='actualizar'" class="btn btn-primary" :disabled="btn.actualizar" @click="actualizarArticulo()">Actualizar</button>
                 </div>
             </div>
@@ -255,7 +255,29 @@ export default {
         return {
             editable: Object.assign({
                 tipo_documento: 'codigo',
-                credencial_validado: 'no_validado'
+                credencial_validado: 'no_validado',
+
+                apellido_materno: "DURAND",
+                apellido_paterno: "ALARCÓN",
+                codigo_estudiante: "1102320231",
+                credencial_validado: "no_validado",
+                dni: "74548679",
+                duplicado:0,
+                escuela_profesional:"EDUCACIÓN PRIMARIA INTERCULTURAL",
+                estudiante_id:88,
+                fecha_expiracion:"",
+                fecha_inicio_tramite:"2025-8-24 9:00:25",
+                foto_validado:0,
+                name_document:"0f45af68-2b49-4eca-b301-528f67f53d9c.jpg",
+                new_document:"",
+                nombres:"ALICIA",
+                numero_documento:"1102320231",
+                numero_recibo:"v001-223",
+                sexo:"FEMENINO",
+                telefono1:"988674768",
+                tipo_documento:"codigo",
+                _duplicado:false,
+                _foto_validado:false,
             },this.value),
             errors: [],
             btn: {
@@ -296,6 +318,11 @@ export default {
         me.$forceUpdate();
     },
     methods: {
+        registrarArticuloVariasVeces(){
+            for (let i = 0; i < 100; i++) {
+                this.registrarArticulo();
+            }
+        },
         registrarArticulo(){
             let me = this;
             this.btn['registrar'] = true;
@@ -306,7 +333,7 @@ export default {
             if(me.editable._duplicado) me.editable.duplicado = 1;
             else me.editable.duplicado = 0;
 
-            axios.post('/inscrito/registrar',this.editable).then(function (response){
+            axios.post('/inscrito/registrar_test',this.editable).then(function (response){
                 me.$emit('guardado');
                 me.cerrarModal();
 

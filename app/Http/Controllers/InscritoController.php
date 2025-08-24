@@ -123,6 +123,45 @@ class InscritoController extends Controller
 
     }
 
+    public function storeTest(Request $request)
+    {
+        if(!$request->ajax()) return redirect('/');
+
+        $data = $request->all();
+        $convocatoria_actual = Convocatoria::whereNull('activo')->first();
+        $data['convocatoria_id'] = $convocatoria_actual->id;
+        $data['folder'] = $convocatoria_actual->folder;
+        $data['voucher_validado'] = false;
+
+        $data_estudiante = [
+            'id' => $data['estudiante_id'],
+            'correo_personal' => isset($data['correo_personal'])?$data['correo_personal']:null,
+            'telefono1' => isset($data['telefono1'])?$data['telefono1']:null,
+            'telefono2' => isset($data['telefono2'])?$data['telefono2']:null,
+        ];
+
+        try{
+            DB::beginTransaction();
+
+            $estudiante_update = Estudiante::guardarDatos($data_estudiante);
+            $inscrito = Inscrito::guardarDatos($data);
+
+            DB::commit();
+            return response()->json([
+                'cod_sunat' => 0,
+                'msj_app' => $inscrito,
+            ],200);
+    	}catch(\Exception $e){
+			DB::rollback();
+            \Log::info($e);
+            return response()->json([
+                'message' => 'No se puede registrar la venta',
+                'error' => $e
+            ], 500);
+    	}
+
+    }
+
     public function update(InscritoFormRequest $request)
     {
         if(!$request->ajax()) return redirect('/');

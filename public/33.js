@@ -15,6 +15,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var croppie_croppie_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(croppie_croppie_css__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -268,11 +270,16 @@ var MatriculadoBusqueda = function MatriculadoBusqueda() {
     }
   },
   data: function data() {
+    var _Object$assign;
+
     return {
-      editable: Object.assign({
+      editable: Object.assign((_Object$assign = {
         tipo_documento: 'codigo',
-        credencial_validado: 'no_validado'
-      }, this.value),
+        credencial_validado: 'no_validado',
+        apellido_materno: "DURAND",
+        apellido_paterno: "ALARCÓN",
+        codigo_estudiante: "1102320231"
+      }, _defineProperty(_Object$assign, "credencial_validado", "no_validado"), _defineProperty(_Object$assign, "dni", "74548679"), _defineProperty(_Object$assign, "duplicado", 0), _defineProperty(_Object$assign, "escuela_profesional", "EDUCACIÓN PRIMARIA INTERCULTURAL"), _defineProperty(_Object$assign, "estudiante_id", 88), _defineProperty(_Object$assign, "fecha_expiracion", ""), _defineProperty(_Object$assign, "fecha_inicio_tramite", "2025-8-24 9:00:25"), _defineProperty(_Object$assign, "foto_validado", 0), _defineProperty(_Object$assign, "name_document", "0f45af68-2b49-4eca-b301-528f67f53d9c.jpg"), _defineProperty(_Object$assign, "new_document", ""), _defineProperty(_Object$assign, "nombres", "ALICIA"), _defineProperty(_Object$assign, "numero_documento", "1102320231"), _defineProperty(_Object$assign, "numero_recibo", "v001-223"), _defineProperty(_Object$assign, "sexo", "FEMENINO"), _defineProperty(_Object$assign, "telefono1", "988674768"), _defineProperty(_Object$assign, "tipo_documento", "codigo"), _defineProperty(_Object$assign, "_duplicado", false), _defineProperty(_Object$assign, "_foto_validado", false), _Object$assign), this.value),
       errors: [],
       btn: {
         registrar: false,
@@ -309,12 +316,17 @@ var MatriculadoBusqueda = function MatriculadoBusqueda() {
     me.$forceUpdate();
   },
   methods: {
+    registrarArticuloVariasVeces: function registrarArticuloVariasVeces() {
+      for (var i = 0; i < 100; i++) {
+        this.registrarArticulo();
+      }
+    },
     registrarArticulo: function registrarArticulo() {
       var me = this;
       this.btn['registrar'] = true;
       if (me.editable._foto_validado) me.editable.foto_validado = 1;else me.editable.foto_validado = 0;
       if (me.editable._duplicado) me.editable.duplicado = 1;else me.editable.duplicado = 0;
-      axios.post('/inscrito/registrar', this.editable).then(function (response) {
+      axios.post('/inscrito/registrar_test', this.editable).then(function (response) {
         me.$emit('guardado');
         me.cerrarModal();
         swal('Registrado', 'El tramite ha sido registrado con exito', 'success');
@@ -573,6 +585,11 @@ var render = function() {
                   }
                 },
                 [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.editable) +
+                      "\n                    "
+                  ),
                   _c("div", { staticClass: "row" }, [
                     _c(
                       "div",
@@ -1431,7 +1448,7 @@ var render = function() {
                     attrs: { type: "button", disabled: _vm.btn.registrar },
                     on: {
                       click: function($event) {
-                        return _vm.registrarArticulo()
+                        return _vm.registrarArticuloVariasVeces()
                       }
                     }
                   },
