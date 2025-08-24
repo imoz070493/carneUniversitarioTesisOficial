@@ -496,7 +496,7 @@ class Inscrito extends Model
         $zip->open($path_zip,ZipArchive::CREATE);
 
         foreach ($estudiantes as $key => $value) {
-            $zip->addFile($folder_origin.'/'.$value->foto,$value->foto);
+            $zip->addFile($folder_origin.'/'.$value->foto,"1_".$value->dni.".jpg");
         }
 
         // $zip->addFile(storage_path('app/public/convocatoria_202301/01_10015549.jpg'),'01_100155491.jpg');
