@@ -84,10 +84,21 @@ class PeriodoAcademicoTableSeeder extends Seeder
                 "descripcion" =>null,
                 "fecha_inicio" =>"2025-04-01",
                 "fecha_fin" =>"2025-05-31",
-                "estado" =>"Activo",
+                "estado" =>"Finalizado",
                 "created_at" =>"2025-01-14 12:39:22",
                 "updated_at" =>"2025-01-14 12:39:22",
                 "romano" =>"2025-I"
+            ],
+            [
+                "id" =>65,
+                "nombre" =>"2025-02",
+                "descripcion" =>null,
+                "fecha_inicio" =>"2025-08-25",
+                "fecha_fin" =>"2025-09-15",
+                "estado" =>"Activo",
+                "created_at" =>"2025-08-25 12:39:22",
+                "updated_at" =>"2025-08-25 12:39:22",
+                "romano" =>"2025-II"
             ]
         ];
     }

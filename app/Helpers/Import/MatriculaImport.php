@@ -64,40 +64,40 @@ class MatriculaImport{
 
 		// Log::info("Nombre Hoja: ".$objWorksheet->getTitle());
 		// $numero_dias_mes = cal_days_in_month(CAL_GREGORIAN, $mes, $agno) + 10;
-        $fila_inicio_lectura = 7;
+        $fila_inicio_lectura = 2;
 		$errors = [];
 		for ($row = $fila_inicio_lectura; $row <= $highestRow; $row++) {
 			//Validar CODIGO
-			if(!self::validarCodigo($objWorksheet->getCellByColumnAndRow(3, $row)->getFormattedValue())){
-				array_push($errors,"El codigo: ".$objWorksheet->getCellByColumnAndRow(3, $row)." de la fila: ".$row." ya existe.");
+			if(!self::validarCodigo($objWorksheet->getCellByColumnAndRow(2, $row)->getFormattedValue())){
+				array_push($errors,"El codigo: ".$objWorksheet->getCellByColumnAndRow(2, $row)." de la fila: ".$row." ya existe.");
 			}
             //Validar NUMERO DE DOCUMENTO
-            if(!self::validarNumeroDocumento($objWorksheet->getCellByColumnAndRow(5, $row)->getFormattedValue())){
-				array_push($errors,"El numero de documento: ".$objWorksheet->getCellByColumnAndRow(5, $row)." de la fila: ".$row." ya existe.");
+            if(!self::validarNumeroDocumento($objWorksheet->getCellByColumnAndRow(3, $row)->getFormattedValue())){
+				array_push($errors,"El numero de documento: ".$objWorksheet->getCellByColumnAndRow(3, $row)." de la fila: ".$row." ya existe.");
 			}
             //Validar APELLIDO PATERNO
-            if(!self::validarApellidoPaterno($objWorksheet->getCellByColumnAndRow(6, $row)->getFormattedValue())){
-				array_push($errors,"El apellido paterno: ".$objWorksheet->getCellByColumnAndRow(6, $row)." de la fila: ".$row." ya existe.");
+            if(!self::validarApellidoPaterno($objWorksheet->getCellByColumnAndRow(4, $row)->getFormattedValue())){
+				array_push($errors,"El apellido paterno: ".$objWorksheet->getCellByColumnAndRow(4, $row)." de la fila: ".$row." ya existe.");
 			}
             //Validar APELLIDO MATERNO
-            if(!self::validarApellidoMaterno($objWorksheet->getCellByColumnAndRow(7, $row)->getFormattedValue())){
-				array_push($errors,"El apellido materno: ".$objWorksheet->getCellByColumnAndRow(7, $row)." de la fila: ".$row." ya existe.");
+            if(!self::validarApellidoMaterno($objWorksheet->getCellByColumnAndRow(5, $row)->getFormattedValue())){
+				array_push($errors,"El apellido materno: ".$objWorksheet->getCellByColumnAndRow(5, $row)." de la fila: ".$row." ya existe.");
 			}
             //Validar NOMBRES
-            if(!self::validarNombres($objWorksheet->getCellByColumnAndRow(8, $row)->getFormattedValue())){
-				array_push($errors,"Los nombres: ".$objWorksheet->getCellByColumnAndRow(8, $row)." de la fila: ".$row." ya existe.");
+            if(!self::validarNombres($objWorksheet->getCellByColumnAndRow(6, $row)->getFormattedValue())){
+				array_push($errors,"Los nombres: ".$objWorksheet->getCellByColumnAndRow(6, $row)." de la fila: ".$row." ya existe.");
 			}
             //Validar GENERO
-            if(!self::validarSexo($objWorksheet->getCellByColumnAndRow(9, $row)->getFormattedValue())){
-				array_push($errors,"El sexo: ".$objWorksheet->getCellByColumnAndRow(9, $row)." de la fila: ".$row." ya existe.");
+            if(!self::validarSexo($objWorksheet->getCellByColumnAndRow(7, $row)->getFormattedValue())){
+				array_push($errors,"El sexo: ".$objWorksheet->getCellByColumnAndRow(7, $row)." de la fila: ".$row." ya existe.");
 			}
             //Validar FACULTAD
-            if(!self::validarFacultad($objWorksheet->getCellByColumnAndRow(19, $row)->getFormattedValue())){
-				array_push($errors,"La facultad: ".$objWorksheet->getCellByColumnAndRow(20, $row)." de la fila: ".$row." ya existe.");
+            if(!self::validarFacultad($objWorksheet->getCellByColumnAndRow(8, $row)->getFormattedValue())){
+				array_push($errors,"La facultad: ".$objWorksheet->getCellByColumnAndRow(8, $row)." de la fila: ".$row." ya existe.");
 			}
             //Validar ESCUELA PROFESIONAL
-            if(!self::validarEscuelaProfesional($objWorksheet->getCellByColumnAndRow(20, $row)->getFormattedValue())){
-				array_push($errors,"La escuela profesional: ".$objWorksheet->getCellByColumnAndRow(20, $row)." de la fila: ".$row." ya existe.");
+            if(!self::validarEscuelaProfesional($objWorksheet->getCellByColumnAndRow(9, $row)->getFormattedValue())){
+				array_push($errors,"La escuela profesional: ".$objWorksheet->getCellByColumnAndRow(9, $row)." de la fila: ".$row." ya existe.");
 			}
 		}
         
@@ -118,14 +118,14 @@ class MatriculaImport{
         $array_matriculas = [];
         for ($row = $fila_inicio_lectura; $row <= $highestRow; $row++) {
             //Obtenemos una fila de datos del excel
-            $codigo_estudiante = $objWorksheet->getCellByColumnAndRow(3, $row)->getFormattedValue();
-            $numero_documento = $objWorksheet->getCellByColumnAndRow(5, $row)->getFormattedValue();
-            $apellido_paterno = $objWorksheet->getCellByColumnAndRow(6, $row)->getFormattedValue();
-            $apellido_materno = $objWorksheet->getCellByColumnAndRow(7, $row)->getFormattedValue();
-            $nombres = $objWorksheet->getCellByColumnAndRow(8, $row)->getFormattedValue();
-            $sexo = $objWorksheet->getCellByColumnAndRow(9, $row)->getFormattedValue();
-            $facultad = $objWorksheet->getCellByColumnAndRow(19, $row)->getFormattedValue();
-            $escuela_profesional = $objWorksheet->getCellByColumnAndRow(20, $row)->getFormattedValue();
+            $codigo_estudiante = $objWorksheet->getCellByColumnAndRow(2, $row)->getFormattedValue();
+            $numero_documento = $objWorksheet->getCellByColumnAndRow(3, $row)->getFormattedValue();
+            $apellido_paterno = $objWorksheet->getCellByColumnAndRow(4, $row)->getFormattedValue();
+            $apellido_materno = $objWorksheet->getCellByColumnAndRow(5, $row)->getFormattedValue();
+            $nombres = $objWorksheet->getCellByColumnAndRow(6, $row)->getFormattedValue();
+            $sexo = $objWorksheet->getCellByColumnAndRow(7, $row)->getFormattedValue();
+            $facultad = $objWorksheet->getCellByColumnAndRow(8, $row)->getFormattedValue();
+            $escuela_profesional = $objWorksheet->getCellByColumnAndRow(9, $row)->getFormattedValue();
             $inscrito = Inscrito::obtenerUltimaInscripcion($codigo_estudiante);
 
             array_push($array_matriculas,[

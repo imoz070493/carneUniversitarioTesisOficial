@@ -12,7 +12,7 @@ class TempEstablecerTipoTramiteTableSeeder extends Seeder
     public function run()
     {
         // Establecer Nuevos
-        $periodo_academico_id = '64';
+        $periodo_academico_id = '65';
 
         $nuevos = DB::table('matriculas')
                     ->where('periodo_academico_id',$periodo_academico_id)
