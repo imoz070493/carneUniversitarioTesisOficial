@@ -156,7 +156,7 @@ var VerAcceso = function VerAcceso() {
       offset: 3,
       criterio: 'todos',
       buscar: '',
-      per_page: 10
+      per_page: 50
     };
   },
   computed: {
