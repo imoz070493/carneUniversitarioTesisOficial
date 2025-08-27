@@ -97,11 +97,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 var TipoDocumentoSelect = function TipoDocumentoSelect() {
-  return __webpack_require__.e(/*! import() */ 77).then(__webpack_require__.bind(null, /*! @/components/referencias/TipoDocumentoSelect */ "./resources/js/components/referencias/TipoDocumentoSelect.vue"));
+  return __webpack_require__.e(/*! import() */ 18).then(__webpack_require__.bind(null, /*! @/components/referencias/TipoDocumentoSelect */ "./resources/js/components/referencias/TipoDocumentoSelect.vue"));
 };
 
 var DocumentoBusqueda = function DocumentoBusqueda() {
-  return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! @/components/referencias/DocumentoBusqueda */ "./resources/js/components/referencias/DocumentoBusqueda.vue"));
+  return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! @/components/referencias/DocumentoBusqueda */ "./resources/js/components/referencias/DocumentoBusqueda.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({

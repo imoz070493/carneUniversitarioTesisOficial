@@ -71,6 +71,7 @@ Vue.component('cliente-web-service', require('./components/ClienteWebService.vue
 Vue.component('perfil', require('./components/Perfil.vue').default);
 Vue.component('notification', require('./components/Notification.vue').default);
 Vue.component('formulario-perfil-modal', require('./components/FormularioPerfilModal.vue').default);
+Vue.component('acceso', require('./components/Acceso.vue').default);
 
 Vue.component('date-picker-2', require('./components/referencias/DatePicker2.vue').default);
 

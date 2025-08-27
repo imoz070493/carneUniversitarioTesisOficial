@@ -65,6 +65,10 @@ Route::get('/reload', function () {
     // Route::put('/empresa/activar','EmpresaController@activar');
 // });
 
+Route::get('/acceso','AccesoController@index');
+Route::post('/acceso/registrar','AccesoController@store');
+Route::put('/acceso/actualizar','AccesoController@update');
+
 Route::get('/role','RoleController@index');
 Route::post('/role/registrar','RoleController@store');
 Route::put('/role/actualizar','RoleController@update');
@@ -113,9 +117,13 @@ Route::put('/usuario/actualizar','UsuarioController@update');
 Route::get('/documento/busqueda','DocumentoController@obtenerDocumento');
 Route::get('/matricula/busqueda','MatriculaController@obtenerMatricula');
 Route::get('/matricula_estudiante/busqueda/convocatorias','MatriculaController@obtenerConvocatorias');
-Route::get('/matricula_estudiante/busqueda/convocatoria','MatriculaController@obtenerConvocatoria');
-Route::get('/matricula_estudiante/busqueda/matricula','MatriculaController@obtenerMatriculaEstudiante');
-Route::get('/matricula_estudiante/busqueda/inscripcion_estudiante','MatriculaController@obtenerInscripcionEstudiante');
+
+Route::group(['middleware' => ['permission:super_admin|dashboard_estudiante_listar']], function () {
+    Route::get('/matricula_estudiante/busqueda/convocatoria','MatriculaController@obtenerConvocatoria');
+    Route::get('/matricula_estudiante/busqueda/matricula','MatriculaController@obtenerMatriculaEstudiante');
+    Route::get('/matricula_estudiante/busqueda/inscripcion_estudiante','MatriculaController@obtenerInscripcionEstudiante');
+});
+
 Route::get('/conductor/busqueda','DocumentoController@obtenerConductorPorNombre');
 
 Route::post('/matricula','MatriculaController@index');
@@ -147,7 +155,9 @@ Route::post('/inscrito/obtener_foto_anterior_estudiante','InscritoController@obt
 Route::post('/inscrito/obtener_foto','InscritoController@obtenerFotoEstudiante');
 Route::post('/inscrito/validar_pagos','InscritoController@importarPagos');
 
-Route::post('/inscrito_estudiante/registrar','InscritoEstudianteController@store');
+Route::group(['middleware' => ['permission:dashboard_estudiante_listar']], function () {
+    Route::post('/inscrito_estudiante/registrar','InscritoEstudianteController@store');    
+});
 
 Route::get('/convocatoria','ConvocatoriaController@index');
 Route::post('/convocatoria','ConvocatoriaController@index');
@@ -198,5 +208,8 @@ Route::get('/perfil','PerfilController@index');
 Route::put('/perfil/actualizar','PerfilController@update');
 // Route::put('/perfil/desactivar','PerfilController@desactivar');
 // Route::put('/perfil/activar','PerfilController@activar');
-Route::get('/perfil/obtener','PerfilController@obtenerPerfil');
-Route::post('/perfil/actualizar_password','PerfilController@actualizarPassword');
+
+Route::group(['middleware' => ['permission:super_admin|dashboard_estudiante_listar']], function () {
+    Route::get('/perfil/obtener','PerfilController@obtenerPerfil');
+    Route::post('/perfil/actualizar_password','PerfilController@actualizarPassword');    
+});

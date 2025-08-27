@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[38],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -76,18 +76,129 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-var ListarError = function ListarError() {
-  return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! @/components/erp/matricula/ListarError */ "./resources/js/components/erp/matricula/ListarError.vue"));
-};
-
-var PeriodoAcademicoSelect = function PeriodoAcademicoSelect() {
-  return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! @/components/referencias/PeriodoAcademicoSelect */ "./resources/js/components/referencias/PeriodoAcademicoSelect.vue"));
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var MatriculadoBusqueda = function MatriculadoBusqueda() {
+  return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! @/components/referencias/MatriculadoBusqueda */ "./resources/js/components/referencias/MatriculadoBusqueda.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    "v-listar-error": ListarError,
-    "periodo-academico-select": PeriodoAcademicoSelect
+    "matriculado-busqueda": MatriculadoBusqueda
   },
   props: {
     value: {
@@ -101,105 +212,131 @@ var PeriodoAcademicoSelect = function PeriodoAcademicoSelect() {
   },
   data: function data() {
     return {
-      editable: Object.assign({}, this.value),
+      editable: Object.assign({
+        tipo_documento: 'codigo'
+      }, this.value),
       errors: [],
       btn: {
         registrar: false,
-        actualizar: false,
-        importar: false
+        actualizar: false
       },
-      nuevo_error: {},
-      var_config_error: {}
+      lock: {},
+      text: {},
+      var_config1: {},
+      recortar_nuevo: {},
+      validacion_nuevo: {}
     };
   },
   mounted: function mounted() {
+    var me = this;
+
     if (!this.editable.id) {
       //Nuevo
-      this.editable.origen = 'local';
-    } else {//Editar
+      me.editable._voucher_validado = false;
+      me.text._voucher_validado = "NO";
+      me.editable._duplicado = false;
+      me.text._duplicado = "NO";
+      this.lock['escuela_profesional'] = true;
+      this.lock['dni'] = true;
+      this.lock['codigo_estudiante'] = true;
+      this.lock['apellido_paterno'] = true;
+      this.lock['apellido_materno'] = true;
+      this.lock['nombres'] = true;
+      this.lock['sexo'] = true;
+    } else {
+      //Editar
+      // Duplicado
+      if (me.editable.duplicado == '1') {
+        me.editable._duplicado = true;
+        me.text._duplicado = 'SI';
+      }
+
+      if (me.editable.duplicado == '0') {
+        me.editable._duplicado = false;
+        me.text._duplicado = 'NO';
+      } // Foto Validado
+
+
+      if (me.editable.voucher_validado == '1') {
+        me.lock['_voucher_validado'] = true;
+        me.lock['new_document'] = true;
+        me.editable._voucher_validado = true;
+        me.text._voucher_validado = 'SI';
+      }
+
+      if (me.editable.voucher_validado == '0') {
+        me.lock['_voucher_validado'] = false;
+        me.lock['new_document'] = false;
+        me.editable._voucher_validado = false;
+        me.text._voucher_validado = 'NO';
+      }
+
+      this.lock['_duplicado'] = true;
+      this.lock['numero_documento'] = true;
+      this.lock['escuela_profesional'] = true;
+      this.lock['dni'] = true;
+      this.lock['codigo_estudiante'] = true;
+      this.lock['apellido_paterno'] = true;
+      this.lock['apellido_materno'] = true;
+      this.lock['nombres'] = true;
+      this.lock['sexo'] = true;
+      this.lock['numero_recibo'] = true;
     }
 
+    this.editable.fecha_inicio_edicion = now();
     this.$forceUpdate();
   },
   methods: {
-    importar: function importar() {
+    registrarArticulo: function registrarArticulo() {
       var me = this;
-      this.btn['importar'] = true;
-      axios({
-        url: '/matricula/importar',
-        method: 'POST',
-        data: this.editable // responseType: 'blob',
-
-      }).then(function (response) {
-        swal('Importado correctamente', 'Exito!', 'success');
+      this.btn['registrar'] = true;
+      if (me.editable._voucher_validado) me.editable.voucher_validado = 1;else me.editable.voucher_validado = 0;
+      if (me.editable._duplicado) me.editable.duplicado = 1;else me.editable.duplicado = 0;
+      axios.post('/inscrito/registrar', this.editable).then(function (response) {
         me.$emit('guardado');
         me.cerrarModal();
+        swal('Registrado', 'El tramite ha sido registrado con exito', 'success');
       })["catch"](function (error) {
-        me.btn['importar'] = false;
+        me.btn['registrar'] = false;
 
         if (error.request.status) {
-          // La session ha expirado
           if (error.request.status == 419) {
             location.reload();
-          } // Validacion de campos de formulario
-
-
-          if (error.request.status == 422) {
-            if (error.request.response) {
-              var response = JSON.parse(error.request.response);
-              console.log(response);
-              if (response.errors) me.errors = response.errors;
-            }
-          } // Validacion de datos de excel
-
-
-          if (error.request.status == 500) {
-            if (error.request.response) {
-              me.errors = error.response.data;
-              console.log('errorrrr', me.errors);
-
-              if (me.errors.data) {
-                me.nuevo_error._estado = "viendo_error";
-                me.nuevo_error.data = me.errors.data;
-                me.var_config_error = {
-                  title: 'Errores en Excel'
-                };
-              } else {
-                if (me.errors.code == 'sin_periodo_actual' || me.errors.code == 'excel_vacio') me.errors.formulario = me.errors.message;
-              }
-            }
           }
+        }
+
+        if (error.request.response) {
+          var response = JSON.parse(error.request.response);
+          console.log(response);
+          me.errors = response.errors;
         }
       });
     },
-    descargarPlantilla: function descargarPlantilla() {
+    actualizarArticulo: function actualizarArticulo() {
+      console.log("actualizarArticulo");
       var me = this;
       this.btn['actualizar'] = true;
-      axios({
-        url: '/matricula/plantilla',
-        method: 'POST',
-        responseType: 'blob'
+      if (me.editable._voucher_validado) me.editable.voucher_validado = 1;else me.editable.voucher_validado = 0; // Validando la validacion verdadera
+
+      if (!me.editable._voucher_validado) {
+        me.errors._voucher_validado = 'Marque la opcion validar.';
+        me.btn['actualizar'] = false;
+        return;
+      } else {
+        delete me.errors.new_document;
+      }
+
+      this.editable.fecha_fin_edicion = now();
+      axios.put('/inscrito/validar_voucher', {
+        id: this.editable.id,
+        voucher_validado: this.editable.voucher_validado,
+        observacion: this.editable.observacion
       }).then(function (response) {
-        if (response.data && response.data.size) {
-          var filename = "Matriculas.xlsx";
-          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
-          var fileLink = document.createElement('a');
-          fileLink.href = fileURL;
-
-          if (!filename) {
-            filename = url.substr(url.lastIndexOf('/') + 1);
-          }
-
-          fileLink.setAttribute('download', filename);
-          document.body.appendChild(fileLink);
-          fileLink.click();
-        }
+        me.$emit('guardado');
+        me.cerrarModal();
+        swal('Actualizado', 'El voucher ha sido validado con exito', 'success');
       })["catch"](function (error) {
-        me.btn['actualizar'] = false; // La session ha expirado
-
-        if (error.request.status == 419) {
-          location.reload();
-        }
+        me.btn['actualizar'] = false;
 
         if (error.request.response) {
           var response = JSON.parse(error.request.response);
@@ -211,36 +348,19 @@ var PeriodoAcademicoSelect = function PeriodoAcademicoSelect() {
     cerrarModal: function cerrarModal() {
       this.$emit('input', {});
     },
-    imageChanged: function imageChanged(e) {
-      var _this = this;
-
-      console.log(e.target.files[0]);
-      var propiedades = e.target.files[0];
-      var fileReader = new FileReader();
-      fileReader.readAsDataURL(e.target.files[0]);
-
-      fileReader.onload = function (e) {
-        _this.editable.name_excel = propiedades.name;
-        _this.editable.excel_document = e.target.result;
-      };
+    changeTipo: function changeTipo(e) {
+      if (e.target.checked) this.text._voucher_validado = 'SI';else this.text._voucher_validado = 'NO';
+      this.$forceUpdate();
     }
-  },
-  watch: {// 'editable.numero_placa': function(newval, olval){
-    //     if(newval){
-    //         this.editable.numero_placa = String(newval).toUpperCase();
-    //         this.editable.placa_vigente = newval;
-    //         this.$forceUpdate();
-    //     }
-    // }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css&":
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -256,15 +376,15 @@ exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    pos
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css&":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css& ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css&");
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -286,10 +406,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=template&id=4a64c89e&":
-/*!********************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=template&id=4a64c89e& ***!
-  \********************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=template&id=39523974&":
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=template&id=39523974& ***!
+  \****************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -320,8 +440,8 @@ var render = function() {
             "div",
             {
               class: {
-                "show-container": _vm.btn.importar,
-                "hide-container": !_vm.btn.importar
+                "show-container": _vm.btn.registrar,
+                "hide-container": !_vm.btn.registrar
               }
             },
             [_c("div", { staticClass: "loader" })]
@@ -353,7 +473,7 @@ var render = function() {
             {
               staticClass: "modal-body",
               staticStyle: {
-                "max-height": "450px",
+                "max-height": "550px",
                 "overflow-y": "auto",
                 "overflow-x": "hidden"
               }
@@ -370,35 +490,194 @@ var render = function() {
                   }
                 },
                 [
-                  _vm.errors.formulario
-                    ? _c("span", { staticClass: "text-error" }, [
-                        _vm._v(_vm._s(_vm.errors.formulario))
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.editable) +
+                      "\n                    "
+                  ),
                   _c("div", { staticClass: "row" }, [
                     _c(
                       "div",
-                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
                       [
                         _c("div", { staticClass: "form-group" }, [
                           _vm._m(0),
                           _vm._v(" "),
                           _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.editable.escuela_profesional,
+                                expression: "editable.escuela_profesional"
+                              }
+                            ],
                             staticClass: "form-control",
-                            attrs: { type: "file", accept: ".xlsx" },
-                            on: { change: _vm.imageChanged }
+                            attrs: {
+                              type: "text",
+                              placeholder: "Escuela Profesional...",
+                              disabled: _vm.lock.escuela_profesional
+                            },
+                            domProps: {
+                              value: _vm.editable.escuela_profesional
+                            },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.editable,
+                                  "escuela_profesional",
+                                  $event.target.value
+                                )
+                              }
+                            }
                           }),
                           _vm._v(" "),
-                          _vm.errors.excel_document
+                          _vm.errors.escuela_profesional
                             ? _c("span", { staticClass: "text-error" }, [
-                                _vm._v(_vm._s(_vm.errors.excel_document))
+                                _vm._v(_vm._s(_vm.errors.escuela_profesional))
                               ])
-                            : _vm._e(),
+                            : _vm._e()
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(1),
                           _vm._v(" "),
-                          _vm.errors.convocatoria
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.editable.codigo_estudiante,
+                                expression: "editable.codigo_estudiante"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Codigo Estudiante...",
+                              disabled: _vm.lock.codigo_estudiante
+                            },
+                            domProps: { value: _vm.editable.codigo_estudiante },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.editable,
+                                  "codigo_estudiante",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.codigo_estudiante
                             ? _c("span", { staticClass: "text-error" }, [
-                                _vm._v(_vm._s(_vm.errors.convocatoria))
+                                _vm._v(_vm._s(_vm.errors.codigo_estudiante))
+                              ])
+                            : _vm._e()
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(2),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.editable.dni,
+                                expression: "editable.dni"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "N° DNI...",
+                              disabled: _vm.lock.dni
+                            },
+                            domProps: { value: _vm.editable.dni },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.editable,
+                                  "dni",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.dni
+                            ? _c("span", { staticClass: "text-error" }, [
+                                _vm._v(_vm._s(_vm.errors.dni))
+                              ])
+                            : _vm._e()
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-3 col-md-3 col-sm-3 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(3),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.editable.apellido_paterno,
+                                expression: "editable.apellido_paterno"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Apellido Paterno...",
+                              disabled: _vm.lock.apellido_paterno
+                            },
+                            domProps: { value: _vm.editable.apellido_paterno },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.editable,
+                                  "apellido_paterno",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.apellido_paterno
+                            ? _c("span", { staticClass: "text-error" }, [
+                                _vm._v(_vm._s(_vm.errors.apellido_paterno))
                               ])
                             : _vm._e()
                         ])
@@ -409,36 +688,137 @@ var render = function() {
                       "div",
                       { staticClass: "col-lg-3 col-md-3 col-sm-3 col-xs-12" },
                       [
-                        _c(
-                          "div",
-                          { staticClass: "form-group" },
-                          [
-                            _vm._m(1),
-                            _vm._v(" "),
-                            _c("periodo-academico-select", {
-                              model: {
-                                value: _vm.editable.periodo_academico_id,
-                                callback: function($$v) {
-                                  _vm.$set(
-                                    _vm.editable,
-                                    "periodo_academico_id",
-                                    $$v
-                                  )
-                                },
-                                expression: "editable.periodo_academico_id"
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(4),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.editable.apellido_materno,
+                                expression: "editable.apellido_materno"
                               }
-                            }),
-                            _vm._v(" "),
-                            _vm.errors.periodo_academico_id
-                              ? _c("span", { staticClass: "text-error" }, [
-                                  _vm._v(
-                                    _vm._s(_vm.errors.periodo_academico_id)
-                                  )
-                                ])
-                              : _vm._e()
-                          ],
-                          1
-                        )
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Apellido Materno...",
+                              disabled: _vm.lock.apellido_materno
+                            },
+                            domProps: { value: _vm.editable.apellido_materno },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.editable,
+                                  "apellido_materno",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.apellido_materno
+                            ? _c("span", { staticClass: "text-error" }, [
+                                _vm._v(_vm._s(_vm.errors.apellido_materno))
+                              ])
+                            : _vm._e()
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-3 col-md-3 col-sm-3 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(5),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.editable.nombres,
+                                expression: "editable.nombres"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Nombres...",
+                              disabled: _vm.lock.nombres
+                            },
+                            domProps: { value: _vm.editable.nombres },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.editable,
+                                  "nombres",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.nombres
+                            ? _c("span", { staticClass: "text-error" }, [
+                                _vm._v(_vm._s(_vm.errors.nombres))
+                              ])
+                            : _vm._e()
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-3 col-md-3 col-sm-3 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(6),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.editable.numero_recibo,
+                                expression: "editable.numero_recibo"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "N° Recibo...",
+                              disabled: _vm.lock.numero_recibo
+                            },
+                            domProps: { value: _vm.editable.numero_recibo },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.editable,
+                                  "numero_recibo",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.numero_recibo
+                            ? _c("span", { staticClass: "text-error" }, [
+                                _vm._v(_vm._s(_vm.errors.numero_recibo))
+                              ])
+                            : _vm._e()
+                        ])
                       ]
                     )
                   ]),
@@ -446,25 +826,208 @@ var render = function() {
                   _c("div", { staticClass: "row" }, [
                     _c(
                       "div",
-                      {
-                        staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12"
-                      },
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
                       [
-                        _vm._v(
-                          "\n                            Utilizar la siguiente plantilla para realizar las consultas: \n                            "
-                        ),
-                        _c(
-                          "a",
-                          {
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.descargarPlantilla()
-                              }
-                            }
-                          },
-                          [_vm._v("Excel")]
-                        )
+                        _c("div", { staticClass: "row" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "col-lg-6 col-md-6 col-sm-6 col-xs-12"
+                            },
+                            [
+                              _c("div", { staticClass: "form-group" }, [
+                                _vm._m(7),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass:
+                                      "custom-control custom-switch custom-switch-off-danger custom-switch-on-success"
+                                  },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.editable._voucher_validado,
+                                          expression:
+                                            "editable._voucher_validado"
+                                        }
+                                      ],
+                                      staticClass: "custom-control-input",
+                                      attrs: {
+                                        type: "checkbox",
+                                        id: "customSwitch6",
+                                        disabled: _vm.lock._voucher_validado
+                                      },
+                                      domProps: {
+                                        checked: Array.isArray(
+                                          _vm.editable._voucher_validado
+                                        )
+                                          ? _vm._i(
+                                              _vm.editable._voucher_validado,
+                                              null
+                                            ) > -1
+                                          : _vm.editable._voucher_validado
+                                      },
+                                      on: {
+                                        change: [
+                                          function($event) {
+                                            var $$a =
+                                                _vm.editable._voucher_validado,
+                                              $$el = $event.target,
+                                              $$c = $$el.checked ? true : false
+                                            if (Array.isArray($$a)) {
+                                              var $$v = null,
+                                                $$i = _vm._i($$a, $$v)
+                                              if ($$el.checked) {
+                                                $$i < 0 &&
+                                                  _vm.$set(
+                                                    _vm.editable,
+                                                    "_voucher_validado",
+                                                    $$a.concat([$$v])
+                                                  )
+                                              } else {
+                                                $$i > -1 &&
+                                                  _vm.$set(
+                                                    _vm.editable,
+                                                    "_voucher_validado",
+                                                    $$a
+                                                      .slice(0, $$i)
+                                                      .concat(
+                                                        $$a.slice($$i + 1)
+                                                      )
+                                                  )
+                                              }
+                                            } else {
+                                              _vm.$set(
+                                                _vm.editable,
+                                                "_voucher_validado",
+                                                $$c
+                                              )
+                                            }
+                                          },
+                                          function($event) {
+                                            return _vm.changeTipo($event)
+                                          }
+                                        ]
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _c("label", {
+                                      staticClass: "custom-control-label",
+                                      staticStyle: { width: "70px" },
+                                      attrs: { for: "customSwitch6" },
+                                      domProps: {
+                                        innerHTML: _vm._s(
+                                          _vm.text._voucher_validado
+                                        )
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _vm.errors._voucher_validado
+                                      ? _c(
+                                          "span",
+                                          { staticClass: "text-error" },
+                                          [
+                                            _vm._v(
+                                              _vm._s(
+                                                _vm.errors._voucher_validado
+                                              )
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ]
+                                )
+                              ])
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "col-lg-6 col-md-6 col-sm-6 col-xs-12"
+                            },
+                            [
+                              _c("div", { staticClass: "form-group" }, [
+                                _vm._m(8),
+                                _vm._v(" "),
+                                _c("textarea", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.editable.observacion,
+                                      expression: "editable.observacion"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Observacion..."
+                                  },
+                                  domProps: { value: _vm.editable.observacion },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.editable,
+                                        "observacion",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm.errors.observacion
+                                  ? _c("span", { staticClass: "text-error" }, [
+                                      _vm._v(_vm._s(_vm.errors.observacion))
+                                    ])
+                                  : _vm._e()
+                              ])
+                            ]
+                          )
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "row" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass:
+                                "col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                            },
+                            [
+                              _c("div", { staticClass: "form-group" }, [
+                                _c("img", {
+                                  attrs: {
+                                    id: "image",
+                                    width: "240",
+                                    src:
+                                      "/storage/" +
+                                      _vm.editable.folder +
+                                      "/4_vouchers/" +
+                                      _vm.editable.foto
+                                  }
+                                })
+                              ])
+                            ]
+                          )
+                        ])
                       ]
                     )
                   ])
@@ -478,7 +1041,7 @@ var render = function() {
               "button",
               {
                 staticClass: "btn btn-secondary",
-                attrs: { type: "button", disabled: _vm.btn.importar },
+                attrs: { type: "button" },
                 on: {
                   click: function($event) {
                     return _vm.cerrarModal()
@@ -488,22 +1051,6 @@ var render = function() {
               [_vm._v("Cerrar")]
             ),
             _vm._v(" "),
-            _vm.var_config.tipo_accion == "importar"
-              ? _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-success",
-                    attrs: { type: "button", disabled: _vm.btn.importar },
-                    on: {
-                      click: function($event) {
-                        return _vm.importar()
-                      }
-                    }
-                  },
-                  [_vm._v("Importar")]
-                )
-              : _vm._e(),
-            _vm._v(" "),
             _vm.var_config.tipo_accion == "registrar"
               ? _c(
                   "button",
@@ -512,7 +1059,7 @@ var render = function() {
                     attrs: { type: "button", disabled: _vm.btn.registrar },
                     on: {
                       click: function($event) {
-                        return _vm.registrarPersonaDni()
+                        return _vm.registrarArticulo()
                       }
                     }
                   },
@@ -528,7 +1075,7 @@ var render = function() {
                     attrs: { type: "button", disabled: _vm.btn.actualizar },
                     on: {
                       click: function($event) {
-                        return _vm.actualizarPersonaDni()
+                        return _vm.actualizarArticulo()
                       }
                     }
                   },
@@ -537,23 +1084,8 @@ var render = function() {
               : _vm._e()
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _vm.nuevo_error._estado == "viendo_error"
-        ? _c("v-listar-error", {
-            ref: "cmp_mostrar_error",
-            attrs: { var_config: _vm.var_config_error },
-            model: {
-              value: _vm.nuevo_error,
-              callback: function($$v) {
-                _vm.nuevo_error = $$v
-              },
-              expression: "nuevo_error"
-            }
-          })
-        : _vm._e()
-    ],
-    1
+      ])
+    ]
   )
 }
 var staticRenderFns = [
@@ -561,13 +1093,55 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Excel: *")])])
+    return _c("label", [_c("dt", [_vm._v("Escuela Profesional: *")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Periodo Academico: *")])])
+    return _c("label", [_c("dt", [_vm._v("Codigo de Estudiante: *")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("DNI: *")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Apellido Paterno: *")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Apellido Materno: *")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Nombres: *")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("N° Recibo: *")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("¿Validado?: *")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Observacion:")])])
   }
 ]
 render._withStripped = true
@@ -576,18 +1150,18 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/matricula/FormularioImportarMatricula.vue":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/erp/matricula/FormularioImportarMatricula.vue ***!
-  \*******************************************************************************/
+/***/ "./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue ***!
+  \***************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _FormularioImportarMatricula_vue_vue_type_template_id_4a64c89e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormularioImportarMatricula.vue?vue&type=template&id=4a64c89e& */ "./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=template&id=4a64c89e&");
-/* harmony import */ var _FormularioImportarMatricula_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormularioImportarMatricula.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _FormularioImportarMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _FormularioValidarVoucher_vue_vue_type_template_id_39523974___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormularioValidarVoucher.vue?vue&type=template&id=39523974& */ "./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=template&id=39523974&");
+/* harmony import */ var _FormularioValidarVoucher_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormularioValidarVoucher.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _FormularioValidarVoucher_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -598,9 +1172,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _FormularioImportarMatricula_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _FormularioImportarMatricula_vue_vue_type_template_id_4a64c89e___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _FormularioImportarMatricula_vue_vue_type_template_id_4a64c89e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _FormularioValidarVoucher_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FormularioValidarVoucher_vue_vue_type_template_id_39523974___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FormularioValidarVoucher_vue_vue_type_template_id_39523974___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -610,54 +1184,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/erp/matricula/FormularioImportarMatricula.vue"
+component.options.__file = "resources/js/components/erp/inscrito/FormularioValidarVoucher.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************!*\
-  !*** ./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************/
+/***/ "./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarMatricula_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioImportarMatricula.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarMatricula_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarVoucher_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioValidarVoucher.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarVoucher_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css&":
-/*!****************************************************************************************************************!*\
-  !*** ./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css& ***!
-  \****************************************************************************************************************/
+/***/ "./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarVoucher_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarVoucher_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarVoucher_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarVoucher_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarVoucher_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=template&id=4a64c89e&":
-/*!**************************************************************************************************************!*\
-  !*** ./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=template&id=4a64c89e& ***!
-  \**************************************************************************************************************/
+/***/ "./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=template&id=39523974&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=template&id=39523974& ***!
+  \**********************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarMatricula_vue_vue_type_template_id_4a64c89e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioImportarMatricula.vue?vue&type=template&id=4a64c89e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioImportarMatricula.vue?vue&type=template&id=4a64c89e&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarMatricula_vue_vue_type_template_id_4a64c89e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarVoucher_vue_vue_type_template_id_39523974___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioValidarVoucher.vue?vue&type=template&id=39523974& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=template&id=39523974&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarVoucher_vue_vue_type_template_id_39523974___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarMatricula_vue_vue_type_template_id_4a64c89e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarVoucher_vue_vue_type_template_id_39523974___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

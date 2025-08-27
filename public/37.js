@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[37],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -76,519 +76,171 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var FormularioInscrito = function FormularioInscrito() {
-  return __webpack_require__.e(/*! import() */ 13).then(__webpack_require__.bind(null, /*! @/components/erp/inscrito/FormularioInscrito */ "./resources/js/components/erp/inscrito/FormularioInscrito.vue"));
+var ListarError = function ListarError() {
+  return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! @/components/erp/matricula/ListarError */ "./resources/js/components/erp/matricula/ListarError.vue"));
 };
 
-var FormularioEditarInscrito = function FormularioEditarInscrito() {
-  return __webpack_require__.e(/*! import() */ 12).then(__webpack_require__.bind(null, /*! @/components/erp/inscrito/FormularioEditarInscrito */ "./resources/js/components/erp/inscrito/FormularioEditarInscrito.vue"));
-};
-
-var FormularioAnularInscrito = function FormularioAnularInscrito() {
-  return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! @/components/erp/inscrito/FormularioAnularInscrito */ "./resources/js/components/erp/inscrito/FormularioAnularInscrito.vue"));
-};
-
-var VerInscrito = function VerInscrito() {
-  return __webpack_require__.e(/*! import() */ 16).then(__webpack_require__.bind(null, /*! @/components/erp/inscrito/VerInscrito */ "./resources/js/components/erp/inscrito/VerInscrito.vue"));
-};
-
-var ConvocatoriaSelect = function ConvocatoriaSelect() {
-  return __webpack_require__.e(/*! import() */ 70).then(__webpack_require__.bind(null, /*! @/components/referencias/ConvocatoriaSelect */ "./resources/js/components/referencias/ConvocatoriaSelect.vue"));
+var PeriodoAcademicoSelect = function PeriodoAcademicoSelect() {
+  return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! @/components/referencias/PeriodoAcademicoSelect */ "./resources/js/components/referencias/PeriodoAcademicoSelect.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    "v-formulario-inscrito": FormularioInscrito,
-    "v-formulario-editar-inscrito": FormularioEditarInscrito,
-    "v-formulario-anular-inscrito": FormularioAnularInscrito,
-    "v-ver-inscrito": VerInscrito,
-    "convocatoria-select": ConvocatoriaSelect
+    "v-listar-error": ListarError,
+    "periodo-academico-select": PeriodoAcademicoSelect
+  },
+  props: {
+    value: {
+      type: Object,
+      "default": {}
+    },
+    var_config: {
+      type: Object,
+      "default": {}
+    }
   },
   data: function data() {
     return {
-      nuevo: {},
-      editable: {},
-      precio_editable: {},
-      ver_editable: {},
-      show: {},
-      var_config: {},
-      arrayInscrito: [],
-      pagination: {
-        'total': 0,
-        'current_page': 0,
-        'per_page': 0,
-        'last_page': 0,
-        'from': 0,
-        'to': 0
+      editable: Object.assign({}, this.value),
+      errors: [],
+      btn: {
+        registrar: false,
+        actualizar: false,
+        importar: false
       },
-      offset: 3,
-      criterio: 'inscritos.nombre',
-      buscar: '',
-      per_page: 50,
-      order_by: 'created_at',
-      mode_order: 'desc',
-      filtros: {}
+      nuevo_error: {},
+      var_config_error: {}
     };
   },
-  computed: {
-    isActived: function isActived() {
-      return this.pagination.current_page;
-    },
-    pagesNumber: function pagesNumber() {
-      if (!this.pagination.to) {
-        return [];
-      }
-
-      var from = this.pagination.current_page - this.offset;
-
-      if (from < 1) {
-        from = 1;
-      }
-
-      var to = from + this.offset * 2;
-
-      if (to >= this.pagination.last_page) {
-        to = this.pagination.last_page;
-      }
-
-      var pagesArray = [];
-
-      while (from <= to) {
-        pagesArray.push(from);
-        from++;
-      }
-
-      return pagesArray;
-    }
-  },
   mounted: function mounted() {
-    console.log('Component mounted.');
-    this.listarInscrito(1, this.buscar, this.criterio);
+    if (!this.editable.id) {
+      //Nuevo
+      this.editable.origen = 'local';
+    } else {//Editar
+    }
+
+    this.$forceUpdate();
   },
   methods: {
-    listarInscrito: function listarInscrito(page, buscar, criterio) {
-      var me = this; // var url = '/inscrito?page='+page+'&buscar='+buscar+'&criterio='+criterio+'&per_page='+this.per_page;
+    importar: function importar() {
+      var me = this;
+      this.btn['importar'] = true;
+      axios({
+        url: '/inscrito/validar_pagos',
+        method: 'POST',
+        data: this.editable // responseType: 'blob',
 
-      axios.post('/inscrito/historico', {
-        page: page,
-        buscar: buscar,
-        criterio: criterio,
-        per_page: this.per_page,
-        order_by: this.order_by,
-        mode_order: this.mode_order,
-        convocatoria_id: this.filtros.convocatoria_id
       }).then(function (response) {
-        var respuesta = response.data;
-        me.arrayInscrito = respuesta.inscritos.data;
-        me.pagination = respuesta.pagination;
-        if (me.arrayInscrito.length == 0) me.show['arrayInscrito'] = true;else me.show['arrayInscrito'] = false;
+        swal('Validado Correctamente', 'Exito!', 'success');
+        me.$emit('guardado');
+        me.cerrarModal();
       })["catch"](function (error) {
-        console.log(error);
+        me.btn['importar'] = false;
 
         if (error.request.status) {
+          // La session ha expirado
           if (error.request.status == 419) {
             location.reload();
+          } // Validacion de campos de formulario
+
+
+          if (error.request.status == 422) {
+            if (error.request.response) {
+              var response = JSON.parse(error.request.response);
+              console.log(response);
+              if (response.errors) me.errors = response.errors;
+            }
+          } // Validacion de datos de excel
+
+
+          if (error.request.status == 500) {
+            if (error.request.response) {
+              me.errors = error.response.data;
+              console.log('errorrrr', me.errors);
+
+              if (me.errors.data) {
+                me.nuevo_error._estado = "viendo_error";
+                me.nuevo_error.data = me.errors.data;
+                me.var_config_error = {
+                  title: 'Errores en Excel'
+                };
+              } else {
+                if (me.errors.code == 'sin_periodo_actual' || me.errors.code == 'excel_vacio') me.errors.formulario = me.errors.message;
+              }
+            }
           }
         }
       });
     },
-    cambiarPagina: function cambiarPagina(page, buscar, criterio) {
-      var me = this; // Actualiza la pagina actual
+    descargarPlantilla: function descargarPlantilla() {
+      var me = this;
+      this.btn['actualizar'] = true;
+      axios({
+        url: '/matricula/plantilla',
+        method: 'POST',
+        responseType: 'blob'
+      }).then(function (response) {
+        if (response.data && response.data.size) {
+          var filename = "Matriculas.xlsx";
+          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+          var fileLink = document.createElement('a');
+          fileLink.href = fileURL;
 
-      me.pagination.current_page = page; // Envia la peticion para visualizar la data de esta pagina
+          if (!filename) {
+            filename = url.substr(url.lastIndexOf('/') + 1);
+          }
 
-      me.listarInscrito(page, buscar, criterio);
+          fileLink.setAttribute('download', filename);
+          document.body.appendChild(fileLink);
+          fileLink.click();
+        }
+      })["catch"](function (error) {
+        me.btn['actualizar'] = false; // La session ha expirado
+
+        if (error.request.status == 419) {
+          location.reload();
+        }
+
+        if (error.request.response) {
+          var response = JSON.parse(error.request.response);
+          console.log(response);
+          me.errors = response.errors;
+        }
+      });
     },
-    desactivarInscrito: function desactivarInscrito(id) {
+    cerrarModal: function cerrarModal() {
+      this.$emit('input', {});
+    },
+    imageChanged: function imageChanged(e) {
       var _this = this;
 
-      swal({
-        title: 'Esta seguro de desactivar esta inscrito?',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Aceptar',
-        cancelButtonText: 'Cancelar',
-        confirmButtonClass: 'btn btn-success',
-        cancelButtonClass: 'btn btn-danger',
-        buttonsStyling: false,
-        reverseButtons: true
-      }).then(function (result) {
-        if (result.value) {
-          var me = _this;
-          axios.put('/inscrito/desactivar', {
-            id: id
-          }).then(function (response) {
-            me.listarInscrito(1, '', 'nombre');
-            swal('Desactivado', 'El registro ha sido desactivado con exito', 'success');
-          })["catch"](function (error) {
-            console.log(error);
-          });
-        } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === swal.DismissReason.cancel) {}
-      });
-    },
-    activarInscrito: function activarInscrito(id) {
-      var _this2 = this;
+      console.log(e.target.files[0]);
+      var propiedades = e.target.files[0];
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
 
-      swal({
-        title: 'Esta seguro de activar esta inscrito?',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Aceptar',
-        cancelButtonText: 'Cancelar',
-        confirmButtonClass: 'btn btn-success',
-        cancelButtonClass: 'btn btn-danger',
-        buttonsStyling: false,
-        reverseButtons: true
-      }).then(function (result) {
-        if (result.value) {
-          var me = _this2;
-          axios.put('/inscrito/activar', {
-            id: id
-          }).then(function (response) {
-            me.listarInscrito(1, '', 'nombre');
-            swal('Activado', 'El registro ha sido activado con exito', 'success');
-          })["catch"](function (error) {
-            console.log(error);
-          });
-        } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === swal.DismissReason.cancel) {}
-      });
-    },
-    crear: function crear() {
-      this.nuevo = {
-        _estado: 'creando'
+      fileReader.onload = function (e) {
+        _this.editable.name_excel = propiedades.name;
+        _this.editable.excel_document = e.target.result;
       };
-      this.var_config = {
-        title: 'Registrar Inscrito',
-        tipo_accion: 'registrar'
-      };
-    },
-    editar: function editar(inscrito) {
-      if (inscrito.foto_validado == '1') {
-        swal('Validado', 'La fotografia ha sido validada.', 'success');
-        return;
-      }
-
-      this.editable = Object.assign({
-        _estado: 'editando'
-      }, inscrito);
-      this.var_config = {
-        title: 'Validar Fotografia',
-        tipo_accion: 'actualizar'
-      };
-    },
-    validarCredencial: function validarCredencial(inscrito) {
-      var me = this;
-
-      if (inscrito.credencial_validado == 'validado') {
-        swal('Ya Validado!!', 'Los credenciales del estudiante matriculado ha sido validado.', 'success');
-        return;
-      }
-
-      axios.post('/inscrito/validar_credencial', {
-        id: inscrito.id,
-        dni: inscrito.dni
-      }).then(function (response) {
-        //console.log(response.data.data)
-        var inscrito_validado = response.data.data;
-
-        if (inscrito_validado.dni) {
-          swal('Validado', 'Los credenciales del estudiante matriculado ha sido validado.', 'success');
-        } else {
-          swal('No Encontrado', 'No ha sido encontrado.', 'warning');
-        }
-
-        me.listarInscrito(1, me.buscar, me.criterio);
-        me.$forceUpdate();
-      })["catch"](function (error) {
-        console.log(error);
-      });
-    },
-    ver: function ver(inscrito) {
-      this.ver_editable = Object.assign({
-        _estado: 'viendo'
-      }, inscrito);
-      this.var_config = {
-        title: 'Ver Inscrito',
-        tipo_accion: 'actualizar'
-      };
-    },
-    anular: function anular(inscrito) {
-      if (inscrito.fecha_anulado) {
-        swal('Anulado', 'El tramite ya ha sido anulado.', 'success');
-        return;
-      }
-
-      this.editable = Object.assign({
-        _estado: 'anulando'
-      }, inscrito);
-      this.var_config = {
-        title: 'Anular Tramite',
-        tipo_accion: 'actualizar'
-      };
-    },
-    abrirPrecios: function abrirPrecios(inscrito) {
-      this.precio_editable = {
-        _estado: 'abriendo',
-        inscrito_id: inscrito.id,
-        nombre_inscrito: inscrito.nombre,
-        precio_actual: inscrito.precio_actual
-      };
-      this.var_config = {
-        title: 'Listar Precios',
-        tipo_accion: 'registrar'
-      };
-      this.$forceUpdate();
-    },
-    numberFormat2: function (_numberFormat) {
-      function numberFormat2(_x) {
-        return _numberFormat.apply(this, arguments);
-      }
-
-      numberFormat2.toString = function () {
-        return _numberFormat.toString();
-      };
-
-      return numberFormat2;
-    }(function (number) {
-      return numberFormat2(number);
-    }),
-    descargarInscritos: function descargarInscritos() {
-      axios({
-        url: '/inscrito/reporte/inscritos/historico',
-        method: 'POST',
-        data: {
-          // venta_id: this.value.venta_id,
-          order_by: this.order_by,
-          mode_order: this.mode_order,
-          convocatoria_id: this.filtros.convocatoria_id
-        },
-        responseType: 'blob'
-      }).then(function (response) {
-        // console.log(response.data)
-        // console.log(response.data.size)
-        if (response.data && response.data.size) {
-          // window.location.href = response;
-          // this.leer()
-          // let filename = "FACTURA"+this.formatComprobante(obj_venta)+".pdf";
-          var filename = "Inscritos General.xlsx";
-          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
-          var fileLink = document.createElement('a');
-          fileLink.href = fileURL;
-
-          if (!filename) {
-            filename = url.substr(url.lastIndexOf('/') + 1);
-          }
-
-          fileLink.setAttribute('download', filename);
-          document.body.appendChild(fileLink);
-          fileLink.click();
-        }
-      });
-    },
-    descargarInscritosOficial: function descargarInscritosOficial() {
-      axios({
-        url: '/inscrito/reporte/inscritos_oficial/historico',
-        method: 'POST',
-        data: {
-          // venta_id: this.value.venta_id,
-          order_by: this.order_by,
-          mode_order: this.mode_order,
-          convocatoria_id: this.filtros.convocatoria_id
-        },
-        responseType: 'blob'
-      }).then(function (response) {
-        // console.log(response.data)
-        // console.log(response.data.size)
-        if (response.data && response.data.size) {
-          // window.location.href = response;
-          // this.leer()
-          // let filename = "FACTURA"+this.formatComprobante(obj_venta)+".pdf";
-          var filename = "Inscritos Oficial.xlsx";
-          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
-          var fileLink = document.createElement('a');
-          fileLink.href = fileURL;
-
-          if (!filename) {
-            filename = url.substr(url.lastIndexOf('/') + 1);
-          }
-
-          fileLink.setAttribute('download', filename);
-          document.body.appendChild(fileLink);
-          fileLink.click();
-        }
-      });
-    },
-    descargarInscritosAnulado: function descargarInscritosAnulado() {
-      axios({
-        url: '/inscrito/reporte/inscritos_anulado/historico',
-        method: 'POST',
-        data: {
-          // venta_id: this.value.venta_id,
-          order_by: this.order_by,
-          mode_order: this.mode_order,
-          convocatoria_id: this.filtros.convocatoria_id
-        },
-        responseType: 'blob'
-      }).then(function (response) {
-        // console.log(response.data)
-        // console.log(response.data.size)
-        if (response.data && response.data.size) {
-          // window.location.href = response;
-          // this.leer()
-          // let filename = "FACTURA"+this.formatComprobante(obj_venta)+".pdf";
-          var filename = "Inscritos Anulado.xlsx";
-          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
-          var fileLink = document.createElement('a');
-          fileLink.href = fileURL;
-
-          if (!filename) {
-            filename = url.substr(url.lastIndexOf('/') + 1);
-          }
-
-          fileLink.setAttribute('download', filename);
-          document.body.appendChild(fileLink);
-          fileLink.click();
-        }
-      });
-    },
-    orderByNombre: function orderByNombre() {
-      this.order_by = 'nombre';
-      console.log('mode_order', this.mode_order);
-      if (this.mode_order == 'desc') this.mode_order = 'asc';else this.mode_order = 'desc';
-      this.listarInscrito(1, this.buscar, this.criterio);
-    },
-    orderByApellidoPaterno: function orderByApellidoPaterno() {
-      this.order_by = 'apellido_paterno';
-      console.log('mode_order', this.mode_order);
-      if (this.mode_order == 'desc') this.mode_order = 'asc';else this.mode_order = 'desc';
-      this.listarInscrito(1, this.buscar, this.criterio);
-    },
-    reiniciar: function reiniciar() {
-      this.buscar = '';
-      this.mode_order = 'desc';
-      this.order_by = 'id';
-      this.listarInscrito(1, this.buscar, this.criterio);
-      this.$forceUpdate();
     }
   },
-  watch: {
-    'filtros.convocatoria_id': function filtrosConvocatoria_id(newvalue, oldvalue) {
-      if (newvalue) {
-        this.listarInscrito(1, this.buscar, this.criterio);
-        this.$forceUpdate();
-      }
-    }
+  watch: {// 'editable.numero_placa': function(newval, olval){
+    //     if(newval){
+    //         this.editable.numero_placa = String(newval).toUpperCase();
+    //         this.editable.placa_vigente = newval;
+    //         this.$forceUpdate();
+    //     }
+    // }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=style&index=0&lang=css&":
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=style&index=0&lang=css& ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -597,22 +249,22 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.orderLink:hover{\n    color: inherit;\n    text-decoration: inherit;\n}\n.orderLink{\n    color: inherit;\n    text-decoration: inherit;\n}\n", ""]);
+exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display: list-item !important;\n    opacity: 1 !important;\n    position: absolute !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: flex;\n    justify-content: center;\n}\n.text-error{\n    color: red !important;\n    font-weight: bold;\n}\n@media (max-height: 500px) {\n.modal-xl {\n        max-width: 1140px;}\n}\n.hide-container{\n    display: none;\n}\n.show-container{\n    display: flex;\n    width: calc(100% + 10px);\n    height: calc(100% - 66px);\n    /* border: 1px solid black; */\n    position: absolute;\n    z-index: 100;\n    margin: 66.8px 0 0 -1px;\n    background: rgba(162, 153, 153, .5);\n}\n.loader {\n    border: 10px solid #f3f3f3;\n    border-radius: 50%;\n    border-top: 10px solid #3498db;\n    width: 50px;\n    height: 50px;\n    -webkit-animation: spin 2s linear infinite; /* Safari */\n    animation: spin 2s linear infinite;\n    top: calc(50%);\n    left: 50%;\n    position: absolute;\n    margin: -25px 0 0 -25px;\n    z-index: 100;\n}\n\n/* Safari */\n@-webkit-keyframes spin {\n0% { -webkit-transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg);\n}\n}\n@keyframes spin {\n0% { transform: rotate(0deg);\n}\n100% { transform: rotate(360deg);\n}\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=style&index=0&lang=css&":
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=style&index=0&lang=css& ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarInscritoHistorico.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=style&index=0&lang=css&");
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioValidarPago.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -634,10 +286,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=template&id=30dc2ee9&":
-/*!***************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=template&id=30dc2ee9& ***!
-  \***************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=template&id=280e2043&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=template&id=280e2043& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -650,653 +302,216 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "main",
-    { staticClass: "main" },
+    "div",
+    {
+      staticClass: "modal fade mostrar",
+      staticStyle: { display: "none" },
+      attrs: {
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": "myModalLabel",
+        "aria-hidden": "true"
+      }
+    },
     [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _c("div", { staticClass: "row" }, [
-              _vm._m(1),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
-                [
-                  _c("div", { staticClass: "pull-right" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-success",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.descargarInscritosOficial()
-                          }
-                        }
-                      },
-                      [_vm._v(" Xlsx Oficial")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-success",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.descargarInscritos()
-                          }
-                        }
-                      },
-                      [_vm._v(" Xlsx")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-success",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.descargarInscritosAnulado()
-                          }
-                        }
-                      },
-                      [_vm._v(" Xlsx Anulado")]
-                    )
-                  ])
-                ]
-              )
-            ])
-          ]),
+      _c("div", { staticClass: "modal-dialog modal-primary modal-xl" }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _c(
+            "div",
+            {
+              class: {
+                "show-container": _vm.btn.importar,
+                "hide-container": !_vm.btn.importar
+              }
+            },
+            [_c("div", { staticClass: "loader" })]
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c(
-                "div",
-                { staticClass: "col-lg-3 col-md-3 col-sm-3 col-xs-12" },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "form-group" },
-                    [
-                      _vm._m(2),
-                      _vm._v(" "),
-                      _c("convocatoria-select", {
-                        model: {
-                          value: _vm.filtros.convocatoria_id,
-                          callback: function($$v) {
-                            _vm.$set(_vm.filtros, "convocatoria_id", $$v)
-                          },
-                          expression: "filtros.convocatoria_id"
-                        }
-                      })
-                    ],
-                    1
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
-                [
-                  _c("div", { staticClass: "form-group" }, [
-                    _vm._m(3),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "input-group" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.buscar,
-                            expression: "buscar"
-                          }
-                        ],
-                        staticClass: "form-control",
-                        attrs: {
-                          type: "text",
-                          placeholder: "Nombre, Codigo, Categoria"
-                        },
-                        domProps: { value: _vm.buscar },
-                        on: {
-                          keyup: function($event) {
-                            if (
-                              !$event.type.indexOf("key") &&
-                              _vm._k(
-                                $event.keyCode,
-                                "enter",
-                                13,
-                                $event.key,
-                                "Enter"
-                              )
-                            ) {
-                              return null
-                            }
-                            return _vm.listarInscrito(
-                              1,
-                              _vm.buscar,
-                              _vm.criterio
-                            )
-                          },
-                          input: function($event) {
-                            if ($event.target.composing) {
-                              return
-                            }
-                            _vm.buscar = $event.target.value
-                          }
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-primary",
-                          attrs: { type: "submit" },
-                          on: {
-                            click: function($event) {
-                              return _vm.listarInscrito(
-                                1,
-                                _vm.buscar,
-                                _vm.criterio
-                              )
-                            }
-                          }
-                        },
-                        [
-                          _c("i", { staticClass: "fa fa-search" }),
-                          _vm._v(" Buscar")
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-danger",
-                          attrs: { type: "submit" },
-                          on: {
-                            click: function($event) {
-                              return _vm.reiniciar()
-                            }
-                          }
-                        },
-                        [
-                          _c("i", { staticClass: "fa fa-repeat" }),
-                          _vm._v("     Reiniciar")
-                        ]
-                      )
-                    ])
-                  ])
-                ]
-              )
-            ]),
+          _c("div", { staticClass: "modal-header" }, [
+            _c("h4", {
+              staticClass: "modal-title",
+              domProps: { textContent: _vm._s(_vm.var_config.title) }
+            }),
             _vm._v(" "),
             _c(
-              "div",
+              "button",
               {
-                staticStyle: { "overflow-x": "auto", "white-space": "nowrap" }
+                staticClass: "close",
+                attrs: { type: "button", "aria-label": "Close" },
+                on: {
+                  click: function($event) {
+                    return _vm.cerrarModal()
+                  }
+                }
               },
-              [
-                _c("table", { staticClass: "table table-hover text-nowrap" }, [
-                  _c("thead", [
-                    _c("tr", [
-                      _c("th", [_vm._v("Opciones")]),
-                      _vm._v(" "),
-                      _c("th", [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "orderLink",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                return _vm.orderByApellidoPaterno()
-                              }
-                            }
-                          },
-                          [
-                            _c("i", {
-                              class: {
-                                "fa fa-sort-up":
-                                  _vm.mode_order == "asc" &&
-                                  _vm.order_by == "nombre"
-                                    ? true
-                                    : false,
-                                "fa fa-sort-down":
-                                  _vm.mode_order == "desc" &&
-                                  _vm.order_by == "nombre"
-                                    ? true
-                                    : false
-                              }
-                            }),
-                            _vm._v("Apellidos y Nombres")
-                          ]
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Codigo")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Nro Documento")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Escuela Profesional")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Sexo")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Fecha Tramite")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("¿Duplicado?")]),
-                      _vm._v(" "),
-                      _c("th", [_vm._v("Convocatoria")])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "tbody",
-                    [
-                      _vm.show.arrayInscrito
-                        ? _c("tr", [
-                            _c("th", {
-                              staticClass: "text-center text-dark",
-                              attrs: { colspan: "8" },
-                              domProps: { textContent: _vm._s("Vacio") }
-                            })
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm._l(_vm.arrayInscrito, function(inscrito) {
-                        return _c("tr", { key: inscrito.id }, [
-                          _c("td", [
-                            _c("div", {}, [
-                              _vm._m(4, true),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "dropdown-menu",
-                                  attrs: { role: "menu" }
-                                },
-                                [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "dropdown-item",
-                                      attrs: { href: "#" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.editar(inscrito)
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticStyle: {
-                                          width: "20px",
-                                          height: "20px"
-                                        },
-                                        attrs: { src: "images/editar.svg" }
-                                      }),
-                                      _vm._v("   Validar Fotografia")
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "dropdown-item",
-                                      attrs: { href: "#" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.validarCredencial(inscrito)
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticStyle: {
-                                          width: "20px",
-                                          height: "20px"
-                                        },
-                                        attrs: { src: "images/xml.svg" }
-                                      }),
-                                      _vm._v("   Validar Credencial")
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "dropdown-item",
-                                      attrs: { href: "#" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.ver(inscrito)
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticStyle: {
-                                          width: "20px",
-                                          height: "20px"
-                                        },
-                                        attrs: { src: "images/ver.svg" }
-                                      }),
-                                      _vm._v("   Ver")
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  inscrito.estado == "inactivo"
-                                    ? _c(
-                                        "a",
-                                        {
-                                          staticClass: "dropdown-item",
-                                          attrs: { href: "#" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.activarInscrito(
-                                                inscrito.id
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c("img", {
-                                            staticStyle: {
-                                              width: "20px",
-                                              height: "20px"
-                                            },
-                                            attrs: { src: "images/activar.svg" }
-                                          }),
-                                          _vm._v("   Activar")
-                                        ]
-                                      )
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  inscrito.estado == "activo"
-                                    ? _c(
-                                        "a",
-                                        {
-                                          staticClass: "dropdown-item",
-                                          attrs: { href: "#" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.desactivarInscrito(
-                                                inscrito.id
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c("img", {
-                                            staticStyle: {
-                                              width: "20px",
-                                              height: "20px"
-                                            },
-                                            attrs: {
-                                              src: "images/desactivar.svg"
-                                            }
-                                          }),
-                                          _vm._v("   Desactivar")
-                                        ]
-                                      )
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  inscrito.estado == "activo"
-                                    ? _c(
-                                        "a",
-                                        {
-                                          staticClass: "dropdown-item",
-                                          attrs: { href: "#" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.abrirPrecios(inscrito)
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c("img", {
-                                            staticStyle: {
-                                              width: "20px",
-                                              height: "20px"
-                                            },
-                                            attrs: { src: "images/money.svg" }
-                                          }),
-                                          _vm._v("   Precios")
-                                        ]
-                                      )
-                                    : _vm._e()
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("td", [
-                            _vm._v(
-                              _vm._s(inscrito.apellido_paterno) +
-                                " " +
-                                _vm._s(inscrito.apellido_materno) +
-                                " " +
-                                _vm._s(inscrito.nombres)
-                            )
-                          ]),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: {
-                              textContent: _vm._s(inscrito.codigo_estudiante)
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: { textContent: _vm._s(inscrito.dni) }
-                          }),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: {
-                              textContent: _vm._s(inscrito.escuela_profesional)
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: { textContent: _vm._s(inscrito.sexo) }
-                          }),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: {
-                              textContent: _vm._s(
-                                inscrito.created_at
-                                  .substr(0, 10)
-                                  .split("-")
-                                  .reverse()
-                                  .join("-")
-                              )
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("td", [
-                            inscrito.duplicado == "1"
-                              ? _c("div", [
-                                  _c(
-                                    "span",
-                                    { staticClass: "badge badge-success" },
-                                    [_vm._v("SI")]
-                                  )
-                                ])
-                              : _c("div", [
-                                  _c("span", { staticClass: "badge" })
-                                ])
-                          ]),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: {
-                              textContent: _vm._s(inscrito.nombre_convocatoria)
-                            }
-                          })
-                        ])
-                      })
-                    ],
-                    2
-                  )
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c("nav", [
+              [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "modal-body",
+              staticStyle: {
+                "max-height": "450px",
+                "overflow-y": "auto",
+                "overflow-x": "hidden"
+              }
+            },
+            [
               _c(
-                "ul",
-                { staticClass: "pagination" },
+                "form",
+                {
+                  staticClass: "form-horizontal",
+                  attrs: {
+                    action: "",
+                    method: "post",
+                    enctype: "multipart/form-data"
+                  }
+                },
                 [
-                  _vm.pagination.current_page > 1
-                    ? _c("li", { staticClass: "page-item" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "page-link",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.cambiarPagina(
-                                  _vm.pagination.current_page - 1,
-                                  _vm.buscar,
-                                  _vm.criterio
-                                )
-                              }
-                            }
-                          },
-                          [_vm._v("Ant")]
-                        )
+                  _vm.errors.formulario
+                    ? _c("span", { staticClass: "text-error" }, [
+                        _vm._v(_vm._s(_vm.errors.formulario))
                       ])
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm._l(_vm.pagesNumber, function(page) {
-                    return _c(
-                      "li",
-                      {
-                        key: page,
-                        staticClass: "page-item",
-                        class: [page == _vm.isActived ? "active" : ""]
-                      },
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
                       [
-                        _c("a", {
-                          staticClass: "page-link",
-                          attrs: { href: "#" },
-                          domProps: { textContent: _vm._s(page) },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.cambiarPagina(
-                                page,
-                                _vm.buscar,
-                                _vm.criterio
-                              )
-                            }
-                          }
-                        })
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(0),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: { type: "file", accept: ".xlsx" },
+                            on: { change: _vm.imageChanged }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.excel_document
+                            ? _c("span", { staticClass: "text-error" }, [
+                                _vm._v(_vm._s(_vm.errors.excel_document))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.errors.convocatoria
+                            ? _c("span", { staticClass: "text-error" }, [
+                                _vm._v(_vm._s(_vm.errors.convocatoria))
+                              ])
+                            : _vm._e()
+                        ])
                       ]
                     )
-                  }),
+                  ]),
                   _vm._v(" "),
-                  _vm.pagination.current_page < _vm.pagination.last_page
-                    ? _c("li", { staticClass: "page-item" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                      },
+                      [
+                        _vm._v(
+                          "\n                            Utilizar la siguiente plantilla para realizar las consultas: \n                            "
+                        ),
                         _c(
                           "a",
                           {
-                            staticClass: "page-link",
                             attrs: { href: "#" },
                             on: {
                               click: function($event) {
-                                $event.preventDefault()
-                                return _vm.cambiarPagina(
-                                  _vm.pagination.current_page + 1,
-                                  _vm.buscar,
-                                  _vm.criterio
-                                )
+                                return _vm.descargarPlantilla()
                               }
                             }
                           },
-                          [_vm._v("Sig")]
+                          [_vm._v("Excel")]
                         )
-                      ])
-                    : _vm._e()
-                ],
-                2
+                      ]
+                    )
+                  ])
+                ]
               )
-            ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-footer" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary",
+                attrs: { type: "button", disabled: _vm.btn.importar },
+                on: {
+                  click: function($event) {
+                    return _vm.cerrarModal()
+                  }
+                }
+              },
+              [_vm._v("Cerrar")]
+            ),
+            _vm._v(" "),
+            _vm.var_config.tipo_accion == "importar"
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { type: "button", disabled: _vm.btn.importar },
+                    on: {
+                      click: function($event) {
+                        return _vm.importar()
+                      }
+                    }
+                  },
+                  [_vm._v("Importar")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.var_config.tipo_accion == "registrar"
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button", disabled: _vm.btn.registrar },
+                    on: {
+                      click: function($event) {
+                        return _vm.registrarPersonaDni()
+                      }
+                    }
+                  },
+                  [_vm._v("Guardar")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.var_config.tipo_accion == "actualizar"
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button", disabled: _vm.btn.actualizar },
+                    on: {
+                      click: function($event) {
+                        return _vm.actualizarPersonaDni()
+                      }
+                    }
+                  },
+                  [_vm._v("Actualizar")]
+                )
+              : _vm._e()
           ])
         ])
       ]),
       _vm._v(" "),
-      _vm.nuevo._estado == "creando"
-        ? _c("v-formulario-inscrito", {
-            ref: "cmp_crear_inscrito",
-            attrs: { var_config: _vm.var_config },
-            on: {
-              guardado: function($event) {
-                return _vm.listarInscrito(1, "", "nombre")
-              }
-            },
+      _vm.nuevo_error._estado == "viendo_error"
+        ? _c("v-listar-error", {
+            ref: "cmp_mostrar_error",
+            attrs: { var_config: _vm.var_config_error },
             model: {
-              value: _vm.nuevo,
+              value: _vm.nuevo_error,
               callback: function($$v) {
-                _vm.nuevo = $$v
+                _vm.nuevo_error = $$v
               },
-              expression: "nuevo"
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.editable._estado == "editando"
-        ? _c("v-formulario-editar-inscrito", {
-            ref: "cmp_crear_inscrito",
-            attrs: { var_config: _vm.var_config },
-            on: {
-              guardado: function($event) {
-                return _vm.listarInscrito(1, "", "nombre")
-              }
-            },
-            model: {
-              value: _vm.editable,
-              callback: function($$v) {
-                _vm.editable = $$v
-              },
-              expression: "editable"
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.editable._estado == "anulando"
-        ? _c("v-formulario-anular-inscrito", {
-            ref: "cmp_anular_inscrito",
-            attrs: { var_config: _vm.var_config },
-            on: {
-              guardado: function($event) {
-                return _vm.listarInscrito(1, "", "nombre")
-              }
-            },
-            model: {
-              value: _vm.editable,
-              callback: function($$v) {
-                _vm.editable = $$v
-              },
-              expression: "editable"
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.ver_editable._estado == "viendo"
-        ? _c("v-ver-inscrito", {
-            ref: "cmp_ver_inscrito",
-            attrs: { var_config: _vm.var_config },
-            model: {
-              value: _vm.ver_editable,
-              callback: function($$v) {
-                _vm.ver_editable = $$v
-              },
-              expression: "ver_editable"
+              expression: "nuevo_error"
             }
           })
         : _vm._e()
@@ -1309,49 +524,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ol", { staticClass: "breadcrumb" }, [
-      _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Tramite Carne")]),
-      _vm._v(" "),
-      _c("li", { staticClass: "breadcrumb-item" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("Inscrito")])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "breadcrumb-item active" }, [
-        _vm._v("Historico Listado")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" }, [
-      _c("i", { staticClass: "fa fa-align-justify" }),
-      _vm._v(" Inscritos\n                        ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Convocatoria: ")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Busqueda General: ")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#", "data-toggle": "dropdown" } }, [
-      _c("img", {
-        staticStyle: { width: "30px", height: "auto" },
-        attrs: { src: "images/options.svg" }
-      })
-    ])
+    return _c("label", [_c("dt", [_vm._v("Excel: *")])])
   }
 ]
 render._withStripped = true
@@ -1360,18 +533,18 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue":
-/*!**************************************************************************!*\
-  !*** ./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue ***!
-  \**************************************************************************/
+/***/ "./resources/js/components/erp/inscrito/FormularioValidarPago.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/erp/inscrito/FormularioValidarPago.vue ***!
+  \************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ListarInscritoHistorico_vue_vue_type_template_id_30dc2ee9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListarInscritoHistorico.vue?vue&type=template&id=30dc2ee9& */ "./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=template&id=30dc2ee9&");
-/* harmony import */ var _ListarInscritoHistorico_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListarInscritoHistorico.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _ListarInscritoHistorico_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ListarInscritoHistorico.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _FormularioValidarPago_vue_vue_type_template_id_280e2043___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormularioValidarPago.vue?vue&type=template&id=280e2043& */ "./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=template&id=280e2043&");
+/* harmony import */ var _FormularioValidarPago_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormularioValidarPago.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _FormularioValidarPago_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormularioValidarPago.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -1382,9 +555,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _ListarInscritoHistorico_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ListarInscritoHistorico_vue_vue_type_template_id_30dc2ee9___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ListarInscritoHistorico_vue_vue_type_template_id_30dc2ee9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _FormularioValidarPago_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FormularioValidarPago_vue_vue_type_template_id_280e2043___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FormularioValidarPago_vue_vue_type_template_id_280e2043___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -1394,54 +567,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/erp/inscrito/ListarInscritoHistorico.vue"
+component.options.__file = "resources/js/components/erp/inscrito/FormularioValidarPago.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************!*\
-  !*** ./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************/
+/***/ "./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarInscritoHistorico_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarInscritoHistorico.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarInscritoHistorico_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarPago_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioValidarPago.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarPago_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=style&index=0&lang=css&":
-/*!***********************************************************************************************************!*\
-  !*** ./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=style&index=0&lang=css& ***!
-  \***********************************************************************************************************/
+/***/ "./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=style&index=0&lang=css&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=style&index=0&lang=css& ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarInscritoHistorico_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarInscritoHistorico.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarInscritoHistorico_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarInscritoHistorico_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarInscritoHistorico_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarInscritoHistorico_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarPago_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioValidarPago.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarPago_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarPago_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarPago_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarPago_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=template&id=30dc2ee9&":
-/*!*********************************************************************************************************!*\
-  !*** ./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=template&id=30dc2ee9& ***!
-  \*********************************************************************************************************/
+/***/ "./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=template&id=280e2043&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=template&id=280e2043& ***!
+  \*******************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarInscritoHistorico_vue_vue_type_template_id_30dc2ee9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarInscritoHistorico.vue?vue&type=template&id=30dc2ee9& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue?vue&type=template&id=30dc2ee9&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarInscritoHistorico_vue_vue_type_template_id_30dc2ee9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarPago_vue_vue_type_template_id_280e2043___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioValidarPago.vue?vue&type=template&id=280e2043& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarPago.vue?vue&type=template&id=280e2043&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarPago_vue_vue_type_template_id_280e2043___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarInscritoHistorico_vue_vue_type_template_id_30dc2ee9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarPago_vue_vue_type_template_id_280e2043___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

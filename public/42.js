@@ -1,14 +1,46 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[42],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -78,7 +110,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 var CategoriaSelect = function CategoriaSelect() {
-  return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! @/components/referencias/CategoriaSelect */ "./resources/js/components/referencias/CategoriaSelect.vue"));
+  return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! @/components/referencias/CategoriaSelect */ "./resources/js/components/referencias/CategoriaSelect.vue"));
 };
 
 var MarcaSelect = function MarcaSelect() {
@@ -107,30 +139,35 @@ var UnidadMedidaSelect = function UnidadMedidaSelect() {
   },
   data: function data() {
     return {
-      editable: Object.assign({}, this.value),
+      editable: Object.assign({
+        categoria_id: ''
+      }, this.value),
       errors: [],
       btn: {
         registrar: false,
         actualizar: false
-      },
-      lock: {}
+      }
     };
   },
   mounted: function mounted() {
+    var me = this;
+
     if (!this.editable.id) {
       //Nuevo
-      this.editable.estado = 'inactivo';
-      this.editable.fecha_inicio = now(true);
+      this.editable.estado = 'activo';
+      this.editable.unidad_medida_id = 19;
+      this.editable.marca_id = 1;
+      this.editable.stock = 0;
     } else {//Editar
     }
 
-    this.$forceUpdate();
+    me.$forceUpdate();
   },
   methods: {
-    registrarPeriodoAcademico: function registrarPeriodoAcademico() {
+    registrarArticulo: function registrarArticulo() {
       var me = this;
       this.btn['registrar'] = true;
-      axios.post('/periodo_academico/registrar', this.editable).then(function (response) {
+      axios.post('/articulo/registrar', this.editable).then(function (response) {
         me.$emit('guardado');
         me.cerrarModal();
       })["catch"](function (error) {
@@ -149,10 +186,10 @@ var UnidadMedidaSelect = function UnidadMedidaSelect() {
         }
       });
     },
-    actualizarPeriodoAcademico: function actualizarPeriodoAcademico() {
+    actualizarArticulo: function actualizarArticulo() {
       var me = this;
       this.btn['actualizar'] = true;
-      axios.put('/periodo_academico/actualizar', this.editable).then(function (response) {
+      axios.put('/articulo/actualizar', this.editable).then(function (response) {
         me.$emit('guardado');
         me.cerrarModal();
       })["catch"](function (error) {
@@ -186,10 +223,10 @@ var UnidadMedidaSelect = function UnidadMedidaSelect() {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=style&index=0&lang=css&":
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=style&index=0&lang=css& ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=style&index=0&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=style&index=0&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -205,15 +242,15 @@ exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    pos
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=style&index=0&lang=css&":
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=style&index=0&lang=css& ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioPeriodoAcademico.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=style&index=0&lang=css&");
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioMatricula.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -235,10 +272,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=template&id=47545bbb&":
-/*!***************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=template&id=47545bbb& ***!
-  \***************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=template&id=d28484d8&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=template&id=d28484d8& ***!
+  \************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -263,7 +300,7 @@ var render = function() {
       }
     },
     [
-      _c("div", { staticClass: "modal-dialog modal-primary modal-lg" }, [
+      _c("div", { staticClass: "modal-dialog modal-primary modal-xl" }, [
         _c("div", { staticClass: "modal-content" }, [
           _c("div", { staticClass: "modal-header" }, [
             _c("h4", {
@@ -308,11 +345,6 @@ var render = function() {
                   }
                 },
                 [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.editable) +
-                      "\n                    "
-                  ),
                   _c("div", { staticClass: "row" }, [
                     _c(
                       "div",
@@ -331,10 +363,7 @@ var render = function() {
                               }
                             ],
                             staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              placeholder: "PeriodoAcademico..."
-                            },
+                            attrs: { type: "text", placeholder: "Nombre..." },
                             domProps: { value: _vm.editable.nombre },
                             on: {
                               input: function($event) {
@@ -357,10 +386,8 @@ var render = function() {
                             : _vm._e()
                         ])
                       ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
+                    ),
+                    _vm._v(" "),
                     _c(
                       "div",
                       { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
@@ -371,30 +398,68 @@ var render = function() {
                           [
                             _vm._m(1),
                             _vm._v(" "),
-                            _c("date-picker-2", {
-                              attrs: {
-                                lang: "es",
-                                type: "date",
-                                format: "DD-MM-YYYY",
-                                disabled: _vm.lock.fecha_inicio
-                              },
+                            _c("categoria-select", {
                               model: {
-                                value: _vm.editable.fecha_inicio,
+                                value: _vm.editable.categoria_id,
                                 callback: function($$v) {
-                                  _vm.$set(_vm.editable, "fecha_inicio", $$v)
+                                  _vm.$set(_vm.editable, "categoria_id", $$v)
                                 },
-                                expression: "editable.fecha_inicio"
+                                expression: "editable.categoria_id"
                               }
                             }),
                             _vm._v(" "),
-                            _vm.errors.fecha_inicio
+                            _vm.errors.categoria_id
                               ? _c("span", { staticClass: "text-error" }, [
-                                  _vm._v(_vm._s(_vm.errors.fecha_inicio))
+                                  _vm._v(_vm._s(_vm.errors.categoria_id))
                                 ])
                               : _vm._e()
                           ],
                           1
                         )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(2),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.editable.codigo,
+                                expression: "editable.codigo"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "text", placeholder: "Codigo..." },
+                            domProps: { value: _vm.editable.codigo },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.editable,
+                                  "codigo",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.codigo
+                            ? _c("span", { staticClass: "text-error" }, [
+                                _vm._v(_vm._s(_vm.errors.codigo))
+                              ])
+                            : _vm._e()
+                        ])
                       ]
                     ),
                     _vm._v(" "),
@@ -406,27 +471,25 @@ var render = function() {
                           "div",
                           { staticClass: "form-group" },
                           [
-                            _vm._m(2),
+                            _vm._m(3),
                             _vm._v(" "),
-                            _c("date-picker-2", {
-                              attrs: {
-                                lang: "es",
-                                type: "date",
-                                format: "DD-MM-YYYY",
-                                disabled: _vm.lock.fecha_fin
-                              },
+                            _c("unidad-medida-select", {
                               model: {
-                                value: _vm.editable.fecha_fin,
+                                value: _vm.editable.unidad_medida_id,
                                 callback: function($$v) {
-                                  _vm.$set(_vm.editable, "fecha_fin", $$v)
+                                  _vm.$set(
+                                    _vm.editable,
+                                    "unidad_medida_id",
+                                    $$v
+                                  )
                                 },
-                                expression: "editable.fecha_fin"
+                                expression: "editable.unidad_medida_id"
                               }
                             }),
                             _vm._v(" "),
-                            _vm.errors.fecha_fin
+                            _vm.errors.unidad_medida_id
                               ? _c("span", { staticClass: "text-error" }, [
-                                  _vm._v(_vm._s(_vm.errors.fecha_fin))
+                                  _vm._v(_vm._s(_vm.errors.unidad_medida_id))
                                 ])
                               : _vm._e()
                           ],
@@ -434,20 +497,104 @@ var render = function() {
                         )
                       ]
                     )
-                  ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(4),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.editable.descripcion,
+                                expression: "editable.descripcion"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Descripcion..."
+                            },
+                            domProps: { value: _vm.editable.descripcion },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.editable,
+                                  "descripcion",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.descripcion
+                            ? _c("span", { staticClass: "text-error" }, [
+                                _vm._v(_vm._s(_vm.errors.descripcion))
+                              ])
+                            : _vm._e()
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(5),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: { type: "file", accept: "jpeg, jpe, png" },
+                            on: { change: _vm.imageChanged }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.otro_imagen
+                            ? _c("span", { staticClass: "text-error" }, [
+                                _vm._v(_vm._s(_vm.errors.otro_imagen))
+                              ])
+                            : _vm._e()
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm.editable.id
+                    ? _c("div", { staticClass: "row" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                          },
+                          [
+                            _c("div", { staticClass: "form-group" }, [
+                              _vm._m(6),
+                              _vm._v(" "),
+                              _vm.editable.imagen
+                                ? _c("img", {
+                                    staticClass: "form-control",
+                                    attrs: {
+                                      src: "/images/" + _vm.editable.imagen
+                                    }
+                                  })
+                                : _vm._e()
+                            ])
+                          ]
+                        )
+                      ])
+                    : _vm._e()
                 ]
-              ),
-              _vm._v(" "),
-              _c("br"),
-              _c("br"),
-              _c("br"),
-              _c("br"),
-              _c("br"),
-              _c("br"),
-              _c("br"),
-              _c("br"),
-              _c("br"),
-              _c("br")
+              )
             ]
           ),
           _vm._v(" "),
@@ -474,7 +621,7 @@ var render = function() {
                     attrs: { type: "button", disabled: _vm.btn.registrar },
                     on: {
                       click: function($event) {
-                        return _vm.registrarPeriodoAcademico()
+                        return _vm.registrarArticulo()
                       }
                     }
                   },
@@ -490,7 +637,7 @@ var render = function() {
                     attrs: { type: "button", disabled: _vm.btn.actualizar },
                     on: {
                       click: function($event) {
-                        return _vm.actualizarPeriodoAcademico()
+                        return _vm.actualizarArticulo()
                       }
                     }
                   },
@@ -508,19 +655,43 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("PeriodoAcademico: *")])])
+    return _c("label", [_c("dt", [_vm._v("Nombre: *")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Fecha Inicio: *")])])
+    return _c("label", [_c("dt", [_vm._v("Categoria: *")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Fecha Fin: *")])])
+    return _c("label", [_c("dt", [_vm._v("Codigo: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Unidad Medida: *")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Descripcion: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Imagen:")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Imagen:")])])
   }
 ]
 render._withStripped = true
@@ -529,18 +700,18 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue ***!
-  \**************************************************************************************/
+/***/ "./resources/js/components/erp/matricula/FormularioMatricula.vue":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/erp/matricula/FormularioMatricula.vue ***!
+  \***********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _FormularioPeriodoAcademico_vue_vue_type_template_id_47545bbb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormularioPeriodoAcademico.vue?vue&type=template&id=47545bbb& */ "./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=template&id=47545bbb&");
-/* harmony import */ var _FormularioPeriodoAcademico_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormularioPeriodoAcademico.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _FormularioPeriodoAcademico_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormularioPeriodoAcademico.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _FormularioMatricula_vue_vue_type_template_id_d28484d8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormularioMatricula.vue?vue&type=template&id=d28484d8& */ "./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=template&id=d28484d8&");
+/* harmony import */ var _FormularioMatricula_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormularioMatricula.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _FormularioMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormularioMatricula.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -551,9 +722,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _FormularioPeriodoAcademico_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _FormularioPeriodoAcademico_vue_vue_type_template_id_47545bbb___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _FormularioPeriodoAcademico_vue_vue_type_template_id_47545bbb___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _FormularioMatricula_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FormularioMatricula_vue_vue_type_template_id_d28484d8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FormularioMatricula_vue_vue_type_template_id_d28484d8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -563,54 +734,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue"
+component.options.__file = "resources/js/components/erp/matricula/FormularioMatricula.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************!*\
-  !*** ./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************/
+/***/ "./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioPeriodoAcademico_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioPeriodoAcademico.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioPeriodoAcademico_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioMatricula_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioMatricula.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioMatricula_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=style&index=0&lang=css&":
-/*!***********************************************************************************************************************!*\
-  !*** ./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=style&index=0&lang=css& ***!
-  \***********************************************************************************************************************/
+/***/ "./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioPeriodoAcademico_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioPeriodoAcademico.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioPeriodoAcademico_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioPeriodoAcademico_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioPeriodoAcademico_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioPeriodoAcademico_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioMatricula.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=template&id=47545bbb&":
-/*!*********************************************************************************************************************!*\
-  !*** ./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=template&id=47545bbb& ***!
-  \*********************************************************************************************************************/
+/***/ "./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=template&id=d28484d8&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=template&id=d28484d8& ***!
+  \******************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioPeriodoAcademico_vue_vue_type_template_id_47545bbb___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioPeriodoAcademico.vue?vue&type=template&id=47545bbb& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/periodo_academico/FormularioPeriodoAcademico.vue?vue&type=template&id=47545bbb&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioPeriodoAcademico_vue_vue_type_template_id_47545bbb___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioMatricula_vue_vue_type_template_id_d28484d8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioMatricula.vue?vue&type=template&id=d28484d8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/matricula/FormularioMatricula.vue?vue&type=template&id=d28484d8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioMatricula_vue_vue_type_template_id_d28484d8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioPeriodoAcademico_vue_vue_type_template_id_47545bbb___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioMatricula_vue_vue_type_template_id_d28484d8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

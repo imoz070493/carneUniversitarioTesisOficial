@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[66],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -129,39 +129,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var FormularioPersonaDni = function FormularioPersonaDni() {
-  return __webpack_require__.e(/*! import() */ 46).then(__webpack_require__.bind(null, /*! @/components/erp/persona_dni/FormularioPersonaDni */ "./resources/js/components/erp/persona_dni/FormularioPersonaDni.vue"));
+var FormularioEmpresa = function FormularioEmpresa() {
+  return __webpack_require__.e(/*! import() */ 34).then(__webpack_require__.bind(null, /*! @/components/erp/empresa/FormularioEmpresa */ "./resources/js/components/erp/empresa/FormularioEmpresa.vue"));
 };
 
-var VerPersonaDni = function VerPersonaDni() {
-  return __webpack_require__.e(/*! import() */ 47).then(__webpack_require__.bind(null, /*! @/components/erp/persona_dni/VerPersonaDni */ "./resources/js/components/erp/persona_dni/VerPersonaDni.vue"));
-};
-
-var FormularioImportarPersonaDni = function FormularioImportarPersonaDni() {
-  return __webpack_require__.e(/*! import() */ 45).then(__webpack_require__.bind(null, /*! @/components/erp/persona_dni/FormularioImportarPersonaDni */ "./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue"));
+var VerEmpresa = function VerEmpresa() {
+  return __webpack_require__.e(/*! import() */ 35).then(__webpack_require__.bind(null, /*! @/components/erp/empresa/VerEmpresa */ "./resources/js/components/erp/empresa/VerEmpresa.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    "v-formulario-persona-dni": FormularioPersonaDni,
-    "v-ver-persona-dni": VerPersonaDni,
-    "v-formulario-importar-persona-dni": FormularioImportarPersonaDni
+    "v-formulario-persona-dni": FormularioEmpresa,
+    "v-ver-persona-dni": VerEmpresa
   },
   data: function data() {
     return {
@@ -169,10 +148,9 @@ var FormularioImportarPersonaDni = function FormularioImportarPersonaDni() {
       editable: {},
       ver_editable: {},
       editable_anulacion: {},
-      importar_editable: {},
       show: {},
       var_config: {},
-      arrayPersonaDni: [],
+      arrayEmpresa: [],
       pagination: {
         'total': 0,
         'current_page': 0,
@@ -220,17 +198,17 @@ var FormularioImportarPersonaDni = function FormularioImportarPersonaDni() {
   },
   mounted: function mounted() {
     console.log('Component mounted.');
-    this.listarPersonaDni(1, this.buscar, this.criterio);
+    this.listarEmpresa(1, this.buscar, this.criterio);
   },
   methods: {
-    listarPersonaDni: function listarPersonaDni(page, buscar, criterio) {
+    listarEmpresa: function listarEmpresa(page, buscar, criterio) {
       var me = this;
-      var url = '/persona_dni?page=' + page + '&buscar=' + buscar + '&criterio=' + criterio + '&per_page=' + this.per_page;
+      var url = '/empresa?page=' + page + '&buscar=' + buscar + '&criterio=' + criterio + '&per_page=' + this.per_page;
       axios.get(url).then(function (response) {
         var respuesta = response.data;
-        me.arrayPersonaDni = respuesta.personas_dnis.data;
+        me.arrayEmpresa = respuesta.empresas.data;
         me.pagination = respuesta.pagination;
-        if (me.arrayPersonaDni.length == 0) me.show['arrayPersonaDni'] = true;else me.show['arrayPersonaDni'] = false;
+        if (me.arrayEmpresa.length == 0) me.show['arrayEmpresa'] = true;else me.show['arrayEmpresa'] = false;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -240,9 +218,9 @@ var FormularioImportarPersonaDni = function FormularioImportarPersonaDni() {
 
       me.pagination.current_page = page; // Envia la peticion para visualizar la data de esta pagina
 
-      me.listarPersonaDni(page, buscar, criterio);
+      me.listarEmpresa(page, buscar, criterio);
     },
-    desactivarPersonaDni: function desactivarPersonaDni(id) {
+    desactivarEmpresa: function desactivarEmpresa(id) {
       var _this = this;
 
       swal({
@@ -260,10 +238,10 @@ var FormularioImportarPersonaDni = function FormularioImportarPersonaDni() {
       }).then(function (result) {
         if (result.value) {
           var me = _this;
-          axios.put('/persona_dni/desactivar', {
+          axios.put('/empresa/desactivar', {
             id: id
           }).then(function (response) {
-            me.listarPersonaDni(1, '', 'nombre');
+            me.listarEmpresa(1, '', 'nombre');
             swal('Desactivado', 'El registro ha sido desactivado con exito', 'success');
           })["catch"](function (error) {
             console.log(error);
@@ -273,7 +251,7 @@ var FormularioImportarPersonaDni = function FormularioImportarPersonaDni() {
         result.dismiss === swal.DismissReason.cancel) {}
       });
     },
-    activarPersonaDni: function activarPersonaDni(id) {
+    activarEmpresa: function activarEmpresa(id) {
       var _this2 = this;
 
       swal({
@@ -291,10 +269,10 @@ var FormularioImportarPersonaDni = function FormularioImportarPersonaDni() {
       }).then(function (result) {
         if (result.value) {
           var me = _this2;
-          axios.put('/persona_dni/activar', {
+          axios.put('/empresa/activar', {
             id: id
           }).then(function (response) {
-            me.listarPersonaDni(1, '', 'nombre');
+            me.listarEmpresa(1, '', 'nombre');
             swal('Activado', 'El registro ha sido activado con exito', 'success');
           })["catch"](function (error) {
             console.log(error);
@@ -309,7 +287,7 @@ var FormularioImportarPersonaDni = function FormularioImportarPersonaDni() {
         _estado: 'creando'
       };
       this.var_config = {
-        title: 'Registrar Persona',
+        title: 'Registrar Empresa',
         tipo_accion: 'registrar'
       };
     },
@@ -323,7 +301,7 @@ var FormularioImportarPersonaDni = function FormularioImportarPersonaDni() {
         _estado: 'editando'
       }, vehiculo);
       this.var_config = {
-        title: 'Actualizar Persona',
+        title: 'Actualizar Empresa',
         tipo_accion: 'actualizar'
       };
     },
@@ -332,16 +310,7 @@ var FormularioImportarPersonaDni = function FormularioImportarPersonaDni() {
         _estado: 'viendo'
       }, vehiculo);
       this.var_config = {
-        title: 'Ver Persona'
-      };
-    },
-    importar: function importar() {
-      this.importar_editable = {
-        _estado: 'creando'
-      };
-      this.var_config = {
-        title: 'Importar Persona',
-        tipo_accion: 'importar'
+        title: 'Ver Empresa'
       };
     }
   }
@@ -349,10 +318,10 @@ var FormularioImportarPersonaDni = function FormularioImportarPersonaDni() {
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=template&id=6249533c&":
-/*!***********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=template&id=6249533c& ***!
-  \***********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=template&id=6b9131ad&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=template&id=6b9131ad& ***!
+  \****************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -374,7 +343,7 @@ var render = function() {
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
             _c("i", { staticClass: "fa fa-align-justify" }),
-            _vm._v(" Personas\n                "),
+            _vm._v(" Empresas\n                "),
             _c(
               "button",
               {
@@ -389,23 +358,6 @@ var render = function() {
               [
                 _c("i", { staticClass: "icon-plus" }),
                 _vm._v(" Nuevo\n                ")
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-success",
-                attrs: { type: "button" },
-                on: {
-                  click: function($event) {
-                    return _vm.importar()
-                  }
-                }
-              },
-              [
-                _c("i", { staticClass: "icon-plus" }),
-                _vm._v(" Importar\n                ")
               ]
             )
           ]),
@@ -447,16 +399,12 @@ var render = function() {
                         _vm._v("Todos")
                       ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "apellidoPaterno" } }, [
-                        _vm._v("Apellido Paterno")
+                      _c("option", { attrs: { value: "nombreComercial" } }, [
+                        _vm._v("Nombre Comercial")
                       ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "apellidoMaterno" } }, [
-                        _vm._v("Apellido Materno")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "nombres" } }, [
-                        _vm._v("Nombres")
+                      _c("option", { attrs: { value: "razonSocial" } }, [
+                        _vm._v("Razon Social")
                       ])
                     ]
                   ),
@@ -487,7 +435,7 @@ var render = function() {
                         ) {
                           return null
                         }
-                        return _vm.listarPersonaDni(1, _vm.buscar, _vm.criterio)
+                        return _vm.listarEmpresa(1, _vm.buscar, _vm.criterio)
                       },
                       input: function($event) {
                         if ($event.target.composing) {
@@ -505,11 +453,7 @@ var render = function() {
                       attrs: { type: "submit" },
                       on: {
                         click: function($event) {
-                          return _vm.listarPersonaDni(
-                            1,
-                            _vm.buscar,
-                            _vm.criterio
-                          )
+                          return _vm.listarEmpresa(1, _vm.buscar, _vm.criterio)
                         }
                       }
                     },
@@ -534,7 +478,7 @@ var render = function() {
                   _c(
                     "tbody",
                     [
-                      _vm.show.arrayPersonaDni
+                      _vm.show.arrayEmpresa
                         ? _c("tr", [
                             _c("th", {
                               staticClass: "text-center text-dark",
@@ -544,8 +488,8 @@ var render = function() {
                           ])
                         : _vm._e(),
                       _vm._v(" "),
-                      _vm._l(_vm.arrayPersonaDni, function(persona_dni) {
-                        return _c("tr", { key: persona_dni.id }, [
+                      _vm._l(_vm.arrayEmpresa, function(empresa) {
+                        return _c("tr", { key: empresa.id }, [
                           _c("td", [
                             _c("div", { staticClass: "btn-group" }, [
                               _vm._m(2, true),
@@ -568,7 +512,7 @@ var render = function() {
                                       attrs: { href: "#", disabled: "" },
                                       on: {
                                         click: function($event) {
-                                          return _vm.editar(persona_dni)
+                                          return _vm.editar(empresa)
                                         }
                                       }
                                     },
@@ -591,7 +535,7 @@ var render = function() {
                                       attrs: { href: "#" },
                                       on: {
                                         click: function($event) {
-                                          return _vm.ver(persona_dni)
+                                          return _vm.ver(empresa)
                                         }
                                       }
                                     },
@@ -612,43 +556,33 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("td", {
+                            domProps: { textContent: _vm._s(empresa.ruc) }
+                          }),
+                          _vm._v(" "),
+                          _c("td", {
                             domProps: {
-                              textContent: _vm._s(persona_dni.nombres)
+                              textContent: _vm._s(empresa.razonSocial)
                             }
                           }),
                           _vm._v(" "),
                           _c("td", {
                             domProps: {
-                              textContent: _vm._s(persona_dni.apellidoPaterno)
+                              textContent: _vm._s(empresa.nombreComercial)
                             }
                           }),
                           _vm._v(" "),
                           _c("td", {
-                            domProps: {
-                              textContent: _vm._s(persona_dni.apellidoMaterno)
-                            }
+                            domProps: { textContent: _vm._s(empresa.direccion) }
                           }),
                           _vm._v(" "),
                           _c("td", {
-                            domProps: { textContent: _vm._s(persona_dni.dni) }
-                          }),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: {
-                              textContent: _vm._s(persona_dni.codVerifica)
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: {
-                              textContent: _vm._s(persona_dni.origen)
-                            }
+                            domProps: { textContent: _vm._s(empresa.origen) }
                           }),
                           _vm._v(" "),
                           _c("td", {
                             domProps: {
                               textContent: _vm._s(
-                                persona_dni.created_at
+                                empresa.created_at
                                   .substr(0, 10)
                                   .split("-")
                                   .reverse()
@@ -755,14 +689,11 @@ var render = function() {
       _vm._v(" "),
       _vm.nuevo._estado == "creando"
         ? _c("v-formulario-persona-dni", {
-            ref: "cmp_crear_persona_dni",
+            ref: "cmp_crear_empresa",
             attrs: { var_config: _vm.var_config },
             on: {
-              cerrado: function($event) {
-                return _vm.listarPersonaDni(1, "", "nombre")
-              },
               guardado: function($event) {
-                return _vm.listarPersonaDni(1, "", "nombre")
+                return _vm.listarEmpresa(1, "", "nombre")
               }
             },
             model: {
@@ -777,11 +708,11 @@ var render = function() {
       _vm._v(" "),
       _vm.editable._estado == "editando"
         ? _c("v-formulario-persona-dni", {
-            ref: "cmp_crear_persona_dni",
+            ref: "cmp_crear_empresa",
             attrs: { var_config: _vm.var_config },
             on: {
               guardado: function($event) {
-                return _vm.listarPersonaDni(1, "", "nombre")
+                return _vm.listarEmpresa(1, "", "nombre")
               }
             },
             model: {
@@ -796,7 +727,7 @@ var render = function() {
       _vm._v(" "),
       _vm.ver_editable._estado == "viendo"
         ? _c("v-ver-persona-dni", {
-            ref: "cmp_ver_persona_dni",
+            ref: "cmp_ver_empresa",
             attrs: { var_config: _vm.var_config },
             model: {
               value: _vm.ver_editable,
@@ -804,25 +735,6 @@ var render = function() {
                 _vm.ver_editable = $$v
               },
               expression: "ver_editable"
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.importar_editable._estado == "creando"
-        ? _c("v-formulario-importar-persona-dni", {
-            ref: "cmp_importar_persona_dni",
-            attrs: { var_config: _vm.var_config },
-            on: {
-              guardado: function($event) {
-                return _vm.listarPersonaDni(1, "", "nombre")
-              }
-            },
-            model: {
-              value: _vm.importar_editable,
-              callback: function($$v) {
-                _vm.importar_editable = $$v
-              },
-              expression: "importar_editable"
             }
           })
         : _vm._e()
@@ -837,7 +749,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("ol", { staticClass: "breadcrumb" }, [
       _c("li", { staticClass: "breadcrumb-item" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("Personas")])
+        _c("a", { attrs: { href: "#" } }, [_vm._v("Empresas")])
       ]),
       _vm._v(" "),
       _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Listado")])
@@ -851,15 +763,13 @@ var staticRenderFns = [
       _c("tr", [
         _c("th"),
         _vm._v(" "),
-        _c("th", [_vm._v("Nombres")]),
+        _c("th", [_vm._v("Ruc")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Apellido Paterno")]),
+        _c("th", [_vm._v("Razon Social")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Apellido Materno")]),
+        _c("th", [_vm._v("Nombre Comercial")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Dni")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Cod. Verifica")]),
+        _c("th", [_vm._v("Direccion")]),
         _vm._v(" "),
         _c("th", [_vm._v("Origen")]),
         _vm._v(" "),
@@ -895,17 +805,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/persona_dni/ListarPersonaDni.vue":
-/*!**********************************************************************!*\
-  !*** ./resources/js/components/erp/persona_dni/ListarPersonaDni.vue ***!
-  \**********************************************************************/
+/***/ "./resources/js/components/erp/empresa/ListarEmpresa.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/erp/empresa/ListarEmpresa.vue ***!
+  \***************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ListarPersonaDni_vue_vue_type_template_id_6249533c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListarPersonaDni.vue?vue&type=template&id=6249533c& */ "./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=template&id=6249533c&");
-/* harmony import */ var _ListarPersonaDni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListarPersonaDni.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=script&lang=js&");
+/* harmony import */ var _ListarEmpresa_vue_vue_type_template_id_6b9131ad___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListarEmpresa.vue?vue&type=template&id=6b9131ad& */ "./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=template&id=6b9131ad&");
+/* harmony import */ var _ListarEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListarEmpresa.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -915,9 +825,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ListarPersonaDni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ListarPersonaDni_vue_vue_type_template_id_6249533c___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ListarPersonaDni_vue_vue_type_template_id_6249533c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _ListarEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ListarEmpresa_vue_vue_type_template_id_6b9131ad___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ListarEmpresa_vue_vue_type_template_id_6b9131ad___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -927,38 +837,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/erp/persona_dni/ListarPersonaDni.vue"
+component.options.__file = "resources/js/components/erp/empresa/ListarEmpresa.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************!*\
-  !*** ./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************/
+/***/ "./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarPersonaDni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarPersonaDni.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarPersonaDni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarEmpresa.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=template&id=6249533c&":
-/*!*****************************************************************************************************!*\
-  !*** ./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=template&id=6249533c& ***!
-  \*****************************************************************************************************/
+/***/ "./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=template&id=6b9131ad&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=template&id=6b9131ad& ***!
+  \**********************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarPersonaDni_vue_vue_type_template_id_6249533c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarPersonaDni.vue?vue&type=template&id=6249533c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/ListarPersonaDni.vue?vue&type=template&id=6249533c&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarPersonaDni_vue_vue_type_template_id_6249533c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarEmpresa_vue_vue_type_template_id_6b9131ad___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarEmpresa.vue?vue&type=template&id=6b9131ad& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=template&id=6b9131ad&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarEmpresa_vue_vue_type_template_id_6b9131ad___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarPersonaDni_vue_vue_type_template_id_6249533c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarEmpresa_vue_vue_type_template_id_6b9131ad___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

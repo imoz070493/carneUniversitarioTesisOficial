@@ -1,14 +1,22 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[48],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/role/FormularioRole.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/role/FormularioRole.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -46,9 +54,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-// const CategoriaSelect = () => import("@/components/referencias/CategoriaSelect");
+//
+//
+//
+//
+//
+//
+//
+//
+var DocumentoBusqueda = function DocumentoBusqueda() {
+  return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! @/components/referencias/DocumentoBusqueda */ "./resources/js/components/referencias/DocumentoBusqueda.vue"));
+};
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {// "categoria-select": CategoriaSelect,
+  components: {
+    "documento-busqueda": DocumentoBusqueda
   },
   props: {
     value: {
@@ -62,7 +82,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      editable: Object.assign({}, this.value),
+      editable: Object.assign({
+        tipo_documento: 'dni'
+      }, this.value),
       errors: [],
       btn: {
         registrar: false,
@@ -71,17 +93,19 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    if (!this.editable.id) {//Nuevo
+    if (!this.editable.id) {
+      //Nuevo
+      this.editable.origen = 'local';
     } else {//Editar
-      }
+    }
 
     this.$forceUpdate();
   },
   methods: {
-    registrarRole: function registrarRole() {
+    registrarPersonaDni: function registrarPersonaDni() {
       var me = this;
       this.btn['registrar'] = true;
-      axios.post('/role/registrar', this.editable).then(function (response) {
+      axios.post('/persona_dni/registrar', this.editable).then(function (response) {
         me.$emit('guardado');
         me.cerrarModal();
       })["catch"](function (error) {
@@ -94,12 +118,125 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    actualizarRole: function actualizarRole() {
+    actualizarPersonaDni: function actualizarPersonaDni() {
       var me = this;
       this.btn['actualizar'] = true;
-      axios.put('/role/actualizar', this.editable).then(function (response) {
+      axios.put('/persona_dni/actualizar', this.editable).then(function (response) {
         me.$emit('guardado');
         me.cerrarModal();
+      })["catch"](function (error) {
+        me.btn['actualizar'] = false;
+
+        if (error.request.response) {
+          var response = JSON.parse(error.request.response);
+          console.log(response);
+          me.errors = response.errors;
+        }
+      });
+    },
+    importar: function importar() {
+      var me = this;
+      this.btn['actualizar'] = true; // axios.put('/persona_dni/importar',this.editable).then(function (response){
+      //     me.$emit('guardado');
+      //     me.cerrarModal();
+      // })
+
+      axios({
+        url: '/persona_dni/importar',
+        method: 'POST',
+        data: this.editable,
+        responseType: 'blob'
+      }).then(function (response) {
+        // console.log(response.data)
+        // console.log(response.data.size)
+        if (response.data && response.data.size) {
+          // window.location.href = response;
+          // this.leer()
+          // let filename = "FACTURA"+this.formatComprobante(obj_venta)+".pdf";
+          var filename = "CONSULTA PERSONAS.xlsx";
+          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+          var fileLink = document.createElement('a');
+          fileLink.href = fileURL;
+
+          if (!filename) {
+            filename = url.substr(url.lastIndexOf('/') + 1);
+          }
+
+          fileLink.setAttribute('download', filename);
+          document.body.appendChild(fileLink);
+          fileLink.click();
+          me.$emit('guardado');
+          me.cerrarModal();
+        }
+      })["catch"](function (error) {
+        me.btn['actualizar'] = false;
+
+        var asyncExample = /*#__PURE__*/function () {
+          var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+            var data, response;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.prev = 0;
+                    _context.next = 3;
+                    return error.response.data.text();
+
+                  case 3:
+                    data = _context.sent;
+                    response = JSON.parse(data); //200
+
+                    if (response.errors) {
+                      me.errors = response.errors;
+                      me.$forceUpdate();
+                    }
+
+                    _context.next = 11;
+                    break;
+
+                  case 8:
+                    _context.prev = 8;
+                    _context.t0 = _context["catch"](0);
+                    console.log(_context.t0);
+
+                  case 11:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, null, [[0, 8]]);
+          }));
+
+          return function asyncExample() {
+            return _ref.apply(this, arguments);
+          };
+        }();
+
+        var globalData = asyncExample();
+      });
+    },
+    descargarPlantilla: function descargarPlantilla() {
+      var me = this;
+      this.btn['actualizar'] = true;
+      axios({
+        url: '/persona_dni/plantilla',
+        method: 'POST',
+        responseType: 'blob'
+      }).then(function (response) {
+        if (response.data && response.data.size) {
+          var filename = "Personas.xlsx";
+          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+          var fileLink = document.createElement('a');
+          fileLink.href = fileURL;
+
+          if (!filename) {
+            filename = url.substr(url.lastIndexOf('/') + 1);
+          }
+
+          fileLink.setAttribute('download', filename);
+          document.body.appendChild(fileLink);
+          fileLink.click();
+        }
       })["catch"](function (error) {
         me.btn['actualizar'] = false;
 
@@ -122,19 +259,28 @@ __webpack_require__.r(__webpack_exports__);
       fileReader.readAsDataURL(e.target.files[0]);
 
       fileReader.onload = function (e) {
-        _this.editable.name_image = propiedades.name;
-        _this.editable.new_imagen = e.target.result;
+        _this.editable.name_excel = propiedades.name;
+        _this.editable.excel_document = e.target.result;
       };
+    }
+  },
+  watch: {
+    'editable.numero_placa': function editableNumero_placa(newval, olval) {
+      if (newval) {
+        this.editable.numero_placa = String(newval).toUpperCase();
+        this.editable.placa_vigente = newval;
+        this.$forceUpdate();
+      }
     }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/role/FormularioRole.vue?vue&type=style&index=0&lang=css&":
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/role/FormularioRole.vue?vue&type=style&index=0&lang=css& ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -150,15 +296,15 @@ exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    pos
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/role/FormularioRole.vue?vue&type=style&index=0&lang=css&":
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/role/FormularioRole.vue?vue&type=style&index=0&lang=css& ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioRole.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/role/FormularioRole.vue?vue&type=style&index=0&lang=css&");
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -180,10 +326,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/role/FormularioRole.vue?vue&type=template&id=575c5eba&":
-/*!**************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/role/FormularioRole.vue?vue&type=template&id=575c5eba& ***!
-  \**************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=template&id=94fd1456&":
+/*!***********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=template&id=94fd1456& ***!
+  \***********************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -253,6 +399,11 @@ var render = function() {
                   }
                 },
                 [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.editable) +
+                      "\n                    "
+                  ),
                   _c("div", { staticClass: "row" }, [
                     _c(
                       "div",
@@ -262,37 +413,43 @@ var render = function() {
                           _vm._m(0),
                           _vm._v(" "),
                           _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.editable.name,
-                                expression: "editable.name"
-                              }
-                            ],
                             staticClass: "form-control",
-                            attrs: { type: "text", placeholder: "Nombre..." },
-                            domProps: { value: _vm.editable.name },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.editable,
-                                  "name",
-                                  $event.target.value
-                                )
-                              }
-                            }
+                            attrs: { type: "file", accept: ".xlsx" },
+                            on: { change: _vm.imageChanged }
                           }),
                           _vm._v(" "),
-                          _vm.errors.name
+                          _vm.errors.excel_document
                             ? _c("span", { staticClass: "text-error" }, [
-                                _vm._v(_vm._s(_vm.errors.name))
+                                _vm._v(_vm._s(_vm.errors.excel_document))
                               ])
                             : _vm._e()
                         ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                      },
+                      [
+                        _vm._v(
+                          "\n                            Utilizar la siguiente plantilla para realizar las consultas: \n                            "
+                        ),
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "#" },
+                            on: {
+                              click: function($event) {
+                                return _vm.descargarPlantilla()
+                              }
+                            }
+                          },
+                          [_vm._v("Excel")]
+                        )
                       ]
                     )
                   ])
@@ -316,6 +473,22 @@ var render = function() {
               [_vm._v("Cerrar")]
             ),
             _vm._v(" "),
+            _vm.var_config.tipo_accion == "importar"
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.importar()
+                      }
+                    }
+                  },
+                  [_vm._v("Importar")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
             _vm.var_config.tipo_accion == "registrar"
               ? _c(
                   "button",
@@ -324,7 +497,7 @@ var render = function() {
                     attrs: { type: "button", disabled: _vm.btn.registrar },
                     on: {
                       click: function($event) {
-                        return _vm.registrarRole()
+                        return _vm.registrarPersonaDni()
                       }
                     }
                   },
@@ -340,7 +513,7 @@ var render = function() {
                     attrs: { type: "button", disabled: _vm.btn.actualizar },
                     on: {
                       click: function($event) {
-                        return _vm.actualizarRole()
+                        return _vm.actualizarPersonaDni()
                       }
                     }
                   },
@@ -358,7 +531,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Nombre: *")])])
+    return _c("label", [_c("dt", [_vm._v("Excel: *")])])
   }
 ]
 render._withStripped = true
@@ -367,18 +540,18 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/role/FormularioRole.vue":
-/*!*************************************************************!*\
-  !*** ./resources/js/components/erp/role/FormularioRole.vue ***!
-  \*************************************************************/
+/***/ "./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue ***!
+  \**********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _FormularioRole_vue_vue_type_template_id_575c5eba___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormularioRole.vue?vue&type=template&id=575c5eba& */ "./resources/js/components/erp/role/FormularioRole.vue?vue&type=template&id=575c5eba&");
-/* harmony import */ var _FormularioRole_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormularioRole.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/role/FormularioRole.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _FormularioRole_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormularioRole.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/role/FormularioRole.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _FormularioImportarPersonaDni_vue_vue_type_template_id_94fd1456___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormularioImportarPersonaDni.vue?vue&type=template&id=94fd1456& */ "./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=template&id=94fd1456&");
+/* harmony import */ var _FormularioImportarPersonaDni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormularioImportarPersonaDni.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _FormularioImportarPersonaDni_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -389,9 +562,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _FormularioRole_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _FormularioRole_vue_vue_type_template_id_575c5eba___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _FormularioRole_vue_vue_type_template_id_575c5eba___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _FormularioImportarPersonaDni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FormularioImportarPersonaDni_vue_vue_type_template_id_94fd1456___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FormularioImportarPersonaDni_vue_vue_type_template_id_94fd1456___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -401,54 +574,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/erp/role/FormularioRole.vue"
+component.options.__file = "resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/role/FormularioRole.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/components/erp/role/FormularioRole.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************/
+/***/ "./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioRole_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioRole.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/role/FormularioRole.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioRole_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarPersonaDni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioImportarPersonaDni.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarPersonaDni_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/role/FormularioRole.vue?vue&type=style&index=0&lang=css&":
-/*!**********************************************************************************************!*\
-  !*** ./resources/js/components/erp/role/FormularioRole.vue?vue&type=style&index=0&lang=css& ***!
-  \**********************************************************************************************/
+/***/ "./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************************!*\
+  !*** ./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioRole_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioRole.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/role/FormularioRole.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioRole_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioRole_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioRole_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioRole_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarPersonaDni_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarPersonaDni_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarPersonaDni_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarPersonaDni_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarPersonaDni_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/role/FormularioRole.vue?vue&type=template&id=575c5eba&":
-/*!********************************************************************************************!*\
-  !*** ./resources/js/components/erp/role/FormularioRole.vue?vue&type=template&id=575c5eba& ***!
-  \********************************************************************************************/
+/***/ "./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=template&id=94fd1456&":
+/*!*****************************************************************************************************************!*\
+  !*** ./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=template&id=94fd1456& ***!
+  \*****************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioRole_vue_vue_type_template_id_575c5eba___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioRole.vue?vue&type=template&id=575c5eba& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/role/FormularioRole.vue?vue&type=template&id=575c5eba&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioRole_vue_vue_type_template_id_575c5eba___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarPersonaDni_vue_vue_type_template_id_94fd1456___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioImportarPersonaDni.vue?vue&type=template&id=94fd1456& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/persona_dni/FormularioImportarPersonaDni.vue?vue&type=template&id=94fd1456&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarPersonaDni_vue_vue_type_template_id_94fd1456___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioRole_vue_vue_type_template_id_575c5eba___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarPersonaDni_vue_vue_type_template_id_94fd1456___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

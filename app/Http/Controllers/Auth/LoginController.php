@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Acceso;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -73,6 +74,7 @@ class LoginController extends Controller
                 //         'email_verification' => 'Debes verificar tu correo electrónico antes de iniciar sesión.',
                 //     ]);
             }
+            Acceso::guardarDatos(['usuario_id'=>$request->user()->id]);
 
             // Success
             return redirect()->intended($this->redirectTo);

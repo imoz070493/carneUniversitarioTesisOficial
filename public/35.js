@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[35],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=script&lang=js&":
-/*!************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -192,14 +192,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-var MatriculadoBusqueda = function MatriculadoBusqueda() {
-  return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! @/components/referencias/MatriculadoBusqueda */ "./resources/js/components/referencias/MatriculadoBusqueda.vue"));
-};
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    "matriculado-busqueda": MatriculadoBusqueda
-  },
+  components: {},
   props: {
     value: {
       type: Object,
@@ -212,155 +248,30 @@ var MatriculadoBusqueda = function MatriculadoBusqueda() {
   },
   data: function data() {
     return {
-      editable: Object.assign({
-        tipo_documento: 'codigo'
-      }, this.value),
-      errors: [],
-      btn: {
-        registrar: false,
-        actualizar: false
-      },
-      lock: {},
-      text: {},
-      var_config1: {},
-      recortar_nuevo: {},
-      validacion_nuevo: {}
+      editable: Object.assign({}, this.value),
+      show: {}
     };
   },
   mounted: function mounted() {
-    var me = this;
-
-    if (!this.editable.id) {
-      //Nuevo
-      me.editable._voucher_validado = false;
-      me.text._voucher_validado = "NO";
-      me.editable._duplicado = false;
-      me.text._duplicado = "NO";
-      this.lock['escuela_profesional'] = true;
-      this.lock['dni'] = true;
-      this.lock['codigo_estudiante'] = true;
-      this.lock['apellido_paterno'] = true;
-      this.lock['apellido_materno'] = true;
-      this.lock['nombres'] = true;
-      this.lock['sexo'] = true;
-    } else {
-      //Editar
-      // Duplicado
-      if (me.editable.duplicado == '1') {
-        me.editable._duplicado = true;
-        me.text._duplicado = 'SI';
+    if (!this.editable.id) {//Nuevo
+    } else {//ver
       }
 
-      if (me.editable.duplicado == '0') {
-        me.editable._duplicado = false;
-        me.text._duplicado = 'NO';
-      } // Foto Validado
-
-
-      if (me.editable.voucher_validado == '1') {
-        me.lock['_voucher_validado'] = true;
-        me.lock['new_document'] = true;
-        me.editable._voucher_validado = true;
-        me.text._voucher_validado = 'SI';
-      }
-
-      if (me.editable.voucher_validado == '0') {
-        me.lock['_voucher_validado'] = false;
-        me.lock['new_document'] = false;
-        me.editable._voucher_validado = false;
-        me.text._voucher_validado = 'NO';
-      }
-
-      this.lock['_duplicado'] = true;
-      this.lock['numero_documento'] = true;
-      this.lock['escuela_profesional'] = true;
-      this.lock['dni'] = true;
-      this.lock['codigo_estudiante'] = true;
-      this.lock['apellido_paterno'] = true;
-      this.lock['apellido_materno'] = true;
-      this.lock['nombres'] = true;
-      this.lock['sexo'] = true;
-      this.lock['numero_recibo'] = true;
-    }
-
-    this.editable.fecha_inicio_edicion = now();
     this.$forceUpdate();
   },
   methods: {
-    registrarArticulo: function registrarArticulo() {
-      var me = this;
-      this.btn['registrar'] = true;
-      if (me.editable._voucher_validado) me.editable.voucher_validado = 1;else me.editable.voucher_validado = 0;
-      if (me.editable._duplicado) me.editable.duplicado = 1;else me.editable.duplicado = 0;
-      axios.post('/inscrito/registrar', this.editable).then(function (response) {
-        me.$emit('guardado');
-        me.cerrarModal();
-        swal('Registrado', 'El tramite ha sido registrado con exito', 'success');
-      })["catch"](function (error) {
-        me.btn['registrar'] = false;
-
-        if (error.request.status) {
-          if (error.request.status == 419) {
-            location.reload();
-          }
-        }
-
-        if (error.request.response) {
-          var response = JSON.parse(error.request.response);
-          console.log(response);
-          me.errors = response.errors;
-        }
-      });
-    },
-    actualizarArticulo: function actualizarArticulo() {
-      console.log("actualizarArticulo");
-      var me = this;
-      this.btn['actualizar'] = true;
-      if (me.editable._voucher_validado) me.editable.voucher_validado = 1;else me.editable.voucher_validado = 0; // Validando la validacion verdadera
-
-      if (!me.editable._voucher_validado) {
-        me.errors._voucher_validado = 'Marque la opcion validar.';
-        me.btn['actualizar'] = false;
-        return;
-      } else {
-        delete me.errors.new_document;
-      }
-
-      this.editable.fecha_fin_edicion = now();
-      axios.put('/inscrito/validar_voucher', {
-        id: this.editable.id,
-        voucher_validado: this.editable.voucher_validado,
-        observacion: this.editable.observacion
-      }).then(function (response) {
-        me.$emit('guardado');
-        me.cerrarModal();
-        swal('Actualizado', 'El voucher ha sido validado con exito', 'success');
-      })["catch"](function (error) {
-        me.btn['actualizar'] = false;
-
-        if (error.request.response) {
-          var response = JSON.parse(error.request.response);
-          console.log(response);
-          me.errors = response.errors;
-        }
-      });
-    },
     cerrarModal: function cerrarModal() {
       this.$emit('input', {});
-    },
-    changeTipo: function changeTipo(e) {
-      if (e.target.checked) this.text._voucher_validado = 'SI';else this.text._voucher_validado = 'NO';
-      this.$forceUpdate();
     }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css&":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css& ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -369,22 +280,22 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display: list-item !important;\n    opacity: 1 !important;\n    position: absolute !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: flex;\n    justify-content: center;\n}\n.text-error{\n    color: red !important;\n    font-weight: bold;\n}\n@media (max-height: 500px) {\n.modal-xl {\n        max-width: 1140px;}\n}\n.hide-container{\n    display: none;\n}\n.show-container{\n    display: flex;\n    width: calc(100% + 10px);\n    height: calc(100% - 66px);\n    /* border: 1px solid black; */\n    position: absolute;\n    z-index: 100;\n    margin: 66.8px 0 0 -1px;\n    background: rgba(162, 153, 153, .5);\n}\n.loader {\n    border: 10px solid #f3f3f3;\n    border-radius: 50%;\n    border-top: 10px solid #3498db;\n    width: 50px;\n    height: 50px;\n    -webkit-animation: spin 2s linear infinite; /* Safari */\n    animation: spin 2s linear infinite;\n    top: calc(50%);\n    left: 50%;\n    position: absolute;\n    margin: -25px 0 0 -25px;\n    z-index: 100;\n}\n\n/* Safari */\n@-webkit-keyframes spin {\n0% { -webkit-transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg);\n}\n}\n@keyframes spin {\n0% { transform: rotate(0deg);\n}\n100% { transform: rotate(360deg);\n}\n}\n", ""]);
+exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display: list-item !important;\n    opacity: 1 !important;\n    position: absolute !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: flex;\n    justify-content: center;\n}\n.text-error{\n    color: red !important;\n    font-weight: bold;\n}\n@media (max-height: 500px) {\n.modal-xl {\n        max-width: 1140px;}\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css&":
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css&");
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./VerEmpresa.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -406,10 +317,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=template&id=39523974&":
-/*!****************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=template&id=39523974& ***!
-  \****************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=template&id=5ee3b103&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=template&id=5ee3b103& ***!
+  \*************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -436,17 +347,6 @@ var render = function() {
     [
       _c("div", { staticClass: "modal-dialog modal-primary modal-xl" }, [
         _c("div", { staticClass: "modal-content" }, [
-          _c(
-            "div",
-            {
-              class: {
-                "show-container": _vm.btn.registrar,
-                "hide-container": !_vm.btn.registrar
-              }
-            },
-            [_c("div", { staticClass: "loader" })]
-          ),
-          _vm._v(" "),
           _c("div", { staticClass: "modal-header" }, [
             _c("h4", {
               staticClass: "modal-title",
@@ -473,7 +373,7 @@ var render = function() {
             {
               staticClass: "modal-body",
               staticStyle: {
-                "max-height": "550px",
+                "max-height": "450px",
                 "overflow-y": "auto",
                 "overflow-x": "hidden"
               }
@@ -490,101 +390,210 @@ var render = function() {
                   }
                 },
                 [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.editable) +
-                      "\n                    "
-                  ),
                   _c("div", { staticClass: "row" }, [
                     _c(
                       "div",
-                      { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
                       [
                         _c("div", { staticClass: "form-group" }, [
                           _vm._m(0),
+                          _c("br"),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.editable.escuela_profesional,
-                                expression: "editable.escuela_profesional"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              placeholder: "Escuela Profesional...",
-                              disabled: _vm.lock.escuela_profesional
-                            },
-                            domProps: {
-                              value: _vm.editable.escuela_profesional
-                            },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.editable,
-                                  "escuela_profesional",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.errors.escuela_profesional
-                            ? _c("span", { staticClass: "text-error" }, [
-                                _vm._v(_vm._s(_vm.errors.escuela_profesional))
-                              ])
-                            : _vm._e()
+                          _c("span", {
+                            domProps: { textContent: _vm._s("RUC") }
+                          })
                         ])
                       ]
                     ),
                     _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
                       [
                         _c("div", { staticClass: "form-group" }, [
                           _vm._m(1),
+                          _c("br"),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.editable.codigo_estudiante,
-                                expression: "editable.codigo_estudiante"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              placeholder: "Codigo Estudiante...",
-                              disabled: _vm.lock.codigo_estudiante
-                            },
-                            domProps: { value: _vm.editable.codigo_estudiante },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _vm.editable.ruc
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(_vm.editable.ruc)
                                 }
-                                _vm.$set(
-                                  _vm.editable,
-                                  "codigo_estudiante",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
+                              })
+                            : _vm._e()
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-lg-10 col-md-10 col-sm-10 col-xs-12"
+                      },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(2),
+                          _c("br"),
                           _vm._v(" "),
-                          _vm.errors.codigo_estudiante
-                            ? _c("span", { staticClass: "text-error" }, [
-                                _vm._v(_vm._s(_vm.errors.codigo_estudiante))
-                              ])
+                          _vm.editable.razonSocial
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(_vm.editable.razonSocial)
+                                }
+                              })
+                            : _vm._e()
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-lg-10 col-md-10 col-sm-10 col-xs-12"
+                      },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(3),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm.editable.nombreComercial
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(
+                                    _vm.editable.nombreComercial
+                                  )
+                                }
+                              })
+                            : _vm._e()
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(4),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm.editable.telefonos
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(
+                                    JSON.parse(_vm.editable.telefonos)
+                                  )
+                                }
+                              })
+                            : _vm._e()
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(5),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm.editable.tipo
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(_vm.editable.tipo)
+                                }
+                              })
+                            : _vm._e()
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(6),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm.editable.estado
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(_vm.editable.estado)
+                                }
+                              })
+                            : _vm._e()
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(7),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm.editable.condicion
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(_vm.editable.condicion)
+                                }
+                              })
+                            : _vm._e()
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-lg-10 col-md-10 col-sm-10 col-xs-12"
+                      },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(8),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm.editable.direccion
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(_vm.editable.direccion)
+                                }
+                              })
+                            : _vm._e()
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(9),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm.editable.departamento
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(_vm.editable.departamento)
+                                }
+                              })
                             : _vm._e()
                         ])
                       ]
@@ -595,42 +604,34 @@ var render = function() {
                       { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
                       [
                         _c("div", { staticClass: "form-group" }, [
-                          _vm._m(2),
+                          _vm._m(10),
+                          _c("br"),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.editable.dni,
-                                expression: "editable.dni"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              placeholder: "N° DNI...",
-                              disabled: _vm.lock.dni
-                            },
-                            domProps: { value: _vm.editable.dni },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _vm.editable.provincia
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(_vm.editable.provincia)
                                 }
-                                _vm.$set(
-                                  _vm.editable,
-                                  "dni",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
+                              })
+                            : _vm._e()
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(11),
+                          _c("br"),
                           _vm._v(" "),
-                          _vm.errors.dni
-                            ? _c("span", { staticClass: "text-error" }, [
-                                _vm._v(_vm._s(_vm.errors.dni))
-                              ])
+                          _vm.editable.distrito
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(_vm.editable.distrito)
+                                }
+                              })
                             : _vm._e()
                         ])
                       ]
@@ -640,45 +641,23 @@ var render = function() {
                   _c("div", { staticClass: "row" }, [
                     _c(
                       "div",
-                      { staticClass: "col-lg-3 col-md-3 col-sm-3 col-xs-12" },
+                      { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
                       [
                         _c("div", { staticClass: "form-group" }, [
-                          _vm._m(3),
+                          _vm._m(12),
+                          _c("br"),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.editable.apellido_paterno,
-                                expression: "editable.apellido_paterno"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              placeholder: "Apellido Paterno...",
-                              disabled: _vm.lock.apellido_paterno
-                            },
-                            domProps: { value: _vm.editable.apellido_paterno },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _vm.editable.fechaInscripcion
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(
+                                    String(_vm.editable.fechaInscripcion)
+                                      .split("-")
+                                      .reverse()
+                                      .join("-")
+                                  )
                                 }
-                                _vm.$set(
-                                  _vm.editable,
-                                  "apellido_paterno",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.errors.apellido_paterno
-                            ? _c("span", { staticClass: "text-error" }, [
-                                _vm._v(_vm._s(_vm.errors.apellido_paterno))
-                              ])
+                              })
                             : _vm._e()
                         ])
                       ]
@@ -686,45 +665,18 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "col-lg-3 col-md-3 col-sm-3 col-xs-12" },
+                      { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
                       [
                         _c("div", { staticClass: "form-group" }, [
-                          _vm._m(4),
+                          _vm._m(13),
+                          _c("br"),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.editable.apellido_materno,
-                                expression: "editable.apellido_materno"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              placeholder: "Apellido Materno...",
-                              disabled: _vm.lock.apellido_materno
-                            },
-                            domProps: { value: _vm.editable.apellido_materno },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _vm.editable.sistEmsion
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(_vm.editable.sistEmsion)
                                 }
-                                _vm.$set(
-                                  _vm.editable,
-                                  "apellido_materno",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.errors.apellido_materno
-                            ? _c("span", { staticClass: "text-error" }, [
-                                _vm._v(_vm._s(_vm.errors.apellido_materno))
-                              ])
+                              })
                             : _vm._e()
                         ])
                       ]
@@ -732,91 +684,20 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "col-lg-3 col-md-3 col-sm-3 col-xs-12" },
+                      { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
                       [
                         _c("div", { staticClass: "form-group" }, [
-                          _vm._m(5),
+                          _vm._m(14),
+                          _c("br"),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.editable.nombres,
-                                expression: "editable.nombres"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              placeholder: "Nombres...",
-                              disabled: _vm.lock.nombres
-                            },
-                            domProps: { value: _vm.editable.nombres },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _vm.editable.sistContabilidad
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(
+                                    _vm.editable.sistContabilidad
+                                  )
                                 }
-                                _vm.$set(
-                                  _vm.editable,
-                                  "nombres",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.errors.nombres
-                            ? _c("span", { staticClass: "text-error" }, [
-                                _vm._v(_vm._s(_vm.errors.nombres))
-                              ])
-                            : _vm._e()
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-lg-3 col-md-3 col-sm-3 col-xs-12" },
-                      [
-                        _c("div", { staticClass: "form-group" }, [
-                          _vm._m(6),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.editable.numero_recibo,
-                                expression: "editable.numero_recibo"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              placeholder: "N° Recibo...",
-                              disabled: _vm.lock.numero_recibo
-                            },
-                            domProps: { value: _vm.editable.numero_recibo },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.editable,
-                                  "numero_recibo",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.errors.numero_recibo
-                            ? _c("span", { staticClass: "text-error" }, [
-                                _vm._v(_vm._s(_vm.errors.numero_recibo))
-                              ])
+                              })
                             : _vm._e()
                         ])
                       ]
@@ -826,207 +707,221 @@ var render = function() {
                   _c("div", { staticClass: "row" }, [
                     _c(
                       "div",
-                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
                       [
-                        _c("div", { staticClass: "row" }, [
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "col-lg-6 col-md-6 col-sm-6 col-xs-12"
-                            },
-                            [
-                              _c("div", { staticClass: "form-group" }, [
-                                _vm._m(7),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      "custom-control custom-switch custom-switch-off-danger custom-switch-on-success"
-                                  },
-                                  [
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.editable._voucher_validado,
-                                          expression:
-                                            "editable._voucher_validado"
-                                        }
-                                      ],
-                                      staticClass: "custom-control-input",
-                                      attrs: {
-                                        type: "checkbox",
-                                        id: "customSwitch6",
-                                        disabled: _vm.lock._voucher_validado
-                                      },
-                                      domProps: {
-                                        checked: Array.isArray(
-                                          _vm.editable._voucher_validado
-                                        )
-                                          ? _vm._i(
-                                              _vm.editable._voucher_validado,
-                                              null
-                                            ) > -1
-                                          : _vm.editable._voucher_validado
-                                      },
-                                      on: {
-                                        change: [
-                                          function($event) {
-                                            var $$a =
-                                                _vm.editable._voucher_validado,
-                                              $$el = $event.target,
-                                              $$c = $$el.checked ? true : false
-                                            if (Array.isArray($$a)) {
-                                              var $$v = null,
-                                                $$i = _vm._i($$a, $$v)
-                                              if ($$el.checked) {
-                                                $$i < 0 &&
-                                                  _vm.$set(
-                                                    _vm.editable,
-                                                    "_voucher_validado",
-                                                    $$a.concat([$$v])
-                                                  )
-                                              } else {
-                                                $$i > -1 &&
-                                                  _vm.$set(
-                                                    _vm.editable,
-                                                    "_voucher_validado",
-                                                    $$a
-                                                      .slice(0, $$i)
-                                                      .concat(
-                                                        $$a.slice($$i + 1)
-                                                      )
-                                                  )
-                                              }
-                                            } else {
-                                              _vm.$set(
-                                                _vm.editable,
-                                                "_voucher_validado",
-                                                $$c
-                                              )
-                                            }
-                                          },
-                                          function($event) {
-                                            return _vm.changeTipo($event)
-                                          }
-                                        ]
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _c("label", {
-                                      staticClass: "custom-control-label",
-                                      staticStyle: { width: "70px" },
-                                      attrs: { for: "customSwitch6" },
-                                      domProps: {
-                                        innerHTML: _vm._s(
-                                          _vm.text._voucher_validado
-                                        )
-                                      }
-                                    }),
-                                    _vm._v(" "),
-                                    _vm.errors._voucher_validado
-                                      ? _c(
-                                          "span",
-                                          { staticClass: "text-error" },
-                                          [
-                                            _vm._v(
-                                              _vm._s(
-                                                _vm.errors._voucher_validado
-                                              )
-                                            )
-                                          ]
-                                        )
-                                      : _vm._e()
-                                  ]
-                                )
-                              ])
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "row" }, [
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "col-lg-6 col-md-6 col-sm-6 col-xs-12"
-                            },
-                            [
-                              _c("div", { staticClass: "form-group" }, [
-                                _vm._m(8),
-                                _vm._v(" "),
-                                _c("textarea", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.editable.observacion,
-                                      expression: "editable.observacion"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  attrs: {
-                                    type: "text",
-                                    placeholder: "Observacion..."
-                                  },
-                                  domProps: { value: _vm.editable.observacion },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        _vm.editable,
-                                        "observacion",
-                                        $event.target.value
-                                      )
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _vm.errors.observacion
-                                  ? _c("span", { staticClass: "text-error" }, [
-                                      _vm._v(_vm._s(_vm.errors.observacion))
-                                    ])
-                                  : _vm._e()
-                              ])
-                            ]
-                          )
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(15),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm.editable.actExterior
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(_vm.editable.actExterior)
+                                }
+                              })
+                            : _vm._e()
                         ])
                       ]
                     ),
                     _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
+                      { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
                       [
-                        _c("div", { staticClass: "row" }, [
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "col-lg-12 col-md-12 col-sm-12 col-xs-12"
-                            },
-                            [
-                              _c("div", { staticClass: "form-group" }, [
-                                _c("img", {
-                                  attrs: {
-                                    id: "image",
-                                    width: "240",
-                                    src:
-                                      "/storage/" +
-                                      _vm.editable.folder +
-                                      "/4_vouchers/" +
-                                      _vm.editable.foto
-                                  }
-                                })
-                              ])
-                            ]
-                          )
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(16),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm.editable.actEconomicas
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(
+                                    JSON.parse(_vm.editable.actEconomicas)
+                                  )
+                                }
+                              })
+                            : _vm._e()
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(17),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm.editable.cpPago
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(
+                                    JSON.parse(_vm.editable.cpPago)
+                                  )
+                                }
+                              })
+                            : _vm._e()
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(18),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm.editable.sistElectronica
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(
+                                    JSON.parse(_vm.editable.sistElectronica)
+                                  )
+                                }
+                              })
+                            : _vm._e()
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(19),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm.editable.fechaEmisorFe
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(
+                                    String(_vm.editable.fechaEmisorFe)
+                                      .split("-")
+                                      .reverse()
+                                      .join("-")
+                                  )
+                                }
+                              })
+                            : _vm._e()
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(20),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm.editable.cpeElectronico
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(
+                                    JSON.parse(_vm.editable.cpeElectronico)
+                                  )
+                                }
+                              })
+                            : _vm._e()
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(21),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm.editable.fechaPle
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(
+                                    String(_vm.editable.fechaPle)
+                                      .split("-")
+                                      .reverse()
+                                      .join("-")
+                                  )
+                                }
+                              })
+                            : _vm._e()
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(22),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm.editable.padrones
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(
+                                    JSON.parse(_vm.editable.padrones)
+                                  )
+                                }
+                              })
+                            : _vm._e()
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(23),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm.editable.fechaBaja
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(
+                                    String(_vm.editable.fechaBaja)
+                                      .split("-")
+                                      .reverse()
+                                      .join("-")
+                                  )
+                                }
+                              })
+                            : _vm._e()
+                        ])
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-4 col-md-4 col-sm-4 col-xs-12" },
+                      [
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(24),
+                          _c("br"),
+                          _vm._v(" "),
+                          _vm.editable.profesion
+                            ? _c("span", {
+                                domProps: {
+                                  textContent: _vm._s(_vm.editable.profesion)
+                                }
+                              })
+                            : _vm._e()
                         ])
                       ]
                     )
@@ -1049,39 +944,7 @@ var render = function() {
                 }
               },
               [_vm._v("Cerrar")]
-            ),
-            _vm._v(" "),
-            _vm.var_config.tipo_accion == "registrar"
-              ? _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary",
-                    attrs: { type: "button", disabled: _vm.btn.registrar },
-                    on: {
-                      click: function($event) {
-                        return _vm.registrarArticulo()
-                      }
-                    }
-                  },
-                  [_vm._v("Guardar")]
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.var_config.tipo_accion == "actualizar"
-              ? _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary",
-                    attrs: { type: "button", disabled: _vm.btn.actualizar },
-                    on: {
-                      click: function($event) {
-                        return _vm.actualizarArticulo()
-                      }
-                    }
-                  },
-                  [_vm._v("Actualizar")]
-                )
-              : _vm._e()
+            )
           ])
         ])
       ])
@@ -1093,55 +956,151 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Escuela Profesional: *")])])
+    return _c("label", [_c("dt", [_vm._v("Documento: ")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Codigo de Estudiante: *")])])
+    return _c("label", [_c("dt", [_vm._v("N° Documento: ")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("DNI: *")])])
+    return _c("label", [_c("dt", [_vm._v("Razon Social: ")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Apellido Paterno: *")])])
+    return _c("label", [_c("dt", [_vm._v("Nombre Comercial: ")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Apellido Materno: *")])])
+    return _c("label", [_c("dt", [_vm._v("Telefonos: ")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Nombres: *")])])
+    return _c("label", [_c("dt", [_vm._v("Tipo: ")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("N° Recibo: *")])])
+    return _c("label", [_c("dt", [_vm._v("Estado: ")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("¿Validado?: *")])])
+    return _c("label", [_c("dt", [_vm._v("Condicion: ")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Observacion:")])])
+    return _c("label", [_c("dt", [_vm._v("Direccion: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Departamento: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Provincia: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Distrito: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Fecha Inscripcion: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Sistema Emision: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Sistema Contabilidad: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Actividad Exterior: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Actividades Economicas: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Comprobante de Pago: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Sistema Eletronica: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Fecha Emision FE: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("CPE Electronico: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Fecha Ple: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Padrones: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Fecha Baja: ")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("label", [_c("dt", [_vm._v("Profesion: ")])])
   }
 ]
 render._withStripped = true
@@ -1150,18 +1109,18 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue":
-/*!***************************************************************************!*\
-  !*** ./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue ***!
-  \***************************************************************************/
+/***/ "./resources/js/components/erp/empresa/VerEmpresa.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/erp/empresa/VerEmpresa.vue ***!
+  \************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _FormularioValidarVoucher_vue_vue_type_template_id_39523974___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormularioValidarVoucher.vue?vue&type=template&id=39523974& */ "./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=template&id=39523974&");
-/* harmony import */ var _FormularioValidarVoucher_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormularioValidarVoucher.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _FormularioValidarVoucher_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _VerEmpresa_vue_vue_type_template_id_5ee3b103___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VerEmpresa.vue?vue&type=template&id=5ee3b103& */ "./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=template&id=5ee3b103&");
+/* harmony import */ var _VerEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./VerEmpresa.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _VerEmpresa_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./VerEmpresa.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -1172,9 +1131,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _FormularioValidarVoucher_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _FormularioValidarVoucher_vue_vue_type_template_id_39523974___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _FormularioValidarVoucher_vue_vue_type_template_id_39523974___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _VerEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _VerEmpresa_vue_vue_type_template_id_5ee3b103___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _VerEmpresa_vue_vue_type_template_id_5ee3b103___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -1184,54 +1143,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/erp/inscrito/FormularioValidarVoucher.vue"
+component.options.__file = "resources/js/components/erp/empresa/VerEmpresa.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************!*\
-  !*** ./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************/
+/***/ "./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarVoucher_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioValidarVoucher.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarVoucher_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./VerEmpresa.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css&":
-/*!************************************************************************************************************!*\
-  !*** ./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css& ***!
-  \************************************************************************************************************/
+/***/ "./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=style&index=0&lang=css&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=style&index=0&lang=css& ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarVoucher_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarVoucher_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarVoucher_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarVoucher_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarVoucher_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VerEmpresa_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./VerEmpresa.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VerEmpresa_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VerEmpresa_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VerEmpresa_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VerEmpresa_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=template&id=39523974&":
-/*!**********************************************************************************************************!*\
-  !*** ./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=template&id=39523974& ***!
-  \**********************************************************************************************************/
+/***/ "./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=template&id=5ee3b103&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=template&id=5ee3b103& ***!
+  \*******************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarVoucher_vue_vue_type_template_id_39523974___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioValidarVoucher.vue?vue&type=template&id=39523974& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/inscrito/FormularioValidarVoucher.vue?vue&type=template&id=39523974&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarVoucher_vue_vue_type_template_id_39523974___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VerEmpresa_vue_vue_type_template_id_5ee3b103___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./VerEmpresa.vue?vue&type=template&id=5ee3b103& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=template&id=5ee3b103&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VerEmpresa_vue_vue_type_template_id_5ee3b103___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioValidarVoucher_vue_vue_type_template_id_39523974___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VerEmpresa_vue_vue_type_template_id_5ee3b103___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

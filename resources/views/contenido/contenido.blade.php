@@ -159,4 +159,8 @@
         <template v-if="$store.state.vuex_menu==-17">
             <estudiante></estudiante>
         </template>
+
+        <template v-if="$store.state.vuex_menu==-19">
+            <acceso></acceso>
+        </template>
     @endsection

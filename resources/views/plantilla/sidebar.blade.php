@@ -268,6 +268,9 @@
                                 <li @click="setMenu(-13)" class="nav-item">
                                     <a class="nav-link" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="icon-chart"></i> Periodo Académico</a>
                                 </li>
+                                <li @click="setMenu(-19)" class="nav-item">
+                                    <a class="nav-link" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="icon-chart"></i> Acceso</a>
+                                </li>
                                 <li @click="setMenu(-17)" class="nav-item">
                                     <a class="nav-link" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="icon-chart"></i> Estudiante</a>
                                 </li>

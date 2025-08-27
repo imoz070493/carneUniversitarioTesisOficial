@@ -2026,6 +2026,44 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Acceso.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Acceso.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+
+/**
+ * Unificacion de los modelos de persona en una sola vista
+ */
+//cargamos el componente solo cuando se cree el componente
+var VListarAcceso = function VListarAcceso() {
+  return __webpack_require__.e(/*! import() */ 60).then(__webpack_require__.bind(null, /*! @/components/erp/acceso/ListarAcceso */ "./resources/js/components/erp/acceso/ListarAcceso.vue"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    "v-listar-acceso": VListarAcceso
+  },
+  data: function data() {
+    return {
+      ruta: "venta"
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CargaMatricula.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CargaMatricula.vue?vue&type=script&lang=js& ***!
@@ -2048,7 +2086,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarCargaMatricula = function VListarCargaMatricula() {
-  return __webpack_require__.e(/*! import() */ 20).then(__webpack_require__.bind(null, /*! @/components/erp/carga_matricula/ListarCargaMatricula */ "./resources/js/components/erp/carga_matricula/ListarCargaMatricula.vue"));
+  return __webpack_require__.e(/*! import() */ 23).then(__webpack_require__.bind(null, /*! @/components/erp/carga_matricula/ListarCargaMatricula */ "./resources/js/components/erp/carga_matricula/ListarCargaMatricula.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2086,7 +2124,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarCliente = function VListarCliente() {
-  return __webpack_require__.e(/*! import() */ 57).then(__webpack_require__.bind(null, /*! @/components/erp/cliente/ListarCliente */ "./resources/js/components/erp/cliente/ListarCliente.vue"));
+  return __webpack_require__.e(/*! import() */ 61).then(__webpack_require__.bind(null, /*! @/components/erp/cliente/ListarCliente */ "./resources/js/components/erp/cliente/ListarCliente.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2124,7 +2162,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarClienteWebService = function VListarClienteWebService() {
-  return __webpack_require__.e(/*! import() */ 58).then(__webpack_require__.bind(null, /*! @/components/erp/cliente_web_service/ListarClienteWebService */ "./resources/js/components/erp/cliente_web_service/ListarClienteWebService.vue"));
+  return __webpack_require__.e(/*! import() */ 62).then(__webpack_require__.bind(null, /*! @/components/erp/cliente_web_service/ListarClienteWebService */ "./resources/js/components/erp/cliente_web_service/ListarClienteWebService.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2162,7 +2200,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarConsultaCpe = function VListarConsultaCpe() {
-  return __webpack_require__.e(/*! import() */ 59).then(__webpack_require__.bind(null, /*! @/components/erp/consulta_cpe/ListarConsultaCpe */ "./resources/js/components/erp/consulta_cpe/ListarConsultaCpe.vue"));
+  return __webpack_require__.e(/*! import() */ 63).then(__webpack_require__.bind(null, /*! @/components/erp/consulta_cpe/ListarConsultaCpe */ "./resources/js/components/erp/consulta_cpe/ListarConsultaCpe.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2200,7 +2238,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarConsultaDocumento = function VListarConsultaDocumento() {
-  return __webpack_require__.e(/*! import() */ 60).then(__webpack_require__.bind(null, /*! @/components/erp/consulta_documento/ListarConsultaDocumento */ "./resources/js/components/erp/consulta_documento/ListarConsultaDocumento.vue"));
+  return __webpack_require__.e(/*! import() */ 64).then(__webpack_require__.bind(null, /*! @/components/erp/consulta_documento/ListarConsultaDocumento */ "./resources/js/components/erp/consulta_documento/ListarConsultaDocumento.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2238,7 +2276,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarConvocatoria = function VListarConvocatoria() {
-  return __webpack_require__.e(/*! import() */ 61).then(__webpack_require__.bind(null, /*! @/components/erp/convocatoria/ListarConvocatoria */ "./resources/js/components/erp/convocatoria/ListarConvocatoria.vue"));
+  return __webpack_require__.e(/*! import() */ 65).then(__webpack_require__.bind(null, /*! @/components/erp/convocatoria/ListarConvocatoria */ "./resources/js/components/erp/convocatoria/ListarConvocatoria.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3838,19 +3876,19 @@ var MatriculadoBusqueda = function MatriculadoBusqueda() {
 };
 
 var DashboardEstudianteSinConvocatoria = function DashboardEstudianteSinConvocatoria() {
-  return __webpack_require__.e(/*! import() */ 56).then(__webpack_require__.bind(null, /*! @/components/referencias/DashboardEstudianteSinConvocatoria */ "./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue"));
+  return __webpack_require__.e(/*! import() */ 59).then(__webpack_require__.bind(null, /*! @/components/referencias/DashboardEstudianteSinConvocatoria */ "./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue"));
 };
 
 var DashboardEstudianteNoMatriculado = function DashboardEstudianteNoMatriculado() {
-  return __webpack_require__.e(/*! import() */ 55).then(__webpack_require__.bind(null, /*! @/components/referencias/DashboardEstudianteNoMatriculado */ "./resources/js/components/referencias/DashboardEstudianteNoMatriculado.vue"));
+  return __webpack_require__.e(/*! import() */ 58).then(__webpack_require__.bind(null, /*! @/components/referencias/DashboardEstudianteNoMatriculado */ "./resources/js/components/referencias/DashboardEstudianteNoMatriculado.vue"));
 };
 
 var DashboardEstudianteMatriculadoNoInscrito = function DashboardEstudianteMatriculadoNoInscrito() {
-  return __webpack_require__.e(/*! import() */ 54).then(__webpack_require__.bind(null, /*! @/components/referencias/DashboardEstudianteMatriculadoNoInscrito */ "./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue"));
+  return __webpack_require__.e(/*! import() */ 57).then(__webpack_require__.bind(null, /*! @/components/referencias/DashboardEstudianteMatriculadoNoInscrito */ "./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue"));
 };
 
 var DashboardEstudianteMatriculadoInscrito = function DashboardEstudianteMatriculadoInscrito() {
-  return __webpack_require__.e(/*! import() */ 53).then(__webpack_require__.bind(null, /*! @/components/referencias/DashboardEstudianteMatriculadoInscrito */ "./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue"));
+  return __webpack_require__.e(/*! import() */ 56).then(__webpack_require__.bind(null, /*! @/components/referencias/DashboardEstudianteMatriculadoInscrito */ "./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue"));
 }; //cargamos el componente solo cuando se cree el componente
 
 
@@ -4637,7 +4675,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarDocumentoEnviado = function VListarDocumentoEnviado() {
-  return __webpack_require__.e(/*! import() */ 28).then(__webpack_require__.bind(null, /*! @/components/erp/documento/ListarDocumentoEnviado */ "./resources/js/components/erp/documento/ListarDocumentoEnviado.vue"));
+  return __webpack_require__.e(/*! import() */ 31).then(__webpack_require__.bind(null, /*! @/components/erp/documento/ListarDocumentoEnviado */ "./resources/js/components/erp/documento/ListarDocumentoEnviado.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4675,7 +4713,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarDocumentoRecibido = function VListarDocumentoRecibido() {
-  return __webpack_require__.e(/*! import() */ 29).then(__webpack_require__.bind(null, /*! @/components/erp/documento/ListarDocumentoRecibido */ "./resources/js/components/erp/documento/ListarDocumentoRecibido.vue"));
+  return __webpack_require__.e(/*! import() */ 32).then(__webpack_require__.bind(null, /*! @/components/erp/documento/ListarDocumentoRecibido */ "./resources/js/components/erp/documento/ListarDocumentoRecibido.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4713,7 +4751,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarEmpresa = function VListarEmpresa() {
-  return __webpack_require__.e(/*! import() */ 62).then(__webpack_require__.bind(null, /*! @/components/erp/empresa/ListarEmpresa */ "./resources/js/components/erp/empresa/ListarEmpresa.vue"));
+  return __webpack_require__.e(/*! import() */ 66).then(__webpack_require__.bind(null, /*! @/components/erp/empresa/ListarEmpresa */ "./resources/js/components/erp/empresa/ListarEmpresa.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4816,11 +4854,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 var TipoDocumentoSelect = function TipoDocumentoSelect() {
-  return __webpack_require__.e(/*! import() */ 77).then(__webpack_require__.bind(null, /*! @/components/referencias/TipoDocumentoSelect */ "./resources/js/components/referencias/TipoDocumentoSelect.vue"));
+  return __webpack_require__.e(/*! import() */ 18).then(__webpack_require__.bind(null, /*! @/components/referencias/TipoDocumentoSelect */ "./resources/js/components/referencias/TipoDocumentoSelect.vue"));
 };
 
 var DocumentoBusqueda = function DocumentoBusqueda() {
-  return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! @/components/referencias/DocumentoBusqueda */ "./resources/js/components/referencias/DocumentoBusqueda.vue"));
+  return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! @/components/referencias/DocumentoBusqueda */ "./resources/js/components/referencias/DocumentoBusqueda.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4963,7 +5001,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarGenerarDocumento = function VListarGenerarDocumento() {
-  return __webpack_require__.e(/*! import() */ 50).then(__webpack_require__.bind(null, /*! @/components/erp/solicitud_documento/ListarGenerarDocumento */ "./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue"));
+  return __webpack_require__.e(/*! import() */ 53).then(__webpack_require__.bind(null, /*! @/components/erp/solicitud_documento/ListarGenerarDocumento */ "./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5001,7 +5039,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarInscrito = function VListarInscrito() {
-  return __webpack_require__.e(/*! import() */ 36).then(__webpack_require__.bind(null, /*! @/components/erp/inscrito/ListarInscrito */ "./resources/js/components/erp/inscrito/ListarInscrito.vue"));
+  return __webpack_require__.e(/*! import() */ 39).then(__webpack_require__.bind(null, /*! @/components/erp/inscrito/ListarInscrito */ "./resources/js/components/erp/inscrito/ListarInscrito.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5039,7 +5077,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarInscritoHistorico = function VListarInscritoHistorico() {
-  return __webpack_require__.e(/*! import() */ 37).then(__webpack_require__.bind(null, /*! @/components/erp/inscrito/ListarInscritoHistorico */ "./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue"));
+  return __webpack_require__.e(/*! import() */ 40).then(__webpack_require__.bind(null, /*! @/components/erp/inscrito/ListarInscritoHistorico */ "./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5077,7 +5115,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarMatricula = function VListarMatricula() {
-  return __webpack_require__.e(/*! import() */ 40).then(__webpack_require__.bind(null, /*! @/components/erp/matricula/ListarMatricula */ "./resources/js/components/erp/matricula/ListarMatricula.vue"));
+  return __webpack_require__.e(/*! import() */ 43).then(__webpack_require__.bind(null, /*! @/components/erp/matricula/ListarMatricula */ "./resources/js/components/erp/matricula/ListarMatricula.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5194,7 +5232,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  //cargamos el componente solo cuando se cree el componente
 
 var VListarPerfil = function VListarPerfil() {
-  return __webpack_require__.e(/*! import() */ 63).then(__webpack_require__.bind(null, /*! @/components/erp/perfil/ListarPerfil */ "./resources/js/components/erp/perfil/ListarPerfil.vue"));
+  return __webpack_require__.e(/*! import() */ 67).then(__webpack_require__.bind(null, /*! @/components/erp/perfil/ListarPerfil */ "./resources/js/components/erp/perfil/ListarPerfil.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5233,7 +5271,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarPeriodoAcademico = function VListarPeriodoAcademico() {
-  return __webpack_require__.e(/*! import() */ 64).then(__webpack_require__.bind(null, /*! @/components/erp/periodo_academico/ListarPeriodoAcademico */ "./resources/js/components/erp/periodo_academico/ListarPeriodoAcademico.vue"));
+  return __webpack_require__.e(/*! import() */ 68).then(__webpack_require__.bind(null, /*! @/components/erp/periodo_academico/ListarPeriodoAcademico */ "./resources/js/components/erp/periodo_academico/ListarPeriodoAcademico.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5271,7 +5309,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarPermiso = function VListarPermiso() {
-  return __webpack_require__.e(/*! import() */ 65).then(__webpack_require__.bind(null, /*! @/components/erp/permiso/ListarPermiso */ "./resources/js/components/erp/permiso/ListarPermiso.vue"));
+  return __webpack_require__.e(/*! import() */ 69).then(__webpack_require__.bind(null, /*! @/components/erp/permiso/ListarPermiso */ "./resources/js/components/erp/permiso/ListarPermiso.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5309,7 +5347,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarPersonaDni = function VListarPersonaDni() {
-  return __webpack_require__.e(/*! import() */ 66).then(__webpack_require__.bind(null, /*! @/components/erp/persona_dni/ListarPersonaDni */ "./resources/js/components/erp/persona_dni/ListarPersonaDni.vue"));
+  return __webpack_require__.e(/*! import() */ 70).then(__webpack_require__.bind(null, /*! @/components/erp/persona_dni/ListarPersonaDni */ "./resources/js/components/erp/persona_dni/ListarPersonaDni.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5347,7 +5385,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarRole = function VListarRole() {
-  return __webpack_require__.e(/*! import() */ 67).then(__webpack_require__.bind(null, /*! @/components/erp/role/ListarRole */ "./resources/js/components/erp/role/ListarRole.vue"));
+  return __webpack_require__.e(/*! import() */ 71).then(__webpack_require__.bind(null, /*! @/components/erp/role/ListarRole */ "./resources/js/components/erp/role/ListarRole.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5385,7 +5423,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarSolicitudDocumento = function VListarSolicitudDocumento() {
-  return __webpack_require__.e(/*! import() */ 51).then(__webpack_require__.bind(null, /*! @/components/erp/solicitud_documento/ListarSolicitudDocumento */ "./resources/js/components/erp/solicitud_documento/ListarSolicitudDocumento.vue"));
+  return __webpack_require__.e(/*! import() */ 54).then(__webpack_require__.bind(null, /*! @/components/erp/solicitud_documento/ListarSolicitudDocumento */ "./resources/js/components/erp/solicitud_documento/ListarSolicitudDocumento.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5423,7 +5461,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarUsuario = function VListarUsuario() {
-  return __webpack_require__.e(/*! import() */ 68).then(__webpack_require__.bind(null, /*! @/components/erp/usuario/ListarUsuario */ "./resources/js/components/erp/usuario/ListarUsuario.vue"));
+  return __webpack_require__.e(/*! import() */ 72).then(__webpack_require__.bind(null, /*! @/components/erp/usuario/ListarUsuario */ "./resources/js/components/erp/usuario/ListarUsuario.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -85486,6 +85524,30 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Acceso.vue?vue&type=template&id=3635b38b&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Acceso.vue?vue&type=template&id=3635b38b& ***!
+  \*********************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("v-listar-acceso", { ref: "cmp_listado_acceso" })
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CargaMatricula.vue?vue&type=template&id=8c35a6ca&":
 /*!*****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CargaMatricula.vue?vue&type=template&id=8c35a6ca& ***!
@@ -105594,6 +105656,7 @@ vue__WEBPACK_IMPORTED_MODULE_6___default.a.component('cliente-web-service', __we
 vue__WEBPACK_IMPORTED_MODULE_6___default.a.component('perfil', __webpack_require__(/*! ./components/Perfil.vue */ "./resources/js/components/Perfil.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_6___default.a.component('notification', __webpack_require__(/*! ./components/Notification.vue */ "./resources/js/components/Notification.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_6___default.a.component('formulario-perfil-modal', __webpack_require__(/*! ./components/FormularioPerfilModal.vue */ "./resources/js/components/FormularioPerfilModal.vue")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_6___default.a.component('acceso', __webpack_require__(/*! ./components/Acceso.vue */ "./resources/js/components/Acceso.vue")["default"]);
 vue__WEBPACK_IMPORTED_MODULE_6___default.a.component('date-picker-2', __webpack_require__(/*! ./components/referencias/DatePicker2.vue */ "./resources/js/components/referencias/DatePicker2.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -105807,6 +105870,75 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   cluster: 'us2',
   encrypted: true
 });
+
+/***/ }),
+
+/***/ "./resources/js/components/Acceso.vue":
+/*!********************************************!*\
+  !*** ./resources/js/components/Acceso.vue ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Acceso_vue_vue_type_template_id_3635b38b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Acceso.vue?vue&type=template&id=3635b38b& */ "./resources/js/components/Acceso.vue?vue&type=template&id=3635b38b&");
+/* harmony import */ var _Acceso_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Acceso.vue?vue&type=script&lang=js& */ "./resources/js/components/Acceso.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Acceso_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Acceso_vue_vue_type_template_id_3635b38b___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Acceso_vue_vue_type_template_id_3635b38b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Acceso.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Acceso.vue?vue&type=script&lang=js&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Acceso.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Acceso_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Acceso.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Acceso.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Acceso_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Acceso.vue?vue&type=template&id=3635b38b&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/Acceso.vue?vue&type=template&id=3635b38b& ***!
+  \***************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Acceso_vue_vue_type_template_id_3635b38b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Acceso.vue?vue&type=template&id=3635b38b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Acceso.vue?vue&type=template&id=3635b38b&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Acceso_vue_vue_type_template_id_3635b38b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Acceso_vue_vue_type_template_id_3635b38b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
