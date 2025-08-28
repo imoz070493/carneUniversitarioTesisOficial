@@ -87242,11 +87242,6 @@ var render = function() {
                   }
                 },
                 [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.editable) +
-                      "\n                    "
-                  ),
                   _c("div", { staticClass: "row" }, [
                     _c(
                       "div",

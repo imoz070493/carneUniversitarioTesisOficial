@@ -11,7 +11,7 @@
                 </div>
                 <div class="modal-body" style='max-height:450px;overflow-y:auto;overflow-x:hidden;'>
                     <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                        {{editable}}
+                        <!-- {{editable}} -->
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                 <div class="form-group">
