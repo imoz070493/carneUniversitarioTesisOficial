@@ -151,8 +151,11 @@ class Inscrito extends Model
         }else{
 
             if (array_key_exists('fecha_inicio_tramite', $datos)){
-                $fecha = str_replace(['a. m.', 'p. m.'], ['AM', 'PM'], $datos['fecha_inicio_tramite']);
-                \Log::info($fecha);
+                foreach (str_split($datos['fecha_inicio_tramite']) as $i => $c) {
+                    \Log::info($i . " => " . bin2hex($c) );
+                }
+                $fecha = static::normalizarMeridiano($datos['fecha_inicio_tramite']);
+                \Log::info("fechaaaa: ".$fecha);
                 $data['fecha_inicio_tramite'] = \Carbon\Carbon::parse($fecha);
             }
             $data['fecha_fin_tramite'] = \Carbon\Carbon::now();
@@ -162,6 +165,18 @@ class Inscrito extends Model
         }
 
         return $inscrito;
+    }
+
+    public static function normalizarMeridiano($s){
+        // 1) Opcional: normaliza NBSP (U+00A0) y espacio estrecho (U+202F) a espacio normal
+        $s = preg_replace('/\x{00A0}|\x{202F}/u', ' ', $s);
+
+        // 2) Reemplaza cualquier variante: a. m., a.m., a m, etc. -> AM (igual para PM)
+        $s = preg_replace_callback('/\b([ap])\s*\.?\s*m\.?\b/iu', function ($m) {
+            return strtoupper($m[1]) . 'M'; // A|P + M
+        }, $s);
+
+        return $s;
     }
 
     public static function listarInscritos($buscar='', $criterio='nombre', $per_page='5', $order_by='', $mode_order='', $mode_anulado='both', $filtros=[]){
