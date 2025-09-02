@@ -152,6 +152,7 @@ class Inscrito extends Model
 
             if (array_key_exists('fecha_inicio_tramite', $datos)){
                 $fecha = str_replace(['a. m.', 'p. m.'], ['AM', 'PM'], $datos['fecha_inicio_tramite']);
+                \Log::info($fecha);
                 $data['fecha_inicio_tramite'] = \Carbon\Carbon::parse($fecha);
             }
             $data['fecha_fin_tramite'] = \Carbon\Carbon::now();
