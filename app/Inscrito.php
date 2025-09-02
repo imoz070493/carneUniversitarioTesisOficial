@@ -77,7 +77,7 @@ class Inscrito extends Model
         if (array_key_exists('observacion', $datos)) $data['observacion'] = $datos['observacion'];
         if (array_key_exists('numero_recibo', $datos)) $data['numero_recibo'] = $datos['numero_recibo'];
 
-        if (array_key_exists('fecha_inicio_edicion', $datos)) $data['fecha_inicio_edicion'] = $datos['fecha_inicio_edicion'];
+        if (array_key_exists('fecha_inicio_edicion', $datos)) $data['fecha_inicio_edicion'] = \Carbon\Carbon::parse($datos['fecha_inicio_edicion']);
         if (array_key_exists('fecha_fin_edicion', $datos)) $data['fecha_fin_edicion'] = $datos['fecha_fin_edicion'];
         
         if(isset($datos['id'])){
