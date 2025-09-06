@@ -254,10 +254,10 @@ class InscritoController extends Controller
             $photo = $inscrito->foto;
 
             // Ruta del archivo original
-            $archivo_origen = public_path("\storage/".$folder."/1_validado/".$photo);
+            $archivo_origen = public_path("storage/".$folder."/1_validado/".$photo);
 
             // Ruta del nuevo destino
-            $archivo_destino = public_path("\storage/".$folder."/2_sin_validar/".$photo);
+            $archivo_destino = public_path("storage/".$folder."/2_sin_validar/".$photo);
 
             // Mover y reemplazar el archivo
             if (rename($archivo_origen, $archivo_destino)) {
