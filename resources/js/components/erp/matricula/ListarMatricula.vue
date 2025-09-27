@@ -22,6 +22,7 @@
                             </div>
                             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                                 <div class="pull-right">
+                                    <button type="button" @click="abrirFormularioFotos()" class="btn btn-success"> Fotos Diversos</button>
                                     <button type="button" @click="descargarNoInscritos()" class="btn btn-success"> No Inscritos</button>
                                     <button type="button" @click="descargarMatriculas()" class="btn btn-success"> Xlsx</button>
                                 </div>
@@ -139,6 +140,15 @@
                 :var_config="var_config"
                 @guardado="listarMatricula(1, '', 'nombre')"
             ></v-formulario-importar-matricula>
+
+            <!-- Formulario Foto -->
+            <v-formulario-descarga-masiva 
+                v-if="formulario_foto_editable._estado=='creando'" 
+                v-model="formulario_foto_editable"
+                ref="cmp_formulario_foto_editable"
+                :var_config="var_config"
+                @guardado="listarMatricula(1, '', 'nombre')"
+            ></v-formulario-descarga-masiva>
             
             <!--Fin del modal-->
         </main>
@@ -148,12 +158,14 @@
 
 const FormularioMatricula = () => import("@/components/erp/matricula/FormularioMatricula");
 const FormularioImportarMatricula = () => import("@/components/erp/matricula/FormularioImportarMatricula");
+const FormularioDescargaMasiva = () => import("@/components/erp/carga_matricula/FormularioDescargaMasiva");
 const PeriodoAcademicoSelect = () => import("@/components/referencias/PeriodoAcademicoGeneralSelect");
 
 export default {
     components: {
         "v-formulario-matricula": FormularioMatricula,
         "v-formulario-importar-matricula": FormularioImportarMatricula,
+        "v-formulario-descarga-masiva": FormularioDescargaMasiva,
         "periodo-academico-select": PeriodoAcademicoSelect,
     },
     data(){
@@ -161,6 +173,7 @@ export default {
             nuevo: {},
             editable: {},
             importar_editable: {},
+            formulario_foto_editable: {},
             precio_editable: {},
             show: {},
             var_config: {},
@@ -352,6 +365,16 @@ if(error.request.status){
             this.var_config = {
                 title: 'Importar Matriculas',
                 tipo_accion: 'importar'
+            };
+            
+        },
+        abrirFormularioFotos(){
+            this.formulario_foto_editable = {
+                _estado: 'creando',
+            };
+            this.var_config = {
+                title: 'Descarga Masiva',
+                tipo_accion: 'descargar'
             };
             
         },

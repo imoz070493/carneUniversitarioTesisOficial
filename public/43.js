@@ -155,12 +155,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var FormularioMatricula = function FormularioMatricula() {
   return __webpack_require__.e(/*! import() */ 42).then(__webpack_require__.bind(null, /*! @/components/erp/matricula/FormularioMatricula */ "./resources/js/components/erp/matricula/FormularioMatricula.vue"));
 };
 
 var FormularioImportarMatricula = function FormularioImportarMatricula() {
   return __webpack_require__.e(/*! import() */ 41).then(__webpack_require__.bind(null, /*! @/components/erp/matricula/FormularioImportarMatricula */ "./resources/js/components/erp/matricula/FormularioImportarMatricula.vue"));
+};
+
+var FormularioDescargaMasiva = function FormularioDescargaMasiva() {
+  return __webpack_require__.e(/*! import() */ 81).then(__webpack_require__.bind(null, /*! @/components/erp/carga_matricula/FormularioDescargaMasiva */ "./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue"));
 };
 
 var PeriodoAcademicoSelect = function PeriodoAcademicoSelect() {
@@ -171,6 +185,7 @@ var PeriodoAcademicoSelect = function PeriodoAcademicoSelect() {
   components: {
     "v-formulario-matricula": FormularioMatricula,
     "v-formulario-importar-matricula": FormularioImportarMatricula,
+    "v-formulario-descarga-masiva": FormularioDescargaMasiva,
     "periodo-academico-select": PeriodoAcademicoSelect
   },
   data: function data() {
@@ -178,6 +193,7 @@ var PeriodoAcademicoSelect = function PeriodoAcademicoSelect() {
       nuevo: {},
       editable: {},
       importar_editable: {},
+      formulario_foto_editable: {},
       precio_editable: {},
       show: {},
       var_config: {},
@@ -354,6 +370,15 @@ var PeriodoAcademicoSelect = function PeriodoAcademicoSelect() {
       this.var_config = {
         title: 'Importar Matriculas',
         tipo_accion: 'importar'
+      };
+    },
+    abrirFormularioFotos: function abrirFormularioFotos() {
+      this.formulario_foto_editable = {
+        _estado: 'creando'
+      };
+      this.var_config = {
+        title: 'Descarga Masiva',
+        tipo_accion: 'descargar'
       };
     },
     abrirPrecios: function abrirPrecios(matricula) {
@@ -553,6 +578,20 @@ var render = function() {
                 { staticClass: "col-lg-8 col-md-8 col-sm-8 col-xs-12" },
                 [
                   _c("div", { staticClass: "pull-right" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.abrirFormularioFotos()
+                          }
+                        }
+                      },
+                      [_vm._v(" Fotos Diversos")]
+                    ),
+                    _vm._v(" "),
                     _c(
                       "button",
                       {
@@ -1094,6 +1133,25 @@ var render = function() {
                 _vm.importar_editable = $$v
               },
               expression: "importar_editable"
+            }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.formulario_foto_editable._estado == "creando"
+        ? _c("v-formulario-descarga-masiva", {
+            ref: "cmp_formulario_foto_editable",
+            attrs: { var_config: _vm.var_config },
+            on: {
+              guardado: function($event) {
+                return _vm.listarMatricula(1, "", "nombre")
+              }
+            },
+            model: {
+              value: _vm.formulario_foto_editable,
+              callback: function($$v) {
+                _vm.formulario_foto_editable = $$v
+              },
+              expression: "formulario_foto_editable"
             }
           })
         : _vm._e()

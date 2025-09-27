@@ -448,6 +448,24 @@ class Inscrito extends Model
         return $inscrito;
     }
 
+    public static function obtenerUltimaInscripcionDiversos($codigo_estudiante){
+        $inscrito = Inscrito::join('convocatorias as c','inscritos.convocatoria_id','=','c.id')
+                                ->join('estudiantes as e','inscritos.estudiante_id','=','e.id')
+                                ->select(
+                                    'inscritos.id',
+                                    'c.folder',
+                                    'inscritos.foto',
+                                    'inscritos.codigo_estudiante',
+                                    'e.dni'
+                                )
+                                ->where('inscritos.codigo_estudiante',$codigo_estudiante)
+                                ->whereNull('inscritos.fecha_anulado')
+                                ->orderBy('inscritos.id','desc')
+                                ->first();
+
+        return $inscrito;
+    }
+
     public static function obtenerInscripcionVigente($estudiante_id){
         $inscrito = Inscrito::join('convocatorias as c','inscritos.convocatoria_id','=','c.id')
                             ->join('estudiantes as e','inscritos.estudiante_id','=','e.id')

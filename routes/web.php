@@ -148,6 +148,7 @@ Route::post('/inscrito/reporte/inscritos_anulado','InscritoController@exportRepo
 Route::post('inscrito/reporte/inscritos_oficial/nuevo_duplicado','InscritoController@exportReporteInscritoOficialNuevoDuplicado');
 Route::post('inscrito/reporte/inscritos_oficial/photo/nuevo_duplicado','InscritoController@exportReporteInscritoOficialPhotoNuevoDuplicado');
 Route::post('/inscrito/descargar/nuevo','InscritoController@descargarPhotosNuevo');
+Route::post('/inscrito/descargar/diversos','InscritoController@descargarPhotosDiversos');
 Route::post('/inscrito/invalidar_fotografia','InscritoController@invalidarFotografia');
 Route::post('/inscrito/validar_imagen','InscritoController@validarImagen');
 Route::post('/inscrito/cambiar_dpi','InscritoController@cambiarDpiImagen');

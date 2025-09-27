@@ -16,6 +16,8 @@ use App\PeriodoAcademico;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use ZipArchive;
+use Illuminate\Support\Str;
 
 class InscritoController extends Controller
 {
@@ -632,6 +634,42 @@ class InscritoController extends Controller
         $datos = Inscrito::listarInscritosOficial($buscar, $criterio, -1, $order_by, $mode_order, $tipo_tramite);
 
         $path_zip = Inscrito::zipPhotos($folder_origin,$folder_zip, $datos);
+
+        $response =  new StreamedResponse(
+            function () use ($path_zip) {
+                print file_get_contents($path_zip);
+            }
+        );
+        $response->headers->set('Content-Type', 'application/zip');
+        $response->headers->set('Content-Disposition', 'attachment;filename="photos.zip"');
+        $response->headers->set('Cache-Control', 'max-age=0');
+        return $response;
+    }
+
+    public function descargarPhotosDiversos(Request $request)
+    {
+        $data = $request->all();
+        
+        $codigos = $data['codigos'];
+
+        $codigos_array = explode(",", $codigos);\Log::info($codigos_array);
+        
+        $convocatoria_actual = Convocatoria::whereNull('activo')->first();
+        $folder_zip = public_path('storage/'.$convocatoria_actual->folder.'/3_comprimidos');
+        $zip = new ZipArchive;
+        $zip_name = Str::random().'.zip';
+        $path_zip = $folder_zip.'/'.$zip_name;
+        \Log::info($path_zip);
+        $zip->open($path_zip,ZipArchive::CREATE);
+
+        foreach ($codigos_array as $key => $value) {
+            $inscrito = Inscrito::obtenerUltimaInscripcionDiversos($value);
+            $folder_origin = public_path('/storage/'.$inscrito->folder.'/1_validado');
+            $zip->addFile($folder_origin.'/'.$inscrito->foto, $inscrito->codigo_estudiante.".jpg");
+        }
+
+        // $zip->addFile(storage_path('app/public/convocatoria_202301/01_10015549.jpg'),'01_100155491.jpg');
+        $zip->close();
 
         $response =  new StreamedResponse(
             function () use ($path_zip) {
