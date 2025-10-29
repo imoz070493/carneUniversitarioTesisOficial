@@ -877,6 +877,7 @@ initCropper() {
             if(e.telefono2) this.editable.telefono2 = e.telefono2;
             if(e.estudiante_id) this.editable.estudiante_id = e.estudiante_id;
 
+
             if(e.tipo_tramite=='nuevo'){
                 this.editable._duplicado = false;
                 this.text._duplicado = "NO";
