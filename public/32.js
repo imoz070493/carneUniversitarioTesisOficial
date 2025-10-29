@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[32],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=script&lang=js&":
-/*!************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -160,22 +160,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 var FormularioDocumentoProcesado = function FormularioDocumentoProcesado() {
-  return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! @/components/erp/documento/FormularioDocumentoProcesado */ "./resources/js/components/erp/documento/FormularioDocumentoProcesado.vue"));
+  return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! @/components/erp/documento/FormularioDocumentoProcesado */ "./resources/js/components/erp/documento/FormularioDocumentoProcesado.vue"));
 };
 
-var VerDocumentoEnviadoPersonal = function VerDocumentoEnviadoPersonal() {
-  return __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! @/components/erp/documento/VerDocumentoEnviadoPersonal */ "./resources/js/components/erp/documento/VerDocumentoEnviadoPersonal.vue"));
+var VerDocumentoEnviado = function VerDocumentoEnviado() {
+  return __webpack_require__.e(/*! import() */ 34).then(__webpack_require__.bind(null, /*! @/components/erp/documento/VerDocumentoEnviado */ "./resources/js/components/erp/documento/VerDocumentoEnviado.vue"));
 };
 
 var FormularioDocumentoEnviarFacultad = function FormularioDocumentoEnviarFacultad() {
-  return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! @/components/erp/documento/FormularioDocumentoEnviarFacultad */ "./resources/js/components/erp/documento/FormularioDocumentoEnviarFacultad.vue"));
+  return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! @/components/erp/documento/FormularioDocumentoEnviarFacultad */ "./resources/js/components/erp/documento/FormularioDocumentoEnviarFacultad.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    "v-formulario-documento-enviado": FormularioDocumentoProcesado,
-    "v-ver-documento-enviado": VerDocumentoEnviadoPersonal,
+    "v-formulario-documento-procesado": FormularioDocumentoProcesado,
+    "v-ver-documento-enviado": VerDocumentoEnviado,
     "v-formulario-documento-enviar-facultad": FormularioDocumentoEnviarFacultad
   },
   data: function data() {
@@ -241,9 +244,9 @@ var FormularioDocumentoEnviarFacultad = function FormularioDocumentoEnviarFacult
   },
   methods: {
     listarDocumentoEnvio: function listarDocumentoEnvio(page, buscar, criterio) {
-      var me = this; // var url = '/documento_recibido?page='+page+'&buscar='+buscar+'&criterio='+criterio+'&per_page='+this.per_page;
+      var me = this; // var url = '/documento_envio?page='+page+'&buscar='+buscar+'&criterio='+criterio+'&per_page='+this.per_page;
 
-      axios.post('/documento_recibido', {
+      axios.post('/documento_envio', {
         page: page,
         buscar: buscar,
         criterio: criterio,
@@ -386,9 +389,16 @@ var FormularioDocumentoEnviarFacultad = function FormularioDocumentoEnviarFacult
       });
     },
     enviarFacultad: function enviarFacultad(inscrito) {
-      this.enviar_editable = Object.assign({
-        _estado: 'enviando'
-      }, inscrito);
+      // this.enviar_editable = Object.assign({
+      //     _estado: 'enviando',
+      // },inscrito);
+      this.enviar_editable = {
+        _estado: 'enviando',
+        id: inscrito.id,
+        carta: inscrito.carta,
+        estado: inscrito.estado,
+        facultad: inscrito.facultad
+      };
       this.var_config = {
         title: 'Enviar a Facultad',
         tipo_accion: 'registrar'
@@ -412,7 +422,7 @@ var FormularioDocumentoEnviarFacultad = function FormularioDocumentoEnviarFacult
       }).then(function (result) {
         if (result.value) {
           var me = _this3;
-          axios.post('/documento_recibido/recibir', {
+          axios.post('/documento_envio/recibir', {
             id: inscrito.id
           }).then(function (response) {
             me.listarDocumentoEnvio(1, '', 'nombre');
@@ -594,10 +604,10 @@ var FormularioDocumentoEnviarFacultad = function FormularioDocumentoEnviarFacult
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=style&index=0&lang=css&":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=style&index=0&lang=css& ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -613,15 +623,15 @@ exports.push([module.i, "\n.orderLink:hover{\n    color: inherit;\n    text-deco
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=style&index=0&lang=css&":
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=style&index=0&lang=css& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=style&index=0&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=style&index=0&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarDocumentoRecibido.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=style&index=0&lang=css&");
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarDocumentoEnviado.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -643,10 +653,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=template&id=79868c64&":
-/*!****************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=template&id=79868c64& ***!
-  \****************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=template&id=afc3b206&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=template&id=afc3b206& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -873,6 +883,60 @@ var render = function() {
                                   attrs: { role: "menu" }
                                 },
                                 [
+                                  inscrito.estado == "procesando"
+                                    ? _c(
+                                        "a",
+                                        {
+                                          staticClass: "dropdown-item",
+                                          attrs: { href: "#" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.enviarFacultad(
+                                                inscrito
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("img", {
+                                            staticStyle: {
+                                              width: "20px",
+                                              height: "20px"
+                                            },
+                                            attrs: { src: "images/editar.svg" }
+                                          }),
+                                          _vm._v("   Enviar a Facultad")
+                                        ]
+                                      )
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  inscrito.estado == "facultad"
+                                    ? _c(
+                                        "a",
+                                        {
+                                          staticClass: "dropdown-item",
+                                          attrs: { href: "#" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.recibirFacultad(
+                                                inscrito
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("img", {
+                                            staticStyle: {
+                                              width: "20px",
+                                              height: "20px"
+                                            },
+                                            attrs: { src: "images/editar.svg" }
+                                          }),
+                                          _vm._v("   Recibir")
+                                        ]
+                                      )
+                                    : _vm._e(),
+                                  _vm._v(" "),
                                   _c(
                                     "a",
                                     {
@@ -894,20 +958,43 @@ var render = function() {
                                       }),
                                       _vm._v("   Ver")
                                     ]
-                                  )
+                                  ),
+                                  _vm._v(" "),
+                                  inscrito.estado == "activo"
+                                    ? _c(
+                                        "a",
+                                        {
+                                          staticClass: "dropdown-item",
+                                          attrs: { href: "#" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.abrirPrecios(inscrito)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("img", {
+                                            staticStyle: {
+                                              width: "20px",
+                                              height: "20px"
+                                            },
+                                            attrs: { src: "images/money.svg" }
+                                          }),
+                                          _vm._v("   Precios")
+                                        ]
+                                      )
+                                    : _vm._e()
                                 ]
                               )
                             ])
                           ]),
                           _vm._v(" "),
                           _c("td", {
-                            domProps: { textContent: _vm._s(inscrito.codigo) }
+                            domProps: { textContent: _vm._s(inscrito.carta) }
                           }),
                           _vm._v(" "),
                           _c("td", {
-                            domProps: {
-                              textContent: _vm._s(inscrito.nombre_estudiante)
-                            }
+                            domProps: { textContent: _vm._s(inscrito.facultad) }
                           }),
                           _vm._v(" "),
                           _c("td", {
@@ -1051,7 +1138,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _vm.nuevo._estado == "creando"
-        ? _c("v-formulario-documento-enviado", {
+        ? _c("v-formulario-documento-procesado", {
             ref: "cmp_crear_inscrito",
             attrs: { var_config: _vm.var_config },
             on: {
@@ -1152,7 +1239,7 @@ var staticRenderFns = [
       _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Certificados")]),
       _vm._v(" "),
       _c("li", { staticClass: "breadcrumb-item" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("Recibidos")])
+        _c("a", { attrs: { href: "#" } }, [_vm._v("Enviados")])
       ]),
       _vm._v(" "),
       _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Listado")])
@@ -1166,9 +1253,9 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", [_vm._v("Opciones")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Codigo")]),
+        _c("th", [_vm._v("Carta")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Estudiante")]),
+        _c("th", [_vm._v("Facultad")]),
         _vm._v(" "),
         _c("th", [_vm._v("Fecha Procesado")]),
         _vm._v(" "),
@@ -1198,18 +1285,18 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/documento/ListarDocumentoRecibido.vue":
-/*!***************************************************************************!*\
-  !*** ./resources/js/components/erp/documento/ListarDocumentoRecibido.vue ***!
-  \***************************************************************************/
+/***/ "./resources/js/components/erp/documento/ListarDocumentoEnviado.vue":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/erp/documento/ListarDocumentoEnviado.vue ***!
+  \**************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ListarDocumentoRecibido_vue_vue_type_template_id_79868c64___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListarDocumentoRecibido.vue?vue&type=template&id=79868c64& */ "./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=template&id=79868c64&");
-/* harmony import */ var _ListarDocumentoRecibido_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListarDocumentoRecibido.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _ListarDocumentoRecibido_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ListarDocumentoRecibido.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _ListarDocumentoEnviado_vue_vue_type_template_id_afc3b206___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListarDocumentoEnviado.vue?vue&type=template&id=afc3b206& */ "./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=template&id=afc3b206&");
+/* harmony import */ var _ListarDocumentoEnviado_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListarDocumentoEnviado.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ListarDocumentoEnviado_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ListarDocumentoEnviado.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -1220,9 +1307,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _ListarDocumentoRecibido_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ListarDocumentoRecibido_vue_vue_type_template_id_79868c64___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ListarDocumentoRecibido_vue_vue_type_template_id_79868c64___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _ListarDocumentoEnviado_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ListarDocumentoEnviado_vue_vue_type_template_id_afc3b206___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ListarDocumentoEnviado_vue_vue_type_template_id_afc3b206___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -1232,54 +1319,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/erp/documento/ListarDocumentoRecibido.vue"
+component.options.__file = "resources/js/components/erp/documento/ListarDocumentoEnviado.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************!*\
-  !*** ./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************/
+/***/ "./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarDocumentoRecibido_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarDocumentoRecibido.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarDocumentoRecibido_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarDocumentoEnviado_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarDocumentoEnviado.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarDocumentoEnviado_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=style&index=0&lang=css&":
-/*!************************************************************************************************************!*\
-  !*** ./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=style&index=0&lang=css& ***!
-  \************************************************************************************************************/
+/***/ "./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=style&index=0&lang=css&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=style&index=0&lang=css& ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarDocumentoRecibido_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarDocumentoRecibido.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarDocumentoRecibido_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarDocumentoRecibido_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarDocumentoRecibido_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarDocumentoRecibido_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarDocumentoEnviado_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarDocumentoEnviado.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarDocumentoEnviado_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarDocumentoEnviado_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarDocumentoEnviado_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarDocumentoEnviado_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=template&id=79868c64&":
-/*!**********************************************************************************************************!*\
-  !*** ./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=template&id=79868c64& ***!
-  \**********************************************************************************************************/
+/***/ "./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=template&id=afc3b206&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=template&id=afc3b206& ***!
+  \*********************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarDocumentoRecibido_vue_vue_type_template_id_79868c64___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarDocumentoRecibido.vue?vue&type=template&id=79868c64& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/documento/ListarDocumentoRecibido.vue?vue&type=template&id=79868c64&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarDocumentoRecibido_vue_vue_type_template_id_79868c64___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarDocumentoEnviado_vue_vue_type_template_id_afc3b206___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarDocumentoEnviado.vue?vue&type=template&id=afc3b206& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/documento/ListarDocumentoEnviado.vue?vue&type=template&id=afc3b206&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarDocumentoEnviado_vue_vue_type_template_id_afc3b206___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarDocumentoRecibido_vue_vue_type_template_id_79868c64___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarDocumentoEnviado_vue_vue_type_template_id_afc3b206___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

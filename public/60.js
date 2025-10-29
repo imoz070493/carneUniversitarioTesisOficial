@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[60],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -42,286 +42,133 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var FormularioAcceso = function FormularioAcceso() {
-  return __webpack_require__.e(/*! import() */ 19).then(__webpack_require__.bind(null, /*! @/components/erp/acceso/FormularioAcceso */ "./resources/js/components/erp/acceso/FormularioAcceso.vue"));
-};
-
-var VerAcceso = function VerAcceso() {
-  return __webpack_require__.e(/*! import() */ 20).then(__webpack_require__.bind(null, /*! @/components/erp/acceso/VerAcceso */ "./resources/js/components/erp/acceso/VerAcceso.vue"));
-};
-
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    "v-formulario-persona-dni": FormularioAcceso,
-    "v-ver-persona-dni": VerAcceso
+  props: {
+    value: {
+      type: 0
+    },
+    disabled: {
+      type: Boolean,
+      "default": false
+    },
+    tipo_documento: {
+      type: String,
+      "default": 'ruc'
+    }
   },
   data: function data() {
     return {
-      nuevo: {},
-      editable: {},
-      ver_editable: {},
-      editable_anulacion: {},
+      editable: Object.assign({}, this.value),
+      num_documento: this.value,
+      lock: {},
+      errors: {},
       show: {},
-      var_config: {},
-      arrayAcceso: [],
-      pagination: {
-        'total': 0,
-        'current_page': 0,
-        'per_page': 0,
-        'last_page': 0,
-        'from': 0,
-        'to': 0
-      },
-      offset: 3,
-      criterio: 'todos',
-      buscar: '',
-      per_page: 50
+      text: {},
+      btn: {},
+      array_convocatorias: []
     };
   },
-  computed: {
-    isActived: function isActived() {
-      return this.pagination.current_page;
-    },
-    pagesNumber: function pagesNumber() {
-      if (!this.pagination.to) {
-        return [];
-      }
-
-      var from = this.pagination.current_page - this.offset;
-
-      if (from < 1) {
-        from = 1;
-      }
-
-      var to = from + this.offset * 2;
-
-      if (to >= this.pagination.last_page) {
-        to = this.pagination.last_page;
-      }
-
-      var pagesArray = [];
-
-      while (from <= to) {
-        pagesArray.push(from);
-        from++;
-      }
-
-      return pagesArray;
-    }
-  },
   mounted: function mounted() {
-    console.log('Component mounted.');
-    this.listarAcceso(1, this.buscar, this.criterio);
+    // if (this.value) {
+    //   console.log("buscar");
+    //   this.buscar(this.value);
+    // }
+    // this.buscar();
+    var me = this;
+    me.listarConvocatoriasEstudiante();
+    me.$forceUpdate();
   },
   methods: {
-    listarAcceso: function listarAcceso(page, buscar, criterio) {
+    listarConvocatoriasEstudiante: function listarConvocatoriasEstudiante() {
       var me = this;
-      var url = '/acceso?page=' + page + '&buscar=' + buscar + '&criterio=' + criterio + '&per_page=' + this.per_page;
+      var url = '/matricula_estudiante/busqueda/convocatorias';
       axios.get(url).then(function (response) {
-        var respuesta = response.data;
-        me.arrayAcceso = respuesta.accesos.data;
-        me.pagination = respuesta.pagination;
-        if (me.arrayAcceso.length == 0) me.show['arrayAcceso'] = true;else me.show['arrayAcceso'] = false;
+        // console.log(response.data)
+        me.array_convocatorias = response.data;
+        me.$forceUpdate();
       })["catch"](function (error) {
         console.log(error);
       });
+    }
+  },
+  watch: {
+    num_documento: function num_documento(newvalue, oldvalue) {
+      if (newvalue) {
+        this.$emit('input', newvalue);
+      }
     },
-    cambiarPagina: function cambiarPagina(page, buscar, criterio) {
-      var me = this; // Actualiza la pagina actual
-
-      me.pagination.current_page = page; // Envia la peticion para visualizar la data de esta pagina
-
-      me.listarAcceso(page, buscar, criterio);
+    value: function value(newvalue, oldvalue) {
+      if (newvalue) {
+        this.num_documento = newvalue;
+      }
     },
-    desactivarAcceso: function desactivarAcceso(id) {
-      var _this = this;
-
-      swal({
-        title: 'Esta seguro de desactivar este ingreso de vehiculo?',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Aceptar',
-        cancelButtonText: 'Cancelar',
-        confirmButtonClass: 'btn btn-success',
-        cancelButtonClass: 'btn btn-danger',
-        buttonsStyling: false,
-        reverseButtons: true
-      }).then(function (result) {
-        if (result.value) {
-          var me = _this;
-          axios.put('/acceso/desactivar', {
-            id: id
-          }).then(function (response) {
-            me.listarAcceso(1, '', 'nombre');
-            swal('Desactivado', 'El registro ha sido desactivado con exito', 'success');
-          })["catch"](function (error) {
-            console.log(error);
-          });
-        } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === swal.DismissReason.cancel) {}
-      });
-    },
-    activarAcceso: function activarAcceso(id) {
-      var _this2 = this;
-
-      swal({
-        title: 'Esta seguro de activar este ingreso de vehiculo?',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Aceptar',
-        cancelButtonText: 'Cancelar',
-        confirmButtonClass: 'btn btn-success',
-        cancelButtonClass: 'btn btn-danger',
-        buttonsStyling: false,
-        reverseButtons: true
-      }).then(function (result) {
-        if (result.value) {
-          var me = _this2;
-          axios.put('/acceso/activar', {
-            id: id
-          }).then(function (response) {
-            me.listarAcceso(1, '', 'nombre');
-            swal('Activado', 'El registro ha sido activado con exito', 'success');
-          })["catch"](function (error) {
-            console.log(error);
-          });
-        } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === swal.DismissReason.cancel) {}
-      });
-    },
-    crear: function crear() {
-      this.nuevo = {
-        _estado: 'creando'
-      };
-      this.var_config = {
-        title: 'Registrar Acceso',
-        tipo_accion: 'registrar'
-      };
-    },
-    editar: function editar(vehiculo) {
-      if (vehiculo.anulado) {
-        swal('Error', 'El ingreso ha sido anulado por lo tanto no puede ser editado', 'warning');
-        return;
+    "editable._usar_foto_anterior": function editable_usar_foto_anterior(newvalue, oldvalue) {
+      if (newvalue) {
+        this.lock._new_document = true;
+      } else {
+        this.lock._new_document = false;
       }
 
-      this.editable = Object.assign({
-        _estado: 'editando'
-      }, vehiculo);
-      this.var_config = {
-        title: 'Actualizar Acceso',
-        tipo_accion: 'actualizar'
-      };
-    },
-    ver: function ver(vehiculo) {
-      this.ver_editable = Object.assign({
-        _estado: 'viendo'
-      }, vehiculo);
-      this.var_config = {
-        title: 'Ver Acceso'
-      };
-    },
-    formatDate: function formatDate(e) {
-      var data = e.split(" ");
-      var date = data[0].split('-').reverse().join('-');
-      var hour = data[1];
-      return date + " " + hour;
+      this.$forceUpdate();
     }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=template&id=2ca127d7&":
-/*!**************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=template&id=2ca127d7& ***!
-  \**************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=style&index=0&id=59ad74c1&scoped=true&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=style&index=0&id=59ad74c1&scoped=true&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.hide-options[data-v-59ad74c1] {\r\n  display: none;\r\n  overflow: hidden;\r\n  transition: max-height 0.2s ease-out;\n}\n.show-options[data-v-59ad74c1] {\r\n  display: flex;\r\n  /* padding: 0 18px; */\r\n  background-color: white;\r\n  /* max-height: 0; */\r\n  overflow: hidden;\r\n  margin: -10px 0 0 -10px;\r\n  transition: max-height 0.2s ease-out;\n}\n.text-error[data-v-59ad74c1]{\r\n    color: red !important;\r\n    font-weight: bold;\n}\n.cropper-container[data-v-59ad74c1] {\r\n  width: 350px;   /* Ajusta el tamaño del contenedor */\r\n  height: 500px;  /* Ajusta la altura del recorte */\r\n  overflow: hidden;\r\n  border: 1px solid #ddd;\n}\n.cropper-image[data-v-59ad74c1] {\r\n  max-width: 100%;\r\n  max-height: 100%;\r\n  display: block;\n}\r\n\r\n\r\n/*.cr-boundary::before,\r\n.cr-boundary::after {\r\n    content: \"\";\r\n    position: absolute;\r\n    width: 100%;\r\n    height: 1px;\r\n    background: rgba(255, 255, 255, 0.6);\r\n    border-top: 1px dashed white;\r\n}\r\n\r\n.cr-boundary::before {\r\n    top: 33.33%;\r\n}\r\n\r\n.cr-boundary::after {\r\n    top: 66.66%;\r\n}\r\n\r\n.cr-viewport::before,\r\n.cr-viewport::after {\r\n    content: \"\";\r\n    position: absolute;\r\n    height: 100%;\r\n    width: 1px;\r\n    background: rgba(255, 255, 255, 0.6);\r\n    border-left: 1px dashed white;\r\n}\r\n\r\n.cr-viewport::before {\r\n    left: 33.33%;\r\n}\r\n\r\n.cr-viewport::after {\r\n    left: 66.66%;\r\n}*/\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=style&index=0&id=59ad74c1&scoped=true&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=style&index=0&id=59ad74c1&scoped=true&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--5-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--5-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./DashboardEstudianteSinConvocatoria.vue?vue&type=style&index=0&id=59ad74c1&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=style&index=0&id=59ad74c1&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=template&id=59ad74c1&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=template&id=59ad74c1&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -334,396 +181,48 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "main",
-    { staticClass: "main" },
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _c("i", { staticClass: "fa fa-align-justify" }),
-            _vm._v(" Accesos\n                "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-secondary",
-                attrs: { type: "button" },
-                on: {
-                  click: function($event) {
-                    return _vm.crear()
-                  }
-                }
-              },
-              [
-                _c("i", { staticClass: "icon-plus" }),
-                _vm._v(" Nuevo\n                ")
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "form-group row" }, [
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("div", { staticClass: "input-group" }, [
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.criterio,
-                          expression: "criterio"
-                        }
-                      ],
-                      staticClass: "form-control col-md-3",
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.criterio = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        }
-                      }
-                    },
-                    [
-                      _c("option", { attrs: { value: "todos" } }, [
-                        _vm._v("Todos")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "nombreComercial" } }, [
-                        _vm._v("Nombre Comercial")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "razonSocial" } }, [
-                        _vm._v("Razon Social")
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.buscar,
-                        expression: "buscar"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "Texto a buscar" },
-                    domProps: { value: _vm.buscar },
-                    on: {
-                      keyup: function($event) {
-                        if (
-                          !$event.type.indexOf("key") &&
-                          _vm._k(
-                            $event.keyCode,
-                            "enter",
-                            13,
-                            $event.key,
-                            "Enter"
-                          )
-                        ) {
-                          return null
-                        }
-                        return _vm.listarAcceso(1, _vm.buscar, _vm.criterio)
-                      },
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.buscar = $event.target.value
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary",
-                      attrs: { type: "submit" },
-                      on: {
-                        click: function($event) {
-                          return _vm.listarAcceso(1, _vm.buscar, _vm.criterio)
-                        }
-                      }
-                    },
-                    [
-                      _c("i", { staticClass: "fa fa-search" }),
-                      _vm._v(" Buscar")
-                    ]
-                  )
-                ])
-              ])
-            ]),
+    "div",
+    { staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
+    _vm._l(_vm.array_convocatorias, function(convocatoria) {
+      return _c("div", { key: convocatoria.id, staticClass: "row" }, [
+        _c("div", { staticClass: "col-lg-3 col-md-3 col-sm-3 col-xs-12" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _vm._m(0, true),
+            _c("br"),
             _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticStyle: { "overflow-x": "auto", "white-space": "nowrap" }
-              },
-              [
-                _c("table", { staticClass: "table table-hover text-nowrap" }, [
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c(
-                    "tbody",
-                    [
-                      _vm.show.arrayAcceso
-                        ? _c("tr", [
-                            _c("th", {
-                              staticClass: "text-center text-dark",
-                              attrs: { colspan: "8" },
-                              domProps: { textContent: _vm._s("Vacio") }
-                            })
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm._l(_vm.arrayAcceso, function(acceso) {
-                        return _c("tr", { key: acceso.id }, [
-                          _c("td", [
-                            _c("div", { staticClass: "btn-group" }, [
-                              _vm._m(2, true),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "dropdown-menu",
-                                  staticStyle: {
-                                    "overflow-y": "auto",
-                                    height: "150px"
-                                  },
-                                  attrs: { role: "menu" }
-                                },
-                                [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "dropdown-item disabled",
-                                      attrs: { href: "#", disabled: "" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.editar(acceso)
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticStyle: {
-                                          width: "20px",
-                                          height: "20px"
-                                        },
-                                        attrs: { src: "images/editar.svg" }
-                                      }),
-                                      _vm._v("   Editar")
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "dropdown-item",
-                                      attrs: { href: "#" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.ver(acceso)
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticStyle: {
-                                          width: "20px",
-                                          height: "20px"
-                                        },
-                                        attrs: { src: "images/ver.svg" }
-                                      }),
-                                      _vm._v("   Ver")
-                                    ]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: {
-                              textContent: _vm._s(acceso.nombre_completo)
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: {
-                              textContent: _vm._s(acceso.escuela_profesional)
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: {
-                              textContent: _vm._s(
-                                _vm.formatDate(acceso.created_at)
-                              )
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm._m(3, true)
-                        ])
-                      })
-                    ],
-                    2
-                  )
-                ])
-              ]
-            ),
+            _c("span", [_vm._v(_vm._s(convocatoria.nombre))])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 col-md-3 col-sm-3 col-xs-12" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _vm._m(1, true),
+            _c("br"),
             _vm._v(" "),
-            _c("nav", [
-              _c(
-                "ul",
-                { staticClass: "pagination" },
-                [
-                  _vm.pagination.current_page > 1
-                    ? _c("li", { staticClass: "page-item" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "page-link",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.cambiarPagina(
-                                  _vm.pagination.current_page - 1,
-                                  _vm.buscar,
-                                  _vm.criterio
-                                )
-                              }
-                            }
-                          },
-                          [_vm._v("Ant")]
-                        )
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm._l(_vm.pagesNumber, function(page) {
-                    return _c(
-                      "li",
-                      {
-                        key: page,
-                        staticClass: "page-item",
-                        class: [page == _vm.isActived ? "active" : ""]
-                      },
-                      [
-                        _c("a", {
-                          staticClass: "page-link",
-                          attrs: { href: "#" },
-                          domProps: { textContent: _vm._s(page) },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.cambiarPagina(
-                                page,
-                                _vm.buscar,
-                                _vm.criterio
-                              )
-                            }
-                          }
-                        })
-                      ]
-                    )
-                  }),
-                  _vm._v(" "),
-                  _vm.pagination.current_page < _vm.pagination.last_page
-                    ? _c("li", { staticClass: "page-item" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "page-link",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.cambiarPagina(
-                                  _vm.pagination.current_page + 1,
-                                  _vm.buscar,
-                                  _vm.criterio
-                                )
-                              }
-                            }
-                          },
-                          [_vm._v("Sig")]
-                        )
-                      ])
-                    : _vm._e()
-                ],
-                2
-              )
-            ])
+            _c("span", [_vm._v(_vm._s(convocatoria.fecha_registro))])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 col-md-3 col-sm-3 col-xs-12" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _vm._m(2, true),
+            _c("br"),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(convocatoria.numero_recibo))])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-lg-3 col-md-3 col-sm-3 col-xs-12" }, [
+          _c("div", { staticClass: "form-group" }, [
+            _vm._m(3, true),
+            _c("br"),
+            _vm._v(" "),
+            _c("span", [_vm._v(_vm._s(convocatoria.fecha_expiracion))])
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _vm.nuevo._estado == "creando"
-        ? _c("v-formulario-persona-dni", {
-            ref: "cmp_crear_acceso",
-            attrs: { var_config: _vm.var_config },
-            on: {
-              guardado: function($event) {
-                return _vm.listarAcceso(1, "", "nombre")
-              }
-            },
-            model: {
-              value: _vm.nuevo,
-              callback: function($$v) {
-                _vm.nuevo = $$v
-              },
-              expression: "nuevo"
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.editable._estado == "editando"
-        ? _c("v-formulario-persona-dni", {
-            ref: "cmp_crear_acceso",
-            attrs: { var_config: _vm.var_config },
-            on: {
-              guardado: function($event) {
-                return _vm.listarAcceso(1, "", "nombre")
-              }
-            },
-            model: {
-              value: _vm.editable,
-              callback: function($$v) {
-                _vm.editable = $$v
-              },
-              expression: "editable"
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.ver_editable._estado == "viendo"
-        ? _c("v-ver-persona-dni", {
-            ref: "cmp_ver_acceso",
-            attrs: { var_config: _vm.var_config },
-            model: {
-              value: _vm.ver_editable,
-              callback: function($$v) {
-                _vm.ver_editable = $$v
-              },
-              expression: "ver_editable"
-            }
-          })
-        : _vm._e()
-    ],
-    1
+      ])
+    }),
+    0
   )
 }
 var staticRenderFns = [
@@ -731,50 +230,25 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ol", { staticClass: "breadcrumb" }, [
-      _c("li", { staticClass: "breadcrumb-item" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("Accesos")])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Listado")])
-    ])
+    return _c("label", [_c("dt", [_vm._v("Convocatoria: ")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th"),
-        _vm._v(" "),
-        _c("th", [_vm._v("Usuario")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Escuela Profesional")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Fecha de Creacion")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Estado")])
-      ])
-    ])
+    return _c("label", [_c("dt", [_vm._v("Fecha Registro: ")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#", "data-toggle": "dropdown" } }, [
-      _c("img", {
-        staticStyle: { width: "30px", height: "30px" },
-        attrs: { src: "images/options.svg" }
-      })
-    ])
+    return _c("label", [_c("dt", [_vm._v("N° Recibo: ")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("span", { staticClass: "badge badge-success" }, [_vm._v("Activo")])
-    ])
+    return _c("label", [_c("dt", [_vm._v("Fecha Expiración: ")])])
   }
 ]
 render._withStripped = true
@@ -783,18 +257,20 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/acceso/ListarAcceso.vue":
-/*!*************************************************************!*\
-  !*** ./resources/js/components/erp/acceso/ListarAcceso.vue ***!
-  \*************************************************************/
+/***/ "./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue ***!
+  \************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ListarAcceso_vue_vue_type_template_id_2ca127d7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListarAcceso.vue?vue&type=template&id=2ca127d7& */ "./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=template&id=2ca127d7&");
-/* harmony import */ var _ListarAcceso_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListarAcceso.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _DashboardEstudianteSinConvocatoria_vue_vue_type_template_id_59ad74c1_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DashboardEstudianteSinConvocatoria.vue?vue&type=template&id=59ad74c1&scoped=true& */ "./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=template&id=59ad74c1&scoped=true&");
+/* harmony import */ var _DashboardEstudianteSinConvocatoria_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DashboardEstudianteSinConvocatoria.vue?vue&type=script&lang=js& */ "./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _DashboardEstudianteSinConvocatoria_vue_vue_type_style_index_0_id_59ad74c1_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DashboardEstudianteSinConvocatoria.vue?vue&type=style&index=0&id=59ad74c1&scoped=true&lang=css& */ "./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=style&index=0&id=59ad74c1&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -802,51 +278,67 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ListarAcceso_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ListarAcceso_vue_vue_type_template_id_2ca127d7___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ListarAcceso_vue_vue_type_template_id_2ca127d7___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _DashboardEstudianteSinConvocatoria_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _DashboardEstudianteSinConvocatoria_vue_vue_type_template_id_59ad74c1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _DashboardEstudianteSinConvocatoria_vue_vue_type_template_id_59ad74c1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  null,
+  "59ad74c1",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/erp/acceso/ListarAcceso.vue"
+component.options.__file = "resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************/
+/***/ "./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarAcceso_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarAcceso.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarAcceso_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteSinConvocatoria_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./DashboardEstudianteSinConvocatoria.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteSinConvocatoria_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=template&id=2ca127d7&":
-/*!********************************************************************************************!*\
-  !*** ./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=template&id=2ca127d7& ***!
-  \********************************************************************************************/
+/***/ "./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=style&index=0&id=59ad74c1&scoped=true&lang=css&":
+/*!*********************************************************************************************************************************************!*\
+  !*** ./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=style&index=0&id=59ad74c1&scoped=true&lang=css& ***!
+  \*********************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteSinConvocatoria_vue_vue_type_style_index_0_id_59ad74c1_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--5-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--5-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./DashboardEstudianteSinConvocatoria.vue?vue&type=style&index=0&id=59ad74c1&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=style&index=0&id=59ad74c1&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteSinConvocatoria_vue_vue_type_style_index_0_id_59ad74c1_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteSinConvocatoria_vue_vue_type_style_index_0_id_59ad74c1_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteSinConvocatoria_vue_vue_type_style_index_0_id_59ad74c1_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteSinConvocatoria_vue_vue_type_style_index_0_id_59ad74c1_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=template&id=59ad74c1&scoped=true&":
+/*!*******************************************************************************************************************************!*\
+  !*** ./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=template&id=59ad74c1&scoped=true& ***!
+  \*******************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarAcceso_vue_vue_type_template_id_2ca127d7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarAcceso.vue?vue&type=template&id=2ca127d7& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=template&id=2ca127d7&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarAcceso_vue_vue_type_template_id_2ca127d7___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteSinConvocatoria_vue_vue_type_template_id_59ad74c1_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./DashboardEstudianteSinConvocatoria.vue?vue&type=template&id=59ad74c1&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue?vue&type=template&id=59ad74c1&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteSinConvocatoria_vue_vue_type_template_id_59ad74c1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarAcceso_vue_vue_type_template_id_2ca127d7___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_DashboardEstudianteSinConvocatoria_vue_vue_type_template_id_59ad74c1_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

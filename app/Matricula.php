@@ -148,6 +148,8 @@ class Matricula extends Model
                                 'e.apellido_materno',
                                 'e.nombres',
                                 'e.sexo',
+                                'e.telefono1',
+                                'e.telefono2',
                                 'e.id as estudiante_id',
                                 'matriculas.tipo_tramite',
                                 'matriculas.fecha_expiracion'

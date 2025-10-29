@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[53],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -68,330 +68,147 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var FormularioDocumentoProcesado = function FormularioDocumentoProcesado() {
-  return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! @/components/erp/documento/FormularioDocumentoProcesado */ "./resources/js/components/erp/documento/FormularioDocumentoProcesado.vue"));
-};
-
-var VerDocumentoEnviadoPersonal = function VerDocumentoEnviadoPersonal() {
-  return __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! @/components/erp/documento/VerDocumentoEnviadoPersonal */ "./resources/js/components/erp/documento/VerDocumentoEnviadoPersonal.vue"));
-};
-
-var FormularioDocumentoEnviarFacultad = function FormularioDocumentoEnviarFacultad() {
-  return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! @/components/erp/documento/FormularioDocumentoEnviarFacultad */ "./resources/js/components/erp/documento/FormularioDocumentoEnviarFacultad.vue"));
-};
-
-var EstudianteSelect = function EstudianteSelect() {
-  return __webpack_require__.e(/*! import() */ 76).then(__webpack_require__.bind(null, /*! @/components/referencias/EstudianteSelect */ "./resources/js/components/referencias/EstudianteSelect.vue"));
-};
-
-var TipoDocumentoAcademicoSelect = function TipoDocumentoAcademicoSelect() {
-  return __webpack_require__.e(/*! import() */ 80).then(__webpack_require__.bind(null, /*! @/components/referencias/TipoDocumentoAcademicoSelect */ "./resources/js/components/referencias/TipoDocumentoAcademicoSelect.vue"));
-};
-
-var CicloSelect = function CicloSelect() {
-  return __webpack_require__.e(/*! import() */ 73).then(__webpack_require__.bind(null, /*! @/components/referencias/CicloSelect */ "./resources/js/components/referencias/CicloSelect.vue"));
+var ListarError = function ListarError() {
+  return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! @/components/erp/matricula/ListarError */ "./resources/js/components/erp/matricula/ListarError.vue"));
 };
 
 var PeriodoAcademicoSelect = function PeriodoAcademicoSelect() {
-  return __webpack_require__.e(/*! import() */ 17).then(__webpack_require__.bind(null, /*! @/components/referencias/PeriodoAcademicoGeneralSelect */ "./resources/js/components/referencias/PeriodoAcademicoGeneralSelect.vue"));
+  return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! @/components/referencias/PeriodoAcademicoSelect */ "./resources/js/components/referencias/PeriodoAcademicoSelect.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    "v-formulario-documento-enviado": FormularioDocumentoProcesado,
-    "v-ver-documento-enviado": VerDocumentoEnviadoPersonal,
-    "v-formulario-documento-enviar-facultad": FormularioDocumentoEnviarFacultad,
-    "estudiante-select": EstudianteSelect,
-    "tipo-documento-academico-select": TipoDocumentoAcademicoSelect,
-    "ciclo-select": CicloSelect,
+    "v-listar-error": ListarError,
     "periodo-academico-select": PeriodoAcademicoSelect
+  },
+  props: {
+    value: {
+      type: Object,
+      "default": {}
+    },
+    var_config: {
+      type: Object,
+      "default": {}
+    }
   },
   data: function data() {
     return {
-      nuevo: {},
-      editable: {
-        tipo: 'constancia_primera_matricula'
+      editable: Object.assign({}, this.value),
+      errors: [],
+      btn: {
+        registrar: false,
+        actualizar: false,
+        importar: false
       },
-      precio_editable: {},
-      ver_editable: {},
-      enviar_editable: {},
-      show: {},
-      var_config: {},
-      arraySolicitud: [],
-      pagination: {
-        'total': 0,
-        'current_page': 0,
-        'per_page': 0,
-        'last_page': 0,
-        'from': 0,
-        'to': 0
-      },
-      offset: 3,
-      criterio: 'inscritos.nombre',
-      buscar: '',
-      per_page: 50,
-      order_by: 'created_at',
-      mode_order: 'desc',
-      errors: {},
-      lock: {},
-      btn: {}
+      nuevo_error: {},
+      var_config_error: {}
     };
   },
-  computed: {
-    isActived: function isActived() {
-      return this.pagination.current_page;
-    },
-    pagesNumber: function pagesNumber() {
-      if (!this.pagination.to) {
-        return [];
-      }
-
-      var from = this.pagination.current_page - this.offset;
-
-      if (from < 1) {
-        from = 1;
-      }
-
-      var to = from + this.offset * 2;
-
-      if (to >= this.pagination.last_page) {
-        to = this.pagination.last_page;
-      }
-
-      var pagesArray = [];
-
-      while (from <= to) {
-        pagesArray.push(from);
-        from++;
-      }
-
-      return pagesArray;
-    }
-  },
   mounted: function mounted() {
-    console.log('Component mounted.');
-    this.cambiarTipoDocumento(this.editable.tipo); // this.listarSolicitudDocumento(1, this.buscar, this.criterio);
+    if (!this.editable.id) {
+      //Nuevo
+      this.editable.origen = 'local';
+    } else {//Editar
+    }
+
+    this.$forceUpdate();
   },
   methods: {
-    listarSolicitudDocumento: function listarSolicitudDocumento(page, buscar, criterio) {
-      var me = this; // var url = '/solicitud_documento?page='+page+'&buscar='+buscar+'&criterio='+criterio+'&per_page='+this.per_page;
-
-      if (!me.editable.estudiante_id) {
-        alert('Seleccione el estudiante');
-        return;
-      }
-
-      axios.post('/solicitud_documento', {
-        page: page,
-        buscar: buscar,
-        criterio: criterio,
-        per_page: this.per_page,
-        order_by: this.order_by,
-        mode_order: this.mode_order,
-        estudiante_id: this.editable.estudiante_id
+    importar: function importar() {
+      var me = this;
+      this.btn['importar'] = true;
+      axios({
+        url: '/ingresante/importar',
+        method: 'POST',
+        data: this.editable,
+        responseType: 'blob'
       }).then(function (response) {
-        var respuesta = response.data;
-        me.arraySolicitud = respuesta.solicitudes_documentos.data;
-        me.pagination = respuesta.pagination;
-        if (me.arraySolicitud.length == 0) me.show['arraySolicitud'] = true;else me.show['arraySolicitud'] = false;
+        if (response.data && response.data.size) {
+          // window.location.href = response;
+          // this.leer()
+          // let filename = "FACTURA"+this.formatComprobante(obj_venta)+".pdf";
+          var filename = "Fichas de Matricula.pdf";
+          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+          var fileLink = document.createElement('a');
+          fileLink.href = fileURL;
+
+          if (!filename) {
+            filename = url.substr(url.lastIndexOf('/') + 1);
+          }
+
+          fileLink.setAttribute('download', filename);
+          document.body.appendChild(fileLink);
+          fileLink.click();
+        }
+
+        swal('Generado correctamente', 'Exito!', 'success');
+        me.$emit('guardado');
+        me.cerrarModal();
       })["catch"](function (error) {
-        console.log(error);
+        me.btn['importar'] = false;
 
         if (error.request.status) {
+          // La session ha expirado
           if (error.request.status == 419) {
             location.reload();
+          } // Validacion de campos de formulario
+
+
+          if (error.request.status == 422) {
+            if (error.request.response) {
+              var response = JSON.parse(error.request.response);
+              console.log(response);
+              if (response.errors) me.errors = response.errors;
+            }
+          } // Validacion de datos de excel
+
+
+          if (error.request.status == 500) {
+            if (error.request.response) {
+              me.errors = error.response.data;
+              console.log('errorrrr', me.errors);
+
+              if (me.errors.data) {
+                me.nuevo_error._estado = "viendo_error";
+                me.nuevo_error.data = me.errors.data;
+                me.var_config_error = {
+                  title: 'Errores en Excel'
+                };
+              } else {
+                if (me.errors.code == 'sin_periodo_actual' || me.errors.code == 'excel_vacio') me.errors.formulario = me.errors.message;
+              }
+            }
           }
         }
       });
     },
-    registrarSolicitud: function registrarSolicitud() {
+    descargarPlantilla: function descargarPlantilla() {
       var me = this;
-      this.errors = [];
-      this.btn['registrar'] = true;
+      this.btn['actualizar'] = true;
+      axios({
+        url: '/matricula/plantilla',
+        method: 'POST',
+        responseType: 'blob'
+      }).then(function (response) {
+        if (response.data && response.data.size) {
+          var filename = "Matriculas.xlsx";
+          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+          var fileLink = document.createElement('a');
+          fileLink.href = fileURL;
 
-      if (me.editable.tipo == 'constancia_primera_matricula') {
-        if (!Date.parse(me.editable._fecha_primera_matricula.split('/').reverse().join('/'))) {
-          alert('Debe ingresar una fecha de primera matricula valida');
-          return;
-        }
-      }
-
-      me.editable.fecha_primera_matricula = me.editable._fecha_primera_matricula.split('/').reverse().join('-');
-      axios.post('/solicitud_documento/registrar', this.editable).then(function (response) {
-        // me.$emit('guardado');
-        // me.cerrarModal();
-        swal('Registrado', 'El tramite ha sido registrado con exito', 'success');
-        me.listarSolicitudDocumento(1, me.buscar, me.criterio);
-      })["catch"](function (error) {
-        me.btn['registrar'] = false;
-
-        if (error.request.status) {
-          if (error.request.status == 419) {
-            location.reload();
+          if (!filename) {
+            filename = url.substr(url.lastIndexOf('/') + 1);
           }
+
+          fileLink.setAttribute('download', filename);
+          document.body.appendChild(fileLink);
+          fileLink.click();
+        }
+      })["catch"](function (error) {
+        me.btn['actualizar'] = false; // La session ha expirado
+
+        if (error.request.status == 419) {
+          location.reload();
         }
 
         if (error.request.response) {
@@ -401,401 +218,39 @@ var PeriodoAcademicoSelect = function PeriodoAcademicoSelect() {
         }
       });
     },
-    cambiarPagina: function cambiarPagina(page, buscar, criterio) {
-      var me = this; // Actualiza la pagina actual
-
-      me.pagination.current_page = page; // Envia la peticion para visualizar la data de esta pagina
-
-      me.listarSolicitudDocumento(page, buscar, criterio);
+    cerrarModal: function cerrarModal() {
+      this.$emit('input', {});
     },
-    desactivarInscrito: function desactivarInscrito(id) {
+    imageChanged: function imageChanged(e) {
       var _this = this;
 
-      swal({
-        title: 'Esta seguro de desactivar esta inscrito?',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Aceptar',
-        cancelButtonText: 'Cancelar',
-        confirmButtonClass: 'btn btn-success',
-        cancelButtonClass: 'btn btn-danger',
-        buttonsStyling: false,
-        reverseButtons: true
-      }).then(function (result) {
-        if (result.value) {
-          var me = _this;
-          axios.put('/inscrito/desactivar', {
-            id: id
-          }).then(function (response) {
-            me.listarSolicitudDocumento(1, '', 'nombre');
-            swal('Desactivado', 'El registro ha sido desactivado con exito', 'success');
-          })["catch"](function (error) {
-            console.log(error);
-          });
-        } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === swal.DismissReason.cancel) {}
-      });
-    },
-    activarInscrito: function activarInscrito(id) {
-      var _this2 = this;
+      console.log(e.target.files[0]);
+      var propiedades = e.target.files[0];
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
 
-      swal({
-        title: 'Esta seguro de activar esta inscrito?',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Aceptar',
-        cancelButtonText: 'Cancelar',
-        confirmButtonClass: 'btn btn-success',
-        cancelButtonClass: 'btn btn-danger',
-        buttonsStyling: false,
-        reverseButtons: true
-      }).then(function (result) {
-        if (result.value) {
-          var me = _this2;
-          axios.put('/inscrito/activar', {
-            id: id
-          }).then(function (response) {
-            me.listarSolicitudDocumento(1, '', 'nombre');
-            swal('Activado', 'El registro ha sido activado con exito', 'success');
-          })["catch"](function (error) {
-            console.log(error);
-          });
-        } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === swal.DismissReason.cancel) {}
-      });
-    },
-    crear: function crear() {
-      this.nuevo = {
-        _estado: 'creando'
+      fileReader.onload = function (e) {
+        _this.editable.name_excel = propiedades.name;
+        _this.editable.excel_document = e.target.result;
       };
-      this.var_config = {
-        title: 'Registrar Envio',
-        tipo_accion: 'registrar'
-      };
-    },
-    editar: function editar(inscrito) {
-      if (inscrito.foto_validado == '1') {
-        swal('Validado', 'La fotografia ha sido validada.', 'success');
-        return;
-      }
-
-      this.editable = Object.assign({
-        _estado: 'editando'
-      }, inscrito);
-      this.var_config = {
-        title: 'Editar Envio',
-        tipo_accion: 'actualizar'
-      };
-    },
-    validarCredencial: function validarCredencial(inscrito) {
-      var me = this;
-
-      if (inscrito.credencial_validado == 'validado') {
-        swal('Ya Validado!!', 'Los credenciales del estudiante matriculado ha sido validado.', 'success');
-        return;
-      }
-
-      axios.post('/inscrito/validar_credencial', {
-        id: inscrito.id,
-        dni: inscrito.dni
-      }).then(function (response) {
-        //console.log(response.data.data)
-        var inscrito_validado = response.data.data;
-
-        if (inscrito_validado.dni) {
-          swal('Validado', 'Los credenciales del estudiante matriculado ha sido validado.', 'success');
-        } else {
-          swal('No Encontrado', 'No ha sido encontrado.', 'warning');
-        }
-
-        me.listarSolicitudDocumento(1, me.buscar, me.criterio);
-        me.$forceUpdate();
-      })["catch"](function (error) {
-        console.log(error);
-      });
-    },
-    enviarFacultad: function enviarFacultad(inscrito) {
-      this.enviar_editable = Object.assign({
-        _estado: 'enviando'
-      }, inscrito);
-      this.var_config = {
-        title: 'Enviar a Facultad',
-        tipo_accion: 'registrar'
-      };
-    },
-    recibirFacultad: function recibirFacultad(inscrito) {
-      var _this3 = this;
-
-      swal({
-        title: 'Esta seguro de recibir los certificados de la carta?',
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Aceptar',
-        cancelButtonText: 'Cancelar',
-        confirmButtonClass: 'btn btn-success',
-        cancelButtonClass: 'btn btn-danger',
-        buttonsStyling: false,
-        reverseButtons: true
-      }).then(function (result) {
-        if (result.value) {
-          var me = _this3;
-          axios.post('/solicitud_documento/recibir', {
-            id: inscrito.id
-          }).then(function (response) {
-            me.listarSolicitudDocumento(1, '', 'nombre');
-            swal('¡Recibido!', 'Las actas fueron recibidas correctamente', 'success');
-          })["catch"](function (error) {
-            console.log(error);
-          });
-        } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === swal.DismissReason.cancel) {}
-      });
-    },
-    ver: function ver(inscrito) {
-      this.ver_editable = Object.assign({
-        _estado: 'viendo'
-      }, inscrito);
-      this.var_config = {
-        title: 'Ver Solicitudes',
-        tipo_accion: 'actualizar'
-      };
-    },
-    anular: function anular(inscrito) {
-      if (inscrito.fecha_anulado) {
-        swal('Anulado', 'El tramite ya ha sido anulado.', 'success');
-        return;
-      }
-
-      this.editable = Object.assign({
-        _estado: 'anulando'
-      }, inscrito);
-      this.var_config = {
-        title: 'Anular Tramite',
-        tipo_accion: 'actualizar'
-      };
-    },
-    abrirPrecios: function abrirPrecios(inscrito) {
-      this.precio_editable = {
-        _estado: 'abriendo',
-        inscrito_id: inscrito.id,
-        nombre_inscrito: inscrito.nombre,
-        precio_actual: inscrito.precio_actual
-      };
-      this.var_config = {
-        title: 'Listar Precios',
-        tipo_accion: 'registrar'
-      };
-      this.$forceUpdate();
-    },
-    numberFormat2: function (_numberFormat) {
-      function numberFormat2(_x) {
-        return _numberFormat.apply(this, arguments);
-      }
-
-      numberFormat2.toString = function () {
-        return _numberFormat.toString();
-      };
-
-      return numberFormat2;
-    }(function (number) {
-      return numberFormat2(number);
-    }),
-    descargarInscritos: function descargarInscritos() {
-      axios({
-        url: '/inscrito/reporte/inscritos',
-        method: 'POST',
-        data: {
-          // venta_id: this.value.venta_id,
-          order_by: this.order_by,
-          mode_order: this.mode_order
-        },
-        responseType: 'blob'
-      }).then(function (response) {
-        // console.log(response.data)
-        // console.log(response.data.size)
-        if (response.data && response.data.size) {
-          // window.location.href = response;
-          // this.leer()
-          // let filename = "FACTURA"+this.formatComprobante(obj_venta)+".pdf";
-          var filename = "Inscritos General.xlsx";
-          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
-          var fileLink = document.createElement('a');
-          fileLink.href = fileURL;
-
-          if (!filename) {
-            filename = url.substr(url.lastIndexOf('/') + 1);
-          }
-
-          fileLink.setAttribute('download', filename);
-          document.body.appendChild(fileLink);
-          fileLink.click();
-        }
-      });
-    },
-    descargarInscritosOficial: function descargarInscritosOficial() {
-      axios({
-        url: '/inscrito/reporte/inscritos_oficial',
-        method: 'POST',
-        data: {
-          // venta_id: this.value.venta_id,
-          order_by: this.order_by,
-          mode_order: this.mode_order
-        },
-        responseType: 'blob'
-      }).then(function (response) {
-        // console.log(response.data)
-        // console.log(response.data.size)
-        if (response.data && response.data.size) {
-          // window.location.href = response;
-          // this.leer()
-          // let filename = "FACTURA"+this.formatComprobante(obj_venta)+".pdf";
-          var filename = "Inscritos Oficial.xlsx";
-          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
-          var fileLink = document.createElement('a');
-          fileLink.href = fileURL;
-
-          if (!filename) {
-            filename = url.substr(url.lastIndexOf('/') + 1);
-          }
-
-          fileLink.setAttribute('download', filename);
-          document.body.appendChild(fileLink);
-          fileLink.click();
-        }
-      });
-    },
-    descargarInscritosAnulado: function descargarInscritosAnulado() {
-      axios({
-        url: '/inscrito/reporte/inscritos_anulado',
-        method: 'POST',
-        data: {
-          // venta_id: this.value.venta_id,
-          order_by: this.order_by,
-          mode_order: this.mode_order
-        },
-        responseType: 'blob'
-      }).then(function (response) {
-        // console.log(response.data)
-        // console.log(response.data.size)
-        if (response.data && response.data.size) {
-          // window.location.href = response;
-          // this.leer()
-          // let filename = "FACTURA"+this.formatComprobante(obj_venta)+".pdf";
-          var filename = "Inscritos Anulado.xlsx";
-          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
-          var fileLink = document.createElement('a');
-          fileLink.href = fileURL;
-
-          if (!filename) {
-            filename = url.substr(url.lastIndexOf('/') + 1);
-          }
-
-          fileLink.setAttribute('download', filename);
-          document.body.appendChild(fileLink);
-          fileLink.click();
-        }
-      });
-    },
-    descargarConstancia: function descargarConstancia(solicitud) {
-      axios({
-        url: '/solicitud_documento/descargar_constancia',
-        method: 'POST',
-        data: {
-          id: solicitud.id
-        },
-        responseType: 'blob'
-      }).then(function (response) {
-        // console.log(response.data)
-        // console.log(response.data.size)
-        if (response.data && response.data.size) {
-          // window.location.href = response;
-          // this.leer()
-          // let filename = "FACTURA"+this.formatComprobante(obj_venta)+".pdf";
-          var filename = "Constancia.pdf";
-          if (solicitud.tipo == 'constancia_matricula') filename = "Constancia de Matricula.pdf";
-          if (solicitud.tipo == 'constancia_primera_matricula') filename = "Constancia de Primera Matricula.pdf";
-          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
-          var fileLink = document.createElement('a');
-          fileLink.href = fileURL;
-
-          if (!filename) {
-            filename = url.substr(url.lastIndexOf('/') + 1);
-          }
-
-          fileLink.setAttribute('download', filename);
-          document.body.appendChild(fileLink);
-          fileLink.click();
-        }
-      });
-    },
-    orderByNombre: function orderByNombre() {
-      this.order_by = 'nombre';
-      console.log('mode_order', this.mode_order);
-      if (this.mode_order == 'desc') this.mode_order = 'asc';else this.mode_order = 'desc';
-      this.listarSolicitudDocumento(1, this.buscar, this.criterio);
-    },
-    orderByApellidoPaterno: function orderByApellidoPaterno() {
-      this.order_by = 'apellido_paterno';
-      console.log('mode_order', this.mode_order);
-      if (this.mode_order == 'desc') this.mode_order = 'asc';else this.mode_order = 'desc';
-      this.listarSolicitudDocumento(1, this.buscar, this.criterio);
-    },
-    reiniciar: function reiniciar() {
-      this.buscar = '';
-      this.mode_order = 'desc';
-      this.order_by = 'id';
-      this.listarSolicitudDocumento(1, this.buscar, this.criterio);
-      this.$forceUpdate();
-    },
-    cambiarTipoDocumento: function cambiarTipoDocumento(newvalue) {
-      var me = this;
-
-      if (newvalue == 'constancia_primera_matricula') {
-        me.lock['_fecha_primera_matricula'] = false;
-        me.lock['ciclo'] = true;
-        me.lock['periodo'] = true;
-      } else if (newvalue == 'constancia_matricula') {
-        me.lock['_fecha_primera_matricula'] = true;
-        me.lock['ciclo'] = false;
-        me.lock['periodo'] = false;
-      }
-
-      me.editable._fecha_primera_matricula = '';
-      if (me.$refs.cmp_ciclo) me.$refs.cmp_ciclo.reiniciar();
-      if (me.$refs.cmp_periodo) me.$refs.cmp_periodo.reiniciar();
-    },
-    setValue: function setValue(periodo) {
-      if (periodo) {
-        if (periodo.romano) this.editable.periodo = periodo.romano;
-      }
     }
   },
-  watch: {
-    'editable.tipo': function editableTipo(newvalue, oldvalue) {
-      if (newvalue) {
-        console.log('tipo:', newvalue);
-        this.cambiarTipoDocumento(newvalue);
-        this.$forceUpdate();
-      }
-    }
+  watch: {// 'editable.numero_placa': function(newval, olval){
+    //     if(newval){
+    //         this.editable.numero_placa = String(newval).toUpperCase();
+    //         this.editable.placa_vigente = newval;
+    //         this.$forceUpdate();
+    //     }
+    // }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=style&index=0&lang=css&":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=style&index=0&lang=css& ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=style&index=0&lang=css&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=style&index=0&lang=css& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -804,22 +259,22 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 
 // module
-exports.push([module.i, "\n.orderLink:hover{\n    color: inherit;\n    text-decoration: inherit;\n}\n.orderLink{\n    color: inherit;\n    text-decoration: inherit;\n}\n", ""]);
+exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    position: absolute !important;\n}\n.mostrar{\n    display: list-item !important;\n    opacity: 1 !important;\n    position: absolute !important;\n    background-color: #3c29297a !important;\n}\n.div-error{\n    display: flex;\n    justify-content: center;\n}\n.text-error{\n    color: red !important;\n    font-weight: bold;\n}\n@media (max-height: 500px) {\n.modal-xl {\n        max-width: 1140px;}\n}\n.hide-container{\n    display: none;\n}\n.show-container{\n    display: flex;\n    width: calc(100% + 10px);\n    height: calc(100% - 66px);\n    /* border: 1px solid black; */\n    position: absolute;\n    z-index: 100;\n    margin: 66.8px 0 0 -1px;\n    background: rgba(162, 153, 153, .5);\n}\n.loader {\n    border: 10px solid #f3f3f3;\n    border-radius: 50%;\n    border-top: 10px solid #3498db;\n    width: 50px;\n    height: 50px;\n    -webkit-animation: spin 2s linear infinite; /* Safari */\n    animation: spin 2s linear infinite;\n    top: calc(50%);\n    left: 50%;\n    position: absolute;\n    margin: -25px 0 0 -25px;\n    z-index: 100;\n}\n\n/* Safari */\n@-webkit-keyframes spin {\n0% { -webkit-transform: rotate(0deg);\n}\n100% { -webkit-transform: rotate(360deg);\n}\n}\n@keyframes spin {\n0% { transform: rotate(0deg);\n}\n100% { transform: rotate(360deg);\n}\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=style&index=0&lang=css&":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=style&index=0&lang=css& ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=style&index=0&lang=css&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=style&index=0&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarGenerarDocumento.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=style&index=0&lang=css&");
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioImportarIngresante.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -841,10 +296,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=template&id=494230a2&":
-/*!*************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=template&id=494230a2& ***!
-  \*************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=template&id=7a598b31&":
+/*!*******************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=template&id=7a598b31& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -857,529 +312,216 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "main",
-    { staticClass: "main" },
+    "div",
+    {
+      staticClass: "modal fade mostrar",
+      staticStyle: { display: "none" },
+      attrs: {
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": "myModalLabel",
+        "aria-hidden": "true"
+      }
+    },
     [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "card" }, [
-          _vm._m(1),
+      _c("div", { staticClass: "modal-dialog modal-primary modal-xl" }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _c(
+            "div",
+            {
+              class: {
+                "show-container": _vm.btn.importar,
+                "hide-container": !_vm.btn.importar
+              }
+            },
+            [_c("div", { staticClass: "loader" })]
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-md-2" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-8" }, [
-                _c("div", { staticClass: "row" }, [
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-md-8" },
-                    [
-                      _c("estudiante-select", {
-                        model: {
-                          value: _vm.editable.estudiante_id,
-                          callback: function($$v) {
-                            _vm.$set(_vm.editable, "estudiante_id", $$v)
-                          },
-                          expression: "editable.estudiante_id"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.errors.estudiante_id
-                        ? _c("span", { staticClass: "text-error" }, [
-                            _vm._v(_vm._s(_vm.errors.estudiante_id))
-                          ])
-                        : _vm._e()
-                    ],
-                    1
-                  )
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _vm._m(3),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-md-8" },
-                    [
-                      _c("tipo-documento-academico-select", {
-                        model: {
-                          value: _vm.editable.tipo,
-                          callback: function($$v) {
-                            _vm.$set(_vm.editable, "tipo", $$v)
-                          },
-                          expression: "editable.tipo"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.errors.tipo
-                        ? _c("span", { staticClass: "text-error" }, [
-                            _vm._v(_vm._s(_vm.errors.tipo))
-                          ])
-                        : _vm._e()
-                    ],
-                    1
-                  )
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _vm._m(4),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-8" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.editable._fecha_primera_matricula,
-                          expression: "editable._fecha_primera_matricula"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Fecha Primera Matricula",
-                        disabled: _vm.lock._fecha_primera_matricula
-                      },
-                      domProps: {
-                        value: _vm.editable._fecha_primera_matricula
-                      },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.editable,
-                            "_fecha_primera_matricula",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.errors._fecha_primera_matricula
-                      ? _c("span", { staticClass: "text-error" }, [
-                          _vm._v(_vm._s(_vm.errors._fecha_primera_matricula))
-                        ])
-                      : _vm._e()
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _vm._m(5),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-md-8" },
-                    [
-                      _c("ciclo-select", {
-                        ref: "cmp_ciclo",
-                        attrs: { disabled: _vm.lock.ciclo },
-                        model: {
-                          value: _vm.editable.ciclo,
-                          callback: function($$v) {
-                            _vm.$set(_vm.editable, "ciclo", $$v)
-                          },
-                          expression: "editable.ciclo"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.errors.ciclo
-                        ? _c("span", { staticClass: "text-error" }, [
-                            _vm._v(_vm._s(_vm.errors.ciclo))
-                          ])
-                        : _vm._e()
-                    ],
-                    1
-                  )
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _vm._m(6),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "col-md-8" },
-                    [
-                      _c("periodo-academico-select", {
-                        ref: "cmp_periodo",
-                        attrs: { disabled: _vm.lock.periodo },
-                        on: { setValue: _vm.setValue },
-                        model: {
-                          value: _vm.editable._periodo,
-                          callback: function($$v) {
-                            _vm.$set(_vm.editable, "_periodo", $$v)
-                          },
-                          expression: "editable._periodo"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _vm.errors.periodo
-                        ? _c("span", { staticClass: "text-error" }, [
-                            _vm._v(_vm._s(_vm.errors.periodo))
-                          ])
-                        : _vm._e()
-                    ],
-                    1
-                  )
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _vm._m(7),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-8" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-warning",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.listarSolicitudDocumento(1, "", "nombre")
-                          }
-                        }
-                      },
-                      [
-                        _c("i", { staticClass: "icon-plus" }),
-                        _vm._v(
-                          " Mostrar Historial\n                                "
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-warning",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.registrarSolicitud()
-                          }
-                        }
-                      },
-                      [
-                        _c("i", { staticClass: "icon-plus" }),
-                        _vm._v(" Generar\n                                ")
-                      ]
-                    )
-                  ])
-                ]),
-                _c("br")
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-2" })
-            ]),
+          _c("div", { staticClass: "modal-header" }, [
+            _c("h4", {
+              staticClass: "modal-title",
+              domProps: { textContent: _vm._s(_vm.var_config.title) }
+            }),
             _vm._v(" "),
             _c(
-              "div",
+              "button",
               {
-                staticStyle: { "overflow-x": "auto", "white-space": "nowrap" }
+                staticClass: "close",
+                attrs: { type: "button", "aria-label": "Close" },
+                on: {
+                  click: function($event) {
+                    return _vm.cerrarModal()
+                  }
+                }
               },
-              [
-                _c("table", { staticClass: "table table-hover text-nowrap" }, [
-                  _vm._m(8),
-                  _vm._v(" "),
-                  _c(
-                    "tbody",
-                    [
-                      _vm.show.arraySolicitud
-                        ? _c("tr", [
-                            _c("th", {
-                              staticClass: "text-center text-dark",
-                              attrs: { colspan: "8" },
-                              domProps: { textContent: _vm._s("Vacio") }
-                            })
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm._l(_vm.arraySolicitud, function(inscrito) {
-                        return _c("tr", { key: inscrito.id }, [
-                          _c("td", [
-                            _c("div", {}, [
-                              _vm._m(9, true),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "dropdown-menu",
-                                  attrs: { role: "menu" }
-                                },
-                                [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "dropdown-item",
-                                      attrs: { href: "#" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.descargarConstancia(
-                                            inscrito
-                                          )
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticStyle: {
-                                          width: "20px",
-                                          height: "20px"
-                                        },
-                                        attrs: { src: "images/ver.svg" }
-                                      }),
-                                      _vm._v("   Descargar")
-                                    ]
-                                  )
-                                ]
-                              )
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: {
-                              textContent: _vm._s(inscrito.codigo_estudiante)
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: {
-                              textContent: _vm._s(
-                                inscrito.apellido_paterno +
-                                  " " +
-                                  inscrito.apellido_materno +
-                                  " " +
-                                  inscrito.nombres
-                              )
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: {
-                              textContent: _vm._s(
-                                inscrito.num_correlativo
-                                  .toString()
-                                  .padStart(5, "0") +
-                                  "-" +
-                                  inscrito.anio
-                              )
-                            }
-                          }),
-                          _vm._v(" "),
-                          inscrito.tipo == "constancia_primera_matricula"
-                            ? _c("td", {
-                                domProps: {
-                                  textContent: _vm._s(
-                                    "Constancia Primera Matricula"
-                                  )
-                                }
-                              })
-                            : _vm._e(),
-                          _vm._v(" "),
-                          inscrito.tipo == "constancia_matricula"
-                            ? _c("td", {
-                                domProps: {
-                                  textContent: _vm._s("Constancia  Matricula")
-                                }
-                              })
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: {
-                              textContent: _vm._s(inscrito.fecha_procesado)
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm._m(10, true)
-                        ])
-                      })
-                    ],
-                    2
-                  )
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c("nav", [
+              [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "modal-body",
+              staticStyle: {
+                "max-height": "450px",
+                "overflow-y": "auto",
+                "overflow-x": "hidden"
+              }
+            },
+            [
               _c(
-                "ul",
-                { staticClass: "pagination" },
+                "form",
+                {
+                  staticClass: "form-horizontal",
+                  attrs: {
+                    action: "",
+                    method: "post",
+                    enctype: "multipart/form-data"
+                  }
+                },
                 [
-                  _vm.pagination.current_page > 1
-                    ? _c("li", { staticClass: "page-item" }, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "page-link",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.cambiarPagina(
-                                  _vm.pagination.current_page - 1,
-                                  _vm.buscar,
-                                  _vm.criterio
-                                )
-                              }
-                            }
-                          },
-                          [_vm._v("Ant")]
-                        )
+                  _vm.errors.formulario
+                    ? _c("span", { staticClass: "text-error" }, [
+                        _vm._v(_vm._s(_vm.errors.formulario))
                       ])
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm._l(_vm.pagesNumber, function(page) {
-                    return _c(
-                      "li",
-                      {
-                        key: page,
-                        staticClass: "page-item",
-                        class: [page == _vm.isActived ? "active" : ""]
-                      },
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
                       [
-                        _c("a", {
-                          staticClass: "page-link",
-                          attrs: { href: "#" },
-                          domProps: { textContent: _vm._s(page) },
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.cambiarPagina(
-                                page,
-                                _vm.buscar,
-                                _vm.criterio
-                              )
-                            }
-                          }
-                        })
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(0),
+                          _vm._v(" "),
+                          _c("input", {
+                            staticClass: "form-control",
+                            attrs: { type: "file", accept: ".xlsx" },
+                            on: { change: _vm.imageChanged }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.excel_document
+                            ? _c("span", { staticClass: "text-error" }, [
+                                _vm._v(_vm._s(_vm.errors.excel_document))
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.errors.convocatoria
+                            ? _c("span", { staticClass: "text-error" }, [
+                                _vm._v(_vm._s(_vm.errors.convocatoria))
+                              ])
+                            : _vm._e()
+                        ])
                       ]
                     )
-                  }),
+                  ]),
                   _vm._v(" "),
-                  _vm.pagination.current_page < _vm.pagination.last_page
-                    ? _c("li", { staticClass: "page-item" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                      },
+                      [
+                        _vm._v(
+                          "\n                            Utilizar la siguiente plantilla para realizar las consultas: \n                            "
+                        ),
                         _c(
                           "a",
                           {
-                            staticClass: "page-link",
                             attrs: { href: "#" },
                             on: {
                               click: function($event) {
-                                $event.preventDefault()
-                                return _vm.cambiarPagina(
-                                  _vm.pagination.current_page + 1,
-                                  _vm.buscar,
-                                  _vm.criterio
-                                )
+                                return _vm.descargarPlantilla()
                               }
                             }
                           },
-                          [_vm._v("Sig")]
+                          [_vm._v("Excel")]
                         )
-                      ])
-                    : _vm._e()
-                ],
-                2
+                      ]
+                    )
+                  ])
+                ]
               )
-            ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-footer" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-secondary",
+                attrs: { type: "button", disabled: _vm.btn.importar },
+                on: {
+                  click: function($event) {
+                    return _vm.cerrarModal()
+                  }
+                }
+              },
+              [_vm._v("Cerrar")]
+            ),
+            _vm._v(" "),
+            _vm.var_config.tipo_accion == "importar"
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { type: "button", disabled: _vm.btn.importar },
+                    on: {
+                      click: function($event) {
+                        return _vm.importar()
+                      }
+                    }
+                  },
+                  [_vm._v("Importar")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.var_config.tipo_accion == "registrar"
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button", disabled: _vm.btn.registrar },
+                    on: {
+                      click: function($event) {
+                        return _vm.registrarPersonaDni()
+                      }
+                    }
+                  },
+                  [_vm._v("Guardar")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.var_config.tipo_accion == "actualizar"
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button", disabled: _vm.btn.actualizar },
+                    on: {
+                      click: function($event) {
+                        return _vm.actualizarPersonaDni()
+                      }
+                    }
+                  },
+                  [_vm._v("Actualizar")]
+                )
+              : _vm._e()
           ])
         ])
       ]),
       _vm._v(" "),
-      _vm.nuevo._estado == "creando"
-        ? _c("v-formulario-documento-enviado", {
-            ref: "cmp_crear_inscrito",
-            attrs: { var_config: _vm.var_config },
-            on: {
-              guardado: function($event) {
-                return _vm.listarSolicitudDocumento(1, "", "nombre")
-              }
-            },
+      _vm.nuevo_error._estado == "viendo_error"
+        ? _c("v-listar-error", {
+            ref: "cmp_mostrar_error",
+            attrs: { var_config: _vm.var_config_error },
             model: {
-              value: _vm.nuevo,
+              value: _vm.nuevo_error,
               callback: function($$v) {
-                _vm.nuevo = $$v
+                _vm.nuevo_error = $$v
               },
-              expression: "nuevo"
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.editable._estado == "editando"
-        ? _c("v-formulario-editar-inscrito", {
-            ref: "cmp_crear_inscrito",
-            attrs: { var_config: _vm.var_config },
-            on: {
-              guardado: function($event) {
-                return _vm.listarSolicitudDocumento(1, "", "nombre")
-              }
-            },
-            model: {
-              value: _vm.editable,
-              callback: function($$v) {
-                _vm.editable = $$v
-              },
-              expression: "editable"
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.editable._estado == "anulando"
-        ? _c("v-formulario-anular-inscrito", {
-            ref: "cmp_anular_inscrito",
-            attrs: { var_config: _vm.var_config },
-            on: {
-              guardado: function($event) {
-                return _vm.listarSolicitudDocumento(1, "", "nombre")
-              }
-            },
-            model: {
-              value: _vm.editable,
-              callback: function($$v) {
-                _vm.editable = $$v
-              },
-              expression: "editable"
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.ver_editable._estado == "viendo"
-        ? _c("v-ver-documento-enviado", {
-            ref: "cmp_ver_inscrito",
-            attrs: { var_config: _vm.var_config },
-            model: {
-              value: _vm.ver_editable,
-              callback: function($$v) {
-                _vm.ver_editable = $$v
-              },
-              expression: "ver_editable"
-            }
-          })
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.enviar_editable._estado == "enviando"
-        ? _c("v-formulario-documento-enviar-facultad", {
-            ref: "cmp_ver_inscrito",
-            attrs: { var_config: _vm.var_config },
-            on: {
-              guardado: function($event) {
-                return _vm.listarSolicitudDocumento(1, "", "nombre")
-              }
-            },
-            model: {
-              value: _vm.enviar_editable,
-              callback: function($$v) {
-                _vm.enviar_editable = $$v
-              },
-              expression: "enviar_editable"
+              expression: "nuevo_error"
             }
           })
         : _vm._e()
@@ -1392,135 +534,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("ol", { staticClass: "breadcrumb" }, [
-      _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Documentos")]),
-      _vm._v(" "),
-      _c("li", { staticClass: "breadcrumb-item" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("Generar")])
-      ]),
-      _vm._v(" "),
-      _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Documento")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" }, [
-          _c("i", { staticClass: "fa fa-align-justify" }),
-          _vm._v(" Generar Documento: \n                        ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" }, [
-          _c("div", { staticClass: "pull-right" })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col-md-4", staticStyle: { "padding-top": "5px" } },
-      [_c("label", [_c("dt", [_vm._v("Estudiante: ")])])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col-md-4", staticStyle: { "padding-top": "5px" } },
-      [_c("label", [_c("dt", [_vm._v("Tipo: ")])])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col-md-4", staticStyle: { "padding-top": "5px" } },
-      [_c("label", [_c("dt", [_vm._v("Fecha Primera Matricula: ")])])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col-md-4", staticStyle: { "padding-top": "5px" } },
-      [_c("label", [_c("dt", [_vm._v("Ciclo: ")])])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col-md-4", staticStyle: { "padding-top": "5px" } },
-      [_c("label", [_c("dt", [_vm._v("Periodo: ")])])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col-md-4", staticStyle: { "padding-top": "5px" } },
-      [_c("label", [_c("dt")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Opciones")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Codigo")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Estudiante")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("N° Documento")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Tipo")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Fecha Procesado")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Estado")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "#", "data-toggle": "dropdown" } }, [
-      _c("img", {
-        staticStyle: { width: "30px", height: "auto" },
-        attrs: { src: "images/options.svg" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("div", [
-        _c("span", { staticClass: "badge badge-success" }, [_vm._v("Atendido")])
-      ])
-    ])
+    return _c("label", [_c("dt", [_vm._v("Excel: *")])])
   }
 ]
 render._withStripped = true
@@ -1529,18 +543,18 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue":
-/*!************************************************************************************!*\
-  !*** ./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue ***!
-  \************************************************************************************/
+/***/ "./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue ***!
+  \******************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ListarGenerarDocumento_vue_vue_type_template_id_494230a2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListarGenerarDocumento.vue?vue&type=template&id=494230a2& */ "./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=template&id=494230a2&");
-/* harmony import */ var _ListarGenerarDocumento_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListarGenerarDocumento.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _ListarGenerarDocumento_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ListarGenerarDocumento.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _FormularioImportarIngresante_vue_vue_type_template_id_7a598b31___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormularioImportarIngresante.vue?vue&type=template&id=7a598b31& */ "./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=template&id=7a598b31&");
+/* harmony import */ var _FormularioImportarIngresante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormularioImportarIngresante.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _FormularioImportarIngresante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormularioImportarIngresante.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -1551,9 +565,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _ListarGenerarDocumento_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ListarGenerarDocumento_vue_vue_type_template_id_494230a2___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ListarGenerarDocumento_vue_vue_type_template_id_494230a2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _FormularioImportarIngresante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FormularioImportarIngresante_vue_vue_type_template_id_7a598b31___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FormularioImportarIngresante_vue_vue_type_template_id_7a598b31___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -1563,54 +577,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue"
+component.options.__file = "resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************************!*\
-  !*** ./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************************/
+/***/ "./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************!*\
+  !*** ./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarGenerarDocumento_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarGenerarDocumento.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarGenerarDocumento_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarIngresante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioImportarIngresante.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarIngresante_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=style&index=0&lang=css&":
-/*!*********************************************************************************************************************!*\
-  !*** ./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=style&index=0&lang=css& ***!
-  \*********************************************************************************************************************/
+/***/ "./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=style&index=0&lang=css&":
+/*!***************************************************************************************************************************!*\
+  !*** ./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=style&index=0&lang=css& ***!
+  \***************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarGenerarDocumento_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarGenerarDocumento.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarGenerarDocumento_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarGenerarDocumento_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarGenerarDocumento_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarGenerarDocumento_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarIngresante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioImportarIngresante.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarIngresante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarIngresante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarIngresante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarIngresante_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=template&id=494230a2&":
-/*!*******************************************************************************************************************!*\
-  !*** ./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=template&id=494230a2& ***!
-  \*******************************************************************************************************************/
+/***/ "./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=template&id=7a598b31&":
+/*!*************************************************************************************************************************!*\
+  !*** ./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=template&id=7a598b31& ***!
+  \*************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarGenerarDocumento_vue_vue_type_template_id_494230a2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarGenerarDocumento.vue?vue&type=template&id=494230a2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue?vue&type=template&id=494230a2&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarGenerarDocumento_vue_vue_type_template_id_494230a2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarIngresante_vue_vue_type_template_id_7a598b31___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioImportarIngresante.vue?vue&type=template&id=7a598b31& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/solicitud_documento/FormularioImportarIngresante.vue?vue&type=template&id=7a598b31&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarIngresante_vue_vue_type_template_id_7a598b31___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarGenerarDocumento_vue_vue_type_template_id_494230a2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarIngresante_vue_vue_type_template_id_7a598b31___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

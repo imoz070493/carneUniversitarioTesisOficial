@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[21],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -60,28 +60,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 var ListarError = function ListarError() {
-  return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! @/components/erp/matricula/ListarError */ "./resources/js/components/erp/matricula/ListarError.vue"));
+  return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! @/components/erp/matricula/ListarError */ "./resources/js/components/erp/matricula/ListarError.vue"));
 };
 
 var PeriodoAcademicoSelect = function PeriodoAcademicoSelect() {
-  return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! @/components/referencias/PeriodoAcademicoSelect */ "./resources/js/components/referencias/PeriodoAcademicoSelect.vue"));
+  return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! @/components/referencias/PeriodoAcademicoSelect */ "./resources/js/components/referencias/PeriodoAcademicoSelect.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -172,6 +156,37 @@ var PeriodoAcademicoSelect = function PeriodoAcademicoSelect() {
         }
       });
     },
+    descargarPhotos: function descargarPhotos(tipo_tramite) {
+      axios({
+        url: '/inscrito/descargar/diversos',
+        method: 'POST',
+        data: {
+          // venta_id: this.value.venta_id,
+          codigos: this.editable.codigos
+        },
+        responseType: 'blob'
+      }).then(function (response) {
+        // console.log(response.data)
+        // console.log(response.data.size)
+        if (response.data && response.data.size) {
+          // window.location.href = response;
+          // this.leer()
+          // let filename = "FACTURA"+this.formatComprobante(obj_venta)+".pdf";
+          var filename = 'Diversos.zip';
+          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+          var fileLink = document.createElement('a');
+          fileLink.href = fileURL;
+
+          if (!filename) {
+            filename = url.substr(url.lastIndexOf('/') + 1);
+          }
+
+          fileLink.setAttribute('download', filename);
+          document.body.appendChild(fileLink);
+          fileLink.click();
+        }
+      });
+    },
     descargarPlantilla: function descargarPlantilla() {
       var me = this;
       this.btn['actualizar'] = true;
@@ -237,10 +252,10 @@ var PeriodoAcademicoSelect = function PeriodoAcademicoSelect() {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css&":
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css& ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=style&index=0&lang=css&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=style&index=0&lang=css& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -256,15 +271,15 @@ exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    pos
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css&":
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css& ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=style&index=0&lang=css&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=style&index=0&lang=css& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css&");
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioDescargaMasiva.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -286,10 +301,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=template&id=c054aee6&":
-/*!**************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=template&id=c054aee6& ***!
-  \**************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=template&id=4e941bdc&":
+/*!***********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=template&id=4e941bdc& ***!
+  \***********************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -379,92 +394,50 @@ var render = function() {
                   _c("div", { staticClass: "row" }, [
                     _c(
                       "div",
-                      { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
-                      [
-                        _c("div", { staticClass: "form-group" }, [
-                          _vm._m(0),
-                          _vm._v(" "),
-                          _c("input", {
-                            staticClass: "form-control",
-                            attrs: { type: "file", accept: ".xlsx" },
-                            on: { change: _vm.imageChanged }
-                          }),
-                          _vm._v(" "),
-                          _vm.errors.excel_document
-                            ? _c("span", { staticClass: "text-error" }, [
-                                _vm._v(_vm._s(_vm.errors.excel_document))
-                              ])
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _vm.errors.convocatoria
-                            ? _c("span", { staticClass: "text-error" }, [
-                                _vm._v(_vm._s(_vm.errors.convocatoria))
-                              ])
-                            : _vm._e()
-                        ])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-lg-3 col-md-3 col-sm-3 col-xs-12" },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "form-group" },
-                          [
-                            _vm._m(1),
-                            _vm._v(" "),
-                            _c("periodo-academico-select", {
-                              model: {
-                                value: _vm.editable.periodo_academico_id,
-                                callback: function($$v) {
-                                  _vm.$set(
-                                    _vm.editable,
-                                    "periodo_academico_id",
-                                    $$v
-                                  )
-                                },
-                                expression: "editable.periodo_academico_id"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _vm.errors.periodo_academico_id
-                              ? _c("span", { staticClass: "text-error" }, [
-                                  _vm._v(
-                                    _vm._s(_vm.errors.periodo_academico_id)
-                                  )
-                                ])
-                              : _vm._e()
-                          ],
-                          1
-                        )
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c(
-                      "div",
                       {
                         staticClass: "col-lg-12 col-md-12 col-sm-12 col-xs-12"
                       },
                       [
-                        _vm._v(
-                          "\n                            Utilizar la siguiente plantilla para realizar las consultas: \n                            "
-                        ),
-                        _c(
-                          "a",
-                          {
-                            attrs: { href: "#" },
+                        _c("div", { staticClass: "form-group" }, [
+                          _vm._m(0),
+                          _vm._v(" "),
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.editable.codigos,
+                                expression: "editable.codigos"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder:
+                                "codigo 1, codigo 2, codigo 3, codigo 4...",
+                              rows: "5"
+                            },
+                            domProps: { value: _vm.editable.codigos },
                             on: {
-                              click: function($event) {
-                                return _vm.descargarPlantilla()
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.editable,
+                                  "codigos",
+                                  $event.target.value
+                                )
                               }
                             }
-                          },
-                          [_vm._v("Excel")]
-                        )
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.codigos
+                            ? _c("span", { staticClass: "text-error" }, [
+                                _vm._v(_vm._s(_vm.errors.codigos))
+                              ])
+                            : _vm._e()
+                        ])
                       ]
                     )
                   ])
@@ -534,6 +507,22 @@ var render = function() {
                   },
                   [_vm._v("Actualizar")]
                 )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.var_config.tipo_accion == "descargar"
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button", disabled: _vm.btn.actualizar },
+                    on: {
+                      click: function($event) {
+                        return _vm.descargarPhotos()
+                      }
+                    }
+                  },
+                  [_vm._v("Descargar")]
+                )
               : _vm._e()
           ])
         ])
@@ -561,13 +550,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Excel: *")])])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Periodo Academico: *")])])
+    return _c("label", [_c("dt", [_vm._v("Codigos de Estudiantes:")])])
   }
 ]
 render._withStripped = true
@@ -576,18 +559,18 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue ***!
-  \*************************************************************************************/
+/***/ "./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue ***!
+  \**********************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _FormularioImportarMatricula_vue_vue_type_template_id_c054aee6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormularioImportarMatricula.vue?vue&type=template&id=c054aee6& */ "./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=template&id=c054aee6&");
-/* harmony import */ var _FormularioImportarMatricula_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormularioImportarMatricula.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _FormularioImportarMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _FormularioDescargaMasiva_vue_vue_type_template_id_4e941bdc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormularioDescargaMasiva.vue?vue&type=template&id=4e941bdc& */ "./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=template&id=4e941bdc&");
+/* harmony import */ var _FormularioDescargaMasiva_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormularioDescargaMasiva.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _FormularioDescargaMasiva_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormularioDescargaMasiva.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -598,9 +581,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _FormularioImportarMatricula_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _FormularioImportarMatricula_vue_vue_type_template_id_c054aee6___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _FormularioImportarMatricula_vue_vue_type_template_id_c054aee6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _FormularioDescargaMasiva_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FormularioDescargaMasiva_vue_vue_type_template_id_4e941bdc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FormularioDescargaMasiva_vue_vue_type_template_id_4e941bdc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -610,54 +593,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue"
+component.options.__file = "resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************************************!*\
-  !*** ./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************************************/
+/***/ "./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarMatricula_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioImportarMatricula.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarMatricula_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioDescargaMasiva_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioDescargaMasiva.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioDescargaMasiva_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css&":
-/*!**********************************************************************************************************************!*\
-  !*** ./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css& ***!
-  \**********************************************************************************************************************/
+/***/ "./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************************!*\
+  !*** ./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarMatricula_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioDescargaMasiva_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioDescargaMasiva.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioDescargaMasiva_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioDescargaMasiva_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioDescargaMasiva_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioDescargaMasiva_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=template&id=c054aee6&":
-/*!********************************************************************************************************************!*\
-  !*** ./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=template&id=c054aee6& ***!
-  \********************************************************************************************************************/
+/***/ "./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=template&id=4e941bdc&":
+/*!*****************************************************************************************************************!*\
+  !*** ./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=template&id=4e941bdc& ***!
+  \*****************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarMatricula_vue_vue_type_template_id_c054aee6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioImportarMatricula.vue?vue&type=template&id=c054aee6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/carga_matricula/FormularioImportarMatricula.vue?vue&type=template&id=c054aee6&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarMatricula_vue_vue_type_template_id_c054aee6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioDescargaMasiva_vue_vue_type_template_id_4e941bdc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioDescargaMasiva.vue?vue&type=template&id=4e941bdc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/carga_matricula/FormularioDescargaMasiva.vue?vue&type=template&id=4e941bdc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioDescargaMasiva_vue_vue_type_template_id_4e941bdc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioImportarMatricula_vue_vue_type_template_id_c054aee6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioDescargaMasiva_vue_vue_type_template_id_4e941bdc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

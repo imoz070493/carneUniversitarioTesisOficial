@@ -2048,7 +2048,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarAcceso = function VListarAcceso() {
-  return __webpack_require__.e(/*! import() */ 60).then(__webpack_require__.bind(null, /*! @/components/erp/acceso/ListarAcceso */ "./resources/js/components/erp/acceso/ListarAcceso.vue"));
+  return __webpack_require__.e(/*! import() */ 61).then(__webpack_require__.bind(null, /*! @/components/erp/acceso/ListarAcceso */ "./resources/js/components/erp/acceso/ListarAcceso.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2086,7 +2086,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarCargaMatricula = function VListarCargaMatricula() {
-  return __webpack_require__.e(/*! import() */ 23).then(__webpack_require__.bind(null, /*! @/components/erp/carga_matricula/ListarCargaMatricula */ "./resources/js/components/erp/carga_matricula/ListarCargaMatricula.vue"));
+  return __webpack_require__.e(/*! import() */ 24).then(__webpack_require__.bind(null, /*! @/components/erp/carga_matricula/ListarCargaMatricula */ "./resources/js/components/erp/carga_matricula/ListarCargaMatricula.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2124,7 +2124,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarCliente = function VListarCliente() {
-  return __webpack_require__.e(/*! import() */ 61).then(__webpack_require__.bind(null, /*! @/components/erp/cliente/ListarCliente */ "./resources/js/components/erp/cliente/ListarCliente.vue"));
+  return __webpack_require__.e(/*! import() */ 62).then(__webpack_require__.bind(null, /*! @/components/erp/cliente/ListarCliente */ "./resources/js/components/erp/cliente/ListarCliente.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2162,7 +2162,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarClienteWebService = function VListarClienteWebService() {
-  return __webpack_require__.e(/*! import() */ 62).then(__webpack_require__.bind(null, /*! @/components/erp/cliente_web_service/ListarClienteWebService */ "./resources/js/components/erp/cliente_web_service/ListarClienteWebService.vue"));
+  return __webpack_require__.e(/*! import() */ 63).then(__webpack_require__.bind(null, /*! @/components/erp/cliente_web_service/ListarClienteWebService */ "./resources/js/components/erp/cliente_web_service/ListarClienteWebService.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2200,7 +2200,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarConsultaCpe = function VListarConsultaCpe() {
-  return __webpack_require__.e(/*! import() */ 63).then(__webpack_require__.bind(null, /*! @/components/erp/consulta_cpe/ListarConsultaCpe */ "./resources/js/components/erp/consulta_cpe/ListarConsultaCpe.vue"));
+  return __webpack_require__.e(/*! import() */ 64).then(__webpack_require__.bind(null, /*! @/components/erp/consulta_cpe/ListarConsultaCpe */ "./resources/js/components/erp/consulta_cpe/ListarConsultaCpe.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2238,7 +2238,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarConsultaDocumento = function VListarConsultaDocumento() {
-  return __webpack_require__.e(/*! import() */ 64).then(__webpack_require__.bind(null, /*! @/components/erp/consulta_documento/ListarConsultaDocumento */ "./resources/js/components/erp/consulta_documento/ListarConsultaDocumento.vue"));
+  return __webpack_require__.e(/*! import() */ 65).then(__webpack_require__.bind(null, /*! @/components/erp/consulta_documento/ListarConsultaDocumento */ "./resources/js/components/erp/consulta_documento/ListarConsultaDocumento.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2276,7 +2276,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarConvocatoria = function VListarConvocatoria() {
-  return __webpack_require__.e(/*! import() */ 65).then(__webpack_require__.bind(null, /*! @/components/erp/convocatoria/ListarConvocatoria */ "./resources/js/components/erp/convocatoria/ListarConvocatoria.vue"));
+  return __webpack_require__.e(/*! import() */ 66).then(__webpack_require__.bind(null, /*! @/components/erp/convocatoria/ListarConvocatoria */ "./resources/js/components/erp/convocatoria/ListarConvocatoria.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3252,6 +3252,8 @@ var FormularioValidacion = function FormularioValidacion() {
         if (e.apellido_materno) this.editable.apellido_materno = e.apellido_materno;
         if (e.nombres) this.editable.nombres = e.nombres;
         if (e.sexo) this.editable.sexo = e.sexo;
+        if (e.telefono1) this.editable.telefono1 = e.telefono1;
+        if (e.telefono2) this.editable.telefono2 = e.telefono2;
         if (e.estudiante_id) this.editable.estudiante_id = e.estudiante_id;
 
         if (e.tipo_tramite == 'nuevo') {
@@ -3876,19 +3878,19 @@ var MatriculadoBusqueda = function MatriculadoBusqueda() {
 };
 
 var DashboardEstudianteSinConvocatoria = function DashboardEstudianteSinConvocatoria() {
-  return __webpack_require__.e(/*! import() */ 59).then(__webpack_require__.bind(null, /*! @/components/referencias/DashboardEstudianteSinConvocatoria */ "./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue"));
+  return __webpack_require__.e(/*! import() */ 60).then(__webpack_require__.bind(null, /*! @/components/referencias/DashboardEstudianteSinConvocatoria */ "./resources/js/components/referencias/DashboardEstudianteSinConvocatoria.vue"));
 };
 
 var DashboardEstudianteNoMatriculado = function DashboardEstudianteNoMatriculado() {
-  return __webpack_require__.e(/*! import() */ 58).then(__webpack_require__.bind(null, /*! @/components/referencias/DashboardEstudianteNoMatriculado */ "./resources/js/components/referencias/DashboardEstudianteNoMatriculado.vue"));
+  return __webpack_require__.e(/*! import() */ 59).then(__webpack_require__.bind(null, /*! @/components/referencias/DashboardEstudianteNoMatriculado */ "./resources/js/components/referencias/DashboardEstudianteNoMatriculado.vue"));
 };
 
 var DashboardEstudianteMatriculadoNoInscrito = function DashboardEstudianteMatriculadoNoInscrito() {
-  return __webpack_require__.e(/*! import() */ 57).then(__webpack_require__.bind(null, /*! @/components/referencias/DashboardEstudianteMatriculadoNoInscrito */ "./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue"));
+  return __webpack_require__.e(/*! import() */ 58).then(__webpack_require__.bind(null, /*! @/components/referencias/DashboardEstudianteMatriculadoNoInscrito */ "./resources/js/components/referencias/DashboardEstudianteMatriculadoNoInscrito.vue"));
 };
 
 var DashboardEstudianteMatriculadoInscrito = function DashboardEstudianteMatriculadoInscrito() {
-  return __webpack_require__.e(/*! import() */ 56).then(__webpack_require__.bind(null, /*! @/components/referencias/DashboardEstudianteMatriculadoInscrito */ "./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue"));
+  return __webpack_require__.e(/*! import() */ 57).then(__webpack_require__.bind(null, /*! @/components/referencias/DashboardEstudianteMatriculadoInscrito */ "./resources/js/components/referencias/DashboardEstudianteMatriculadoInscrito.vue"));
 }; //cargamos el componente solo cuando se cree el componente
 
 
@@ -4675,7 +4677,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarDocumentoEnviado = function VListarDocumentoEnviado() {
-  return __webpack_require__.e(/*! import() */ 31).then(__webpack_require__.bind(null, /*! @/components/erp/documento/ListarDocumentoEnviado */ "./resources/js/components/erp/documento/ListarDocumentoEnviado.vue"));
+  return __webpack_require__.e(/*! import() */ 32).then(__webpack_require__.bind(null, /*! @/components/erp/documento/ListarDocumentoEnviado */ "./resources/js/components/erp/documento/ListarDocumentoEnviado.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4713,7 +4715,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarDocumentoRecibido = function VListarDocumentoRecibido() {
-  return __webpack_require__.e(/*! import() */ 32).then(__webpack_require__.bind(null, /*! @/components/erp/documento/ListarDocumentoRecibido */ "./resources/js/components/erp/documento/ListarDocumentoRecibido.vue"));
+  return __webpack_require__.e(/*! import() */ 33).then(__webpack_require__.bind(null, /*! @/components/erp/documento/ListarDocumentoRecibido */ "./resources/js/components/erp/documento/ListarDocumentoRecibido.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4751,7 +4753,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarEmpresa = function VListarEmpresa() {
-  return __webpack_require__.e(/*! import() */ 66).then(__webpack_require__.bind(null, /*! @/components/erp/empresa/ListarEmpresa */ "./resources/js/components/erp/empresa/ListarEmpresa.vue"));
+  return __webpack_require__.e(/*! import() */ 67).then(__webpack_require__.bind(null, /*! @/components/erp/empresa/ListarEmpresa */ "./resources/js/components/erp/empresa/ListarEmpresa.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5001,7 +5003,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarGenerarDocumento = function VListarGenerarDocumento() {
-  return __webpack_require__.e(/*! import() */ 53).then(__webpack_require__.bind(null, /*! @/components/erp/solicitud_documento/ListarGenerarDocumento */ "./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue"));
+  return __webpack_require__.e(/*! import() */ 54).then(__webpack_require__.bind(null, /*! @/components/erp/solicitud_documento/ListarGenerarDocumento */ "./resources/js/components/erp/solicitud_documento/ListarGenerarDocumento.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5039,7 +5041,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarInscrito = function VListarInscrito() {
-  return __webpack_require__.e(/*! import() */ 39).then(__webpack_require__.bind(null, /*! @/components/erp/inscrito/ListarInscrito */ "./resources/js/components/erp/inscrito/ListarInscrito.vue"));
+  return __webpack_require__.e(/*! import() */ 40).then(__webpack_require__.bind(null, /*! @/components/erp/inscrito/ListarInscrito */ "./resources/js/components/erp/inscrito/ListarInscrito.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5077,7 +5079,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarInscritoHistorico = function VListarInscritoHistorico() {
-  return __webpack_require__.e(/*! import() */ 40).then(__webpack_require__.bind(null, /*! @/components/erp/inscrito/ListarInscritoHistorico */ "./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue"));
+  return __webpack_require__.e(/*! import() */ 41).then(__webpack_require__.bind(null, /*! @/components/erp/inscrito/ListarInscritoHistorico */ "./resources/js/components/erp/inscrito/ListarInscritoHistorico.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5115,7 +5117,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarMatricula = function VListarMatricula() {
-  return __webpack_require__.e(/*! import() */ 43).then(__webpack_require__.bind(null, /*! @/components/erp/matricula/ListarMatricula */ "./resources/js/components/erp/matricula/ListarMatricula.vue"));
+  return __webpack_require__.e(/*! import() */ 44).then(__webpack_require__.bind(null, /*! @/components/erp/matricula/ListarMatricula */ "./resources/js/components/erp/matricula/ListarMatricula.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5232,7 +5234,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  //cargamos el componente solo cuando se cree el componente
 
 var VListarPerfil = function VListarPerfil() {
-  return __webpack_require__.e(/*! import() */ 67).then(__webpack_require__.bind(null, /*! @/components/erp/perfil/ListarPerfil */ "./resources/js/components/erp/perfil/ListarPerfil.vue"));
+  return __webpack_require__.e(/*! import() */ 68).then(__webpack_require__.bind(null, /*! @/components/erp/perfil/ListarPerfil */ "./resources/js/components/erp/perfil/ListarPerfil.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5271,7 +5273,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarPeriodoAcademico = function VListarPeriodoAcademico() {
-  return __webpack_require__.e(/*! import() */ 68).then(__webpack_require__.bind(null, /*! @/components/erp/periodo_academico/ListarPeriodoAcademico */ "./resources/js/components/erp/periodo_academico/ListarPeriodoAcademico.vue"));
+  return __webpack_require__.e(/*! import() */ 69).then(__webpack_require__.bind(null, /*! @/components/erp/periodo_academico/ListarPeriodoAcademico */ "./resources/js/components/erp/periodo_academico/ListarPeriodoAcademico.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5309,7 +5311,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarPermiso = function VListarPermiso() {
-  return __webpack_require__.e(/*! import() */ 69).then(__webpack_require__.bind(null, /*! @/components/erp/permiso/ListarPermiso */ "./resources/js/components/erp/permiso/ListarPermiso.vue"));
+  return __webpack_require__.e(/*! import() */ 70).then(__webpack_require__.bind(null, /*! @/components/erp/permiso/ListarPermiso */ "./resources/js/components/erp/permiso/ListarPermiso.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5347,7 +5349,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarPersonaDni = function VListarPersonaDni() {
-  return __webpack_require__.e(/*! import() */ 70).then(__webpack_require__.bind(null, /*! @/components/erp/persona_dni/ListarPersonaDni */ "./resources/js/components/erp/persona_dni/ListarPersonaDni.vue"));
+  return __webpack_require__.e(/*! import() */ 71).then(__webpack_require__.bind(null, /*! @/components/erp/persona_dni/ListarPersonaDni */ "./resources/js/components/erp/persona_dni/ListarPersonaDni.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5385,7 +5387,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarRole = function VListarRole() {
-  return __webpack_require__.e(/*! import() */ 71).then(__webpack_require__.bind(null, /*! @/components/erp/role/ListarRole */ "./resources/js/components/erp/role/ListarRole.vue"));
+  return __webpack_require__.e(/*! import() */ 72).then(__webpack_require__.bind(null, /*! @/components/erp/role/ListarRole */ "./resources/js/components/erp/role/ListarRole.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5423,7 +5425,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarSolicitudDocumento = function VListarSolicitudDocumento() {
-  return __webpack_require__.e(/*! import() */ 54).then(__webpack_require__.bind(null, /*! @/components/erp/solicitud_documento/ListarSolicitudDocumento */ "./resources/js/components/erp/solicitud_documento/ListarSolicitudDocumento.vue"));
+  return __webpack_require__.e(/*! import() */ 55).then(__webpack_require__.bind(null, /*! @/components/erp/solicitud_documento/ListarSolicitudDocumento */ "./resources/js/components/erp/solicitud_documento/ListarSolicitudDocumento.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5461,7 +5463,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 //cargamos el componente solo cuando se cree el componente
 var VListarUsuario = function VListarUsuario() {
-  return __webpack_require__.e(/*! import() */ 72).then(__webpack_require__.bind(null, /*! @/components/erp/usuario/ListarUsuario */ "./resources/js/components/erp/usuario/ListarUsuario.vue"));
+  return __webpack_require__.e(/*! import() */ 73).then(__webpack_require__.bind(null, /*! @/components/erp/usuario/ListarUsuario */ "./resources/js/components/erp/usuario/ListarUsuario.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({

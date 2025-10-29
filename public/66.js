@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[66],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=script&lang=js&":
-/*!************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/convocatoria/ListarConvocatoria.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/convocatoria/ListarConvocatoria.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -128,29 +128,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-var FormularioEmpresa = function FormularioEmpresa() {
-  return __webpack_require__.e(/*! import() */ 34).then(__webpack_require__.bind(null, /*! @/components/erp/empresa/FormularioEmpresa */ "./resources/js/components/erp/empresa/FormularioEmpresa.vue"));
+var FormularioConvocatoria = function FormularioConvocatoria() {
+  return __webpack_require__.e(/*! import() */ 30).then(__webpack_require__.bind(null, /*! @/components/erp/convocatoria/FormularioConvocatoria */ "./resources/js/components/erp/convocatoria/FormularioConvocatoria.vue"));
 };
 
-var VerEmpresa = function VerEmpresa() {
-  return __webpack_require__.e(/*! import() */ 35).then(__webpack_require__.bind(null, /*! @/components/erp/empresa/VerEmpresa */ "./resources/js/components/erp/empresa/VerEmpresa.vue"));
+var VerConvocatoria = function VerConvocatoria() {
+  return __webpack_require__.e(/*! import() */ 31).then(__webpack_require__.bind(null, /*! @/components/erp/convocatoria/VerConvocatoria */ "./resources/js/components/erp/convocatoria/VerConvocatoria.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    "v-formulario-persona-dni": FormularioEmpresa,
-    "v-ver-persona-dni": VerEmpresa
+    "v-formulario-convocatoria": FormularioConvocatoria,
+    "v-ver-convocatoria": VerConvocatoria
   },
   data: function data() {
     return {
       nuevo: {},
       editable: {},
+      importar_editable: {},
+      precio_editable: {},
       ver_editable: {},
-      editable_anulacion: {},
       show: {},
       var_config: {},
-      arrayEmpresa: [],
+      arrayConvocatoria: [],
       pagination: {
         'total': 0,
         'current_page': 0,
@@ -160,7 +160,7 @@ var VerEmpresa = function VerEmpresa() {
         'to': 0
       },
       offset: 3,
-      criterio: 'todos',
+      criterio: 'convocatorias.nombre',
       buscar: '',
       per_page: 10
     };
@@ -198,19 +198,25 @@ var VerEmpresa = function VerEmpresa() {
   },
   mounted: function mounted() {
     console.log('Component mounted.');
-    this.listarEmpresa(1, this.buscar, this.criterio);
+    this.listarConvocatoria(1, this.buscar, this.criterio);
   },
   methods: {
-    listarEmpresa: function listarEmpresa(page, buscar, criterio) {
+    listarConvocatoria: function listarConvocatoria(page, buscar, criterio) {
       var me = this;
-      var url = '/empresa?page=' + page + '&buscar=' + buscar + '&criterio=' + criterio + '&per_page=' + this.per_page;
+      var url = '/convocatoria?page=' + page + '&buscar=' + buscar + '&criterio=' + criterio + '&per_page=' + this.per_page;
       axios.get(url).then(function (response) {
         var respuesta = response.data;
-        me.arrayEmpresa = respuesta.empresas.data;
+        me.arrayConvocatoria = respuesta.convocatorias.data;
         me.pagination = respuesta.pagination;
-        if (me.arrayEmpresa.length == 0) me.show['arrayEmpresa'] = true;else me.show['arrayEmpresa'] = false;
+        if (me.arrayConvocatoria.length == 0) me.show['arrayConvocatoria'] = true;else me.show['arrayConvocatoria'] = false;
       })["catch"](function (error) {
         console.log(error);
+
+        if (error.request.status) {
+          if (error.request.status == 419) {
+            location.reload();
+          }
+        }
       });
     },
     cambiarPagina: function cambiarPagina(page, buscar, criterio) {
@@ -218,13 +224,13 @@ var VerEmpresa = function VerEmpresa() {
 
       me.pagination.current_page = page; // Envia la peticion para visualizar la data de esta pagina
 
-      me.listarEmpresa(page, buscar, criterio);
+      me.listarConvocatoria(page, buscar, criterio);
     },
-    desactivarEmpresa: function desactivarEmpresa(id) {
+    desactivarConvocatoria: function desactivarConvocatoria(id) {
       var _this = this;
 
       swal({
-        title: 'Esta seguro de desactivar este ingreso de vehiculo?',
+        title: 'Esta seguro de desactivar esta convocatoria?',
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -238,10 +244,10 @@ var VerEmpresa = function VerEmpresa() {
       }).then(function (result) {
         if (result.value) {
           var me = _this;
-          axios.put('/empresa/desactivar', {
+          axios.put('/convocatoria/desactivar', {
             id: id
           }).then(function (response) {
-            me.listarEmpresa(1, '', 'nombre');
+            me.listarConvocatoria(1, '', 'nombre');
             swal('Desactivado', 'El registro ha sido desactivado con exito', 'success');
           })["catch"](function (error) {
             console.log(error);
@@ -251,11 +257,11 @@ var VerEmpresa = function VerEmpresa() {
         result.dismiss === swal.DismissReason.cancel) {}
       });
     },
-    activarEmpresa: function activarEmpresa(id) {
+    activarConvocatoria: function activarConvocatoria(id) {
       var _this2 = this;
 
       swal({
-        title: 'Esta seguro de activar este ingreso de vehiculo?',
+        title: 'Esta seguro de activar esta convocatoria?',
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -269,10 +275,10 @@ var VerEmpresa = function VerEmpresa() {
       }).then(function (result) {
         if (result.value) {
           var me = _this2;
-          axios.put('/empresa/activar', {
+          axios.put('/convocatoria/activar', {
             id: id
           }).then(function (response) {
-            me.listarEmpresa(1, '', 'nombre');
+            me.listarConvocatoria(1, '', 'nombre');
             swal('Activado', 'El registro ha sido activado con exito', 'success');
           })["catch"](function (error) {
             console.log(error);
@@ -287,41 +293,102 @@ var VerEmpresa = function VerEmpresa() {
         _estado: 'creando'
       };
       this.var_config = {
-        title: 'Registrar Empresa',
+        title: 'Registrar Convocatoria',
         tipo_accion: 'registrar'
       };
     },
-    editar: function editar(vehiculo) {
-      if (vehiculo.anulado) {
-        swal('Error', 'El ingreso ha sido anulado por lo tanto no puede ser editado', 'warning');
-        return;
-      }
-
+    editar: function editar(convocatoria) {
       this.editable = Object.assign({
         _estado: 'editando'
-      }, vehiculo);
+      }, convocatoria);
       this.var_config = {
-        title: 'Actualizar Empresa',
+        title: 'Actualizar Convocatoria',
         tipo_accion: 'actualizar'
       };
     },
-    ver: function ver(vehiculo) {
+    ver: function ver(convocatoria) {
       this.ver_editable = Object.assign({
         _estado: 'viendo'
-      }, vehiculo);
+      }, convocatoria);
       this.var_config = {
-        title: 'Ver Empresa'
+        title: 'Convocatoria',
+        tipo_accion: 'ver'
       };
+    },
+    importar: function importar() {
+      this.importar_editable = {
+        _estado: 'creando'
+      };
+      this.var_config = {
+        title: 'Importar Persona',
+        tipo_accion: 'importar'
+      };
+    },
+    abrirPrecios: function abrirPrecios(convocatoria) {
+      this.precio_editable = {
+        _estado: 'abriendo',
+        convocatoria_id: convocatoria.id,
+        nombre_convocatoria: convocatoria.nombre,
+        precio_actual: convocatoria.precio_actual
+      };
+      this.var_config = {
+        title: 'Listar Precios',
+        tipo_accion: 'registrar'
+      };
+      this.$forceUpdate();
+    },
+    numberFormat2: function (_numberFormat) {
+      function numberFormat2(_x) {
+        return _numberFormat.apply(this, arguments);
+      }
+
+      numberFormat2.toString = function () {
+        return _numberFormat.toString();
+      };
+
+      return numberFormat2;
+    }(function (number) {
+      return numberFormat2(number);
+    }),
+    descargarArticulos: function descargarArticulos(convocatoria) {
+      axios({
+        url: '/convocatoria/reporte/articulos',
+        method: 'POST',
+        data: {
+          convocatoria_id: convocatoria.id
+        },
+        responseType: 'blob'
+      }).then(function (response) {
+        // console.log(response.data)
+        // console.log(response.data.size)
+        if (response.data && response.data.size) {
+          // window.location.href = response;
+          // this.leer()
+          // let filename = "FACTURA"+this.formatComprobante(obj_venta)+".pdf";
+          var filename = "ARTICULOS PERIODO-" + convocatoria.convocatoria + ".xlsx";
+          var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+          var fileLink = document.createElement('a');
+          fileLink.href = fileURL;
+
+          if (!filename) {
+            filename = url.substr(url.lastIndexOf('/') + 1);
+          }
+
+          fileLink.setAttribute('download', filename);
+          document.body.appendChild(fileLink);
+          fileLink.click();
+        }
+      });
     }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=template&id=6b9131ad&":
-/*!****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=template&id=6b9131ad& ***!
-  \****************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/convocatoria/ListarConvocatoria.vue?vue&type=template&id=b3a507d2&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/convocatoria/ListarConvocatoria.vue?vue&type=template&id=b3a507d2& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -343,7 +410,7 @@ var render = function() {
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
             _c("i", { staticClass: "fa fa-align-justify" }),
-            _vm._v(" Empresas\n                "),
+            _vm._v(" Convocatorias\n                "),
             _c(
               "button",
               {
@@ -395,17 +462,17 @@ var render = function() {
                       }
                     },
                     [
-                      _c("option", { attrs: { value: "todos" } }, [
-                        _vm._v("Todos")
-                      ]),
+                      _c(
+                        "option",
+                        { attrs: { value: "convocatorias.nombre" } },
+                        [_vm._v("Nombre")]
+                      ),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "nombreComercial" } }, [
-                        _vm._v("Nombre Comercial")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "razonSocial" } }, [
-                        _vm._v("Razon Social")
-                      ])
+                      _c(
+                        "option",
+                        { attrs: { value: "convocatorias.descripcion" } },
+                        [_vm._v("Descripción")]
+                      )
                     ]
                   ),
                   _vm._v(" "),
@@ -435,7 +502,11 @@ var render = function() {
                         ) {
                           return null
                         }
-                        return _vm.listarEmpresa(1, _vm.buscar, _vm.criterio)
+                        return _vm.listarConvocatoria(
+                          1,
+                          _vm.buscar,
+                          _vm.criterio
+                        )
                       },
                       input: function($event) {
                         if ($event.target.composing) {
@@ -453,7 +524,11 @@ var render = function() {
                       attrs: { type: "submit" },
                       on: {
                         click: function($event) {
-                          return _vm.listarEmpresa(1, _vm.buscar, _vm.criterio)
+                          return _vm.listarConvocatoria(
+                            1,
+                            _vm.buscar,
+                            _vm.criterio
+                          )
                         }
                       }
                     },
@@ -478,7 +553,7 @@ var render = function() {
                   _c(
                     "tbody",
                     [
-                      _vm.show.arrayEmpresa
+                      _vm.show.arrayConvocatoria
                         ? _c("tr", [
                             _c("th", {
                               staticClass: "text-center text-dark",
@@ -488,8 +563,8 @@ var render = function() {
                           ])
                         : _vm._e(),
                       _vm._v(" "),
-                      _vm._l(_vm.arrayEmpresa, function(empresa) {
-                        return _c("tr", { key: empresa.id }, [
+                      _vm._l(_vm.arrayConvocatoria, function(convocatoria) {
+                        return _c("tr", { key: convocatoria.id }, [
                           _c("td", [
                             _c("div", { staticClass: "btn-group" }, [
                               _vm._m(2, true),
@@ -498,35 +573,33 @@ var render = function() {
                                 "div",
                                 {
                                   staticClass: "dropdown-menu",
-                                  staticStyle: {
-                                    "overflow-y": "auto",
-                                    height: "150px"
-                                  },
                                   attrs: { role: "menu" }
                                 },
                                 [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "dropdown-item disabled",
-                                      attrs: { href: "#", disabled: "" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.editar(empresa)
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticStyle: {
-                                          width: "20px",
-                                          height: "20px"
+                                  !convocatoria.activo
+                                    ? _c(
+                                        "a",
+                                        {
+                                          staticClass: "dropdown-item",
+                                          attrs: { href: "#" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.editar(convocatoria)
+                                            }
+                                          }
                                         },
-                                        attrs: { src: "images/editar.svg" }
-                                      }),
-                                      _vm._v("   Editar")
-                                    ]
-                                  ),
+                                        [
+                                          _c("img", {
+                                            staticStyle: {
+                                              width: "20px",
+                                              height: "20px"
+                                            },
+                                            attrs: { src: "images/editar.svg" }
+                                          }),
+                                          _vm._v("   Editar")
+                                        ]
+                                      )
+                                    : _vm._e(),
                                   _vm._v(" "),
                                   _c(
                                     "a",
@@ -535,7 +608,7 @@ var render = function() {
                                       attrs: { href: "#" },
                                       on: {
                                         click: function($event) {
-                                          return _vm.ver(empresa)
+                                          return _vm.ver(convocatoria)
                                         }
                                       }
                                     },
@@ -556,42 +629,40 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("td", {
-                            domProps: { textContent: _vm._s(empresa.ruc) }
-                          }),
-                          _vm._v(" "),
-                          _c("td", {
                             domProps: {
-                              textContent: _vm._s(empresa.razonSocial)
+                              textContent: _vm._s(convocatoria.nombre)
                             }
                           }),
                           _vm._v(" "),
                           _c("td", {
                             domProps: {
-                              textContent: _vm._s(empresa.nombreComercial)
+                              textContent: _vm._s(convocatoria.fecha_inicio)
                             }
-                          }),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: { textContent: _vm._s(empresa.direccion) }
-                          }),
-                          _vm._v(" "),
-                          _c("td", {
-                            domProps: { textContent: _vm._s(empresa.origen) }
                           }),
                           _vm._v(" "),
                           _c("td", {
                             domProps: {
-                              textContent: _vm._s(
-                                empresa.created_at
-                                  .substr(0, 10)
-                                  .split("-")
-                                  .reverse()
-                                  .join("-")
-                              )
+                              textContent: _vm._s(convocatoria.fecha_fin)
                             }
                           }),
                           _vm._v(" "),
-                          _vm._m(3, true)
+                          _c("td", [
+                            !convocatoria.activo
+                              ? _c("div", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "badge badge-success" },
+                                    [_vm._v("Activo")]
+                                  )
+                                ])
+                              : _c("div", [
+                                  _c(
+                                    "span",
+                                    { staticClass: "badge badge-danger" },
+                                    [_vm._v("Finalizado")]
+                                  )
+                                ])
+                          ])
                         ])
                       })
                     ],
@@ -688,12 +759,12 @@ var render = function() {
       ]),
       _vm._v(" "),
       _vm.nuevo._estado == "creando"
-        ? _c("v-formulario-persona-dni", {
-            ref: "cmp_crear_empresa",
+        ? _c("v-formulario-convocatoria", {
+            ref: "cmp_crear_convocatoria",
             attrs: { var_config: _vm.var_config },
             on: {
               guardado: function($event) {
-                return _vm.listarEmpresa(1, "", "nombre")
+                return _vm.listarConvocatoria(1, "", "nombre")
               }
             },
             model: {
@@ -707,12 +778,12 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _vm.editable._estado == "editando"
-        ? _c("v-formulario-persona-dni", {
-            ref: "cmp_crear_empresa",
+        ? _c("v-formulario-convocatoria", {
+            ref: "cmp_crear_convocatoria",
             attrs: { var_config: _vm.var_config },
             on: {
               guardado: function($event) {
-                return _vm.listarEmpresa(1, "", "nombre")
+                return _vm.listarConvocatoria(1, "", "nombre")
               }
             },
             model: {
@@ -726,8 +797,8 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _vm.ver_editable._estado == "viendo"
-        ? _c("v-ver-persona-dni", {
-            ref: "cmp_ver_empresa",
+        ? _c("v-ver-convocatoria", {
+            ref: "cmp_ver_convocatoria",
             attrs: { var_config: _vm.var_config },
             model: {
               value: _vm.ver_editable,
@@ -748,8 +819,10 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("ol", { staticClass: "breadcrumb" }, [
+      _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Configuracion")]),
+      _vm._v(" "),
       _c("li", { staticClass: "breadcrumb-item" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("Empresas")])
+        _c("a", { attrs: { href: "#" } }, [_vm._v("Convocatoria")])
       ]),
       _vm._v(" "),
       _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Listado")])
@@ -761,19 +834,13 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th"),
+        _c("th", [_vm._v("Opciones")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Ruc")]),
+        _c("th", [_vm._v("Convocatoria")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Razon Social")]),
+        _c("th", [_vm._v("Fecha Inicio")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Nombre Comercial")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Direccion")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Origen")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Fecha de Creacion")]),
+        _c("th", [_vm._v("Fecha Fin")]),
         _vm._v(" "),
         _c("th", [_vm._v("Estado")])
       ])
@@ -785,17 +852,9 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("a", { attrs: { href: "#", "data-toggle": "dropdown" } }, [
       _c("img", {
-        staticStyle: { width: "30px", height: "30px" },
+        staticStyle: { width: "30px", height: "auto" },
         attrs: { src: "images/options.svg" }
       })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("span", { staticClass: "badge badge-success" }, [_vm._v("Activo")])
     ])
   }
 ]
@@ -805,17 +864,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/empresa/ListarEmpresa.vue":
-/*!***************************************************************!*\
-  !*** ./resources/js/components/erp/empresa/ListarEmpresa.vue ***!
-  \***************************************************************/
+/***/ "./resources/js/components/erp/convocatoria/ListarConvocatoria.vue":
+/*!*************************************************************************!*\
+  !*** ./resources/js/components/erp/convocatoria/ListarConvocatoria.vue ***!
+  \*************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ListarEmpresa_vue_vue_type_template_id_6b9131ad___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListarEmpresa.vue?vue&type=template&id=6b9131ad& */ "./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=template&id=6b9131ad&");
-/* harmony import */ var _ListarEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListarEmpresa.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=script&lang=js&");
+/* harmony import */ var _ListarConvocatoria_vue_vue_type_template_id_b3a507d2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListarConvocatoria.vue?vue&type=template&id=b3a507d2& */ "./resources/js/components/erp/convocatoria/ListarConvocatoria.vue?vue&type=template&id=b3a507d2&");
+/* harmony import */ var _ListarConvocatoria_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListarConvocatoria.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/convocatoria/ListarConvocatoria.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -825,9 +884,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ListarEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ListarEmpresa_vue_vue_type_template_id_6b9131ad___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ListarEmpresa_vue_vue_type_template_id_6b9131ad___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _ListarConvocatoria_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ListarConvocatoria_vue_vue_type_template_id_b3a507d2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ListarConvocatoria_vue_vue_type_template_id_b3a507d2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -837,38 +896,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/erp/empresa/ListarEmpresa.vue"
+component.options.__file = "resources/js/components/erp/convocatoria/ListarConvocatoria.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************!*\
-  !*** ./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************/
+/***/ "./resources/js/components/erp/convocatoria/ListarConvocatoria.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/erp/convocatoria/ListarConvocatoria.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarEmpresa.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarConvocatoria_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarConvocatoria.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/convocatoria/ListarConvocatoria.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarConvocatoria_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=template&id=6b9131ad&":
-/*!**********************************************************************************************!*\
-  !*** ./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=template&id=6b9131ad& ***!
-  \**********************************************************************************************/
+/***/ "./resources/js/components/erp/convocatoria/ListarConvocatoria.vue?vue&type=template&id=b3a507d2&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/erp/convocatoria/ListarConvocatoria.vue?vue&type=template&id=b3a507d2& ***!
+  \********************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarEmpresa_vue_vue_type_template_id_6b9131ad___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarEmpresa.vue?vue&type=template&id=6b9131ad& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/ListarEmpresa.vue?vue&type=template&id=6b9131ad&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarEmpresa_vue_vue_type_template_id_6b9131ad___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarConvocatoria_vue_vue_type_template_id_b3a507d2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarConvocatoria.vue?vue&type=template&id=b3a507d2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/convocatoria/ListarConvocatoria.vue?vue&type=template&id=b3a507d2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarConvocatoria_vue_vue_type_template_id_b3a507d2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarEmpresa_vue_vue_type_template_id_6b9131ad___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarConvocatoria_vue_vue_type_template_id_b3a507d2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

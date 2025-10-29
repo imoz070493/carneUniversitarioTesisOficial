@@ -873,6 +873,8 @@ initCropper() {
             if(e.apellido_materno) this.editable.apellido_materno = e.apellido_materno;
             if(e.nombres) this.editable.nombres = e.nombres;
             if(e.sexo) this.editable.sexo = e.sexo;
+            if(e.telefono1) this.editable.telefono1 = e.telefono1;
+            if(e.telefono2) this.editable.telefono2 = e.telefono2;
             if(e.estudiante_id) this.editable.estudiante_id = e.estudiante_id;
 
             if(e.tipo_tramite=='nuevo'){

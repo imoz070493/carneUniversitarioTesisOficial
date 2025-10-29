@@ -1,14 +1,16 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[35],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 //
 //
 //
@@ -234,8 +236,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var DocumentoBusqueda = function DocumentoBusqueda() {
+  return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! @/components/referencias/DocumentoBusqueda */ "./resources/js/components/referencias/DocumentoBusqueda.vue"));
+};
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {},
+  components: {
+    "documento-busqueda": DocumentoBusqueda
+  },
   props: {
     value: {
       type: Object,
@@ -248,30 +267,153 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      editable: Object.assign({}, this.value),
-      show: {}
+      editable: Object.assign({
+        tipo_documento: 'ruc'
+      }, this.value),
+      errors: [],
+      btn: {
+        registrar: false,
+        actualizar: false
+      }
     };
   },
   mounted: function mounted() {
-    if (!this.editable.id) {//Nuevo
-    } else {//ver
-      }
+    if (!this.editable.id) {
+      //Nuevo
+      this.editable.origen = 'local';
+    } else {//Editar
+    }
 
     this.$forceUpdate();
   },
   methods: {
+    registrarPersonaDni: function registrarPersonaDni() {
+      var me = this;
+      this.btn['registrar'] = true;
+      axios.post('/empresa/registrar', this.editable).then(function (response) {
+        me.$emit('guardado');
+        me.cerrarModal();
+      })["catch"](function (error) {
+        me.btn['registrar'] = false;
+
+        if (error.request.response) {
+          var response = JSON.parse(error.request.response);
+          console.log(response);
+          me.errors = response.errors;
+        }
+      });
+    },
+    actualizarPersonaDni: function actualizarPersonaDni() {
+      var me = this;
+      this.btn['actualizar'] = true;
+      axios.put('/empresa/actualizar', this.editable).then(function (response) {
+        me.$emit('guardado');
+        me.cerrarModal();
+      })["catch"](function (error) {
+        me.btn['actualizar'] = false;
+
+        if (error.request.response) {
+          var response = JSON.parse(error.request.response);
+          console.log(response);
+          me.errors = response.errors;
+        }
+      });
+    },
     cerrarModal: function cerrarModal() {
       this.$emit('input', {});
+    },
+    imageChanged: function imageChanged(e) {
+      var _this = this;
+
+      console.log(e.target.files[0]);
+      var propiedades = e.target.files[0];
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this.editable.name_document = propiedades.name;
+        _this.editable.new_document = e.target.result;
+      };
+    },
+    setBusqueda: function setBusqueda(e) {
+      if (_typeof(e) === 'object') {
+        if (this.editable.tipo_documento == 'ruc') {
+          this.editable.razonSocial = e.razonSocial;
+          this.editable.nombreComercial = e.nombreComercial;
+          this.editable.telefonos = JSON.stringify(e.telefonos);
+          this.editable.tipo = e.tipo;
+          this.editable.estado = e.estado;
+          this.editable.condicion = e.condicion;
+          this.editable.direccion = e.direccion;
+          this.editable.departamento = e.departamento;
+          this.editable.provincia = e.provincia;
+          this.editable.distrito = e.distrito;
+          if (e.fechaInscripcion) this.editable.fechaInscripcion = String(e.fechaInscripcion).substr(0, 10);
+          this.editable.sistEmsion = e.sistEmsion;
+          this.editable.sistContabilidad = e.sistContabilidad;
+          this.editable.actExterior = e.actExterior;
+          this.editable.actEconomicas = JSON.stringify(e.actEconomicas);
+          this.editable.cpPago = JSON.stringify(e.cpPago);
+          this.editable.sistElectronica = JSON.stringify(e.sistElectronica);
+          if (e.fechaEmisorFe) this.editable.fechaEmisorFe = String(e.fechaEmisorFe).substr(0, 10);
+          this.editable.cpeElectronico = JSON.stringify(e.cpeElectronico);
+          if (e.fechaPle) this.editable.fechaPle = String(e.fechaPle).substr(0, 10);
+          this.editable.padrones = JSON.stringify(e.padrones);
+          this.editable.fechaBaja = e.fechaBaja;
+          this.editable.profesion = e.profesion;
+        } else if (this.editable.tipo_documento == 'dni') {
+          this.editable.nombres = e.nombres;
+          this.editable.apellidoPaterno = e.apellidoPaterno;
+          this.editable.apellidoMaterno = e.apellidoMaterno;
+          this.editable.codVerifica = e.codVerifica;
+        }
+      } else {
+        this.editable.razonSocial = '';
+        this.editable.nombreComercial = '';
+        this.editable.telefonos = '';
+        this.editable.tipo = '';
+        this.editable.estado = '';
+        this.editable.condicion = '';
+        this.editable.direccion = '';
+        this.editable.departamento = '';
+        this.editable.provincia = '';
+        this.editable.distrito = '';
+        this.editable.fechaInscripcion = '';
+        this.editable.sistEmsion = '';
+        this.editable.sistContabilidad = '';
+        this.editable.actExterior = '';
+        this.editable.actEconomicas = '';
+        this.editable.cpPago = '';
+        this.editable.sistElectronica = '';
+        this.editable.fechaEmisorFe = '';
+        this.editable.cpeElectronico = '';
+        this.editable.fechaPle = '';
+        this.editable.padrones = '';
+        this.editable.fechaBaja = '';
+        this.editable.profesion = '';
+        alert("Persona juridica no encontrada, puede volver a realizar la busqueda");
+      }
+
+      this.$forceUpdate();
+    }
+  },
+  watch: {
+    'editable.numero_placa': function editableNumero_placa(newval, olval) {
+      if (newval) {
+        this.editable.numero_placa = String(newval).toUpperCase();
+        this.editable.placa_vigente = newval;
+        this.$forceUpdate();
+      }
     }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=style&index=0&lang=css&":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=style&index=0&lang=css& ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=style&index=0&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=style&index=0&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -287,15 +429,15 @@ exports.push([module.i, "\n.modal-content{\n    width: 100% !important;\n    pos
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=style&index=0&lang=css&":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=style&index=0&lang=css& ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=style&index=0&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--5-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--5-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=style&index=0&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./VerEmpresa.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=style&index=0&lang=css&");
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioEmpresa.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -317,10 +459,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=template&id=5ee3b103&":
-/*!*************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=template&id=5ee3b103& ***!
-  \*************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=template&id=0a5200ac&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=template&id=0a5200ac& ***!
+  \********************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -397,11 +539,52 @@ var render = function() {
                       [
                         _c("div", { staticClass: "form-group" }, [
                           _vm._m(0),
-                          _c("br"),
                           _vm._v(" "),
-                          _c("span", {
-                            domProps: { textContent: _vm._s("RUC") }
-                          })
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.editable.tipo_documento,
+                                  expression: "editable.tipo_documento"
+                                }
+                              ],
+                              staticClass: "form-control col-md-12",
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.editable,
+                                    "tipo_documento",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c("option", { attrs: { value: "ruc" } }, [
+                                _vm._v("RUC")
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm.errors.tipo_documento
+                            ? _c("span", { staticClass: "text-error" }, [
+                                _vm._v(_vm._s(_vm.errors.tipo_documento))
+                              ])
+                            : _vm._e()
                         ])
                       ]
                     ),
@@ -410,18 +593,38 @@ var render = function() {
                       "div",
                       { staticClass: "col-lg-6 col-md-6 col-sm-6 col-xs-12" },
                       [
-                        _c("div", { staticClass: "form-group" }, [
-                          _vm._m(1),
-                          _c("br"),
-                          _vm._v(" "),
-                          _vm.editable.ruc
-                            ? _c("span", {
-                                domProps: {
-                                  textContent: _vm._s(_vm.editable.ruc)
+                        _c(
+                          "div",
+                          { staticClass: "form-group" },
+                          [
+                            _vm._m(1),
+                            _vm._v(" "),
+                            _c("documento-busqueda", {
+                              attrs: {
+                                tipo_documento: _vm.editable.tipo_documento
+                              },
+                              on: {
+                                setBusqueda: function($event) {
+                                  return _vm.setBusqueda($event)
                                 }
-                              })
-                            : _vm._e()
-                        ])
+                              },
+                              model: {
+                                value: _vm.editable.ruc,
+                                callback: function($$v) {
+                                  _vm.$set(_vm.editable, "ruc", $$v)
+                                },
+                                expression: "editable.ruc"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _vm.errors.ruc
+                              ? _c("span", { staticClass: "text-error" }, [
+                                  _vm._v(_vm._s(_vm.errors.ruc))
+                                ])
+                              : _vm._e()
+                          ],
+                          1
+                        )
                       ]
                     )
                   ]),
@@ -443,6 +646,12 @@ var render = function() {
                                   textContent: _vm._s(_vm.editable.razonSocial)
                                 }
                               })
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.errors.razonSocial
+                            ? _c("span", { staticClass: "text-error" }, [
+                                _vm._v(_vm._s(_vm.errors.razonSocial))
+                              ])
                             : _vm._e()
                         ])
                       ]
@@ -468,6 +677,12 @@ var render = function() {
                                   )
                                 }
                               })
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.errors.nombreComercial
+                            ? _c("span", { staticClass: "text-error" }, [
+                                _vm._v(_vm._s(_vm.errors.nombreComercial))
+                              ])
                             : _vm._e()
                         ])
                       ]
@@ -486,9 +701,7 @@ var render = function() {
                           _vm.editable.telefonos
                             ? _c("span", {
                                 domProps: {
-                                  textContent: _vm._s(
-                                    JSON.parse(_vm.editable.telefonos)
-                                  )
+                                  textContent: _vm._s(_vm.editable.telefonos)
                                 }
                               })
                             : _vm._e()
@@ -736,7 +949,7 @@ var render = function() {
                             ? _c("span", {
                                 domProps: {
                                   textContent: _vm._s(
-                                    JSON.parse(_vm.editable.actEconomicas)
+                                    _vm.editable.actEconomicas
                                   )
                                 }
                               })
@@ -756,9 +969,7 @@ var render = function() {
                           _vm.editable.cpPago
                             ? _c("span", {
                                 domProps: {
-                                  textContent: _vm._s(
-                                    JSON.parse(_vm.editable.cpPago)
-                                  )
+                                  textContent: _vm._s(_vm.editable.cpPago)
                                 }
                               })
                             : _vm._e()
@@ -780,7 +991,7 @@ var render = function() {
                             ? _c("span", {
                                 domProps: {
                                   textContent: _vm._s(
-                                    JSON.parse(_vm.editable.sistElectronica)
+                                    _vm.editable.sistElectronica
                                   )
                                 }
                               })
@@ -825,7 +1036,7 @@ var render = function() {
                             ? _c("span", {
                                 domProps: {
                                   textContent: _vm._s(
-                                    JSON.parse(_vm.editable.cpeElectronico)
+                                    _vm.editable.cpeElectronico
                                   )
                                 }
                               })
@@ -871,9 +1082,7 @@ var render = function() {
                           _vm.editable.padrones
                             ? _c("span", {
                                 domProps: {
-                                  textContent: _vm._s(
-                                    JSON.parse(_vm.editable.padrones)
-                                  )
+                                  textContent: _vm._s(_vm.editable.padrones)
                                 }
                               })
                             : _vm._e()
@@ -944,7 +1153,39 @@ var render = function() {
                 }
               },
               [_vm._v("Cerrar")]
-            )
+            ),
+            _vm._v(" "),
+            _vm.var_config.tipo_accion == "registrar"
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button", disabled: _vm.btn.registrar },
+                    on: {
+                      click: function($event) {
+                        return _vm.registrarPersonaDni()
+                      }
+                    }
+                  },
+                  [_vm._v("Guardar")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.var_config.tipo_accion == "actualizar"
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-primary",
+                    attrs: { type: "button", disabled: _vm.btn.actualizar },
+                    on: {
+                      click: function($event) {
+                        return _vm.actualizarPersonaDni()
+                      }
+                    }
+                  },
+                  [_vm._v("Actualizar")]
+                )
+              : _vm._e()
           ])
         ])
       ])
@@ -956,13 +1197,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("Documento: ")])])
+    return _c("label", [_c("dt", [_vm._v("Documento: *")])])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("label", [_c("dt", [_vm._v("N° Documento: ")])])
+    return _c("label", [_c("dt", [_vm._v("N° Documento: *")])])
   },
   function() {
     var _vm = this
@@ -1109,18 +1350,18 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/empresa/VerEmpresa.vue":
-/*!************************************************************!*\
-  !*** ./resources/js/components/erp/empresa/VerEmpresa.vue ***!
-  \************************************************************/
+/***/ "./resources/js/components/erp/empresa/FormularioEmpresa.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/erp/empresa/FormularioEmpresa.vue ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _VerEmpresa_vue_vue_type_template_id_5ee3b103___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./VerEmpresa.vue?vue&type=template&id=5ee3b103& */ "./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=template&id=5ee3b103&");
-/* harmony import */ var _VerEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./VerEmpresa.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _VerEmpresa_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./VerEmpresa.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _FormularioEmpresa_vue_vue_type_template_id_0a5200ac___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormularioEmpresa.vue?vue&type=template&id=0a5200ac& */ "./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=template&id=0a5200ac&");
+/* harmony import */ var _FormularioEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormularioEmpresa.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _FormularioEmpresa_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FormularioEmpresa.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -1131,9 +1372,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _VerEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _VerEmpresa_vue_vue_type_template_id_5ee3b103___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _VerEmpresa_vue_vue_type_template_id_5ee3b103___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _FormularioEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FormularioEmpresa_vue_vue_type_template_id_0a5200ac___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FormularioEmpresa_vue_vue_type_template_id_0a5200ac___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -1143,54 +1384,54 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/erp/empresa/VerEmpresa.vue"
+component.options.__file = "resources/js/components/erp/empresa/FormularioEmpresa.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************/
+/***/ "./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./VerEmpresa.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_VerEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioEmpresa.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioEmpresa_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=style&index=0&lang=css&":
-/*!*********************************************************************************************!*\
-  !*** ./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=style&index=0&lang=css& ***!
-  \*********************************************************************************************/
+/***/ "./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VerEmpresa_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./VerEmpresa.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VerEmpresa_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VerEmpresa_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VerEmpresa_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_VerEmpresa_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioEmpresa_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader??ref--5-1!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--5-2!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioEmpresa.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioEmpresa_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioEmpresa_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioEmpresa_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_5_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_5_2_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioEmpresa_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=template&id=5ee3b103&":
-/*!*******************************************************************************************!*\
-  !*** ./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=template&id=5ee3b103& ***!
-  \*******************************************************************************************/
+/***/ "./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=template&id=0a5200ac&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=template&id=0a5200ac& ***!
+  \**************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VerEmpresa_vue_vue_type_template_id_5ee3b103___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./VerEmpresa.vue?vue&type=template&id=5ee3b103& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/VerEmpresa.vue?vue&type=template&id=5ee3b103&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VerEmpresa_vue_vue_type_template_id_5ee3b103___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioEmpresa_vue_vue_type_template_id_0a5200ac___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./FormularioEmpresa.vue?vue&type=template&id=0a5200ac& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/empresa/FormularioEmpresa.vue?vue&type=template&id=0a5200ac&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioEmpresa_vue_vue_type_template_id_0a5200ac___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_VerEmpresa_vue_vue_type_template_id_5ee3b103___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormularioEmpresa_vue_vue_type_template_id_0a5200ac___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

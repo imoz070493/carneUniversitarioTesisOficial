@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[61],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/cliente/ListarCliente.vue?vue&type=script&lang=js&":
-/*!************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/cliente/ListarCliente.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -123,29 +123,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-var FormularioCliente = function FormularioCliente() {
-  return __webpack_require__.e(/*! import() */ 10).then(__webpack_require__.bind(null, /*! @/components/erp/cliente/FormularioCliente */ "./resources/js/components/erp/cliente/FormularioCliente.vue"));
+var FormularioAcceso = function FormularioAcceso() {
+  return __webpack_require__.e(/*! import() */ 19).then(__webpack_require__.bind(null, /*! @/components/erp/acceso/FormularioAcceso */ "./resources/js/components/erp/acceso/FormularioAcceso.vue"));
+};
+
+var VerAcceso = function VerAcceso() {
+  return __webpack_require__.e(/*! import() */ 20).then(__webpack_require__.bind(null, /*! @/components/erp/acceso/VerAcceso */ "./resources/js/components/erp/acceso/VerAcceso.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    "v-formulario-cliente": FormularioCliente
+    "v-formulario-persona-dni": FormularioAcceso,
+    "v-ver-persona-dni": VerAcceso
   },
   data: function data() {
     return {
       nuevo: {},
       editable: {},
+      ver_editable: {},
+      editable_anulacion: {},
       show: {},
       var_config: {},
-      arrayCliente: [],
+      arrayAcceso: [],
       pagination: {
         'total': 0,
         'current_page': 0,
@@ -155,9 +154,9 @@ var FormularioCliente = function FormularioCliente() {
         'to': 0
       },
       offset: 3,
-      criterio: 'nombre',
+      criterio: 'todos',
       buscar: '',
-      per_page: 10
+      per_page: 50
     };
   },
   computed: {
@@ -193,17 +192,17 @@ var FormularioCliente = function FormularioCliente() {
   },
   mounted: function mounted() {
     console.log('Component mounted.');
-    this.listarCliente(1, this.buscar, this.criterio);
+    this.listarAcceso(1, this.buscar, this.criterio);
   },
   methods: {
-    listarCliente: function listarCliente(page, buscar, criterio) {
+    listarAcceso: function listarAcceso(page, buscar, criterio) {
       var me = this;
-      var url = '/cliente?page=' + page + '&buscar=' + buscar + '&criterio=' + criterio + '&per_page=' + this.per_page;
+      var url = '/acceso?page=' + page + '&buscar=' + buscar + '&criterio=' + criterio + '&per_page=' + this.per_page;
       axios.get(url).then(function (response) {
         var respuesta = response.data;
-        me.arrayCliente = respuesta.clientes.data;
+        me.arrayAcceso = respuesta.accesos.data;
         me.pagination = respuesta.pagination;
-        if (me.arrayCliente.length == 0) me.show['arrayCliente'] = true;else me.show['arrayCliente'] = false;
+        if (me.arrayAcceso.length == 0) me.show['arrayAcceso'] = true;else me.show['arrayAcceso'] = false;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -213,13 +212,13 @@ var FormularioCliente = function FormularioCliente() {
 
       me.pagination.current_page = page; // Envia la peticion para visualizar la data de esta pagina
 
-      me.listarCliente(page, buscar, criterio);
+      me.listarAcceso(page, buscar, criterio);
     },
-    desactivarCliente: function desactivarCliente(id) {
+    desactivarAcceso: function desactivarAcceso(id) {
       var _this = this;
 
       swal({
-        title: 'Esta seguro de desactivar esta cliente?',
+        title: 'Esta seguro de desactivar este ingreso de vehiculo?',
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -233,10 +232,10 @@ var FormularioCliente = function FormularioCliente() {
       }).then(function (result) {
         if (result.value) {
           var me = _this;
-          axios.put('/cliente/desactivar', {
+          axios.put('/acceso/desactivar', {
             id: id
           }).then(function (response) {
-            me.listarCliente(1, '', 'nombre');
+            me.listarAcceso(1, '', 'nombre');
             swal('Desactivado', 'El registro ha sido desactivado con exito', 'success');
           })["catch"](function (error) {
             console.log(error);
@@ -246,11 +245,11 @@ var FormularioCliente = function FormularioCliente() {
         result.dismiss === swal.DismissReason.cancel) {}
       });
     },
-    activarCliente: function activarCliente(id) {
+    activarAcceso: function activarAcceso(id) {
       var _this2 = this;
 
       swal({
-        title: 'Esta seguro de activar esta cliente?',
+        title: 'Esta seguro de activar este ingreso de vehiculo?',
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -264,10 +263,10 @@ var FormularioCliente = function FormularioCliente() {
       }).then(function (result) {
         if (result.value) {
           var me = _this2;
-          axios.put('/cliente/activar', {
+          axios.put('/acceso/activar', {
             id: id
           }).then(function (response) {
-            me.listarCliente(1, '', 'nombre');
+            me.listarAcceso(1, '', 'nombre');
             swal('Activado', 'El registro ha sido activado con exito', 'success');
           })["catch"](function (error) {
             console.log(error);
@@ -282,31 +281,47 @@ var FormularioCliente = function FormularioCliente() {
         _estado: 'creando'
       };
       this.var_config = {
-        title: 'Registrar Cliente',
+        title: 'Registrar Acceso',
         tipo_accion: 'registrar'
       };
     },
-    editar: function editar(cliente) {
+    editar: function editar(vehiculo) {
+      if (vehiculo.anulado) {
+        swal('Error', 'El ingreso ha sido anulado por lo tanto no puede ser editado', 'warning');
+        return;
+      }
+
       this.editable = Object.assign({
         _estado: 'editando'
-      }, cliente);
+      }, vehiculo);
       this.var_config = {
-        title: 'Actualizar Cliente',
+        title: 'Actualizar Acceso',
         tipo_accion: 'actualizar'
       };
     },
-    toUpperCase: function toUpperCase(e) {
-      return e.toUpperCase();
+    ver: function ver(vehiculo) {
+      this.ver_editable = Object.assign({
+        _estado: 'viendo'
+      }, vehiculo);
+      this.var_config = {
+        title: 'Ver Acceso'
+      };
+    },
+    formatDate: function formatDate(e) {
+      var data = e.split(" ");
+      var date = data[0].split('-').reverse().join('-');
+      var hour = data[1];
+      return date + " " + hour;
     }
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/cliente/ListarCliente.vue?vue&type=template&id=f34cfc62&":
-/*!****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/cliente/ListarCliente.vue?vue&type=template&id=f34cfc62& ***!
-  \****************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=template&id=2ca127d7&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=template&id=2ca127d7& ***!
+  \**************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -328,7 +343,7 @@ var render = function() {
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
             _c("i", { staticClass: "fa fa-align-justify" }),
-            _vm._v(" Clientes\n                "),
+            _vm._v(" Accesos\n                "),
             _c(
               "button",
               {
@@ -380,12 +395,16 @@ var render = function() {
                       }
                     },
                     [
-                      _c("option", { attrs: { value: "nombre" } }, [
-                        _vm._v("Nombre")
+                      _c("option", { attrs: { value: "todos" } }, [
+                        _vm._v("Todos")
                       ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "descripcion" } }, [
-                        _vm._v("Descripción")
+                      _c("option", { attrs: { value: "nombreComercial" } }, [
+                        _vm._v("Nombre Comercial")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "razonSocial" } }, [
+                        _vm._v("Razon Social")
                       ])
                     ]
                   ),
@@ -416,7 +435,7 @@ var render = function() {
                         ) {
                           return null
                         }
-                        return _vm.listarCliente(1, _vm.buscar, _vm.criterio)
+                        return _vm.listarAcceso(1, _vm.buscar, _vm.criterio)
                       },
                       input: function($event) {
                         if ($event.target.composing) {
@@ -434,7 +453,7 @@ var render = function() {
                       attrs: { type: "submit" },
                       on: {
                         click: function($event) {
-                          return _vm.listarCliente(1, _vm.buscar, _vm.criterio)
+                          return _vm.listarAcceso(1, _vm.buscar, _vm.criterio)
                         }
                       }
                     },
@@ -453,151 +472,116 @@ var render = function() {
                 staticStyle: { "overflow-x": "auto", "white-space": "nowrap" }
               },
               [
-                _c(
-                  "table",
-                  {
-                    staticClass: "table table-bordered table-striped table-sm"
-                  },
-                  [
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _c(
-                      "tbody",
-                      [
-                        _vm.show.arrayCliente
-                          ? _c("tr", [
-                              _c("th", {
-                                staticClass: "text-center text-dark",
-                                attrs: { colspan: "7" },
-                                domProps: { textContent: _vm._s("Vacio") }
-                              })
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm._l(_vm.arrayCliente, function(cliente) {
-                          return _c("tr", { key: cliente.id }, [
-                            _c(
-                              "td",
-                              [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-warning btn-sm",
-                                    attrs: { type: "button" },
-                                    on: {
-                                      click: function($event) {
-                                        return _vm.editar(cliente)
-                                      }
-                                    }
-                                  },
-                                  [_c("i", { staticClass: "icon-pencil" })]
-                                ),
-                                _vm._v("  \n                                "),
-                                cliente.estado == "activo"
-                                  ? [
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-danger btn-sm",
-                                          attrs: { type: "button" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.desactivarCliente(
-                                                cliente.id
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [_c("i", { staticClass: "icon-trash" })]
-                                      )
-                                    ]
-                                  : cliente.estado == "inactivo"
-                                  ? [
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-info btn-sm",
-                                          attrs: { type: "button" },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.activarCliente(
-                                                cliente.id
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [_c("i", { staticClass: "icon-check" })]
-                                      )
-                                    ]
-                                  : _vm._e()
-                              ],
-                              2
-                            ),
-                            _vm._v(" "),
-                            cliente.tipo_documento == "ruc"
-                              ? _c("td", {
-                                  domProps: {
-                                    textContent: _vm._s(cliente.razon_social)
-                                  }
-                                })
-                              : cliente.tipo_documento == "dni"
-                              ? _c("td", {
-                                  domProps: {
-                                    textContent: _vm._s(cliente.nombre)
-                                  }
-                                })
-                              : _vm._e(),
-                            _vm._v(" "),
-                            _c("td", {
-                              domProps: {
-                                textContent: _vm._s(
-                                  _vm.toUpperCase(cliente.tipo_documento)
-                                )
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("td", {
-                              domProps: {
-                                textContent: _vm._s(cliente.num_documento)
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("td", {
-                              domProps: {
-                                textContent: _vm._s(cliente.telefono)
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("td", {
-                              domProps: { textContent: _vm._s(cliente.email) }
-                            }),
-                            _vm._v(" "),
-                            _c("td", [
-                              cliente.estado == "activo"
-                                ? _c("div", [
-                                    _c(
-                                      "span",
-                                      { staticClass: "badge badge-success" },
-                                      [_vm._v("Activo")]
-                                    )
-                                  ])
-                                : cliente.estado == "inactivo"
-                                ? _c("div", [
-                                    _c(
-                                      "span",
-                                      { staticClass: "badge badge-danger" },
-                                      [_vm._v("Desactivado")]
-                                    )
-                                  ])
-                                : _vm._e()
-                            ])
+                _c("table", { staticClass: "table table-hover text-nowrap" }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    [
+                      _vm.show.arrayAcceso
+                        ? _c("tr", [
+                            _c("th", {
+                              staticClass: "text-center text-dark",
+                              attrs: { colspan: "8" },
+                              domProps: { textContent: _vm._s("Vacio") }
+                            })
                           ])
-                        })
-                      ],
-                      2
-                    )
-                  ]
-                )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm._l(_vm.arrayAcceso, function(acceso) {
+                        return _c("tr", { key: acceso.id }, [
+                          _c("td", [
+                            _c("div", { staticClass: "btn-group" }, [
+                              _vm._m(2, true),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "dropdown-menu",
+                                  staticStyle: {
+                                    "overflow-y": "auto",
+                                    height: "150px"
+                                  },
+                                  attrs: { role: "menu" }
+                                },
+                                [
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "dropdown-item disabled",
+                                      attrs: { href: "#", disabled: "" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.editar(acceso)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c("img", {
+                                        staticStyle: {
+                                          width: "20px",
+                                          height: "20px"
+                                        },
+                                        attrs: { src: "images/editar.svg" }
+                                      }),
+                                      _vm._v("   Editar")
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "dropdown-item",
+                                      attrs: { href: "#" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.ver(acceso)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c("img", {
+                                        staticStyle: {
+                                          width: "20px",
+                                          height: "20px"
+                                        },
+                                        attrs: { src: "images/ver.svg" }
+                                      }),
+                                      _vm._v("   Ver")
+                                    ]
+                                  )
+                                ]
+                              )
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("td", {
+                            domProps: {
+                              textContent: _vm._s(acceso.nombre_completo)
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("td", {
+                            domProps: {
+                              textContent: _vm._s(acceso.escuela_profesional)
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("td", {
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.formatDate(acceso.created_at)
+                              )
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm._m(3, true)
+                        ])
+                      })
+                    ],
+                    2
+                  )
+                ])
               ]
             ),
             _vm._v(" "),
@@ -688,12 +672,12 @@ var render = function() {
       ]),
       _vm._v(" "),
       _vm.nuevo._estado == "creando"
-        ? _c("v-formulario-cliente", {
-            ref: "cmp_crear_cliente",
+        ? _c("v-formulario-persona-dni", {
+            ref: "cmp_crear_acceso",
             attrs: { var_config: _vm.var_config },
             on: {
               guardado: function($event) {
-                return _vm.listarCliente(1, "", "nombre")
+                return _vm.listarAcceso(1, "", "nombre")
               }
             },
             model: {
@@ -707,12 +691,12 @@ var render = function() {
         : _vm._e(),
       _vm._v(" "),
       _vm.editable._estado == "editando"
-        ? _c("v-formulario-cliente", {
-            ref: "cmp_crear_cliente",
+        ? _c("v-formulario-persona-dni", {
+            ref: "cmp_crear_acceso",
             attrs: { var_config: _vm.var_config },
             on: {
               guardado: function($event) {
-                return _vm.listarCliente(1, "", "nombre")
+                return _vm.listarAcceso(1, "", "nombre")
               }
             },
             model: {
@@ -721,6 +705,20 @@ var render = function() {
                 _vm.editable = $$v
               },
               expression: "editable"
+            }
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.ver_editable._estado == "viendo"
+        ? _c("v-ver-persona-dni", {
+            ref: "cmp_ver_acceso",
+            attrs: { var_config: _vm.var_config },
+            model: {
+              value: _vm.ver_editable,
+              callback: function($$v) {
+                _vm.ver_editable = $$v
+              },
+              expression: "ver_editable"
             }
           })
         : _vm._e()
@@ -734,10 +732,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("ol", { staticClass: "breadcrumb" }, [
-      _c("li", { staticClass: "breadcrumb-item" }, [_vm._v("Ventas")]),
-      _vm._v(" "),
       _c("li", { staticClass: "breadcrumb-item" }, [
-        _c("a", { attrs: { href: "#" } }, [_vm._v("Cliente")])
+        _c("a", { attrs: { href: "#" } }, [_vm._v("Accesos")])
       ]),
       _vm._v(" "),
       _c("li", { staticClass: "breadcrumb-item active" }, [_vm._v("Listado")])
@@ -749,20 +745,35 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", [_vm._v("Opciones")]),
+        _c("th"),
         _vm._v(" "),
-        _c("th", [_vm._v("Nombre o Razón Social")]),
+        _c("th", [_vm._v("Usuario")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Tipo Doc.")]),
+        _c("th", [_vm._v("Escuela Profesional")]),
         _vm._v(" "),
-        _c("th", [_vm._v("N° Documento")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Telefono")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Email")]),
+        _c("th", [_vm._v("Fecha de Creacion")]),
         _vm._v(" "),
         _c("th", [_vm._v("Estado")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#", "data-toggle": "dropdown" } }, [
+      _c("img", {
+        staticStyle: { width: "30px", height: "30px" },
+        attrs: { src: "images/options.svg" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("span", { staticClass: "badge badge-success" }, [_vm._v("Activo")])
     ])
   }
 ]
@@ -772,17 +783,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/cliente/ListarCliente.vue":
-/*!***************************************************************!*\
-  !*** ./resources/js/components/erp/cliente/ListarCliente.vue ***!
-  \***************************************************************/
+/***/ "./resources/js/components/erp/acceso/ListarAcceso.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/erp/acceso/ListarAcceso.vue ***!
+  \*************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ListarCliente_vue_vue_type_template_id_f34cfc62___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListarCliente.vue?vue&type=template&id=f34cfc62& */ "./resources/js/components/erp/cliente/ListarCliente.vue?vue&type=template&id=f34cfc62&");
-/* harmony import */ var _ListarCliente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListarCliente.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/cliente/ListarCliente.vue?vue&type=script&lang=js&");
+/* harmony import */ var _ListarAcceso_vue_vue_type_template_id_2ca127d7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListarAcceso.vue?vue&type=template&id=2ca127d7& */ "./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=template&id=2ca127d7&");
+/* harmony import */ var _ListarAcceso_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListarAcceso.vue?vue&type=script&lang=js& */ "./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -792,9 +803,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ListarCliente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ListarCliente_vue_vue_type_template_id_f34cfc62___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ListarCliente_vue_vue_type_template_id_f34cfc62___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _ListarAcceso_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ListarAcceso_vue_vue_type_template_id_2ca127d7___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ListarAcceso_vue_vue_type_template_id_2ca127d7___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -804,38 +815,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/erp/cliente/ListarCliente.vue"
+component.options.__file = "resources/js/components/erp/acceso/ListarAcceso.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/cliente/ListarCliente.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************!*\
-  !*** ./resources/js/components/erp/cliente/ListarCliente.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************/
+/***/ "./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarCliente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarCliente.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/cliente/ListarCliente.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarCliente_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarAcceso_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarAcceso.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarAcceso_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/erp/cliente/ListarCliente.vue?vue&type=template&id=f34cfc62&":
-/*!**********************************************************************************************!*\
-  !*** ./resources/js/components/erp/cliente/ListarCliente.vue?vue&type=template&id=f34cfc62& ***!
-  \**********************************************************************************************/
+/***/ "./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=template&id=2ca127d7&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=template&id=2ca127d7& ***!
+  \********************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarCliente_vue_vue_type_template_id_f34cfc62___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarCliente.vue?vue&type=template&id=f34cfc62& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/cliente/ListarCliente.vue?vue&type=template&id=f34cfc62&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarCliente_vue_vue_type_template_id_f34cfc62___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarAcceso_vue_vue_type_template_id_2ca127d7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ListarAcceso.vue?vue&type=template&id=2ca127d7& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/erp/acceso/ListarAcceso.vue?vue&type=template&id=2ca127d7&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarAcceso_vue_vue_type_template_id_2ca127d7___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarCliente_vue_vue_type_template_id_f34cfc62___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListarAcceso_vue_vue_type_template_id_2ca127d7___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

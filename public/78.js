@@ -1,8 +1,8 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[78],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=script&lang=js&":
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=script&lang=js& ***!
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=script&lang=js& ***!
   \*****************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -27,7 +27,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      array_pagos_validadas: [{
+      array_fotos_validadas: [{
         id: 'todos',
         nombre: 'Todos'
       }, {
@@ -37,7 +37,7 @@ __webpack_require__.r(__webpack_exports__);
         id: 'no',
         nombre: 'No'
       }],
-      pago_validado_id: this.value
+      foto_validada_id: this.value
     };
   },
   mounted: function mounted() {// if (this.value) {
@@ -49,28 +49,28 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     buscar: function buscar() {
       var me = this,
-          pagos_validadas = [];
-      axios.get('/pago_validado/select').then(function (response) {
-        pagos_validadas = response.data;
-        pagos_validadas.forEach(function (element) {
+          fotos_validadas = [];
+      axios.get('/foto_validada/select').then(function (response) {
+        fotos_validadas = response.data;
+        fotos_validadas.forEach(function (element) {
           /* console.log(element) */
-          me.array_pagos_validadas.push(element);
+          me.array_fotos_validadas.push(element);
         });
-        me.pago_validado_id = 'todos';
+        me.foto_validada_id = 'todos';
       })["catch"](function (error) {
         console.log(error);
       });
     }
   },
   watch: {
-    pago_validado_id: function pago_validado_id(newvalue, oldvalue) {
+    foto_validada_id: function foto_validada_id(newvalue, oldvalue) {
       if (newvalue) {
         this.$emit('input', newvalue);
       }
     },
     value: function value(newvalue, oldvalue) {
       if (newvalue) {
-        this.pago_validado_id = newvalue;
+        this.foto_validada_id = newvalue;
       }
     }
   }
@@ -78,9 +78,9 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=template&id=0871f3fe&":
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=template&id=3acdf9a9&":
 /*!*********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=template&id=0871f3fe& ***!
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=template&id=3acdf9a9& ***!
   \*********************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -100,8 +100,8 @@ var render = function() {
         {
           name: "model",
           rawName: "v-model",
-          value: _vm.pago_validado_id,
-          expression: "pago_validado_id"
+          value: _vm.foto_validada_id,
+          expression: "foto_validada_id"
         }
       ],
       staticClass: "form-control",
@@ -115,18 +115,18 @@ var render = function() {
               var val = "_value" in o ? o._value : o.value
               return val
             })
-          _vm.pago_validado_id = $event.target.multiple
+          _vm.foto_validada_id = $event.target.multiple
             ? $$selectedVal
             : $$selectedVal[0]
         }
       }
     },
-    _vm._l(_vm.array_pagos_validadas, function(pago_validado) {
+    _vm._l(_vm.array_fotos_validadas, function(foto_validada) {
       return _c("option", {
-        key: pago_validado.id,
+        key: foto_validada.id,
         domProps: {
-          value: pago_validado.id,
-          textContent: _vm._s(pago_validado.nombre)
+          value: foto_validada.id,
+          textContent: _vm._s(foto_validada.nombre)
         }
       })
     }),
@@ -140,17 +140,17 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/js/components/referencias/PagoValidadoSelect.vue":
+/***/ "./resources/js/components/referencias/FotoValidadoSelect.vue":
 /*!********************************************************************!*\
-  !*** ./resources/js/components/referencias/PagoValidadoSelect.vue ***!
+  !*** ./resources/js/components/referencias/FotoValidadoSelect.vue ***!
   \********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _PagoValidadoSelect_vue_vue_type_template_id_0871f3fe___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PagoValidadoSelect.vue?vue&type=template&id=0871f3fe& */ "./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=template&id=0871f3fe&");
-/* harmony import */ var _PagoValidadoSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PagoValidadoSelect.vue?vue&type=script&lang=js& */ "./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=script&lang=js&");
+/* harmony import */ var _FotoValidadoSelect_vue_vue_type_template_id_3acdf9a9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FotoValidadoSelect.vue?vue&type=template&id=3acdf9a9& */ "./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=template&id=3acdf9a9&");
+/* harmony import */ var _FotoValidadoSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FotoValidadoSelect.vue?vue&type=script&lang=js& */ "./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -160,9 +160,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _PagoValidadoSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _PagoValidadoSelect_vue_vue_type_template_id_0871f3fe___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _PagoValidadoSelect_vue_vue_type_template_id_0871f3fe___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _FotoValidadoSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _FotoValidadoSelect_vue_vue_type_template_id_3acdf9a9___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _FotoValidadoSelect_vue_vue_type_template_id_3acdf9a9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -172,38 +172,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/referencias/PagoValidadoSelect.vue"
+component.options.__file = "resources/js/components/referencias/FotoValidadoSelect.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=script&lang=js&":
+/***/ "./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************!*\
-  !*** ./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=script&lang=js& ***!
+  !*** ./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=script&lang=js& ***!
   \*********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PagoValidadoSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./PagoValidadoSelect.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PagoValidadoSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FotoValidadoSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./FotoValidadoSelect.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FotoValidadoSelect_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=template&id=0871f3fe&":
+/***/ "./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=template&id=3acdf9a9&":
 /*!***************************************************************************************************!*\
-  !*** ./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=template&id=0871f3fe& ***!
+  !*** ./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=template&id=3acdf9a9& ***!
   \***************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PagoValidadoSelect_vue_vue_type_template_id_0871f3fe___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./PagoValidadoSelect.vue?vue&type=template&id=0871f3fe& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/PagoValidadoSelect.vue?vue&type=template&id=0871f3fe&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PagoValidadoSelect_vue_vue_type_template_id_0871f3fe___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FotoValidadoSelect_vue_vue_type_template_id_3acdf9a9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./FotoValidadoSelect.vue?vue&type=template&id=3acdf9a9& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/referencias/FotoValidadoSelect.vue?vue&type=template&id=3acdf9a9&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FotoValidadoSelect_vue_vue_type_template_id_3acdf9a9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PagoValidadoSelect_vue_vue_type_template_id_0871f3fe___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FotoValidadoSelect_vue_vue_type_template_id_3acdf9a9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
