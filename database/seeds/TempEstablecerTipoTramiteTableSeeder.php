@@ -12,14 +12,14 @@ class TempEstablecerTipoTramiteTableSeeder extends Seeder
     public function run()
     {
         // Establecer Nuevos
-        $periodo_academico_id = '10000';
+        $periodo_academico_id = '10001';
 
         $nuevos = DB::table('matriculas')
                     ->where('periodo_academico_id',$periodo_academico_id)
                     ->whereNull('tipo_tramite')
                     ->where(function($query){
                         $query->orWhereNull('fecha_expiracion');
-                        $query->orWhere('fecha_expiracion','<=','2025-10-28');
+                        $query->orWhere('fecha_expiracion','<=','2025-12-03');
                     });
         $cantidad_nuevos =$nuevos->get();
         $nuevos->update(['tipo_tramite'=>'nuevo']);
@@ -30,7 +30,7 @@ class TempEstablecerTipoTramiteTableSeeder extends Seeder
                     ->where('periodo_academico_id',$periodo_academico_id)
                     ->whereNull('tipo_tramite')
                     ->where(function($query){
-                        $query->orWhere('fecha_expiracion','>','2025-10-28');
+                        $query->orWhere('fecha_expiracion','>','2025-12-03');
                     });
         $cantidad_duplicados = $duplicados->get();
         $duplicados->update(['tipo_tramite'=>'duplicado']);
