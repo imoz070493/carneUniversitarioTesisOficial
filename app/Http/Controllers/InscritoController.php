@@ -652,7 +652,8 @@ class InscritoController extends Controller
         
         $codigos = $data['codigos'];
 
-        $codigos_array = explode(",", $codigos);\Log::info($codigos_array);
+        $codigos_array = explode(",", $codigos);
+        // \Log::info($codigos_array);
         
         $convocatoria_actual = Convocatoria::whereNull('activo')->first();
         $folder_zip = public_path('storage/'.$convocatoria_actual->folder.'/3_comprimidos');
