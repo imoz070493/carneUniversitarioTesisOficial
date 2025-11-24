@@ -459,7 +459,7 @@ class Inscrito extends Model
                                     'e.dni'
                                 )
                                 ->where('inscritos.codigo_estudiante',$codigo_estudiante)
-                                ->whereNull('inscritos.fecha_anulado')
+                                // ->whereNull('inscritos.fecha_anulado')
                                 ->orderBy('inscritos.id','desc')
                                 ->first();
 
