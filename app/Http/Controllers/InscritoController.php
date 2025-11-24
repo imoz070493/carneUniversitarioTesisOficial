@@ -664,9 +664,9 @@ class InscritoController extends Controller
         $zip->open($path_zip,ZipArchive::CREATE);
 
         foreach ($codigos_array as $key => $value) {
-            $inscrito = Inscrito::obtenerUltimaInscripcionDiversos($value);
+            $inscrito = Inscrito::obtenerUltimaInscripcionDiversos($value);\Log::info("Ingresando: $value");\Log::info("Folder: $inscrito->folder");
             if (file_exists(public_path('/storage/'.$inscrito->folder.'/1_validado/'.$inscrito->foto))) {
-                \Log::info("Validado: $inscrito->codigo_estudiante");
+                // \Log::info("Validado: $inscrito->codigo_estudiante");
                 $folder_origin = public_path('/storage/'.$inscrito->folder.'/1_validado');
                 $zip->addFile($folder_origin.'/'.$inscrito->foto, $inscrito->codigo_estudiante.".jpg");
             } else if(file_exists(public_path('/storage/'.$inscrito->folder.'/2_sin_validar/'.$inscrito->foto))){
