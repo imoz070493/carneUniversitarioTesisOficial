@@ -509,7 +509,7 @@ class InscritoController extends Controller
         $mode_order = $request->mode_order;
         $convocatoria_id = $request->convocatoria_id;
 
-        $datos = Inscrito::listarInscritosHistorico($buscar, $criterio, $per_page, $order_by, $mode_order,'no_anulado',$convocatoria_id);
+        $datos = Inscrito::listarInscritosHistorico($buscar, $criterio, $per_page, $order_by, $mode_order,'both',$convocatoria_id);
 
         $columnas = [
             'nombres' => 'Nombres',
