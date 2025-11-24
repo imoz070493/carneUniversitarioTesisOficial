@@ -664,8 +664,15 @@ class InscritoController extends Controller
 
         foreach ($codigos_array as $key => $value) {
             $inscrito = Inscrito::obtenerUltimaInscripcionDiversos($value);
-            $folder_origin = public_path('/storage/'.$inscrito->folder.'/1_validado');
-            $zip->addFile($folder_origin.'/'.$inscrito->foto, $inscrito->codigo_estudiante.".jpg");
+            if (file_exists(public_path('/storage/'.$inscrito->folder.'/1_validado'))) {
+                $folder_origin = public_path('/storage/'.$inscrito->folder.'/1_validado');
+                $zip->addFile($folder_origin.'/'.$inscrito->foto, $inscrito->codigo_estudiante.".jpg");
+            } else if(file_exists(public_path('/storage/'.$inscrito->folder.'/2_sin_validar'))){
+                $folder_origin = public_path('/storage/'.$inscrito->folder.'/2_sin_validar');
+                $zip->addFile($folder_origin.'/'.$inscrito->foto, $inscrito->codigo_estudiante.".jpg");
+            }else{
+                \Log::info("Fotografia no existe: $inscrito->codigo_estudiante");
+            }
         }
 
         // $zip->addFile(storage_path('app/public/convocatoria_202301/01_10015549.jpg'),'01_100155491.jpg');
