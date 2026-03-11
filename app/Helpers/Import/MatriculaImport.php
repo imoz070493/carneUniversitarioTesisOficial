@@ -252,6 +252,8 @@ class MatriculaImport{
                 'estado' => 'completado',
             ]);
 
+            Matricula::establecerTipoTramite();
+
             DB::commit();
             foreach ($usuarios_creados as $key => $value) {
                 $usuario_nuevo = User::findOrFail($value);
