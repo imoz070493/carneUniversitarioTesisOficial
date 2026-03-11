@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use GuzzleHttp\Client;
 
 class Matricula extends Model
 {
@@ -185,6 +186,38 @@ class Matricula extends Model
                             ->first();
 
         return $matricula;
+    }
+
+    public static function consultarMatricula($codigo){
+        $proveedor = new Client([
+            // 'base_uri' => 'http://localhost:8001',
+            'base_uri' => 'https://personasunat.ticnovateventas.com',
+            // 'timeout' => 20.0
+        ]);
+
+        $token = env('TOKEN_PERSONA_SUNAT');
+
+        // if($tipo_documento == 'dni')
+        //     $tipo_documento = '1';
+        // if($tipo_documento == 'ruc')
+        //     $tipo_documento = '3';
+
+        // \Log::info($token);
+        $response_document = $proveedor->request('post', '/api/get_enrollment_student', [
+            'headers' => [
+                'Accept' => 'application/json',
+                'Authorization' => "Bearer ".$token
+            ],
+            'form_params' => [
+                // 'type' => $tipo_documento/* '3' */,
+                'codigo' => $codigo/* '10729144385' */,
+                'origen' => 'carne_universitario'/* 'carne_universitario' */,
+            ]
+        ]);
+        
+        $respuesta = $response_document->getBody()->getContents();
+
+        return json_decode($respuesta);
     }
 
 }
