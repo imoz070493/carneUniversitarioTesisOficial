@@ -64,7 +64,7 @@ class MatriculaImport{
 
 		// Log::info("Nombre Hoja: ".$objWorksheet->getTitle());
 		// $numero_dias_mes = cal_days_in_month(CAL_GREGORIAN, $mes, $agno) + 10;
-        $fila_inicio_lectura = 6;
+        $fila_inicio_lectura = 7;
 		$errors = [];
 		for ($row = $fila_inicio_lectura; $row <= $highestRow; $row++) {
 			//Validar CODIGO
