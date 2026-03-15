@@ -165,6 +165,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var FormularioMatricula = function FormularioMatricula() {
   return __webpack_require__.e(/*! import() */ 43).then(__webpack_require__.bind(null, /*! @/components/erp/matricula/FormularioMatricula */ "./resources/js/components/erp/matricula/FormularioMatricula.vue"));
 };
@@ -483,6 +485,16 @@ var PeriodoAcademicoSelect = function PeriodoAcademicoSelect() {
       this.order_by = 'id';
       this.listarMatricula(1, this.buscar, this.criterio);
       this.$forceUpdate();
+    },
+    formatDate: function formatDate(date) {
+      var formated_date = '';
+
+      if (date) {
+        formated_date = date.split('-').reverse().join('-');
+        return formated_date;
+      }
+
+      return '';
     }
   },
   watch: {
@@ -798,7 +810,9 @@ var render = function() {
                       _vm._v(" "),
                       _c("th", [_vm._v("Sexo")]),
                       _vm._v(" "),
-                      _c("th", [_vm._v("Estado")])
+                      _c("th", [_vm._v("Estado")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("Fecha Expiracion")])
                     ])
                   ]),
                   _vm._v(" "),
@@ -984,7 +998,15 @@ var render = function() {
                                   )
                                 ])
                               : _vm._e()
-                          ])
+                          ]),
+                          _vm._v(" "),
+                          _c("td", {
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.formatDate(matricula.fecha_expiracion)
+                              )
+                            }
+                          })
                         ])
                       })
                     ],

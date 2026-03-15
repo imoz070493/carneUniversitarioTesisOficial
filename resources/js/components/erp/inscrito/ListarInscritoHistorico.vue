@@ -61,6 +61,7 @@
                                     <th>Fecha Tramite</th>
                                     <th>¿Duplicado?</th>
                                     <th>Convocatoria</th>
+                                    <th>Fecha Expiracion</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -97,6 +98,7 @@
                                         </div>
                                     </td>
                                     <td v-text="inscrito.nombre_convocatoria"></td>
+                                    <td v-text="formatDate(inscrito.fecha_expiracion)"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -585,6 +587,14 @@ if(error.request.status){
             this.listarInscrito(1,this.buscar, this.criterio);
             this.$forceUpdate();
             
+        },
+        formatDate(date){
+            let formated_date = ''
+            if(date){
+                formated_date = date.split('-').reverse().join('-');
+                return formated_date;
+            }
+            return '';
         }
     },
     watch: {

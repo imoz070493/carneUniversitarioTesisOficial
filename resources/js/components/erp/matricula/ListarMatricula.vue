@@ -60,6 +60,7 @@
                                     <th>Escuela Profesional</th>
                                     <th>Sexo</th>
                                     <th>Estado</th>
+                                    <th>Fecha Expiracion</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -91,6 +92,7 @@
                                             <span class="badge badge-danger">Desactivado</span>
                                         </div>
                                     </td>
+                                    <td v-text="formatDate(matricula.fecha_expiracion)"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -482,6 +484,14 @@ if(error.request.status){
             this.listarMatricula(1,this.buscar, this.criterio);
             this.$forceUpdate();
             
+        },
+        formatDate(date){
+            let formated_date = ''
+            if(date){
+                formated_date = date.split('-').reverse().join('-');
+                return formated_date;
+            }
+            return '';
         }
     },
     watch: {

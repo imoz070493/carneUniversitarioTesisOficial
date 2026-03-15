@@ -103,7 +103,7 @@ class MatriculaController extends Controller
                                 'correo_institucional'
                             )->findOrFail($estudiante_id);
 
-        $matricula = Matricula::obtenerMatriculaEstudiante($estudiante->id);
+        $matricula = Matricula::obtenerMatriculaEstudianteGeneral($estudiante->id);
         $convocatoria_actual = Convocatoria::whereNull('activo')->first();
         $fin_convocatoria = $convocatoria_actual->fecha_fin;
 

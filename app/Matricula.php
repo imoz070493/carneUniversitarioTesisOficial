@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\DB;
+use PhpOffice\PhpSpreadsheet\Calculation\Financial\CashFlow\Constant\Periodic;
 
 class Matricula extends Model
 {
@@ -49,7 +50,7 @@ class Matricula extends Model
         // if (isset($datos['id'])) {
         //     if(isset($datos['new_imagen'])){
         //         $fileName = \App\Helpers\Archivo::guardarImagen($datos['new_imagen']);
-        //         $data['imagen'] = $fileName;
+        //         $data<p['imagen'] = $fileName;
         //     }
         // }else{
         //     if(isset($datos['new_imagen'])){
@@ -85,7 +86,8 @@ class Matricula extends Model
                                 'e.apellido_paterno',
                                 'e.apellido_materno',
                                 'e.nombres',
-                                'e.sexo'
+                                'e.sexo',
+                                'matriculas.fecha_expiracion'
                             );
 
             if($buscar!=''){
@@ -163,6 +165,42 @@ class Matricula extends Model
         return $matricula;
     }
 
+    public static function obtenerMatriculaEstudianteGeneral($estudiante_id){
+        $matricula = static::obtenerMatriculaEstudiante($estudiante_id);
+
+        if(!$matricula){
+            $estudiante = Estudiante::findOrFail($estudiante_id);
+            $matricula = static::consultarMatricula($estudiante->codigo_estudiante);
+            // \Log::info("Entrando al consultar en tiempo real");
+            \Log::info($matricula->recordsTotal);
+            if($matricula->recordsTotal==1){
+                // Grabar datos de matricula en la tabla
+                $periodo_academico = PeriodoAcademico::where('estado','Activo')->first();
+                $convocatoria = Convocatoria::whereNull('activo')->first();
+                $data = [
+                    'codigo_estudiante' => $estudiante->codigo_estudiante,
+                    'estudiante_id' => $estudiante_id,
+                    'periodo_academico_id' => $periodo_academico->id,
+                ];
+                \Log::info("DATOS MATRICULA:".$periodo_academico->id);
+                \Log::info($data);
+                $matricula = Matricula::guardarDatos($data);
+                // Actualizar la fecha de expiracion
+                $inscrito = Inscrito::obtenerUltimaInscripcion($estudiante->codigo_estudiante);
+                Matricula::guardarDatos([
+                    'id' => $matricula->id,
+                    'fecha_expiracion' => $inscrito?$inscrito->fecha_expiracion:null
+                ]);
+                // Actualizar el tipo de tramite
+                static::establecerTipoTramite();
+
+                $matricula = static::obtenerMatriculaEstudiante($estudiante_id);
+            }
+        }
+
+        return $matricula;
+    }
+
     public static function obtenerMatriculaEstudiante($estudiante_id){
 
         $matricula = Matricula::join('periodos_academicos as pa','matriculas.periodo_academico_id','=','pa.id')
@@ -185,6 +223,8 @@ class Matricula extends Model
                             ->where('e.id',$estudiante_id)
                             ->where('pa.estado','Activo')
                             ->first();
+
+        \Log::info($matricula);
 
         return $matricula;
     }
@@ -219,18 +259,22 @@ class Matricula extends Model
         $respuesta = $response_document->getBody()->getContents();
 
         return json_decode($respuesta);
+        // return $respuesta;
     }
 
     public static function establecerTipoTramite(){
         // Establecer Nuevos
-        $periodo_academico_id = '10002';
+        $periodo_academico = PeriodoAcademico::where('estado','Activo')->first();
+        $periodo_academico_id = $periodo_academico->id;
 
+        $convocatoria = Convocatoria::whereNull('activo')->first();
+        
         $nuevos = DB::table('matriculas')
                     ->where('periodo_academico_id',$periodo_academico_id)
                     ->whereNull('tipo_tramite')
-                    ->where(function($query){
+                    ->where(function($query)use($convocatoria){
                         $query->orWhereNull('fecha_expiracion');
-                        $query->orWhere('fecha_expiracion','<=','2025-12-03');
+                        $query->orWhere('fecha_expiracion','<=',$convocatoria->fecha_limite);
                     });
         $cantidad_nuevos =$nuevos->get();
         $nuevos->update(['tipo_tramite'=>'nuevo']);
@@ -240,8 +284,8 @@ class Matricula extends Model
         $duplicados = DB::table('matriculas')
                     ->where('periodo_academico_id',$periodo_academico_id)
                     ->whereNull('tipo_tramite')
-                    ->where(function($query){
-                        $query->orWhere('fecha_expiracion','>','2025-12-03');
+                    ->where(function($query)use($convocatoria){
+                        $query->orWhere('fecha_expiracion','>',$convocatoria->fecha_limite);
                     });
         $cantidad_duplicados = $duplicados->get();
         $duplicados->update(['tipo_tramite'=>'duplicado']);

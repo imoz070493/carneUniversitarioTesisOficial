@@ -170,6 +170,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 var FormularioInscrito = function FormularioInscrito() {
   return __webpack_require__.e(/*! import() */ 13).then(__webpack_require__.bind(null, /*! @/components/erp/inscrito/FormularioInscrito */ "./resources/js/components/erp/inscrito/FormularioInscrito.vue"));
 };
@@ -571,6 +573,16 @@ var ConvocatoriaSelect = function ConvocatoriaSelect() {
       this.order_by = 'id';
       this.listarInscrito(1, this.buscar, this.criterio);
       this.$forceUpdate();
+    },
+    formatDate: function formatDate(date) {
+      var formated_date = '';
+
+      if (date) {
+        formated_date = date.split('-').reverse().join('-');
+        return formated_date;
+      }
+
+      return '';
     }
   },
   watch: {
@@ -890,7 +902,9 @@ var render = function() {
                       _vm._v(" "),
                       _c("th", [_vm._v("¿Duplicado?")]),
                       _vm._v(" "),
-                      _c("th", [_vm._v("Convocatoria")])
+                      _c("th", [_vm._v("Convocatoria")]),
+                      _vm._v(" "),
+                      _c("th", [_vm._v("Fecha Expiracion")])
                     ])
                   ]),
                   _vm._v(" "),
@@ -1133,6 +1147,14 @@ var render = function() {
                           _c("td", {
                             domProps: {
                               textContent: _vm._s(inscrito.nombre_convocatoria)
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("td", {
+                            domProps: {
+                              textContent: _vm._s(
+                                _vm.formatDate(inscrito.fecha_expiracion)
+                              )
                             }
                           })
                         ])

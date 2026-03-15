@@ -299,7 +299,8 @@ class Inscrito extends Model
                                 'inscritos.created_at',
                                 'convocatoria.nombre as nombre_convocatoria',
                                 'convocatoria.folder',
-                                'inscritos.numero_recibo'
+                                'inscritos.numero_recibo',
+                                'inscritos.fecha_expiracion'
                             );
 
             if($buscar!=''){
