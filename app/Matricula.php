@@ -195,6 +195,8 @@ class Matricula extends Model
                 static::establecerTipoTramite();
 
                 $matricula = static::obtenerMatriculaEstudiante($estudiante_id);
+            }else{
+                $matricula = null;
             }
         }
 
