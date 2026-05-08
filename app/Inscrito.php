@@ -441,8 +441,10 @@ class Inscrito extends Model
     }
 
     public static function obtenerUltimaInscripcion($codigo_estudiante){
+        $convocatoria_actual = Convocatoria::whereNull('activo')->first();
         $inscrito = Inscrito::where('codigo_estudiante',$codigo_estudiante)
                                 ->whereNull('fecha_anulado')
+                                ->where('convocatoria_id','!=',$convocatoria_actual->id)
                                 ->orderBy('id','desc')
                                 ->first();
 
