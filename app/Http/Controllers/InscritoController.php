@@ -457,8 +457,7 @@ class InscritoController extends Controller
             'created_at' => 'Fecha Tramite',
             'nombre_convocatoria' => 'Convocatoria',
             'numero_recibo' => 'N° Recibo',
-            'voucher_validado' => 'Voucher Validado',
-            'fecha_expiracion' => 'Fecha Expiracion',
+            'voucher_validado' => 'Voucher Validado'
         ];
 
         $formateadores = [
