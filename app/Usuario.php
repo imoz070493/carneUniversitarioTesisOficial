@@ -18,10 +18,11 @@ class Usuario extends Model
     // ];
 
     public static function guardarDatos($datos){
+        // \Log::info($datos);
         $data = [];
 
         if (array_key_exists('name', $datos)) $data['name'] = $datos['name'];
-        if (array_key_exists('usuario', $datos)) $data['usuario'] = $datos['usuario'];
+        if (array_key_exists('email', $datos)) $data['usuario'] = $datos['email'];
         if (array_key_exists('email', $datos)) $data['email'] = $datos['email'];
 
         if (array_key_exists('password', $datos)) {
@@ -33,6 +34,7 @@ class Usuario extends Model
         if (array_key_exists('estado', $datos)) $data['estado'] = $datos['estado'];
 
         $role = Rol::findOrFail($datos['role_id']);
+        \Log::info($role->name);
 
         if(isset($datos['id'])){
             $usuario = User::findOrFail($datos['id']);
@@ -45,11 +47,9 @@ class Usuario extends Model
             $usuario->assignRole($role->name);
         }else{
             $usuario = new User();
-            $usuario->create($data);
+            $usuario = $usuario->create($data);
             $usuario->assignRole($role->name);
         }
-
-
 
         return 2;
     }
