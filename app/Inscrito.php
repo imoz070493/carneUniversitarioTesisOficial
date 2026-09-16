@@ -730,6 +730,41 @@ class Inscrito extends Model
         return $response;
     }
 
+    public static function validarImagenUrl($path_imagen, $folder){
+        // $folder_save = $folder.'/5_temps';
+        // $folder_script = $folder;
+        // $file_name = \App\Helpers\Archivo::guardarImagen($data_imagen, $folder_save);
+        $file_name = $path_imagen;\Log::info($file_name);
+        $folder_script = $folder;\Log::info($folder_script);
+
+        $parametros_foto = [];
+
+        $tamanio = static::getTamanioImagen($folder_script,$file_name);\Log::info($tamanio);
+        $parametros_foto['tamanio'] = $tamanio['peso'];
+        $parametros_foto['dimension_alto'] = $tamanio['height'];
+        $parametros_foto['dimension_ancho'] = $tamanio['width'];
+
+        $face_points = static::getFacePoints($folder_script,$file_name);\Log::info($face_points);
+        $parametros_foto['left_eye_x'] = isset($face_points['left_eye']['x'])?$face_points['left_eye']['x']:0;
+        $parametros_foto['left_eye_y'] = isset($face_points['left_eye']['y'])?$face_points['left_eye']['y']:0;
+        $parametros_foto['right_eye_x'] = isset($face_points['right_eye']['x'])?$face_points['right_eye']['x']:0;
+        $parametros_foto['right_eye_y'] = isset($face_points['right_eye']['y'])?$face_points['right_eye']['y']:0;
+        $parametros_foto['nose_tip_x'] = isset($face_points['nose_tip']['x'])?$face_points['nose_tip']['x']:0;
+        $parametros_foto['nose_tip_y'] = isset($face_points['nose_tip']['y'])?$face_points['nose_tip']['y']:0;
+        $parametros_foto['mouth_center_x'] = isset($face_points['mouth_center']['x'])?$face_points['mouth_center']['x']:0;
+        $parametros_foto['mouth_center_y'] = isset($face_points['mouth_center']['y'])?$face_points['mouth_center']['y']:0;
+        $parametros_foto['left_ear_x'] = isset($face_points['left_ear']['x'])?$face_points['left_ear']['x']:0;
+        $parametros_foto['left_ear_y'] = isset($face_points['left_ear']['y'])?$face_points['left_ear']['y']:0;
+        $parametros_foto['right_ear_x'] = isset($face_points['right_ear']['x'])?$face_points['right_ear']['x']:0;
+        $parametros_foto['right_ear_y'] = isset($face_points['right_ear']['y'])?$face_points['right_ear']['y']:0;
+
+        $resolution_dpis = static::getDpiV2($folder, '5_temps', $file_name);\Log::info($resolution_dpis);
+        $parametros_foto['horizontal_dpi'] = $resolution_dpis['horizontal_dpi'];
+        $parametros_foto['vertical_dpi'] = $resolution_dpis['vertical_dpi'];
+
+        return static::compararValoresFoto($parametros_foto);
+    }
+
     public static function validarImagen($data_imagen, $folder){
         $folder_save = $folder.'/5_temps';
         $folder_script = $folder;
