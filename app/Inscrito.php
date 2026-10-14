@@ -34,6 +34,7 @@ class Inscrito extends Model
         'usuario_update_id',
         'fecha_inicio_edicion',
         'fecha_fin_edicion',
+        'usar_foto_anterior',
     ];
 
     public static function guardarDatos($datos){
