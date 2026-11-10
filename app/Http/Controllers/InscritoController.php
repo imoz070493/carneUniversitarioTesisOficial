@@ -486,7 +486,7 @@ class InscritoController extends Controller
                 if($a->credencial_validado=='no_encontrado') return "NO ENCONTRADO";
             },
             'voucher_validado' => function($a){
-                if($a->duplicado=='1') return "SI";
+                if($a->voucher_validado=='1') return "SI";
                 else return "NO";
             },
         ];
