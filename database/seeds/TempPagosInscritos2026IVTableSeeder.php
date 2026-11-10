@@ -30,7 +30,7 @@ class TempPagosInscritos2026IVTableSeeder extends Seeder
 
     public static function data(){
         // Ruta al archivo JSON
-        $json = File::get(database_path('data/pagos_inscritos_2026_IV.json'));
+        $json = File::get(database_path('data/pagos_inscritos_2026_IV2.json'));
 
         // Convertir en array
         return json_decode($json, true);

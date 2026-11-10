@@ -1,0 +1,146 @@
+[
+    {
+        "codigo_estudiante": "1109220242",
+        "numero_recibo": "V008-00025104",
+        "fecha_pago": "2026-11-05",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1112120262",
+        "numero_recibo": "V008-00025518",
+        "fecha_pago": "2026-11-09",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1002320242",
+        "numero_recibo": "V008-00025513",
+        "fecha_pago": "2026-11-09",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1005020221",
+        "numero_recibo": "V008-00025303",
+        "fecha_pago": "2026-11-06",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1103720242",
+        "numero_recibo": "V008-00025469",
+        "fecha_pago": "2026-11-09",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1005620221",
+        "numero_recibo": "V008-00025164",
+        "fecha_pago": "2026-11-05",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1119720252",
+        "numero_recibo": "V008-00024106",
+        "fecha_pago": "2026-10-20",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1113120242",
+        "numero_recibo": "V008-00024101",
+        "fecha_pago": "2026-10-20",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1111020252",
+        "numero_recibo": "V008-00025392",
+        "fecha_pago": "2026-11-06",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1011520252",
+        "numero_recibo": "V008-00025268",
+        "fecha_pago": "2026-11-05",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1011520241",
+        "numero_recibo": "V008-00025447",
+        "fecha_pago": "2026-11-06",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1103920252",
+        "numero_recibo": "V008-00024945",
+        "fecha_pago": "2026-11-03",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1108620262",
+        "numero_recibo": "V008-00024884",
+        "fecha_pago": "2026-11-02",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1010620242",
+        "numero_recibo": "V008-00024870",
+        "fecha_pago": "2026-11-02",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1001620222",
+        "numero_recibo": "V008-00024733",
+        "fecha_pago": "2026-10-30",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1014420242",
+        "numero_recibo": "V008-00024706",
+        "fecha_pago": "2026-10-30",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1016020241",
+        "numero_recibo": "V003-00004937",
+        "fecha_pago": "2026-09-11",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1121020251",
+        "numero_recibo": "V008-00024761",
+        "fecha_pago": "2026-10-30",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1011020241",
+        "numero_recibo": "V008-00022257",
+        "fecha_pago": "2026-09-11",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1112720251",
+        "numero_recibo": "V008-00023904",
+        "fecha_pago": "2026-10-16",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1017820242",
+        "numero_recibo": "V008-00024012",
+        "fecha_pago": "2026-10-19",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1007420232",
+        "numero_recibo": "V008-00024048",
+        "fecha_pago": "2026-10-19",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1103620261",
+        "numero_recibo": "V008-00024127",
+        "fecha_pago": "2026-10-21",
+        "voucher_validado": "1"
+    },
+    {
+        "codigo_estudiante": "1011120251",
+        "numero_recibo": "V008-00020637",
+        "fecha_pago": "2026-09-01",
+        "voucher_validado": "1"
+    }
+]
